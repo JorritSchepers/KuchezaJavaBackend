@@ -1,4 +1,4 @@
-package nl.han.oose.sapporo.persistence;
+package java;
 
 import org.junit.jupiter.api.Test;
 
