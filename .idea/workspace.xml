@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="KuchezaGame:war" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-nl.han.oose.sapporo.persistence.buildTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-nl.han.oose.sapporo.persistence.buildTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-nl.han.oose.sapporo.resource.AccountResourceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-nl.han.oose.sapporo.resource.AccountResourceTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/nl.han.oose.sapporo.persistence.buildTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/nl.han.oose.sapporo.persistence.buildTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/nl.han.oose.sapporo.resource.AccountResourceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/nl.han.oose.sapporo.resource.AccountResourceTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/buildTest.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +34,13 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -109,9 +117,15 @@
       </method>
     </configuration>
     <configuration name="TomEE 8.5.41" type="TomeeConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="TomEE 8.5.41" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8088/" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8088/KuchezaGame_war/" />
       <option name="UPDATING_POLICY" value="restart-server" />
-      <deployment />
+      <deployment>
+        <artifact name="KuchezaGame:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/KuchezaGame_war" />
+          </settings>
+        </artifact>
+      </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Unnamed_kuchezagame" />
         <option name="HTTP_PORT" value="8088" />
@@ -171,6 +185,9 @@
       </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="KuchezaGame:war" />
+        </option>
       </method>
     </configuration>
     <list>
@@ -202,7 +219,7 @@
       <workItem from="1573827943226" duration="1330000" />
       <workItem from="1573830714274" duration="241000" />
       <workItem from="1574072464287" duration="1630000" />
-      <workItem from="1574085824028" duration="489000" />
+      <workItem from="1574085824028" duration="644000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1574072988467</created>
