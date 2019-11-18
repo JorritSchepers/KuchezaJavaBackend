@@ -23,7 +23,7 @@ public abstract class DAOTest {
     private void setup() {
         ConnectionFactoryImp connectionFactoryImp = Mockito.mock(ConnectionFactoryImp.class);
         try {
-            when(connectionFactoryImp.makeConnection()).thenReturn(DriverManager.getConnection(dbUrl));
+            when(connectionFactoryImp.getConnection()).thenReturn(DriverManager.getConnection(dbUrl));
             setfactory (connectionFactoryImp);
         } catch (SQLException e) {
             e.printStackTrace();

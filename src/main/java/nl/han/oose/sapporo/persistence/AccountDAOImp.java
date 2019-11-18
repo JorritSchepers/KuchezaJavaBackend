@@ -12,23 +12,18 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class AccountDAOImp implements IAccountDAO {
-
     private ConnectionFactoryImp connectionFactory;
-
-    @Inject
-    public void setConnectionFactory(ConnectionFactoryImp connectionFactory) {
-        this.connectionFactory = connectionFactory;
-    }
 
     @Override
     public void addUser(UserDTO userDTO) {
+        // TODO Move to connection factory
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new PersistenceException();
         }
 
-        try (Connection connection = connectionFactory.makeConnection()) {
+        try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO user (name,password,email) VALUES (?,?,?)");
             statement.setString(1, userDTO.getName());
             statement.setString(2, hexInformation(userDTO.getPassword()));
@@ -36,8 +31,8 @@ public class AccountDAOImp implements IAccountDAO {
 
             statement.execute();
         } catch (SQLException e) {
-            int DUPLICATEVALUECODE = 1062;
-            if (e.getErrorCode() == DUPLICATEVALUECODE) {
+            final int DUPLICATE_VALUE_CODE = 1062;
+            if (e.getErrorCode() == DUPLICATE_VALUE_CODE) {
                 throw new AccountAlreadyExistsException();
             }
             throw new PersistenceException();
@@ -46,7 +41,13 @@ public class AccountDAOImp implements IAccountDAO {
 
     @Override
     public String hexInformation(String information) {
-        return DigestUtils.sha256Hex(information);
+        //TODO shaHex of sha256Hex
+        return DigestUtils.shaHex(information);
+    }
+
+    @Inject
+    public void setConnectionFactory(ConnectionFactoryImp connectionFactory) {
+        this.connectionFactory = connectionFactory;
     }
 }
 

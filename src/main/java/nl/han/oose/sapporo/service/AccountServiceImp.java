@@ -9,18 +9,18 @@ import javax.inject.Inject;
 public class AccountServiceImp implements IAccountService {
     private IAccountDAO accountDAO;
 
-    @Inject
-    public void setAccountDAO(IAccountDAO accountDAO) {
-        this.accountDAO = accountDAO;
+    @Override
+    public TokenDTO registerUser(UserDTO userDTO) {
+        accountDAO.addUser(userDTO);
+        return generateRandomToken(userDTO);
     }
 
     private TokenDTO generateRandomToken(UserDTO userDTO){
         return new TokenDTO(userDTO,"1234567890");
     }
 
-    @Override
-    public TokenDTO registerUser(UserDTO userDTO) {
-        accountDAO.addUser(userDTO);
-        return generateRandomToken(userDTO);
+    @Inject
+    public void setAccountDAO(IAccountDAO accountDAO) {
+        this.accountDAO = accountDAO;
     }
 }
