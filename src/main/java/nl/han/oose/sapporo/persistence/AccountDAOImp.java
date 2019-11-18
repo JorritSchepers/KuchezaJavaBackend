@@ -12,7 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class AccountDAOImp implements IAccountDAO {
-    private final int DUPLICATEVALUECODE = 1062;
 
     private ConnectionFactoryImp connectionFactory;
 
@@ -37,7 +36,8 @@ public class AccountDAOImp implements IAccountDAO {
 
             statement.execute();
         } catch (SQLException e) {
-            if (e.getErrorCode() == DUPLICATEVALUECODE){
+            int DUPLICATEVALUECODE = 1062;
+            if (e.getErrorCode() == DUPLICATEVALUECODE) {
                 throw new AccountAlreadyExistsException();
             }
             throw new PersistenceException();

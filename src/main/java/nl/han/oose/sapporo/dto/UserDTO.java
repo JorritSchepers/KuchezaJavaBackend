@@ -1,7 +1,5 @@
 package nl.han.oose.sapporo.dto;
 
-import javax.xml.registry.infomodel.User;
-
 public class UserDTO {
     private String name;
     private String password;
@@ -19,7 +17,7 @@ public class UserDTO {
         return email;
     }
 
-    public UserDTO(){
+    public UserDTO() {
 
     }
 
