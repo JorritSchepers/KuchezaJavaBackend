@@ -2,15 +2,17 @@ package nl.han.oose.sapporo.persistence;
 
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
+import nl.han.oose.sapporo.persistence.exception.AccountAlreadyExistsException;
+import nl.han.oose.sapporo.persistence.exception.PersistenceException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 import java.sql.*;
 
 
-public class AccountDAOTest extends DAOTest{
+public class AccountDAOTest extends DAOTest {
     private AccountDAOImp sut = new AccountDAOImp();
-    private UserDTO userDTO = new UserDTO("TestUser","Test","TestUser@Hotmail.com");
+    private UserDTO userDTO = new UserDTO("TestUser", "Test", "TestUser@Hotmail.com");
 
     @Override
     void setfactory(ConnectionFactoryImp connectionFactoryImp) {
@@ -31,31 +33,28 @@ public class AccountDAOTest extends DAOTest{
         return amountofUsers;
     }
 
-
     private Boolean userExists(String email) {
-            try (Connection connection = DriverManager.getConnection(dbUrl)) {
-                PreparedStatement statement = connection.prepareStatement("select * from USER where email = ?");
-                statement.setString(1, email);
-                ResultSet resultSet = statement.executeQuery();
-                return (resultSet.next());
-            } catch (SQLException ignored) {
-            }
-            return false;
+        try (Connection connection = DriverManager.getConnection(dbUrl)) {
+            PreparedStatement statement = connection.prepareStatement("select * from USER where email = ?");
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            return (resultSet.next());
+        } catch (SQLException ignored) {
+        }
+        return false;
     }
 
     @Test
     void addUserIncreasesUserAmount() {
-        int oldAmount =  getAmountOfUsers();
+        int oldAmount = getAmountOfUsers();
         sut.addUser(userDTO);
-        Assertions.assertEquals((oldAmount+1), getAmountOfUsers());
+        Assertions.assertEquals((oldAmount + 1), getAmountOfUsers());
     }
 
     @Test
-    void userIsInDatabaseAfteraddUser(){
+    void userIsInDatabaseAfteraddUser() {
         Assertions.assertFalse(userExists(userDTO.getEmail()));
         sut.addUser(userDTO);
         Assertions.assertTrue(userExists(userDTO.getEmail()));
     }
-
-    //TODO test AccountExistException after exceptionmapper works.
 }

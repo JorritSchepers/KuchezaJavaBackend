@@ -7,18 +7,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
-      <change afterPath="$PROJECT_DIR$/.idea/kuchezagame.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/TokenDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/TokenDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/UserDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/AccountDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/AccountDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/datasource/ConnectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/datasource/ConnectionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/datasource/ConnectionFactoryImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/datasource/ConnectionFactoryImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/resource/AccountResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/resource/AccountResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/AccountServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/AccountServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/DAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/DAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/AccountDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/AccountDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/TokenDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/TokenDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/UserDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/AccountDAOImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/AccountDAOImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/datasource/ConnectionFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/datasource/ConnectionFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/datasource/ConnectionFactoryImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/datasource/ConnectionFactoryImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/resource/AccountResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/resource/AccountResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/service/AccountServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/service/AccountServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/dto/TokenDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/dto/TokenDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/dto/UserDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/AccountDAOImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/AccountDAOImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/resource/AccountResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/resource/AccountResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/service/AccountServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/service/AccountServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/AccountDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/AccountDAOTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/DAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/DAOTest.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -120,8 +126,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TomEE Server.TomEE 8.5.411">
-    <configuration name="AccountDAOTest.addPlaylistIncreasesPlaylistAmount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.All in KuchezaGame">
+    <configuration name="AccountDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="KuchezaGame" />
       <extension name="coverage">
         <pattern>
@@ -131,7 +137,38 @@
       </extension>
       <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.persistence" />
       <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.persistence.AccountDAOTest" />
-      <option name="METHOD_NAME" value="addPlaylistIncreasesPlaylistAmount" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountDAOTest.AddUsertThrowsAccountAlreadyExistException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KuchezaGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.sapporo.persistence.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.persistence" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.persistence.AccountDAOTest" />
+      <option name="METHOD_NAME" value="AddUsertThrowsAccountAlreadyExistException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountDAOTest.AddUsertThrowsAccountExistException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KuchezaGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.sapporo.persistence.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.persistence" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.persistence.AccountDAOTest" />
+      <option name="METHOD_NAME" value="AddUsertThrowsAccountExistException" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -149,30 +186,6 @@
       <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.persistence.AccountDAOTest" />
       <option name="METHOD_NAME" value="userIsInDatabaseAfteraddUser" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AccountServiceTest.registerUserCallsAddUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KuchezaGame" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nl.han.oose.sapporo.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.service" />
-      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.service.AccountServiceTest" />
-      <option name="METHOD_NAME" value="registerUserCallsAddUser" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in KuchezaGame (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KuchezaGame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -260,20 +273,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.AccountServiceTest.registerUserCallsAddUser" />
-      <item itemvalue="JUnit.All in KuchezaGame" />
-      <item itemvalue="JUnit.AccountDAOTest.addPlaylistIncreasesPlaylistAmount" />
       <item itemvalue="JUnit.AccountDAOTest.userIsInDatabaseAfteraddUser" />
-      <item itemvalue="JUnit.All in KuchezaGame (1)" />
       <item itemvalue="TomEE Server.TomEE 8.5.411" />
+      <item itemvalue="JUnit.AccountDAOTest.AddUsertThrowsAccountExistException" />
+      <item itemvalue="JUnit.AccountDAOTest.AddUsertThrowsAccountAlreadyExistException" />
+      <item itemvalue="JUnit.AccountDAOTest" />
+      <item itemvalue="JUnit.All in KuchezaGame" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in KuchezaGame (1)" />
         <item itemvalue="JUnit.All in KuchezaGame" />
+        <item itemvalue="JUnit.AccountDAOTest.AddUsertThrowsAccountAlreadyExistException" />
+        <item itemvalue="JUnit.AccountDAOTest" />
+        <item itemvalue="JUnit.AccountDAOTest.AddUsertThrowsAccountExistException" />
         <item itemvalue="JUnit.AccountDAOTest.userIsInDatabaseAfteraddUser" />
-        <item itemvalue="JUnit.AccountDAOTest.addPlaylistIncreasesPlaylistAmount" />
-        <item itemvalue="JUnit.AccountServiceTest.registerUserCallsAddUser" />
       </list>
     </recent_temporary>
   </component>
@@ -293,6 +306,7 @@
       <workItem from="1574072464287" duration="831000" />
       <workItem from="1574076909174" duration="5433000" />
       <workItem from="1574084479922" duration="1236000" />
+      <workItem from="1574085841017" duration="1207000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1574072988467</created>
@@ -328,7 +342,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__1_.ic" NAME="All in KuchezaGame (1) Coverage Results" MODIFIED="1574083349558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame.ic" NAME="All in KuchezaGame Coverage Results" MODIFIED="1574082718118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__2_.ic" NAME="All in KuchezaGame (2) Coverage Results" MODIFIED="1574080299435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame.ic" NAME="All in KuchezaGame Coverage Results" MODIFIED="1574087236788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

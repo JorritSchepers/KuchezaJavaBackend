@@ -34,8 +34,9 @@ public class AccountDAOImp implements IAccountDAO {
             final int DUPLICATE_VALUE_CODE = 1062;
             if (e.getErrorCode() == DUPLICATE_VALUE_CODE) {
                 throw new AccountAlreadyExistsException();
+            } else {
+                throw new PersistenceException();
             }
-            throw new PersistenceException();
         }
     }
 
