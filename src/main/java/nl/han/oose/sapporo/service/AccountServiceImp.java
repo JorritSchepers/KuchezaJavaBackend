@@ -15,7 +15,7 @@ public class AccountServiceImp implements IAccountService {
     }
 
     private TokenDTO generateRandomToken(UserDTO userDTO){
-        return new TokenDTO();
+        return new TokenDTO(userDTO,"1234567890");
     }
 
     @Override

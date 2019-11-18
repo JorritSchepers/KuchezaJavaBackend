@@ -2,6 +2,7 @@ package nl.han.oose.sapporo.resource;
 
 
 import nl.han.oose.sapporo.dto.UserDTO;
+import nl.han.oose.sapporo.service.AccountServiceImp;
 import nl.han.oose.sapporo.service.IAccountService;
 
 import javax.inject.Inject;
@@ -14,7 +15,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/account")
 public class AccountResource {
-    private IAccountService accountService;
+    private IAccountService accountService = new AccountServiceImp();
 
     @Inject
     public void setAccountService(IAccountService accountService) {
