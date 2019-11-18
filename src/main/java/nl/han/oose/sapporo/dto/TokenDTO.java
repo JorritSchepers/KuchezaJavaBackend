@@ -1,7 +1,5 @@
 package nl.han.oose.sapporo.dto;
 
-import javax.xml.registry.infomodel.User;
-
 public class TokenDTO {
     UserDTO user;
     String token;
