@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="" />
+    <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/resource/AccountResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/resource/AccountResourceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,12 +16,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
         <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
@@ -36,6 +42,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -43,6 +51,13 @@
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="nl.han.oose.sapporo.resource" />
+      <recent name="nl.han.oose.sapporo.persistence.datasource" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
@@ -92,6 +107,9 @@
       <list>
         <item itemvalue="JUnit.buildTest" />
         <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.buildTest" />
+        <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.buildTest" />
       </list>
     </recent_temporary>
   </component>
@@ -108,7 +126,30 @@
       <workItem from="1573034247125" duration="885000" />
       <workItem from="1573827943226" duration="1330000" />
       <workItem from="1573830714274" duration="241000" />
+      <workItem from="1574072464287" duration="1630000" />
     </task>
+    <task id="LOCAL-00001" summary="test">
+      <created>1574072988467</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574072988467</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fix in workspace?">
+      <created>1574073319864</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1574073319864</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fix in workspace?">
+      <created>1574074688632</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574074688632</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,5 +167,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test" />
+    <MESSAGE value="Werkt deze push?" />
+    <MESSAGE value="Fix in workspace?" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix in workspace?" />
   </component>
 </project>
