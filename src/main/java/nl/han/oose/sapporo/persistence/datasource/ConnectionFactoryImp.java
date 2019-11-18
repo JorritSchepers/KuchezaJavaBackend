@@ -10,7 +10,7 @@ public class ConnectionFactoryImp implements ConnectionFactory {
     private DatabaseProperties properties = new DatabaseProperties();
 
     @Override
-    public Connection makeConnection() throws SQLException {
+    public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(properties.getUrl(), properties.getUser(), properties.getPassword());
     }
 }

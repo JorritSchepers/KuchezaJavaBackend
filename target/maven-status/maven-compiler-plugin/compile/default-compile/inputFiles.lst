@@ -1,0 +1,16 @@
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/persistence/AccountDAOImp.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/resource/exceptionmapper/PersistenceMapper.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/App.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/persistence/IAccountDAO.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/persistence/exception/AccountAlreadyExistsException.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/persistence/datasource/DatabaseProperties.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/resource/AccountResource.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/resource/exceptionmapper/AccountAlreadyExistsMapper.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/dto/TokenDTO.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/persistence/datasource/ConnectionFactory.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/dto/UserDTO.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/persistence/datasource/ConnectionFactoryImp.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/service/IAccountService.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/service/AccountServiceImp.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/resource/CORSFilter.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/persistence/exception/PersistenceException.java
