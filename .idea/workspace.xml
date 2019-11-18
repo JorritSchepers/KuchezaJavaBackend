@@ -1,159 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-    <component name="ChangeListManager">
-        <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
-            <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-        </list>
-        <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-        <option name="SHOW_DIALOG" value="false" />
-        <option name="HIGHLIGHT_CONFLICTS" value="true" />
-        <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-        <option name="LAST_RESOLUTION" value="IGNORE" />
-    </component>
-    <component name="FileTemplateManagerImpl">
-        <option name="RECENT_TEMPLATES">
-            <list>
-                <option value="Class" />
-                <option value="JUnit5 Test Class" />
-            </list>
-        </option>
-    </component>
-    <component name="Git.Settings">
-        <option name="RECENT_BRANCH_BY_REPOSITORY">
-            <map>
-                <entry key="$PROJECT_DIR$" value="develop" />
-                <entry key="$PROJECT_DIR$" value="master" />
-            </map>
-        </option>
-        <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    </component>
-    <component name="MavenImportPreferences">
-        <option name="importingSettings">
-            <MavenImportingSettings>
-                <option name="importAutomatically" value="true" />
-            </MavenImportingSettings>
-        </option>
-    </component>
-    <component name="ProjectId" id="1TEnhetixXaO17KBPxUoT4j64kw" />
-    <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-    <component name="PropertiesComponent">
-        <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-        <property name="WebServerToolWindowFactoryState" value="false" />
-        <property name="aspect.path.notification.shown" value="true" />
-        <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
-        <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-        <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-        <property name="project.structure.last.edited" value="Modules" />
-        <property name="project.structure.proportion" value="0.0" />
-        <property name="project.structure.side.proportion" value="0.0" />
-        <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
-    </component>
-    <component name="RecentsManager">
-        <key name="CreateTestDialog.RecentsKey">
-            <recent name="nl.han.oose.sapporo.persistence.datasource" />
-        </key>
-        <key name="CreateTestDialog.Recents.Supers">
-            <recent name="" />
-        </key>
-        <key name="MoveFile.RECENT_KEYS">
-            <recent name="$PROJECT_DIR$/src" />
-        </key>
-    </component>
-    <component name="RunDashboard">
-        <option name="ruleStates">
-            <list>
-                <RuleState>
-                    <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-                </RuleState>
-                <RuleState>
-                    <option name="name" value="StatusDashboardGroupingRule" />
-                </RuleState>
-            </list>
-        </option>
-    </component>
-    <component name="RunManager" selected="JUnit.buildTest">
-        <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-            <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.App" />
-            <module name="KuchezaGame" />
-            <extension name="coverage">
-                <pattern>
-                    <option name="PATTERN" value="nl.han.oose.sapporo.*" />
-                    <option name="ENABLED" value="true" />
-                </pattern>
-            </extension>
-            <method v="2">
-                <option name="Make" enabled="true" />
-            </method>
-        </configuration>
-        <configuration name="buildTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-            <module name="KuchezaGame" />
-            <extension name="coverage">
-                <pattern>
-                    <option name="PATTERN" value="java.*" />
-                    <option name="ENABLED" value="true" />
-                </pattern>
-            </extension>
-            <option name="PACKAGE_NAME" value="java" />
-            <option name="MAIN_CLASS_NAME" value="java.buildTest" />
-            <option name="TEST_OBJECT" value="class" />
-            <method v="2">
-                <option name="Make" enabled="true" />
-            </method>
-        </configuration>
-        <recent_temporary>
-            <list>
-                <item itemvalue="JUnit.buildTest" />
-                <item itemvalue="Application.App" />
-                <item itemvalue="JUnit.buildTest" />
-                <item itemvalue="Application.App" />
-                <item itemvalue="JUnit.buildTest" />
-            </list>
-        </recent_temporary>
-    </component>
-    <component name="SvnConfiguration">
-        <configuration />
-    </component>
-    <component name="TaskManager">
-        <task active="true" id="Default" summary="Default task">
-            <changelist id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="" />
-            <created>1573034243304</created>
-            <option name="number" value="Default" />
-            <option name="presentableId" value="Default" />
-            <updated>1573034243304</updated>
-            <workItem from="1573034247125" duration="885000" />
-            <workItem from="1573827943226" duration="1330000" />
-            <workItem from="1573830714274" duration="241000" />
-            <workItem from="1574072464287" duration="831000" />
-        </task>
-        <task id="LOCAL-00001" summary="test">
-            <created>1574072988467</created>
-            <option name="number" value="00001" />
-            <option name="presentableId" value="LOCAL-00001" />
-            <option name="project" value="LOCAL" />
-            <updated>1574072988467</updated>
-        </task>
-        <option name="localTasksCounter" value="2" />
-        <servers />
-    </component>
-    <component name="TypeScriptGeneratedFilesManager">
-        <option name="version" value="1" />
-    </component>
-    <component name="Vcs.Log.Tabs.Properties">
-        <option name="TAB_STATES">
-            <map>
-                <entry key="MAIN">
-                    <value>
-                        <State>
-                            <option name="COLUMN_ORDER" />
-                        </State>
-                    </value>
-                </entry>
-            </map>
-        </option>
-    </component>
-    <component name="VcsManagerConfiguration">
-        <MESSAGE value="test" />
-        <MESSAGE value="Werkt deze push?" />
-        <option name="LAST_COMMIT_MESSAGE" value="Werkt deze push?" />
-    </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1TEnhetixXaO17KBPxUoT4j64kw" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="nl.han.oose.sapporo.persistence.datasource" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.buildTest">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.App" />
+      <module name="KuchezaGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.sapporo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="buildTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KuchezaGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="java" />
+      <option name="MAIN_CLASS_NAME" value="java.buildTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.buildTest" />
+        <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.buildTest" />
+        <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.buildTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="" />
+      <created>1573034243304</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573034243304</updated>
+      <workItem from="1573034247125" duration="885000" />
+      <workItem from="1573827943226" duration="1330000" />
+      <workItem from="1573830714274" duration="241000" />
+      <workItem from="1574072464287" duration="831000" />
+    </task>
+    <task id="LOCAL-00001" summary="test">
+      <created>1574072988467</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574072988467</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="RELOAD_CONTEXT" value="false" />
+    <MESSAGE value="test" />
+    <MESSAGE value="Werkt deze push?" />
+    <option name="LAST_COMMIT_MESSAGE" value="Werkt deze push?" />
+  </component>
 </project>
