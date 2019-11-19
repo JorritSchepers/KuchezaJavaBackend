@@ -2,10 +2,8 @@ package nl.han.oose.sapporo.persistence;
 
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
-import nl.han.oose.sapporo.persistence.exception.AccountAlreadyExistsException;
-import nl.han.oose.sapporo.persistence.exception.PersistenceException;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.sql.*;
 

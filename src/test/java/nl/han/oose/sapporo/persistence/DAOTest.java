@@ -28,7 +28,6 @@ public abstract class DAOTest {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         //Inserting the scripts
         try {
             Connection connection = DriverManager.getConnection(dbUrl);

@@ -33,7 +33,6 @@ public class PlantDAOIMP implements IPlantDAO{
 
     private AllPlantDTO makeAllPlantDTO(ResultSet resultSet) throws SQLException {
         ArrayList<PlantDTO> plants = new ArrayList<>();
-
         while (resultSet.next()) {
             int id = resultSet.getInt("plantID");;
             String name = resultSet.getString("name");

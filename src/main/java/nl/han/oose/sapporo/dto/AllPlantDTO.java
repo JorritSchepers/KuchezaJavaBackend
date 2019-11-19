@@ -8,4 +8,8 @@ public class AllPlantDTO {
     public AllPlantDTO(ArrayList<PlantDTO> plants) {
         this.plants = plants;
     }
+
+    public ArrayList<PlantDTO> getPlants() {
+        return plants;
+    }
 }

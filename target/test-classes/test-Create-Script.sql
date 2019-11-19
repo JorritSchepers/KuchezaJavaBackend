@@ -108,6 +108,12 @@ create table plotInFarm
             on update cascade on delete cascade
 );
 
+INSERT INTO plant (waterUsage,growingTime,profit,purchasePrice,name)
+VALUES
+(5,10,20,5,'Cabbage'),
+(10,5,20,7.5,'Tomato'),
+(2.5,50,40,10,'Banana');
+
 INSERT INTO user (name,password,email)
 VALUES
 ('PatrickSt3r','DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937','Patrick@Ster.com'),

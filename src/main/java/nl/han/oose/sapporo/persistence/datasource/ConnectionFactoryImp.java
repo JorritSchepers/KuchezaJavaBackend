@@ -11,14 +11,16 @@ import java.sql.SQLException;
 public class ConnectionFactoryImp implements ConnectionFactory {
     private DatabaseProperties properties = new DatabaseProperties();
 
-    @Override
-    public Connection getConnection() throws SQLException {
+    static {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             throw new PersistenceException();
         }
+    }
 
+    @Override
+    public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(properties.getUrl(), properties.getUser(), properties.getPassword());
     }
 }
