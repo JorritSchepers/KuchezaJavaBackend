@@ -5,11 +5,11 @@ public class PlantDTO {
     String name;
     int waterUsage;
     int growingTime;
-    int profit;
-    int purchasePrice;
+    float profit;
+    float purchasePrice;
     int age;
 
-    public PlantDTO(int id, String name, int waterUsage, int growingTime, int profit, int purchasePrice, int age) {
+    public PlantDTO(int id, String name, int waterUsage, int growingTime, float profit, float purchasePrice, int age) {
         this.id = id;
         this.name = name;
         this.waterUsage = waterUsage;

@@ -15,7 +15,7 @@ import javax.ws.rs.core.Response;
 public class PlantResource {
     private IPlantService plantService;
     private IAccountService accountService;
-    final int STATUS_CODE_OK = 200;
+    private final int STATUS_CODE_OK = 200;
 
     @Inject
     public void setPlantService(IPlantService plantService) {
@@ -29,8 +29,8 @@ public class PlantResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllPlants(TokenDTO tokenDTO) {
-        accountService.authenticateByToken(tokenDTO);
+    public Response getAllPlants(String token) {
+        accountService.authenticateByToken(token);
         return Response.status(STATUS_CODE_OK)
                 .entity(plantService.getAllPlants())
                 .build();
