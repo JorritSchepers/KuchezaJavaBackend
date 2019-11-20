@@ -13,6 +13,7 @@ import java.sql.SQLException;
 
 public class AccountDAOImp implements IAccountDAO {
     private ConnectionFactoryImp connectionFactory;
+    private int test;
 
     @Override
     public void addUser(UserDTO userDTO) {
