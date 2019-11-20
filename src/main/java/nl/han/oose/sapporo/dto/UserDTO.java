@@ -1,18 +1,18 @@
 package nl.han.oose.sapporo.dto;
 
 public class UserDTO {
-    private int iD;
+    private int id;
     private String name;
     private String password;
     private String email;
 
     public UserDTO() {}
 
-    public UserDTO(String name, String password, String email, int iD) {
+    public UserDTO(String name, String password, String email, int id) {
         this.name = name;
         this.password = password;
         this.email = email;
-        this.iD = iD;
+        this.id = id;
     }
 
     public String getName() {
@@ -27,7 +27,7 @@ public class UserDTO {
         return email;
     }
 
-    public int getiD() {
-        return iD;
+    public int getId() {
+        return id;
     }
 }

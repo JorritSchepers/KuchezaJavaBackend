@@ -26,7 +26,7 @@ public class InventoryDAOImp implements IInventoryDAO {
             float moneyInInventory = 0;
             PreparedStatement statement = connection.prepareStatement
                     ("SELECT money FROM inventory where userID = ?");
-            statement.setInt(1,userDTO.getiD());
+            statement.setInt(1,userDTO.getId());
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
@@ -43,7 +43,7 @@ public class InventoryDAOImp implements IInventoryDAO {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
                     ("update inventory set money = money-20 where userID = ?");
-            statement.setInt(1,userDTO.getiD());
+            statement.setInt(1,userDTO.getId());
             statement.execute();
 
             //TODO add error when saldo too low.
