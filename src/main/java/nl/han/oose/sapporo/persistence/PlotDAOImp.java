@@ -5,6 +5,7 @@ import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.PersistenceException;
 
+import javax.inject.Inject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,12 +14,17 @@ import java.sql.SQLException;
 public class PlotDAOImp implements IPlotDAO {
     private ConnectionFactoryImp connectionFactory;
 
+    @Inject
+    public void setConnectionFactory(ConnectionFactoryImp connectionFactory) {
+        this.connectionFactory = connectionFactory;
+    }
+
     @Override
-    public void addPlantToPlot(PlantDTO plantDTO, PlotDTO plotDTO) {
+    public void addPlantToPlot(PlantDTO plantDTO, int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("update plot set plantID = ? where plotID = ? ");
             statement.setInt(1, plantDTO.getId());
-            statement.setInt(1, plotDTO.getID());
+            statement.setInt(2, plotID);
             statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();

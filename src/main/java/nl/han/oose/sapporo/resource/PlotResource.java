@@ -7,10 +7,7 @@ import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IPlotService;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -30,12 +27,13 @@ public class PlotResource {
     }
 
     @POST
+    @Path("/{id}/plant")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response placePlant(String token, PlantDTO plantDTO, PlotDTO plotDTO) {
+    public Response placePlant(@QueryParam("token") String token, @PathParam("id") int plotID, PlantDTO plantDTO) {
         UserDTO user = accountService.authenticateByToken(token);
         return Response.status(200)
-                .entity(plotService.placePlant(plantDTO, plotDTO, user))
+                .entity(plotService.placePlant(plantDTO, plotID, user))
                 .build();
     }
 }

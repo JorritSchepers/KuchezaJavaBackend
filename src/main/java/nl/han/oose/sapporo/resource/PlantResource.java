@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -29,7 +30,7 @@ public class PlantResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllPlants(String token) {
+    public Response getAllPlants(@QueryParam("token") String token) {
         accountService.authenticateByToken(token);
         return Response.status(STATUS_CODE_OK)
                 .entity(plantService.getAllPlants())

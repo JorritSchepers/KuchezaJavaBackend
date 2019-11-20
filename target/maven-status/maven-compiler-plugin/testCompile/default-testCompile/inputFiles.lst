@@ -1,1 +1,9 @@
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/test/java/nl/han/oose/sapporo/resource/exceptionmapper/PersistenceMapperTest.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/test/java/nl/han/oose/sapporo/service/AccountServiceTest.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/test/java/nl/han/oose/sapporo/resource/exceptionmapper/AccountAlreadyExistsMapperTest.java
 /Users/SanneJelink/Documents/GitHub/kuchezagame/src/test/java/nl/han/oose/sapporo/resource/AccountResourceTest.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/test/java/nl/han/oose/sapporo/persistence/DAOTest.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/test/java/nl/han/oose/sapporo/persistence/PlantDAOTest.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/test/java/nl/han/oose/sapporo/service/PlantServiceTest.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/test/java/nl/han/oose/sapporo/resource/PlantResourceTest.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/test/java/nl/han/oose/sapporo/persistence/AccountDAOTest.java

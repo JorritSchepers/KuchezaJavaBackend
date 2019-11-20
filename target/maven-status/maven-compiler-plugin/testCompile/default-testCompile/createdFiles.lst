@@ -1,1 +1,9 @@
+nl/han/oose/sapporo/resource/PlantResourceTest.class
+nl/han/oose/sapporo/persistence/AccountDAOTest.class
+nl/han/oose/sapporo/persistence/DAOTest.class
 nl/han/oose/sapporo/resource/AccountResourceTest.class
+nl/han/oose/sapporo/resource/exceptionmapper/PersistenceMapperTest.class
+nl/han/oose/sapporo/service/PlantServiceTest.class
+nl/han/oose/sapporo/resource/exceptionmapper/AccountAlreadyExistsMapperTest.class
+nl/han/oose/sapporo/service/AccountServiceTest.class
+nl/han/oose/sapporo/persistence/PlantDAOTest.class

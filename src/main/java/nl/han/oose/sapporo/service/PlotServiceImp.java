@@ -24,11 +24,11 @@ public class PlotServiceImp implements IPlotService {
     }
 
     @Override
-    public PlotDTO placePlant(PlantDTO plantDTO, PlotDTO plotDTO, UserDTO userDTO) {
+    public PlotDTO placePlant(PlantDTO plantDTO, int plotID, UserDTO userDTO) {
         if (inventoryService.checkSaldo(plantDTO.getPurchasePrice(),userDTO)) {
             inventoryService.lowerSaldo(plantDTO.getPurchasePrice(), userDTO);
-            plotDAO.addPlantToPlot(plantDTO, plotDTO);
-            return plotDAO.getPlot(plotDTO.getID());
+            plotDAO.addPlantToPlot(plantDTO, plotID);
+            return plotDAO.getPlot(plotID);
         }
         return null;
     }

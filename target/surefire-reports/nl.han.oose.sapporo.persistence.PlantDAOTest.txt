@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: nl.han.oose.sapporo.persistence.PlantDAOTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.752 s - in nl.han.oose.sapporo.persistence.PlantDAOTest
