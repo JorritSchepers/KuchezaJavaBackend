@@ -1,6 +1,5 @@
 package nl.han.oose.sapporo.resource;
 
-import nl.han.oose.sapporo.dto.LoginDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.service.IAccountService;
 
@@ -24,16 +23,6 @@ public class AccountResource {
     public Response registerUser(UserDTO userDTO) {
         return Response.status(STATUS_CODE_CREATED)
                 .entity(accountService.registerUser(userDTO))
-                .build();
-    }
-
-    @POST
-    @Path("/login")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response login(LoginDTO loginDTO) {
-        return Response.status(Response.Status.OK)
-                .entity(accountService.loginUser(loginDTO))
                 .build();
     }
 
