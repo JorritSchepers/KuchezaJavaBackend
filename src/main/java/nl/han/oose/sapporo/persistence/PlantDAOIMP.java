@@ -5,6 +5,7 @@ import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.PersistenceException;
 
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+@Default
 public class PlantDAOIMP implements IPlantDAO{
     private ConnectionFactoryImp connectionFactory;
 

@@ -18,4 +18,12 @@ public class PlantDTO {
         this.purchasePrice = purchasePrice;
         this.age = age;
     }
+
+    public float getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public int getId() {
+        return id;
+    }
 }
