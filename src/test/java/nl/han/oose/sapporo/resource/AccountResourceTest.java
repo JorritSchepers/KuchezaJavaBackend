@@ -10,7 +10,7 @@ import org.mockito.Mockito;
 
 import javax.ws.rs.core.Response;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AccountResourceTest {
     private UserDTO userDTO = new UserDTO();

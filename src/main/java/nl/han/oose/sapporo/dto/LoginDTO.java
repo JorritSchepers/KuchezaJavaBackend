@@ -1,5 +1,7 @@
 package nl.han.oose.sapporo.dto;
 
+import java.util.Objects;
+
 public class LoginDTO {
     private String email;
     private String password;

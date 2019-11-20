@@ -3,14 +3,14 @@ package nl.han.oose.sapporo.persistence;
 import nl.han.oose.sapporo.dto.LoginDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
-import nl.han.oose.sapporo.persistence.exception.AccountAlreadyExistsException;
 import nl.han.oose.sapporo.persistence.exception.InvalidLoginInformationException;
-import nl.han.oose.sapporo.persistence.exception.PersistenceException;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 import java.sql.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class AccountDAOTest extends DAOTest {
@@ -65,8 +65,9 @@ public class AccountDAOTest extends DAOTest {
     @Test
     void correctLoginInformationReturnsUserDTO() {
         sut.setCustomHex((String information) -> {return "wachtwoord";});
+        UserDTO expected = new UserDTO("TestUser", "wachtwoord", "oose.sapporo@gmail.com");
         UserDTO result = sut.checkUser(loginDTO);
-        assertEquals(loginDTO.getPassword(),result.getPassword());
+        assertEquals(expected,result);
     }
 
     @Test

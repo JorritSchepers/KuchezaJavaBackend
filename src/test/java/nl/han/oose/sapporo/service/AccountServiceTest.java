@@ -1,4 +1,5 @@
 package nl.han.oose.sapporo.service;
+
 import nl.han.oose.sapporo.dto.LoginDTO;
 import nl.han.oose.sapporo.dto.TokenDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
@@ -6,7 +7,7 @@ import nl.han.oose.sapporo.persistence.IAccountDAO;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AccountServiceTest {
     private AccountServiceImp sut = new AccountServiceImp();
