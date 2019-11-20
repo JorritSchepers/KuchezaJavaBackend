@@ -60,7 +60,7 @@ public class AccountDAOImp implements IAccountDAO {
                 return user;
             }
         } catch (SQLException e) {
-
+            throw new RuntimeException(e.getMessage());
         }
         throw new InvalidLoginInformationException();
     }
@@ -73,6 +73,10 @@ public class AccountDAOImp implements IAccountDAO {
     @Inject
     public void setConnectionFactory(ConnectionFactoryImp connectionFactory) {
         this.connectionFactory = connectionFactory;
+    }
+
+    public void setCustomHex(CustomHex customHex) {
+        this.customHex = customHex;
     }
 }
 

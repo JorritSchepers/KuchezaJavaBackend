@@ -32,7 +32,7 @@ public class AccountResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response login(LoginDTO loginDTO) {
-        return Response.status(STATUS_CODE_CREATED)
+        return Response.status(Response.Status.OK)
                 .entity(accountService.loginUser(loginDTO))
                 .build();
     }
