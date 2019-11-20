@@ -47,8 +47,8 @@ public class AccountDAOImp implements IAccountDAO {
     @Override
     public UserDTO checkUser(LoginDTO loginDTO) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM user WHERE name = ? AND password = ?");
-            statement.setString(1, loginDTO.getName());
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM user WHERE email = ? AND password = ?");
+            statement.setString(1, loginDTO.getEmail());
             statement.setString(2, hexInformation(loginDTO.getPassword()));
 
             var result = statement.executeQuery();

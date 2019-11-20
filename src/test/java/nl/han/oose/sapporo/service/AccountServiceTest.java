@@ -35,6 +35,7 @@ class AccountServiceTest {
 
     @Test
     void loginUserCallsCheckUser() {
+        Mockito.when(accountDAO.checkUser(loginDTO)).thenReturn(userDTO);
         sut.loginUser(loginDTO);
         Mockito.verify(accountDAO, Mockito.times(1)).checkUser(loginDTO);
     }

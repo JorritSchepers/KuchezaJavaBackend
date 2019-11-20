@@ -16,7 +16,7 @@ import java.sql.*;
 public class AccountDAOTest extends DAOTest {
     private AccountDAOImp sut = new AccountDAOImp();
     private UserDTO userDTO = new UserDTO("TestUser", "wachtwoord", "TestUser@Hotmail.com");
-    private LoginDTO loginDTO = new LoginDTO("TestUser", "wachtwoord");
+    private LoginDTO loginDTO = new LoginDTO("oose.sapporo@gmail.com", "wachtwoord");
 
     @Override
     void setfactory(ConnectionFactoryImp connectionFactoryImp) {

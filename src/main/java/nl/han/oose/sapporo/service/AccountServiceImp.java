@@ -52,7 +52,7 @@ public class AccountServiceImp implements IAccountService {
             String key = entry.getKey();
             UserDTO u = entry.getValue();
 
-            if (u.getName() == user.getName()) {
+            if (u.getEmail() == user.getEmail()) {
                 return key;
             }
         }

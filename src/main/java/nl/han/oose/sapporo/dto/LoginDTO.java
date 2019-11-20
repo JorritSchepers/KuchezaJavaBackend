@@ -1,26 +1,24 @@
 package nl.han.oose.sapporo.dto;
 
-import com.mysql.cj.log.Log;
-
 public class LoginDTO {
-    private String name;
+    private String email;
     private String password;
 
     public LoginDTO() {
 
     }
 
-    public LoginDTO(String name, String password) {
-        this.name = name;
+    public LoginDTO(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getEmail() {
+        return email;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
