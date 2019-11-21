@@ -6,8 +6,6 @@ import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.AccountAlreadyExistsException;
 import nl.han.oose.sapporo.persistence.exception.InvalidLoginInformationException;
 import nl.han.oose.sapporo.persistence.exception.PersistenceException;
-import nl.han.oose.sapporo.persistence.functionalInterface.CustomHex;
-import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.inject.Inject;
 import java.sql.Connection;
@@ -18,21 +16,13 @@ public class AccountDAOImp implements IAccountDAO {
     private ConnectionFactoryImp connectionFactory;
     private int test;
 
-    private CustomHex customHex;
-
-    AccountDAOImp() {
-        customHex = (String information) -> {
-            return DigestUtils.sha256Hex(information);
-        };
-    }
-
     @Override
     public void addUser(UserDTO userDTO) {
 
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO user (name,password,email) VALUES (?,?,?)");
             statement.setString(1, userDTO.getName());
-            statement.setString(2, hexInformation(userDTO.getPassword()));
+            statement.setString(2, userDTO.getPassword());
             statement.setString(3, userDTO.getEmail());
 
             statement.execute();
@@ -51,7 +41,7 @@ public class AccountDAOImp implements IAccountDAO {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM user WHERE email = ? AND password = ?");
             statement.setString(1, loginDTO.getEmail());
-            statement.setString(2, hexInformation(loginDTO.getPassword()));
+            statement.setString(2, loginDTO.getPassword());
 
             var result = statement.executeQuery();
             if (result.next()) {
@@ -66,15 +56,6 @@ public class AccountDAOImp implements IAccountDAO {
             throw new RuntimeException(e.getMessage());
         }
         throw new InvalidLoginInformationException();
-    }
-
-    public void setCustomHex(CustomHex customHex) {
-        this.customHex = customHex;
-    }
-
-    @Override
-    public String hexInformation(String information) {
-        return customHex.shaHex(information);
     }
 
     @Inject

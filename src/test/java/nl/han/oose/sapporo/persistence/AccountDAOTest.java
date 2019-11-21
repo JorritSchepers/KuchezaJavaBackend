@@ -51,7 +51,6 @@ public class AccountDAOTest extends DAOTest {
 
     @Test
     void checkUserWithCorrectLoginInformationReturnsUserDTO() {
-        sut.setCustomHex((String information) -> {return "wachtwoord";});
         UserDTO expected = new UserDTO(3,"TestUser", "wachtwoord", "oose.sapporo@gmail.com");
         UserDTO result = sut.checkUser(loginDTO);
         assertEquals(expected,result);
@@ -59,7 +58,6 @@ public class AccountDAOTest extends DAOTest {
 
     @Test
     void checkUserWithInCorrectLoginInformationThrowsException() {
-        sut.setCustomHex((String information) -> {return "wachtwoord";});
         assertThrows(InvalidLoginInformationException.class, ()-> {
             sut.checkUser(new LoginDTO("fout","fout"));
         });
