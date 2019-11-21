@@ -8,4 +8,6 @@ public interface IAccountService {
     TokenDTO registerUser(UserDTO userDTO);
 
     TokenDTO loginUser(LoginDTO loginDTO);
+
+    void logoutUser(String token);
 }

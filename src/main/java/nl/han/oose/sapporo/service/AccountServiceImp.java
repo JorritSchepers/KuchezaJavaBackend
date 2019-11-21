@@ -4,6 +4,7 @@ import nl.han.oose.sapporo.dto.LoginDTO;
 import nl.han.oose.sapporo.dto.TokenDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.IAccountDAO;
+import nl.han.oose.sapporo.service.exception.UserAlreadyLoggedOutException;
 import nl.han.oose.sapporo.service.functionalInterface.CustomUuid;
 
 import javax.inject.Inject;
@@ -32,6 +33,15 @@ public class AccountServiceImp implements IAccountService {
         UserDTO user = accountDAO.checkUser(loginDTO);
         removeOldToken(user);
         return generateRandomToken(user);
+    }
+
+    @Override
+    public void logoutUser(String token) {
+        if(tokens.get(token) != null) {
+            tokens.remove(token);
+        } else {
+            throw new UserAlreadyLoggedOutException();
+        }
     }
 
     private TokenDTO generateRandomToken(UserDTO userDTO){

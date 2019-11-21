@@ -52,9 +52,21 @@ class AccountResourceTest {
     }
 
     @Test
-    void loginUserReturnsRightToken() {
+    void loginUserReturnsRightResponse() {
         Response response = sut.login(loginDTO);
         Assertions.assertEquals(token,response.getEntity());
+        Assertions.assertEquals(Response.Status.OK.getStatusCode(),response.getStatus());
+    }
+
+    @Test
+    void logoutUserCallsLogoutFunction() {
+        sut.logout(token.getToken());
+        Mockito.verify(accountService, Mockito.times(1)).logoutUser(token.getToken());
+    }
+
+    @Test
+    void logoutUserReturnsRightResponse() {
+        Response response = sut.logout(token.getToken());
         Assertions.assertEquals(Response.Status.OK.getStatusCode(),response.getStatus());
     }
 }
