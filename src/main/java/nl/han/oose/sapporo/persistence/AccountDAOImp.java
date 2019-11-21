@@ -62,6 +62,7 @@ public class AccountDAOImp implements IAccountDAO {
             var result = statement.executeQuery();
             if (result.next()) {
                 UserDTO user = new UserDTO(
+                        result.getInt("userID"),
                         result.getString("name"),
                         result.getString("password"),
                         result.getString("email"));
@@ -79,8 +80,7 @@ public class AccountDAOImp implements IAccountDAO {
 
     @Override
     public String hexInformation(String information) {
-        //TODO shaHex of sha256Hex
-        return DigestUtils.shaHex(information);
+        return customHex.shaHex(information);
     }
 
     @Inject

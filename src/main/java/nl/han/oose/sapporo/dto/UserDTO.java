@@ -11,7 +11,8 @@ public class UserDTO {
 
     public UserDTO() {}
 
-    public UserDTO(String name, String password, String email) {
+    public UserDTO(int id, String name, String password, String email) {
+        this.id = id;
         this.name = name;
         this.password = password;
         this.email = email;
