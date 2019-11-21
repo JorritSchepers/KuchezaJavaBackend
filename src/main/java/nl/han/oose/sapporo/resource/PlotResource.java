@@ -1,7 +1,6 @@
 package nl.han.oose.sapporo.resource;
 
 import nl.han.oose.sapporo.dto.PlantDTO;
-import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IPlotService;

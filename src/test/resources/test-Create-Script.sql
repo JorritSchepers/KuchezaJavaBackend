@@ -108,14 +108,25 @@ create table plotInFarm
             on update cascade on delete cascade
 );
 
+INSERT INTO user (name,password,email)
+VALUES
+('PatrickSt3r','DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937','Patrick@Ster.com'),
+('Thomi','DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937','Geitenzijncool@hotmail.com'),
+('Sapporo','DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937','oose.sapporo@gmail.com');
+
+Insert into inventory Values
+(1,20),
+(2,20),
+(3,20);
+
 INSERT INTO plant (waterUsage,growingTime,profit,purchasePrice,name)
 VALUES
 (5,10,20,5,'Cabbage'),
 (10,5,20,7.5,'Tomato'),
 (2.5,50,40,10,'Banana');
 
-INSERT INTO user (name,password,email)
+INSERT INTO plot (x,y,price,purchased)
 VALUES
-('PatrickSt3r','DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937','Patrick@Ster.com'),
-('Thomi','DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937','Geitenzijncool@hotmail.com'),
-('Sapporo','DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937','oose.sapporo@gmail.com');
+(1,1,10,1),
+(1,2,10,1),
+(1,3,10,1);

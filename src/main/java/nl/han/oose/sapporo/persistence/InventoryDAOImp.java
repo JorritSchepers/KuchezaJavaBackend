@@ -48,11 +48,10 @@ public class InventoryDAOImp implements IInventoryDAO {
     public void lowerSaldo(float amount, UserDTO userDTO) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
-                    ("update inventory set money = money-20 where userID = ?");
-            statement.setInt(1,userDTO.getId());
+                    ("update inventory set money = money-? where userID = ?");
+            statement.setFloat(1,amount);
+            statement.setInt(2,userDTO.getId());
             statement.execute();
-
-            //TODO add error when saldo too low.
         } catch (SQLException e) {
             throw new PersistenceException();
         }

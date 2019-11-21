@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import java.util.ArrayList;
 
-public class PlantDAOTest extends DAOTest {
+class PlantDAOTest extends DAOTest {
     private PlantDAOIMP sut = new PlantDAOIMP();
     private final int AMOUNT_OF_PLANTS = 3;
 
@@ -17,7 +17,7 @@ public class PlantDAOTest extends DAOTest {
     }
 
     @Test
-    public void getAllPlantsGetsRightAmountOfPlants() {
+    void getAllPlantsGetsRightAmountOfPlants() {
         AllPlantDTO allplants = sut.getAllPlants();
         ArrayList<PlantDTO> plants = allplants.getPlants();
         Assertions.assertEquals(AMOUNT_OF_PLANTS, plants.size());
