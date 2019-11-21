@@ -28,12 +28,6 @@ public class AccountDAOImp implements IAccountDAO {
 
     @Override
     public void addUser(UserDTO userDTO) {
-        // TODO Move to connection factory
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new PersistenceException();
-        }
 
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO user (name,password,email) VALUES (?,?,?)");
