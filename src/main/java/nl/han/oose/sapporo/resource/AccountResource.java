@@ -5,10 +5,7 @@ import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.service.IAccountService;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -35,6 +32,14 @@ public class AccountResource {
         return Response.status(Response.Status.OK)
                 .entity(accountService.loginUser(loginDTO))
                 .build();
+    }
+
+    @POST
+    @Path("/logout/{token}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response logout(@PathParam("token") String token) {
+        accountService.logoutUser(token);
+        return Response.status(Response.Status.OK).build();
     }
 
     @Inject
