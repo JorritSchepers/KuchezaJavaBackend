@@ -43,7 +43,7 @@ class AccountServiceTest {
     }
 
     @Test
-    void logoutUserThrowsNoException() {
+    void logoutUserThrowsNoExceptionWhenUserIsLoggedIn() {
         Mockito.when(accountDAO.checkUser(loginDTO)).thenReturn(userDTO);
         sut.setCustomUuid(() -> {return token;});
         TokenDTO t = sut.loginUser(loginDTO);
@@ -51,7 +51,7 @@ class AccountServiceTest {
     }
 
     @Test
-    void logoutUserThrowsException() {
+    void logoutUserThrowsExceptionWhenUserIsAlreadyLoggedOut() {
         assertThrows(UserAlreadyLoggedOutException.class,() -> {sut.logoutUser("12345");});
     }
 }

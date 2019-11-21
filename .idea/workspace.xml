@@ -7,10 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/resource/AccountResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/resource/AccountResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/AccountDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/AccountDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/AccountServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/AccountServiceTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +111,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TomEE Server.TomEE 8.5.41">
+  <component name="RunManager" selected="JUnit.All in KuchezaGame">
     <configuration name="AccountResourceTest.logoutUserCallsLogoutFunction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="KuchezaGame" />
       <extension name="coverage">
@@ -125,22 +123,6 @@
       <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.resource" />
       <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.resource.AccountResourceTest" />
       <option name="METHOD_NAME" value="logoutUserCallsLogoutFunction" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AccountResourceTest.logoutUserReturnsRightResponse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KuchezaGame" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nl.han.oose.sapporo.resource.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.resource" />
-      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.resource.AccountResourceTest" />
-      <option name="METHOD_NAME" value="logoutUserReturnsRightResponse" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -174,6 +156,14 @@
       <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.service.AccountServiceTest" />
       <option name="METHOD_NAME" value="logoutUserThrowsException" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in KuchezaGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KuchezaGame" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -268,19 +258,19 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.nl.han.oose.sapporo in KuchezaGame" />
-      <item itemvalue="JUnit.AccountResourceTest.logoutUserReturnsRightResponse" />
       <item itemvalue="JUnit.AccountResourceTest.logoutUserCallsLogoutFunction" />
       <item itemvalue="JUnit.AccountServiceTest.logoutUserGivesNoException" />
       <item itemvalue="JUnit.AccountServiceTest.logoutUserThrowsException" />
       <item itemvalue="TomEE Server.TomEE 8.5.41" />
+      <item itemvalue="JUnit.All in KuchezaGame" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in KuchezaGame" />
         <item itemvalue="JUnit.nl.han.oose.sapporo in KuchezaGame" />
         <item itemvalue="JUnit.AccountServiceTest.logoutUserThrowsException" />
         <item itemvalue="JUnit.AccountServiceTest.logoutUserGivesNoException" />
         <item itemvalue="JUnit.AccountResourceTest.logoutUserCallsLogoutFunction" />
-        <item itemvalue="JUnit.AccountResourceTest.logoutUserReturnsRightResponse" />
       </list>
     </recent_temporary>
   </component>
@@ -302,7 +292,7 @@
       <workItem from="1574084479922" duration="1236000" />
       <workItem from="1574085841017" duration="1207000" />
       <workItem from="1574262770429" duration="783000" />
-      <workItem from="1574338345117" duration="279000" />
+      <workItem from="1574338345117" duration="985000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1574072988467</created>
@@ -341,7 +331,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/AccountDAOImp.java</url>
-          <line>55</line>
+          <line>49</line>
           <properties class="nl.han.oose.sapporo.persistence.AccountDAOImp" method="checkUser">
             <option name="EMULATED" value="true" />
           </properties>
