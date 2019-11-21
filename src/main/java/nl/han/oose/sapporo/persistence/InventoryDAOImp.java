@@ -2,6 +2,7 @@ package nl.han.oose.sapporo.persistence;
 
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
+import nl.han.oose.sapporo.persistence.exception.InsufficientFundsException;
 import nl.han.oose.sapporo.persistence.exception.PersistenceException;
 
 import javax.enterprise.inject.Default;
@@ -32,7 +33,12 @@ public class InventoryDAOImp implements IInventoryDAO {
             while (resultSet.next()) {
                 moneyInInventory = resultSet.getFloat("money");;
             }
-            return (moneyInInventory >= amount);
+
+            if (moneyInInventory < amount){
+                throw new InsufficientFundsException();
+            }
+
+            return (true);
         } catch (SQLException e) {
             throw new PersistenceException();
         }

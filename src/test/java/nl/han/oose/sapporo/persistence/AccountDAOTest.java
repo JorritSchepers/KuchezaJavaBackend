@@ -10,7 +10,7 @@ import java.sql.*;
 
 public class AccountDAOTest extends DAOTest {
     private AccountDAOImp sut = new AccountDAOImp();
-    private UserDTO userDTO = new UserDTO("TestUser", "Test", "TestUser@Hotmail.com");
+    private UserDTO userDTO = new UserDTO("TestUser", "Test", "TestUser@Hotmail.com",1);
 
     @Override
     void setfactory(ConnectionFactoryImp connectionFactoryImp) {
