@@ -42,11 +42,13 @@ public class PlotDAOImp implements IPlotDAO {
 
             while (resultSet.next()) {
                 int iD = resultSet.getInt("plotID");
-                ;
                 int x = resultSet.getInt("x");
                 int y = resultSet.getInt("y");
+                int animalId = resultSet.getInt("animalId");
+                int waterManagerId = resultSet.getInt("waterManagerId");
+                int plantID = resultSet.getInt("plantID");
                 float price = resultSet.getFloat("price");
-                plotDTO = new PlotDTO(iD, x, y, price);
+                plotDTO = new PlotDTO(iD, x, y, animalId, waterManagerId, plantID, price);
             }
 
             return plotDTO;
@@ -55,7 +57,7 @@ public class PlotDAOImp implements IPlotDAO {
         }
     }
 
-    public boolean checkIfPlotIsEmpty(int Plotid){
+    public boolean checkIfPlotIsEmpty(int Plotid) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select animalID,watermanagerID,plantID from plot where plotID = ?");
             statement.setInt(1, Plotid);
@@ -75,7 +77,7 @@ public class PlotDAOImp implements IPlotDAO {
             plottaken += watermanagerID;
             plottaken += plantID;
 
-            if (plottaken == 0){
+            if (plottaken == 0) {
                 return true;
             } else {
                 throw new PlotIsOccupiedException();
