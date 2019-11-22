@@ -11,7 +11,6 @@ import java.sql.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
 public class AccountDAOTest extends DAOTest {
     private AccountDAOImp sut = new AccountDAOImp();
     private UserDTO userDTO = new UserDTO(1, "TestUser", "wachtwoord", "TestUser@Hotmail.com");
@@ -48,16 +47,16 @@ public class AccountDAOTest extends DAOTest {
     }
 
     @Test
-    void addUserIncreasesUserAmount() {
-        int oldAmount = getAmountOfUsers();
-        sut.addUser(userDTO);
-        Assertions.assertEquals((oldAmount + 1), getAmountOfUsers());
+    void checkUserWithCorrectLoginInformationReturnsUserDTO() {
+        UserDTO expected = new UserDTO(3,"TestUser", "wachtwoord", "oose.sapporo@gmail.com");
+        UserDTO result = sut.getUser(loginDTO);
+        assertEquals(expected,result);
     }
 
     @Test
-    void userIsInDatabaseAfteraddUser() {
-        Assertions.assertFalse(userExists(userDTO.getEmail()));
-        sut.addUser(userDTO);
-        Assertions.assertTrue(userExists(userDTO.getEmail()));
+    void checkUserWithInCorrectLoginInformationThrowsException() {
+        assertThrows(InvalidLoginInformationException.class, ()-> {
+            sut.getUser(new LoginDTO("fout","fout"));
+        });
     }
 }
