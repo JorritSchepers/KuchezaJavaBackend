@@ -33,6 +33,7 @@ public class AccountResource {
                 .build();
     }
 
+    //TODO pathparam van maken zodat dit overal gelijk is?
     @POST
     @Path("/logout/{token}")
     @Consumes(MediaType.APPLICATION_JSON)
