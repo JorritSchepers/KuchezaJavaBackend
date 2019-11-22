@@ -7,4 +7,7 @@ public interface IPlotDAO {
     void addPlantToPlot(PlantDTO plantDTO, int plotID);
 
     PlotDTO getPlot(int PlotID);
+
+    boolean checkIfPlotIsEmpty(int plotID);
+
 }

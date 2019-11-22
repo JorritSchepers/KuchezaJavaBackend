@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import java.util.ArrayList;
 
 class PlantDAOTest extends DAOTest {
-    private PlantDAOIMP sut = new PlantDAOIMP();
+    private PlantDAOImp sut = new PlantDAOImp();
     private final int AMOUNT_OF_PLANTS = 3;
 
     @Override

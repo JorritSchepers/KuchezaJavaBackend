@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 @Default
-public class PlantDAOIMP implements IPlantDAO{
+public class PlantDAOImp implements IPlantDAO{
     private ConnectionFactoryImp connectionFactory;
 
     @Inject
@@ -36,7 +36,7 @@ public class PlantDAOIMP implements IPlantDAO{
     private AllPlantDTO makeAllPlantDTO(ResultSet resultSet) throws SQLException {
         ArrayList<PlantDTO> plants = new ArrayList<>();
         while (resultSet.next()) {
-            int id = resultSet.getInt("plantID");;
+            int id = resultSet.getInt("plantID");
             String name = resultSet.getString("name");
             int waterUsage = resultSet.getInt("waterUsage");
             int growingTime = resultSet.getInt("growingTime");
