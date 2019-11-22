@@ -11,5 +11,5 @@ public interface IAccountService {
 
     void logoutUser(String token);
 
-    void verifyToken(String recievedToken);
+    UserDTO verifyToken(String recievedToken);
 }

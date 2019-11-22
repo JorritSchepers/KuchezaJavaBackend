@@ -45,10 +45,11 @@ public class AccountServiceImp implements IAccountService {
     }
 
     @Override
-    public void verifyToken(String token) {
+    public UserDTO verifyToken(String token) {
         if(tokens.get(token) == null) {
             throw new UserAlreadyLoggedOutException();
         }
+        return tokens.get(token);
     }
 
     private TokenDTO generateRandomToken(UserDTO userDTO){

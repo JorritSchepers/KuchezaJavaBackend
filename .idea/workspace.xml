@@ -7,9 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
-      <change afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/exception/InvalidTokenException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/resource/exceptionmapper/InvalidTokenExceptionMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/95907cb8-d1cb-499b-8dad-a0cfd0d21759.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/95907cb8-d1cb-499b-8dad-a0cfd0d21759.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/AccountServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/AccountServiceImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/IAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/IAccountService.java" afterDir="false" />
@@ -289,7 +286,7 @@
       <workItem from="1574326416336" duration="7840000" />
       <workItem from="1574341475735" duration="6781000" />
       <workItem from="1574425078032" duration="64000" />
-      <workItem from="1574426854247" duration="256000" />
+      <workItem from="1574426854247" duration="324000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1574072988467</created>
