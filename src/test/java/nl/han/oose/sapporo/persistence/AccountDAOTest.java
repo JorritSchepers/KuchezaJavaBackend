@@ -4,6 +4,7 @@ import nl.han.oose.sapporo.dto.LoginDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.InvalidLoginInformationException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.sql.*;
@@ -58,5 +59,19 @@ public class AccountDAOTest extends DAOTest {
         assertThrows(InvalidLoginInformationException.class, ()-> {
             sut.getUser(new LoginDTO("fout","fout"));
         });
+    }
+
+    @Test
+    void addUserIncreasesUserAmount() {
+        int oldAmount = getAmountOfUsers();
+        sut.addUser(userDTO);
+        Assertions.assertEquals((oldAmount + 1), getAmountOfUsers());
+    }
+
+    @Test
+    void userIsInDatabaseAfteraddUser() {
+        Assertions.assertFalse(userExists(userDTO.getEmail()));
+        sut.addUser(userDTO);
+        Assertions.assertTrue(userExists(userDTO.getEmail()));
     }
 }

@@ -15,7 +15,7 @@ class PlotServiceTest {
     private final int PLOTID = 1;
     private final float PRICE = 5;
     private PlantDTO plant = new PlantDTO(1,"Cabbage",5,10,20,PRICE,0);
-    private UserDTO user = new UserDTO("PatrickSt3r","DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937","Patrick@Ster.com",1);
+    private UserDTO user = new UserDTO(1,"PatrickSt3r","DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937","Patrick@Ster.com");
     private PlotDTO plot = new PlotDTO(1,1,1,1,0,0,0);
 
     PlotServiceTest(){

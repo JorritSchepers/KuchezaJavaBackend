@@ -22,14 +22,14 @@ public class PlotResourceTest {
     public PlotResourceTest(){
         sut.setAccountService(accountService);
         sut.setPlotService(plotService);
-        Mockito.when(accountService.authenticateByToken(token)).thenReturn(user);
+        Mockito.when(accountService.verifyToken(token)).thenReturn(user);
         Mockito.when(plotService.placePlant(plant,1,user)).thenReturn(plot);
     }
 
     @Test
     public void placePlantsCallsAuthenticateByToken() {
         sut.placePlant(token, 1,plant);
-        Mockito.verify(accountService, Mockito.times(1)).authenticateByToken(token);
+        Mockito.verify(accountService, Mockito.times(1)).verifyToken(token);
     }
 
     @Test

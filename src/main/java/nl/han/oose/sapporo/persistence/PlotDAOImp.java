@@ -6,6 +6,7 @@ import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.PersistenceException;
 import nl.han.oose.sapporo.persistence.exception.PlotIsOccupiedException;
 
+
 import javax.inject.Inject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

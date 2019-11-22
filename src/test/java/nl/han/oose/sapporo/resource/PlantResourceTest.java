@@ -23,7 +23,7 @@ public class PlantResourceTest {
     @Test
     public void getAllPlantsCallsAuthenticateByToken() {
         sut.getAllPlants(token);
-        Mockito.verify(accountService, Mockito.times(1)).authenticateByToken(token);
+        Mockito.verify(accountService, Mockito.times(1)).verifyToken(token);
     }
 
     @Test

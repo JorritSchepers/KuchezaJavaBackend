@@ -10,7 +10,7 @@ import java.sql.*;
 
 class InventoryDAOTest extends DAOTest {
     private InventoryDAOImp sut = new InventoryDAOImp();
-    private UserDTO userDTO = new UserDTO("PatrickSt3r","DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937","Patrick@Ster.com",1);
+    private UserDTO userDTO = new UserDTO(1,"PatrickSt3r","DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937","Patrick@Ster.com");
 
     @Override
     void setfactory(ConnectionFactoryImp connectionFactoryImp) {

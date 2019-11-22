@@ -29,7 +29,7 @@ public class PlantResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllPlants(@QueryParam("token") String token) {
-        accountService.authenticateByToken(token);
+        accountService.verifyToken(token);
         return Response.status(Response.Status.OK)
                 .entity(plantService.getAllPlants())
                 .build();
