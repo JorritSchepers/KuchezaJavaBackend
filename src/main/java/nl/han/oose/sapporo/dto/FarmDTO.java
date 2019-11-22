@@ -1,12 +1,13 @@
 package nl.han.oose.sapporo.dto;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FarmDTO {
 
     private int farmID;
     private int ownerID;
-    ArrayList<PlotDTO> plots;
+    List<PlotDTO> plots;
 
     public FarmDTO(){}
 
@@ -19,7 +20,19 @@ public class FarmDTO {
 
     public int getOwnerID() { return ownerID;}
 
-    public ArrayList<PlotDTO> getPlots(){
+    public List<PlotDTO> getPlots(){
         return plots;
+    }
+
+    public void setPlots(List<PlotDTO> plots) {
+        this.plots = plots;
+    }
+
+    public void setFarmID(int farmID) {
+        this.farmID = farmID;
+    }
+
+    public void setOwnerID(int ownerID) {
+        this.ownerID = ownerID;
     }
 }

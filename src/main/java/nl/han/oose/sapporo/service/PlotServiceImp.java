@@ -12,7 +12,6 @@ import javax.inject.Inject;
 public class PlotServiceImp implements IPlotService {
     private IPlotDAO plotDAO;
     private IInventoryService inventoryService;
-    private final int FARM_SIZE = 10;
 
     @Inject
     public void setPlotDAO(IPlotDAO plotDAO) {
@@ -32,15 +31,5 @@ public class PlotServiceImp implements IPlotService {
             return plotDAO.getPlot(plotID);
         }
         return null;
-    }
-
-    @Override
-    public void createPlot(){
-        for(int x = 0; x < FARM_SIZE; x++) {
-            for(int y = 0; y < FARM_SIZE; y++) {
-                plotDAO.createPlot(x, y);
-
-            }
-        }
     }
 }

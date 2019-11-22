@@ -26,14 +26,13 @@ public class FarmResource {
         this.accountService = accountService;
     }
 
-    @POST
+    @GET
     @Path("/new")
-    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addNewFarm(@QueryParam("token") String token, FarmDTO farmDTO){
-        UserDTO user = accountService.authenticateByToken(token);
+    public Response addNewFarm(@QueryParam("token") String token){
+        UserDTO user = new UserDTO("PatrickSt3r","da5698be17b9b46962335799779fbeca8ce5d491c0d26243bafef9ea1837a9d8","Patrick@Ster.com",1);
         return Response.status(STATUS_CODE_CREATED)
-                .entity(farmService.addFarm(farmDTO, user))
+                .entity(farmService.addFarm(user))
                 .build();
     }
 
