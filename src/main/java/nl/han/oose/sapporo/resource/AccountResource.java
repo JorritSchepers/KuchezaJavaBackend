@@ -11,7 +11,6 @@ import javax.ws.rs.core.Response;
 
 @Path("/account")
 public class AccountResource {
-    private static final int STATUS_CODE_CREATED = 201;
     private IAccountService accountService;
 
     @POST
@@ -19,7 +18,7 @@ public class AccountResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response registerUser(UserDTO userDTO) {
-        return Response.status(STATUS_CODE_CREATED)
+        return Response.status(Response.Status.CREATED)
                 .entity(accountService.registerUser(userDTO))
                 .build();
     }
