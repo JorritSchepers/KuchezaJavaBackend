@@ -1,16 +1,20 @@
 package nl.han.oose.sapporo.persistence;
 
+import nl.han.oose.sapporo.dto.LoginDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
-import org.junit.jupiter.api.Assertions;
+import nl.han.oose.sapporo.persistence.exception.InvalidLoginInformationException;
 import org.junit.jupiter.api.Test;
 
 import java.sql.*;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 public class AccountDAOTest extends DAOTest {
-    private AccountDAOImp sut = new AccountDAOImp();
-    private UserDTO userDTO = new UserDTO("TestUser", "Test", "TestUser@Hotmail.com",1);
+    private UserDTO userDTO = new UserDTO(1, "TestUser", "wachtwoord", "TestUser@Hotmail.com");
+    private LoginDTO loginDTO = new LoginDTO("oose.sapporo@gmail.com", "wachtwoord");
 
     @Override
     void setfactory(ConnectionFactoryImp connectionFactoryImp) {
