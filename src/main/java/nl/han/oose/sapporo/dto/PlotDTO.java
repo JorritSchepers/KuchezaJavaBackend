@@ -1,7 +1,5 @@
 package nl.han.oose.sapporo.dto;
 
-import java.util.Objects;
-
 public class PlotDTO {
     private int ID;
     private int x;
@@ -21,30 +19,7 @@ public class PlotDTO {
         this.price = price;
     }
 
-    public PlotDTO(int ID, int x, int y, float price) {
-        this.ID = ID;
-        this.x = x;
-        this.y = y;
-        this.price = price;
-    }
-
     private int getID() {
         return ID;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PlotDTO)) return false;
-        PlotDTO plotDTO = (PlotDTO) o;
-        return getID() == plotDTO.getID() &&
-                x == plotDTO.x &&
-                y == plotDTO.y &&
-                Float.compare(plotDTO.price, price) == 0;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getID(), x, y, price);
     }
 }
