@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="TestDatabase" uuid="a63cdc1d-6603-4a32-960a-5c3cc51305cd">
+    <data-source source="LOCAL" name="H2 - TestDatabase" uuid="a63cdc1d-6603-4a32-960a-5c3cc51305cd">
       <driver-ref>h2.unified</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.h2.Driver</jdbc-driver>
@@ -11,7 +11,7 @@
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/Kucheza</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:1430/Kucheza</jdbc-url>
     </data-source>
   </component>
 </project>
