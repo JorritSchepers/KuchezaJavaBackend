@@ -35,4 +35,15 @@ public class PlotResource {
                 .entity(plotService.placePlant(plantDTO, plotID, user))
                 .build();
     }
+
+    @POST
+    @Path("/{id}/harvest")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response harvestPlot(@QueryParam("token") String token, @PathParam("id") int plotID, PlantDTO plantDTO) {
+        UserDTO user = accountService.verifyToken(token);
+        return Response.status(Response.Status.OK)
+                .entity(plotService.harvesPlot(plantDTO,user,plotID))
+                .build();
+    }
 }

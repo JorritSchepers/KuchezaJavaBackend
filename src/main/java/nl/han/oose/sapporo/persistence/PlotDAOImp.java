@@ -87,4 +87,9 @@ public class PlotDAOImp implements IPlotDAO {
             throw new PersistenceException();
         }
     }
+
+    @Override
+    public void removePlantFromPlot(int plotID) {
+        //TODO implement
+    }
 }

@@ -6,4 +6,6 @@ import nl.han.oose.sapporo.dto.UserDTO;
 
 public interface IPlotService {
     PlotDTO placePlant(PlantDTO plantDTO, int plotID, UserDTO userDTO);
+
+    PlotDTO harvesPlot(PlantDTO plantDTO, UserDTO user, int plotID);
 }

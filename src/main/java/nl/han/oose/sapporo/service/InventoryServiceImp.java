@@ -1,5 +1,6 @@
 package nl.han.oose.sapporo.service;
 
+import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.IInventoryDAO;
 
@@ -21,5 +22,10 @@ public class InventoryServiceImp implements  IInventoryService {
     @Override
     public void lowerSaldo(float amount, UserDTO userDTO) {
         inventoryDAO.lowerSaldo(amount,userDTO);
+    }
+
+    @Override
+    public void increaseSaldo(PlantDTO plantDTO) {
+        //TODO implement
     }
 }
