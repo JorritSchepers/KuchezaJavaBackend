@@ -17,7 +17,7 @@ public class PlotResourceTest {
     private IPlotService plotService = Mockito.mock(IPlotService.class);
     private PlantDTO plant = new PlantDTO();
     private UserDTO user = new UserDTO();
-    private PlotDTO plot = new PlotDTO(1,1,1,1);
+    private PlotDTO plot = new PlotDTO(1,1,1,1,0,0,0);
 
     public PlotResourceTest(){
         sut.setAccountService(accountService);

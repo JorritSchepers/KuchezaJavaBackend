@@ -3,6 +3,8 @@ package nl.han.oose.sapporo.persistence;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
+import nl.han.oose.sapporo.persistence.exception.PlotIsOccupiedException;
+import nl.han.oose.sapporo.resource.exceptionmapper.PlotIsOccupiedMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -34,16 +36,20 @@ class PlotDAOTest extends DAOTest {
     }
 
     @Test
-    void addPlantToPlotAddsRightPlantToPlot() {
-        Assertions.assertEquals(0, getPlantIDFromPlot(PLOTID));
-        sut.addPlantToPlot(plant, PLOTID);
-        Assertions.assertEquals(plant.getId(), getPlantIDFromPlot(PLOTID));
+    void checkIfPlotIsEmptyReturnsTrueWhenEmpty() {
+        Assertions.assertTrue(sut.checkIfPlotIsEmpty(1));
     }
 
     @Test
-    void getPlotGetsRightPlot() {
-        PlotDTO exceptedPlot = new PlotDTO(1, 1, 1, 10);
-        PlotDTO plot = sut.getPlot(PLOTID);
-        Assertions.assertEquals(exceptedPlot, plot);
+    void checkIfPlotIsEmptyThrowsExceptionWhenNotEmpty() {
+        Assertions.assertThrows(PlotIsOccupiedException.class, () -> {
+            sut.checkIfPlotIsEmpty(2);
+        });
+    }
+
+    @Test
+    void checkIfAddPlantToPlotAddsPlant(){
+        sut.addPlantToPlot(plant,PLOTID);
+        Assertions.assertEquals(getPlantIDFromPlot(plant.getId()),getPlantIDFromPlot(PLOTID));
     }
 }

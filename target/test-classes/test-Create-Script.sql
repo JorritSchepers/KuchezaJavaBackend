@@ -115,9 +115,9 @@ VALUES
 ('Sapporo','DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937','oose.sapporo@gmail.com');
 
 Insert into inventory Values
-(1,20),
-(2,20),
-(3,20);
+(1,2000),
+(2,2000),
+(3,2000);
 
 INSERT INTO plant (waterUsage,growingTime,profit,purchasePrice,name)
 VALUES
@@ -130,3 +130,10 @@ VALUES
 (1,1,10,1),
 (1,2,10,1),
 (1,3,10,1);
+
+update plot set plantID = 1 where plotID =2;
+
+INSERT INTO plotInFarm (farmID,plotID)
+VALUES (1,1),
+       (1,2),
+       (1,3)

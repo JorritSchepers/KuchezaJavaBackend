@@ -39,7 +39,7 @@ class InventoryDAOTest extends DAOTest {
 
     @Test
     void checkSaldoThrowsExceptionWhenSaldoIsNotEnough(){
-        int unavailableAmount = 1000;
+        int unavailableAmount = 10000;
         Assertions.assertThrows(InsufficientFundsException.class, () -> {
             sut.checkSaldo(unavailableAmount,userDTO);
         });
@@ -53,5 +53,4 @@ class InventoryDAOTest extends DAOTest {
         float newSaldo = getSaldoFromUser(userDTO.getId());
         Assertions.assertEquals((oldSaldo-removedSaldo),newSaldo);
     }
-
 }

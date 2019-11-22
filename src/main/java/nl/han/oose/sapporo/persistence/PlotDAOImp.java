@@ -4,6 +4,7 @@ import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.PersistenceException;
+import nl.han.oose.sapporo.persistence.exception.PlotIsOccupiedException;
 
 import javax.inject.Inject;
 import java.sql.Connection;
@@ -43,10 +44,44 @@ public class PlotDAOImp implements IPlotDAO {
                 int iD = resultSet.getInt("plotID");
                 int x = resultSet.getInt("x");
                 int y = resultSet.getInt("y");
+                int animalId = resultSet.getInt("animalId");
+                int waterManagerId = resultSet.getInt("waterManagerId");
+                int plantID = resultSet.getInt("plantID");
                 float price = resultSet.getFloat("price");
-                plotDTO = new PlotDTO(iD, x, y, price);
+                plotDTO = new PlotDTO(iD, x, y, animalId, waterManagerId, plantID, price);
             }
             return plotDTO;
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    public boolean checkIfPlotIsEmpty(int Plotid) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select animalID,watermanagerID,plantID from plot where plotID = ?");
+            statement.setInt(1, Plotid);
+            ResultSet resultSet = statement.executeQuery();
+            int plottaken = 0;
+            int animalID = 0;
+            int watermanagerID = 0;
+            int plantID = 0;
+
+            while (resultSet.next()) {
+                animalID = resultSet.getInt("animalID");
+                watermanagerID = resultSet.getInt("watermanagerID");
+                plantID = resultSet.getInt("plantID");
+            }
+
+            plottaken += animalID;
+            plottaken += watermanagerID;
+            plottaken += plantID;
+
+            if (plottaken == 0) {
+                return true;
+            } else {
+                throw new PlotIsOccupiedException();
+            }
+
         } catch (SQLException e) {
             throw new PersistenceException();
         }
