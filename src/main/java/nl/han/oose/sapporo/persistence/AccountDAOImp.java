@@ -14,11 +14,9 @@ import java.sql.SQLException;
 
 public class AccountDAOImp implements IAccountDAO {
     private ConnectionFactoryImp connectionFactory;
-    private int test;
 
     @Override
     public void addUser(UserDTO userDTO) {
-
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO user (name,password,email) VALUES (?,?,?)");
             statement.setString(1, userDTO.getName());
@@ -37,7 +35,7 @@ public class AccountDAOImp implements IAccountDAO {
     }
 
     @Override
-    public UserDTO checkUser(LoginDTO loginDTO) {
+    public UserDTO getUser(LoginDTO loginDTO) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM user WHERE email = ? AND password = ?");
             statement.setString(1, loginDTO.getEmail());

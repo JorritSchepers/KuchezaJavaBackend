@@ -30,7 +30,7 @@ public class AccountServiceImp implements IAccountService {
 
     @Override
     public TokenDTO loginUser(LoginDTO loginDTO) {
-        UserDTO user = accountDAO.checkUser(loginDTO);
+        UserDTO user = accountDAO.getUser(loginDTO);
         removeOldToken(user);
         return generateRandomToken(user);
     }
@@ -74,7 +74,7 @@ public class AccountServiceImp implements IAccountService {
         this.accountDAO = accountDAO;
     }
 
-    public void setCustomUuid(CustomUuid customUuid) {
+    void setCustomUuid(CustomUuid customUuid) {
         this.customUuid = customUuid;
     }
 }

@@ -6,5 +6,5 @@ import nl.han.oose.sapporo.dto.UserDTO;
 public interface IAccountDAO {
     void addUser(UserDTO userDTO);
 
-    UserDTO checkUser(LoginDTO loginDTO);
+    UserDTO getUser(LoginDTO loginDTO);
 }
