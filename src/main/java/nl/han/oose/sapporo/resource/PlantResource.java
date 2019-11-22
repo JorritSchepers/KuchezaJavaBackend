@@ -1,6 +1,5 @@
 package nl.han.oose.sapporo.resource;
 
-import nl.han.oose.sapporo.dto.TokenDTO;
 import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IPlantService;
 
@@ -16,7 +15,6 @@ import javax.ws.rs.core.Response;
 public class PlantResource {
     private IPlantService plantService;
     private IAccountService accountService;
-    private final int STATUS_CODE_OK = 200;
 
     @Inject
     public void setPlantService(IPlantService plantService) {
@@ -32,7 +30,7 @@ public class PlantResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllPlants(@QueryParam("token") String token) {
         accountService.authenticateByToken(token);
-        return Response.status(STATUS_CODE_OK)
+        return Response.status(Response.Status.OK)
                 .entity(plantService.getAllPlants())
                 .build();
     }

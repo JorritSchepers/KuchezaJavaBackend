@@ -6,5 +6,5 @@ import nl.han.oose.sapporo.dto.PlotDTO;
 public interface IPlotDAO {
     void addPlantToPlot(PlantDTO plantDTO, int plotID);
 
-    PlotDTO getPlot(int PlotiD);
+    PlotDTO getPlot(int PlotID);
 }

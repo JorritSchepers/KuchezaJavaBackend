@@ -41,13 +41,11 @@ public class PlotDAOImp implements IPlotDAO {
 
             while (resultSet.next()) {
                 int iD = resultSet.getInt("plotID");
-                ;
                 int x = resultSet.getInt("x");
                 int y = resultSet.getInt("y");
                 float price = resultSet.getFloat("price");
                 plotDTO = new PlotDTO(iD, x, y, price);
             }
-
             return plotDTO;
         } catch (SQLException e) {
             throw new PersistenceException();
