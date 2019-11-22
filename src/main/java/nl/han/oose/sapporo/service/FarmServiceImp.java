@@ -35,7 +35,7 @@ public class FarmServiceImp implements IFarmService {
         }
         farmDTO.setPlots(plots);
 
-        farmDAO.blockIfUserHasFarm(userDTO);
-        return farmDAO.addFarm(farmDTO, userDTO);
+        farmDAO.checkIfUserHasAFarm(userDTO);
+        return farmDAO.createFarm(farmDTO, userDTO);
     }
 }

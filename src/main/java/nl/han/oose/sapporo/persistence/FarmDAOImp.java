@@ -29,7 +29,7 @@ public class FarmDAOImp implements IFarmDAO {
     }
 
     @Override
-    public void blockIfUserHasFarm(UserDTO userDTO) {
+    public void checkIfUserHasAFarm(UserDTO userDTO) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM farm WHERE ownerID = ?");
             statement.setInt(1, userDTO.getId());
@@ -44,15 +44,15 @@ public class FarmDAOImp implements IFarmDAO {
     }
 
     @Override
-    public FarmDTO addFarm(FarmDTO farmDTO, UserDTO userDTO){
+    public FarmDTO createFarm(FarmDTO farmDTO, UserDTO userDTO){
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO farm (ownerID) VALUES (?)");
             statement.setInt(1, userDTO.getId());
             statement.execute();
 
-            bindIdToFarm(connection,farmDTO,userDTO);
+            getFarmID(connection,farmDTO,userDTO);
             plotDAO.insertPlots(farmDTO);
-            bindIdToPlots(connection, farmDTO);
+            getAllPlotsFromFarm(connection, farmDTO);
         } catch (SQLException e) {
             throw new PersistenceException();
         }
@@ -60,7 +60,23 @@ public class FarmDAOImp implements IFarmDAO {
         return farmDTO;
     }
 
-    private void bindIdToPlots(Connection connection, FarmDTO farmDTO) {
+    private void getFarmID(Connection connection, FarmDTO farmDTO, UserDTO userDTO) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT farmID FROM farm WHERE ownerID = ?");
+            statement.setInt(1, userDTO.getId());
+            ResultSet resultSet = statement.executeQuery();
+
+            if(resultSet.next()) {
+                farmDTO.setFarmID(resultSet.getInt("farmID"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new PersistenceException();
+        }
+    }
+
+    //TODO plots ophalen ipv id linken aan bestaande plotDTOs
+    private void getAllPlotsFromFarm(Connection connection, FarmDTO farmDTO) {
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM plot WHERE farmID = ?");
             statement.setInt(1, farmDTO.getFarmID());
@@ -78,21 +94,6 @@ public class FarmDAOImp implements IFarmDAO {
                     }
                 }).collect(Collectors.toList()).get(0);
                 correctPlot.setID(plotID);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new PersistenceException();
-        }
-    }
-
-    private void bindIdToFarm(Connection connection, FarmDTO farmDTO, UserDTO userDTO) {
-        try {
-            PreparedStatement statement = connection.prepareStatement("SELECT farmID FROM farm WHERE ownerID = ?");
-            statement.setInt(1, userDTO.getId());
-            ResultSet resultSet = statement.executeQuery();
-
-            if(resultSet.next()) {
-                farmDTO.setFarmID(resultSet.getInt("farmID"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

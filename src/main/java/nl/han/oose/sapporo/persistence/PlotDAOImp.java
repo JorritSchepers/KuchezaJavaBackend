@@ -33,20 +33,6 @@ public class PlotDAOImp implements IPlotDAO {
     }
 
     @Override
-    public void createPlot(int x, int y){
-        try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO plot (x, y, price, purchased) VALUE (?,?,?,?)");
-            statement.setInt(1, x);
-            statement.setInt(2, y);
-            statement.setInt(3, 2);
-            statement.setBoolean(4, false);
-            statement.execute();
-        } catch (SQLException e) {
-            throw new PersistenceException();
-        }
-    }
-
-    @Override
     public PlotDTO getPlot(int PlotiD) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select * from plot where plotID = ?");
@@ -64,6 +50,21 @@ public class PlotDAOImp implements IPlotDAO {
             }
 
             return plotDTO;
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+
+    @Override
+    public void createPlot(int x, int y){
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO plot (x, y, price, purchased) VALUE (?,?,?,?)");
+            statement.setInt(1, x);
+            statement.setInt(2, y);
+            statement.setInt(3, 2);
+            statement.setBoolean(4, false);
+            statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();
         }

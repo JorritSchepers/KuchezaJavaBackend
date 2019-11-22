@@ -4,7 +4,7 @@ import nl.han.oose.sapporo.dto.FarmDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 
 public interface IFarmDAO {
-    void blockIfUserHasFarm(UserDTO userDTO);
+    void checkIfUserHasAFarm(UserDTO userDTO);
 
-    FarmDTO addFarm(FarmDTO farmDTO, UserDTO userDTO);
+    FarmDTO createFarm(FarmDTO farmDTO, UserDTO userDTO);
 }
