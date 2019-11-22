@@ -3,7 +3,6 @@ package nl.han.oose.sapporo.dto;
 import java.util.Objects;
 
 public class UserDTO {
-    // TODO Volledige naam of username?
     private int id;
     private String name;
     private String password;
@@ -28,6 +27,10 @@ public class UserDTO {
 
     public String getEmail() {
         return email;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
