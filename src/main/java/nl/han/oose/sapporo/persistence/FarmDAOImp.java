@@ -65,6 +65,7 @@ public class FarmDAOImp implements IFarmDAO {
             }
 
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new PersistenceException();
         }
 
