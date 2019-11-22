@@ -1,325 +1,330 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ArtifactsWorkspaceSettings">
-    <artifacts-to-build>
-      <artifact name="KuchezaGame:war" />
-    </artifacts-to-build>
-  </component>
-  <component name="ChangeListManager">
-    <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/AccountDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/AccountDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/IAccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/IAccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/AccountServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/AccountServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/AccountDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/AccountDAOTest.java" afterDir="false" />
-    </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CoverageViewManager">
-    <option name="myElementSize" value="165" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="TestDatabase" type="feb32156:DbDataSourceImpl" />
-      </path>
-    </expand>
-    <select />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JUnit5 Test Class" />
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
-      </map>
-    </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LogFilters">
-    <option name="FILTER_ERRORS" value="false" />
-    <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
-    <option name="CUSTOM_FILTER" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
-  <component name="ProjectId" id="1TEnhetixXaO17KBPxUoT4j64kw" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="h2.unified&#10;h2&#10;mysql" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="nl.han.oose.sapporo.persistence.datasource" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="nl.han.oose.sapporo.service.exception" />
-      <recent name="nl.han.oose.sapporo.persistence" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
-    </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="TomEE Server.TomEE 8.5.41">
-    <configuration name="AccountServiceTest.loginUserCallsCheckUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KuchezaGame" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nl.han.oose.sapporo.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.service" />
-      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.service.AccountServiceTest" />
-      <option name="METHOD_NAME" value="loginUserCallsCheckUser" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AccountServiceTest.logoutUserThrowsNoExceptionWhenUserIsLoggedIn" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KuchezaGame" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nl.han.oose.sapporo.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.service" />
-      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.service.AccountServiceTest" />
-      <option name="METHOD_NAME" value="logoutUserThrowsNoExceptionWhenUserIsLoggedIn" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in KuchezaGame (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KuchezaGame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in KuchezaGame (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KuchezaGame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in KuchezaGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KuchezaGame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TomEE 8.5.41" type="TomeeConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="TomEE 8.5.41" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8088/KuchezaGame/" />
-      <option name="UPDATING_POLICY" value="restart-server" />
-      <deployment>
-        <artifact name="KuchezaGame:war">
-          <settings>
-            <option name="CONTEXT_PATH" value="/KuchezaGame_war" />
-          </settings>
-        </artifact>
-      </deployment>
-      <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Unnamed_kuchezagame_3" />
-        <option name="HTTP_PORT" value="8088" />
-      </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="54440" />
-      </RunnerSettings>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
-        <option name="USE_ENV_VARIABLES" value="true" />
-        <STARTUP>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </STARTUP>
-        <SHUTDOWN>
-          <option name="USE_DEFAULT" value="true" />
-          <option name="SCRIPT" value="" />
-          <option name="VM_PARAMETERS" value="" />
-          <option name="PROGRAM_PARAMETERS" value="" />
-        </SHUTDOWN>
-      </ConfigurationWrapper>
-      <method v="2">
-        <option name="Make" enabled="true" />
-        <option name="BuildArtifacts" enabled="true">
-          <artifact name="KuchezaGame:war" />
+    <component name="ArtifactsWorkspaceSettings">
+        <artifacts-to-build>
+            <artifact name="KuchezaGame:war" />
+        </artifacts-to-build>
+    </component>
+    <component name="ChangeListManager">
+        <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
+            <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/AccountServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/AccountServiceImp.java" afterDir="false" />
+            <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/IAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/IAccountService.java" afterDir="false" />
+        </list>
+        <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+        <option name="SHOW_DIALOG" value="false" />
+        <option name="HIGHLIGHT_CONFLICTS" value="true" />
+        <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+        <option name="LAST_RESOLUTION" value="IGNORE" />
+    </component>
+    <component name="CoverageViewManager">
+        <option name="myElementSize" value="150" />
+    </component>
+    <component name="DatabaseView">
+        <option name="SHOW_INTERMEDIATE" value="true" />
+        <option name="GROUP_DATA_SOURCES" value="true" />
+        <option name="GROUP_SCHEMA" value="true" />
+        <option name="GROUP_CONTENTS" value="false" />
+        <option name="SORT_POSITIONED" value="false" />
+        <option name="SHOW_EMPTY_GROUPS" value="false" />
+        <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+        <option name="HIDDEN_KINDS">
+            <set />
         </option>
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="JUnit.All in KuchezaGame (2)" />
-      <item itemvalue="JUnit.AccountServiceTest.logoutUserThrowsNoExceptionWhenUserIsLoggedIn" />
-      <item itemvalue="JUnit.AccountServiceTest.loginUserCallsCheckUser" />
-      <item itemvalue="JUnit.All in KuchezaGame (3)" />
-      <item itemvalue="JUnit.All in KuchezaGame" />
-      <item itemvalue="TomEE Server.TomEE 8.5.41" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.All in KuchezaGame" />
-        <item itemvalue="JUnit.All in KuchezaGame (3)" />
-        <item itemvalue="JUnit.AccountServiceTest.loginUserCallsCheckUser" />
-        <item itemvalue="JUnit.AccountServiceTest.logoutUserThrowsNoExceptionWhenUserIsLoggedIn" />
-        <item itemvalue="JUnit.All in KuchezaGame (2)" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="" />
-      <created>1573034243304</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1573034243304</updated>
-      <workItem from="1573034247125" duration="885000" />
-      <workItem from="1573827943226" duration="1330000" />
-      <workItem from="1573830714274" duration="241000" />
-      <workItem from="1574072464287" duration="831000" />
-      <workItem from="1574076909174" duration="5433000" />
-      <workItem from="1574084479922" duration="1236000" />
-      <workItem from="1574085841017" duration="1207000" />
-      <workItem from="1574262770429" duration="783000" />
-      <workItem from="1574338345117" duration="985000" />
-      <workItem from="1574340108238" duration="478000" />
-      <workItem from="1574419452932" duration="1561000" />
-    </task>
-    <task id="LOCAL-00001" summary="test">
-      <created>1574072988467</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1574072988467</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
-    <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="test" />
-    <MESSAGE value="Werkt deze push?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Werkt deze push?" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__1_.ic" NAME="All in KuchezaGame (1) Coverage Results" MODIFIED="1574083349558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__2_.ic" NAME="All in KuchezaGame (2) Coverage Results" MODIFIED="1574080299435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame.ic" NAME="All in KuchezaGame Coverage Results" MODIFIED="1574087236788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-  </component>
+        <expand>
+            <path>
+                <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+                <item name="Kucheza@localhost" type="feb32156:DbDataSourceImpl" />
+            </path>
+        </expand>
+        <select />
+    </component>
+    <component name="FileTemplateManagerImpl">
+        <option name="RECENT_TEMPLATES">
+            <list>
+                <option value="JUnit5 Test Class" />
+                <option value="Interface" />
+                <option value="Class" />
+            </list>
+        </option>
+    </component>
+    <component name="Git.Settings">
+        <option name="RECENT_BRANCH_BY_REPOSITORY">
+            <map>
+                <entry key="$PROJECT_DIR$" value="develop" />
+            </map>
+        </option>
+        <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    </component>
+    <component name="LogFilters">
+        <option name="FILTER_ERRORS" value="false" />
+        <option name="FILTER_WARNINGS" value="false" />
+        <option name="FILTER_INFO" value="true" />
+        <option name="FILTER_DEBUG" value="true" />
+        <option name="CUSTOM_FILTER" />
+    </component>
+    <component name="MavenImportPreferences">
+        <option name="importingSettings">
+            <MavenImportingSettings>
+                <option name="importAutomatically" value="true" />
+            </MavenImportingSettings>
+        </option>
+    </component>
+    <component name="ProjectId" id="1TEnhetixXaO17KBPxUoT4j64kw" />
+    <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+    <component name="PropertiesComponent">
+        <property name="DatabaseDriversLRU" value="h2.unified&#10;h2&#10;mysql" />
+        <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+        <property name="WebServerToolWindowFactoryState" value="false" />
+        <property name="aspect.path.notification.shown" value="true" />
+        <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+        <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+        <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+        <property name="project.structure.last.edited" value="Modules" />
+        <property name="project.structure.proportion" value="0.0" />
+        <property name="project.structure.side.proportion" value="0.0" />
+        <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    </component>
+    <component name="RecentsManager">
+        <key name="CreateTestDialog.RecentsKey">
+            <recent name="nl.han.oose.sapporo.persistence.datasource" />
+        </key>
+        <key name="MoveFile.RECENT_KEYS">
+            <recent name="$PROJECT_DIR$/src" />
+        </key>
+        <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+            <recent name="nl.han.oose.sapporo.persistence" />
+        </key>
+        <key name="CreateTestDialog.Recents.Supers">
+            <recent name="" />
+        </key>
+        <key name="CreateClassDialog.RecentsKey">
+            <recent name="nl.han.oose.sapporo.persistence" />
+            <recent name="nl.han.oose.sapporo.service" />
+            <recent name="nl.han.oose.sapporo.dto" />
+        </key>
+    </component>
+    <component name="RunDashboard">
+        <option name="ruleStates">
+            <list>
+                <RuleState>
+                    <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+                </RuleState>
+                <RuleState>
+                    <option name="name" value="StatusDashboardGroupingRule" />
+                </RuleState>
+            </list>
+        </option>
+    </component>
+    <component name="RunManager" selected="JUnit.All in KuchezaGame (2)">
+        <configuration name="All in KuchezaGame (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+            <module name="KuchezaGame" />
+            <option name="PACKAGE_NAME" value="" />
+            <option name="TEST_OBJECT" value="package" />
+            <method v="2">
+                <option name="Make" enabled="true" />
+            </method>
+        </configuration>
+        <configuration name="All in KuchezaGame (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+            <module name="KuchezaGame" />
+            <option name="PACKAGE_NAME" value="" />
+            <option name="TEST_OBJECT" value="package" />
+            <method v="2">
+                <option name="Make" enabled="true" />
+            </method>
+        </configuration>
+        <configuration name="All in KuchezaGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+            <module name="KuchezaGame" />
+            <option name="PACKAGE_NAME" value="" />
+            <option name="TEST_OBJECT" value="package" />
+            <method v="2">
+                <option name="Make" enabled="true" />
+            </method>
+        </configuration>
+        <configuration name="PlotDAOTest.checkIfAddPlantToPlotAddsPlant" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+            <module name="KuchezaGame" />
+            <extension name="coverage">
+                <pattern>
+                    <option name="PATTERN" value="nl.han.oose.sapporo.persistence.*" />
+                    <option name="ENABLED" value="true" />
+                </pattern>
+            </extension>
+            <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.persistence" />
+            <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.persistence.PlotDAOTest" />
+            <option name="METHOD_NAME" value="checkIfAddPlantToPlotAddsPlant" />
+            <option name="TEST_OBJECT" value="method" />
+            <method v="2">
+                <option name="Make" enabled="true" />
+            </method>
+        </configuration>
+        <configuration name="PlotServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+            <module name="KuchezaGame" />
+            <extension name="coverage">
+                <pattern>
+                    <option name="PATTERN" value="nl.han.oose.sapporo.service.*" />
+                    <option name="ENABLED" value="true" />
+                </pattern>
+            </extension>
+            <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.service" />
+            <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.service.PlotServiceTest" />
+            <option name="TEST_OBJECT" value="class" />
+            <method v="2">
+                <option name="Make" enabled="true" />
+            </method>
+        </configuration>
+        <configuration name="TomEE 8.5.411" type="TomeeConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="TomEE 8.5.411" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="11.0.4" nameIsGenerated="true">
+            <option name="OPEN_IN_BROWSER" value="false" />
+            <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8088/KuchezaGame/" />
+            <option name="UPDATING_POLICY" value="redeploy-artifacts" />
+            <deployment>
+                <artifact name="KuchezaGame:war">
+                    <settings>
+                        <option name="CONTEXT_PATH" value="/KuchezaGame_war" />
+                    </settings>
+                </artifact>
+            </deployment>
+            <server-settings>
+                <option name="BASE_DIRECTORY_NAME" value="Unnamed_kuchezagame_3" />
+                <option name="HTTP_PORT" value="8088" />
+            </server-settings>
+            <predefined_log_file enabled="true" id="Tomcat" />
+            <predefined_log_file enabled="true" id="Tomcat Catalina" />
+            <predefined_log_file id="Tomcat Manager" />
+            <predefined_log_file id="Tomcat Host Manager" />
+            <predefined_log_file id="Tomcat Localhost Access" />
+            <RunnerSettings RunnerId="Debug">
+                <option name="DEBUG_PORT" value="54440" />
+            </RunnerSettings>
+            <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+                <option name="USE_ENV_VARIABLES" value="true" />
+                <STARTUP>
+                    <option name="USE_DEFAULT" value="true" />
+                    <option name="SCRIPT" value="" />
+                    <option name="VM_PARAMETERS" value="" />
+                    <option name="PROGRAM_PARAMETERS" value="" />
+                </STARTUP>
+                <SHUTDOWN>
+                    <option name="USE_DEFAULT" value="true" />
+                    <option name="SCRIPT" value="" />
+                    <option name="VM_PARAMETERS" value="" />
+                    <option name="PROGRAM_PARAMETERS" value="" />
+                </SHUTDOWN>
+            </ConfigurationWrapper>
+            <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+                <option name="USE_ENV_VARIABLES" value="true" />
+                <STARTUP>
+                    <option name="USE_DEFAULT" value="true" />
+                    <option name="SCRIPT" value="" />
+                    <option name="VM_PARAMETERS" value="" />
+                    <option name="PROGRAM_PARAMETERS" value="" />
+                </STARTUP>
+                <SHUTDOWN>
+                    <option name="USE_DEFAULT" value="true" />
+                    <option name="SCRIPT" value="" />
+                    <option name="VM_PARAMETERS" value="" />
+                    <option name="PROGRAM_PARAMETERS" value="" />
+                </SHUTDOWN>
+            </ConfigurationWrapper>
+            <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+                <option name="USE_ENV_VARIABLES" value="true" />
+                <STARTUP>
+                    <option name="USE_DEFAULT" value="true" />
+                    <option name="SCRIPT" value="" />
+                    <option name="VM_PARAMETERS" value="" />
+                    <option name="PROGRAM_PARAMETERS" value="" />
+                </STARTUP>
+                <SHUTDOWN>
+                    <option name="USE_DEFAULT" value="true" />
+                    <option name="SCRIPT" value="" />
+                    <option name="VM_PARAMETERS" value="" />
+                    <option name="PROGRAM_PARAMETERS" value="" />
+                </SHUTDOWN>
+            </ConfigurationWrapper>
+            <method v="2">
+                <option name="Make" enabled="true" />
+                <option name="BuildArtifacts" enabled="true">
+                    <artifact name="KuchezaGame:war" />
+                </option>
+            </method>
+        </configuration>
+        <list>
+            <item itemvalue="JUnit.PlotServiceTest" />
+            <item itemvalue="JUnit.All in KuchezaGame" />
+            <item itemvalue="JUnit.PlotDAOTest.checkIfAddPlantToPlotAddsPlant" />
+            <item itemvalue="JUnit.All in KuchezaGame (1)" />
+            <item itemvalue="JUnit.All in KuchezaGame (2)" />
+            <item itemvalue="TomEE Server.TomEE 8.5.411" />
+        </list>
+        <recent_temporary>
+            <list>
+                <item itemvalue="JUnit.All in KuchezaGame (2)" />
+                <item itemvalue="JUnit.All in KuchezaGame (1)" />
+                <item itemvalue="JUnit.PlotDAOTest.checkIfAddPlantToPlotAddsPlant" />
+                <item itemvalue="JUnit.All in KuchezaGame" />
+                <item itemvalue="JUnit.PlotServiceTest" />
+            </list>
+        </recent_temporary>
+    </component>
+    <component name="SvnConfiguration">
+        <configuration />
+    </component>
+    <component name="TaskManager">
+        <task active="true" id="Default" summary="Default task">
+            <changelist id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="" />
+            <created>1573034243304</created>
+            <option name="number" value="Default" />
+            <option name="presentableId" value="Default" />
+            <updated>1573034243304</updated>
+            <workItem from="1573034247125" duration="885000" />
+            <workItem from="1573827943226" duration="1330000" />
+            <workItem from="1573830714274" duration="241000" />
+            <workItem from="1574072464287" duration="831000" />
+            <workItem from="1574076909174" duration="5433000" />
+            <workItem from="1574084479922" duration="1236000" />
+            <workItem from="1574085841017" duration="1207000" />
+            <workItem from="1574168436112" duration="8538000" />
+            <workItem from="1574326416336" duration="7840000" />
+            <workItem from="1574341475735" duration="6781000" />
+            <workItem from="1574425078032" duration="64000" />
+        </task>
+        <task id="LOCAL-00001" summary="test">
+            <created>1574072988467</created>
+            <option name="number" value="00001" />
+            <option name="presentableId" value="LOCAL-00001" />
+            <option name="project" value="LOCAL" />
+            <updated>1574072988467</updated>
+        </task>
+        <option name="localTasksCounter" value="2" />
+        <servers />
+    </component>
+    <component name="TypeScriptGeneratedFilesManager">
+        <option name="version" value="1" />
+    </component>
+    <component name="Vcs.Log.Tabs.Properties">
+        <option name="TAB_STATES">
+            <map>
+                <entry key="MAIN">
+                    <value>
+                        <State>
+                            <option name="COLUMN_ORDER" />
+                        </State>
+                    </value>
+                </entry>
+            </map>
+        </option>
+    </component>
+    <component name="VcsManagerConfiguration">
+        <option name="RELOAD_CONTEXT" value="false" />
+        <MESSAGE value="test" />
+        <MESSAGE value="Werkt deze push?" />
+        <option name="LAST_COMMIT_MESSAGE" value="Werkt deze push?" />
+    </component>
+    <component name="com.intellij.coverage.CoverageDataManagerImpl">
+        <SUITE FILE_PATH="coverage/kuchezagame$PlotResourceTest.ic" NAME="PlotResourceTest Coverage Results" MODIFIED="1574328539549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+            <FILTER>nl.han.oose.sapporo.resource.*</FILTER>
+        </SUITE>
+        <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__1_.ic" NAME="All in KuchezaGame (1) Coverage Results" MODIFIED="1574418746382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+        <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__3_.ic" NAME="All in KuchezaGame (3) Coverage Results" MODIFIED="1574416302396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+        <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__2_.ic" NAME="All in KuchezaGame (2) Coverage Results" MODIFIED="1574418785537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+        <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame.ic" NAME="All in KuchezaGame Coverage Results" MODIFIED="1574418511103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    </component>
 </project>
