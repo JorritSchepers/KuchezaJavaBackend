@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class FarmDAOImp implements IFarmDAO {
@@ -52,7 +54,7 @@ public class FarmDAOImp implements IFarmDAO {
 
             getFarmID(connection,farmDTO,userDTO);
             plotDAO.insertPlots(farmDTO);
-            getAllPlotsFromFarm(connection, farmDTO);
+            farmDTO.setPlots(getAllPlotsFromFarm(connection, farmDTO));
         } catch (SQLException e) {
             throw new PersistenceException();
         }
@@ -75,29 +77,25 @@ public class FarmDAOImp implements IFarmDAO {
         }
     }
 
-    //TODO plots ophalen ipv id linken aan bestaande plotDTOs
-    private void getAllPlotsFromFarm(Connection connection, FarmDTO farmDTO) {
+    private List<PlotDTO> getAllPlotsFromFarm(Connection connection, FarmDTO farmDTO) {
+        List<PlotDTO> plotDTOS = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM plot WHERE farmID = ?");
             statement.setInt(1, farmDTO.getFarmID());
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                int plotID = resultSet.getInt("plotID");
-                int x = resultSet.getInt("x");
-                int y = resultSet.getInt("y");
-                PlotDTO correctPlot = farmDTO.getPlots().stream().filter(plotDTO -> {
-                    if(plotDTO.getX() == x && plotDTO.getY() == y) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }).collect(Collectors.toList()).get(0);
-                correctPlot.setID(plotID);
+                plotDTOS.add(new PlotDTO(
+                        resultSet.getInt("plotID"),
+                        resultSet.getInt("x"),
+                        resultSet.getInt("y"),
+                        resultSet.getInt("price"),
+                        resultSet.getBoolean("purchased")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
             throw new PersistenceException();
         }
+        return plotDTOS;
     }
 }

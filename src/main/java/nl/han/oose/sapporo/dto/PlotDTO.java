@@ -18,6 +18,14 @@ public class PlotDTO {
         this.purchased = purchased;
     }
 
+    public PlotDTO(int iD, int x, int y, float price, boolean purchased) {
+        this.ID = ID;
+        this.x = x;
+        this.y = y;
+        this.price = price;
+        this.purchased = purchased;
+    }
+
     public PlotDTO(int iD, int x, int y, float price) {
         this.ID = ID;
         this.x = x;
