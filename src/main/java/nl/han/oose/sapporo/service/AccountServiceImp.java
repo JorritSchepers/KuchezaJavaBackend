@@ -44,6 +44,13 @@ public class AccountServiceImp implements IAccountService {
         }
     }
 
+    @Override
+    public void verifyToken(String token) {
+        if(tokens.get(token) == null) {
+            throw new UserAlreadyLoggedOutException();
+        }
+    }
+
     private TokenDTO generateRandomToken(UserDTO userDTO){
         String token = customUuid.randomUUID();
         tokens.put(token,userDTO);

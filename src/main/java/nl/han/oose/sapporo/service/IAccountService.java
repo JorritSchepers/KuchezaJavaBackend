@@ -10,4 +10,6 @@ public interface IAccountService {
     TokenDTO loginUser(LoginDTO loginDTO);
 
     void logoutUser(String token);
+
+    void verifyToken(String recievedToken);
 }
