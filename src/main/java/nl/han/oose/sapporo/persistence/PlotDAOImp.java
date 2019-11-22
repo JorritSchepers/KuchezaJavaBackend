@@ -1,5 +1,6 @@
 package nl.han.oose.sapporo.persistence;
 
+import nl.han.oose.sapporo.dto.FarmDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
@@ -63,6 +64,23 @@ public class PlotDAOImp implements IPlotDAO {
             }
 
             return plotDTO;
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public void insertPlots(FarmDTO farmDTO) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            for(PlotDTO plot: farmDTO.getPlots()) {
+                PreparedStatement statement = connection.prepareStatement("INSERT INTO plot (x,y,price,purchased,farmID) VALUES(?,?,?,?,?);");
+                statement.setInt(1,plot.getX());
+                statement.setInt(2,plot.getY());
+                statement.setFloat(3,plot.getPrice());
+                statement.setBoolean(4,plot.isPurchased());
+                statement.setInt(5,farmDTO.getFarmID());
+                statement.execute();
+            }
         } catch (SQLException e) {
             throw new PersistenceException();
         }

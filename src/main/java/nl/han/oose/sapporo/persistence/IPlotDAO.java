@@ -1,5 +1,6 @@
 package nl.han.oose.sapporo.persistence;
 
+import nl.han.oose.sapporo.dto.FarmDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 
@@ -9,4 +10,6 @@ public interface IPlotDAO {
     void createPlot(int x, int y);
 
     PlotDTO getPlot(int PlotiD);
+
+    void insertPlots(FarmDTO farmDTO);
 }
