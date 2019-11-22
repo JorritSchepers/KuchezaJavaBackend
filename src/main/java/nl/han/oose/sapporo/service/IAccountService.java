@@ -7,5 +7,4 @@ import nl.han.oose.sapporo.dto.UserDTO;
 public interface IAccountService {
     TokenDTO registerUser(UserDTO userDTO);
 
-    UserDTO authenticateByToken(String token);
 }

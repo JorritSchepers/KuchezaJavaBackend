@@ -15,12 +15,6 @@ public class AccountServiceImp implements IAccountService {
         return generateRandomToken(userDTO);
     }
 
-    @Override
-    public UserDTO authenticateByToken(String token) {
-        return null;
-    }
-
-
     private TokenDTO generateRandomToken(UserDTO userDTO){
         return new TokenDTO(userDTO,"1234567890");
     }
