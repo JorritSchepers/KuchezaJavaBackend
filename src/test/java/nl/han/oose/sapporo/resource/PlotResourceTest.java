@@ -28,18 +28,18 @@ public class PlotResourceTest {
 
     @Test
     public void placePlantsCallsAuthenticateByToken() {
-        sut.placePlant(token, 1,plant);
+        sut.placePlantOnPlot(token, 1,plant);
         Mockito.verify(accountService, Mockito.times(1)).verifyToken(token);
     }
 
     @Test
     public void placePlantsCallsPlacePlant() {
-        sut.placePlant(token, 1,plant);
+        sut.placePlantOnPlot(token, 1,plant);
         Mockito.verify(plotService, Mockito.times(1)).placePlant(plant,1,user);
     }
 
     @Test
     public void placePlantsReturnsRightPlot() {
-        Assert.assertEquals(plot,sut.placePlant(token, 1,plant).getEntity());
+        Assert.assertEquals(plot,sut.placePlantOnPlot(token, 1,plant).getEntity());
     }
 }

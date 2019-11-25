@@ -29,7 +29,7 @@ public class PlotResource {
     @Path("/{id}/plant")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response placePlant(@QueryParam("token") String token, @PathParam("id") int plotID, PlantDTO plantDTO) {
+    public Response placePlantOnPlot(@QueryParam("token") String token, @PathParam("id") int plotID, PlantDTO plantDTO) {
         UserDTO user = accountService.verifyToken(token);
         return Response.status(Response.Status.OK)
                 .entity(plotService.placePlant(plantDTO, plotID, user))
@@ -40,7 +40,7 @@ public class PlotResource {
     @Path("/{id}/harvest")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response harvestPlot(@QueryParam("token") String token, @PathParam("id") int plotID, PlantDTO plantDTO) {
+    public Response harvestPlantFromPlot(@QueryParam("token") String token, @PathParam("id") int plotID, PlantDTO plantDTO) {
         UserDTO user = accountService.verifyToken(token);
         return Response.status(Response.Status.OK)
                 .entity(plotService.harvesPlot(plantDTO,user,plotID))

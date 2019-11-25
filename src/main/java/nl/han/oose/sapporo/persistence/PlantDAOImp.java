@@ -33,6 +33,22 @@ public class PlantDAOImp implements IPlantDAO{
         }
     }
 
+    @Override
+    public boolean checkIfPlantFullGrown(PlantDTO plantDTO) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select growingTime from plant where plantID = ?");
+            statement.setInt(1,plantDTO.getId());
+            ResultSet resultSet = statement.executeQuery();
+            int neededGrowingTime = 0;
+            while (resultSet.next()) {
+                neededGrowingTime = resultSet.getInt("growingTime");
+            }
+            return (plantDTO.getAge() >= neededGrowingTime);
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
     private AllPlantDTO makeAllPlantDTO(ResultSet resultSet) throws SQLException {
         ArrayList<PlantDTO> plants = new ArrayList<>();
         while (resultSet.next()) {

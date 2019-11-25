@@ -10,5 +10,5 @@ public interface IPlotDAO {
 
     boolean checkIfPlotIsEmpty(int plotID);
 
-    void removePlantFromPlot(int plotID);
+    void removeObjectsFromPlot(int plotID);
 }

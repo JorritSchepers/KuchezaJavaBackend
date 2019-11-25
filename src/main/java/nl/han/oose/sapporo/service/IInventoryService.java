@@ -8,5 +8,5 @@ public interface IInventoryService {
 
     void lowerSaldo(float amount, UserDTO userDTO);
 
-    void increaseSaldo(PlantDTO plantDTO);
+    void increaseSaldo(float amount, UserDTO userDTO);
 }

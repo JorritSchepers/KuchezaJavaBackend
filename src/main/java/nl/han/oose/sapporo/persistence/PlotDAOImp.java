@@ -89,7 +89,13 @@ public class PlotDAOImp implements IPlotDAO {
     }
 
     @Override
-    public void removePlantFromPlot(int plotID) {
-        //TODO implement
+    public void removeObjectsFromPlot(int plotID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("update plot set animalId = null, waterManagerId = null, plantID = null where plotID = ?");
+            statement.setInt(1, plotID);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
     }
 }

@@ -4,6 +4,7 @@ import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.IPlotDAO;
+import nl.han.oose.sapporo.persistence.exception.PlantNotGrownException;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -43,10 +44,12 @@ public class PlotServiceImp implements IPlotService {
     @Override
     public PlotDTO harvesPlot(PlantDTO plantDTO,UserDTO user, int plotID) {
         if (plantService.plantFullGrown(plantDTO)){
-            plotDAO.removePlantFromPlot(plotID);
-            inventoryService.increaseSaldo(plantDTO);
+            plotDAO.removeObjectsFromPlot(plotID);
+            inventoryService.increaseSaldo(plantDTO.getProfit(),user);
             return plotDAO.getPlot(plotID);
+        } else  {
+            System.out.println("plant is niet gegroeid");
+            throw new PlantNotGrownException();
         }
-        return null;
     }
 }
