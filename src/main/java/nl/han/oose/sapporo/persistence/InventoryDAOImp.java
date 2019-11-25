@@ -56,4 +56,17 @@ public class InventoryDAOImp implements IInventoryDAO {
             throw new PersistenceException();
         }
     }
+
+    @Override
+    public void increaseSaldo(float amount, UserDTO userDTO) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement
+                    ("update inventory set money = money+? where userID = ?");
+            statement.setFloat(1,amount);
+            statement.setInt(2,userDTO.getId());
+            statement.execute();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
 }

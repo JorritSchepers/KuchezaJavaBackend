@@ -128,8 +128,10 @@ VALUES
 INSERT INTO plot (x,y,price,purchased)
 VALUES
 (1,1,10,1),
-(1,2,10,1),
-(1,3,10,1);
+(1,2,10,1);
+
+Insert INTO plot (x,y,price,purchased,plantID)
+VALUES (2,2,10,1,2);
 
 update plot set plantID = 1 where plotID =2;
 

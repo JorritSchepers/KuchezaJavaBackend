@@ -8,7 +8,6 @@ import javax.ws.rs.core.Response;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InsufficientFundsMapperTest {
-
     private InsufficientFundsMapper sut = new InsufficientFundsMapper();
 
     @Test

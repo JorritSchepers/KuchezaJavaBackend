@@ -22,4 +22,9 @@ public class InventoryServiceImp implements  IInventoryService {
     public void lowerSaldo(float amount, UserDTO userDTO) {
         inventoryDAO.lowerSaldo(amount,userDTO);
     }
+
+    @Override
+    public void increaseSaldo(float amount, UserDTO userDTO) {
+        inventoryDAO.increaseSaldo(amount,userDTO);
+    }
 }

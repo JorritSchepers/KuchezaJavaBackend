@@ -10,4 +10,7 @@ public interface IPlotDAO {
 
     boolean checkIfPlotIsEmpty(int plotID);
 
+    void removeObjectsFromPlot(int plotID);
+
+    boolean plotHasPlant(int plotID);
 }
