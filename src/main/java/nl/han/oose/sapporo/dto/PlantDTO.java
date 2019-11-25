@@ -1,13 +1,13 @@
 package nl.han.oose.sapporo.dto;
 
 public class PlantDTO {
-    int id;
-    String name;
-    int waterUsage;
-    int growingTime;
-    float profit;
-    float purchasePrice;
-    int age;
+    private int id;
+    private String name;
+    private int waterUsage;
+    private int growingTime;
+    private float profit;
+    private float purchasePrice;
+    private int age;
 
     public PlantDTO() {
     }

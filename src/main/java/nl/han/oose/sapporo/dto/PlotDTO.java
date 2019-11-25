@@ -4,8 +4,11 @@ public class PlotDTO {
     private int ID;
     private int x;
     private int y;
-    private float price;
     private boolean purchased;
+    private int animalId;
+    private int waterManagerId;
+    private int plantID;
+    private float price;
 
     public PlotDTO() {
 
@@ -16,6 +19,16 @@ public class PlotDTO {
         this.y = y;
         this.price = price;
         this.purchased = purchased;
+    }
+
+    public PlotDTO(int ID, int x, int y, int animalId, int waterManagerId, int plantID, float price) {
+        this.ID = ID;
+        this.x = x;
+        this.y = y;
+        this.animalId = animalId;
+        this.waterManagerId = waterManagerId;
+        this.plantID = plantID;
+        this.price = price;
     }
 
     public PlotDTO(int iD, int x, int y, float price, boolean purchased) {

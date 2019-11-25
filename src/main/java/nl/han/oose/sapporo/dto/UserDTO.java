@@ -1,5 +1,7 @@
 package nl.han.oose.sapporo.dto;
 
+import java.util.Objects;
+
 public class UserDTO {
     private int id;
     private String name;
@@ -8,7 +10,7 @@ public class UserDTO {
 
     public UserDTO() {}
 
-    public UserDTO(String name, String password, String email, int id) {
+    public UserDTO(int id, String name, String password, String email) {
         this.name = name;
         this.password = password;
         this.email = email;
@@ -35,5 +37,21 @@ public class UserDTO {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserDTO userDTO = (UserDTO) o;
+        return id == userDTO.id &&
+                Objects.equals(name, userDTO.name) &&
+                Objects.equals(password, userDTO.password) &&
+                Objects.equals(email, userDTO.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, password, email);
     }
 }

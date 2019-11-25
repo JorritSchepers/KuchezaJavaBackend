@@ -51,8 +51,6 @@ public class InventoryDAOImp implements IInventoryDAO {
                     ("update inventory set money = money-20 where userID = ?");
             statement.setInt(1,userDTO.getId());
             statement.execute();
-
-            //TODO add error when saldo too low.
         } catch (SQLException e) {
             throw new PersistenceException();
         }
