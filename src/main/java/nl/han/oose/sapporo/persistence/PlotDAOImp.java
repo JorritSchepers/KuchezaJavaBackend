@@ -4,10 +4,9 @@ import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.PersistenceException;
+import nl.han.oose.sapporo.persistence.exception.PlotDoesNotExistException;
 import nl.han.oose.sapporo.persistence.exception.PlotHasNotPlantException;
 import nl.han.oose.sapporo.persistence.exception.PlotIsOccupiedException;
-import nl.han.oose.sapporo.persistence.exception.PlotDoesNotExistException;
-
 
 import javax.inject.Inject;
 import java.sql.Connection;
@@ -43,20 +42,21 @@ public class PlotDAOImp implements IPlotDAO {
             ResultSet resultSet = statement.executeQuery();
             PlotDTO plotDTO = null;
 
-            if (!resultSet.next()){
-                throw new PlotDoesNotExistException();
-            }
-            while (resultSet.next()) {
-                int iD = resultSet.getInt("plotID");
-                int x = resultSet.getInt("x");
-                int y = resultSet.getInt("y");
-                int animalId = resultSet.getInt("animalId");
-                int waterManagerId = resultSet.getInt("waterManagerId");
-                int plantID = resultSet.getInt("plantID");
-                float price = resultSet.getFloat("price");
-                plotDTO = new PlotDTO(iD, x, y, animalId, waterManagerId, plantID, price);
-            }
-            return plotDTO;
+                while (resultSet.next()) {
+                    int iD = resultSet.getInt("plotID");
+                    int x = resultSet.getInt("x");
+                    int y = resultSet.getInt("y");
+                    int animalId = resultSet.getInt("animalId");
+                    int waterManagerId = resultSet.getInt("waterManagerId");
+                    int plantID = resultSet.getInt("plantID");
+                    float price = resultSet.getFloat("price");
+                    plotDTO = new PlotDTO(iD, x, y, animalId, waterManagerId, plantID, price);
+                }
+                if (plotDTO == null){
+                    throw new PlotDoesNotExistException();
+                } else{
+                    return plotDTO;
+                }
         } catch (SQLException e) {
             throw new PersistenceException();
         }
@@ -116,9 +116,9 @@ public class PlotDAOImp implements IPlotDAO {
             while (resultSet.next()) {
                 plantID = resultSet.getInt("plantID");
             }
-            if(plantID == 0){
+            if (plantID == 0) {
                 throw new PlotHasNotPlantException();
-            }   else return true;
+            } else return true;
 
         } catch (SQLException e) {
             throw new PersistenceException();
