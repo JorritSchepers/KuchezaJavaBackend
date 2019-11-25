@@ -31,7 +31,6 @@ public class FarmDAOIMP implements IfarmDAO {
             }
             return farm;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
             throw new PersistenceException();
         }
     }
