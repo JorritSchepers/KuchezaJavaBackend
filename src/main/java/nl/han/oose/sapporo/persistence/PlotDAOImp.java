@@ -5,6 +5,7 @@ import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.PersistenceException;
 import nl.han.oose.sapporo.persistence.exception.PlotIsOccupiedException;
+import nl.han.oose.sapporo.persistence.exception.plotDoesNotExistException;
 
 
 import javax.inject.Inject;
@@ -41,6 +42,9 @@ public class PlotDAOImp implements IPlotDAO {
             ResultSet resultSet = statement.executeQuery();
             PlotDTO plotDTO = null;
 
+            if (!resultSet.next()){
+                throw new plotDoesNotExistException();
+            }
             while (resultSet.next()) {
                 int iD = resultSet.getInt("plotID");
                 int x = resultSet.getInt("x");
