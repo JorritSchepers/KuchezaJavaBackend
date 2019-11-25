@@ -34,34 +34,6 @@ public class PlotDAOImp implements IPlotDAO {
         }
     }
 
-    @Override
-    public PlotDTO getPlot(int PlotiD) {
-        try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("select * from plot where plotID = ?");
-            statement.setInt(1, PlotiD);
-            ResultSet resultSet = statement.executeQuery();
-            PlotDTO plotDTO = null;
-
-                while (resultSet.next()) {
-                    int iD = resultSet.getInt("plotID");
-                    int x = resultSet.getInt("x");
-                    int y = resultSet.getInt("y");
-                    int animalId = resultSet.getInt("animalId");
-                    int waterManagerId = resultSet.getInt("waterManagerId");
-                    int plantID = resultSet.getInt("plantID");
-                    float price = resultSet.getFloat("price");
-                    plotDTO = new PlotDTO(iD, x, y, animalId, waterManagerId, plantID, price);
-                }
-                if (plotDTO == null){
-                    throw new PlotDoesNotExistException();
-                } else{
-                    return plotDTO;
-                }
-        } catch (SQLException e) {
-            throw new PersistenceException();
-        }
-    }
-
     public boolean checkIfPlotIsEmpty(int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select animalID,watermanagerID,plantID from plot where plotID = ?");
@@ -99,6 +71,34 @@ public class PlotDAOImp implements IPlotDAO {
             PreparedStatement statement = connection.prepareStatement("update plot set animalId = null, waterManagerId = null, plantID = null where plotID = ?");
             statement.setInt(1, plotID);
             statement.execute();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public PlotDTO getPlot(int PlotiD) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select * from plot where plotID = ?");
+            statement.setInt(1, PlotiD);
+            ResultSet resultSet = statement.executeQuery();
+            PlotDTO plotDTO = null;
+
+                while (resultSet.next()) {
+                    int iD = resultSet.getInt("plotID");
+                    int x = resultSet.getInt("x");
+                    int y = resultSet.getInt("y");
+                    int animalId = resultSet.getInt("animalId");
+                    int waterManagerId = resultSet.getInt("waterManagerId");
+                    int plantID = resultSet.getInt("plantID");
+                    float price = resultSet.getFloat("price");
+                    plotDTO = new PlotDTO(iD, x, y, animalId, waterManagerId, plantID, price);
+                }
+                if (plotDTO == null){
+                    throw new PlotDoesNotExistException();
+                } else{
+                    return plotDTO;
+                }
         } catch (SQLException e) {
             throw new PersistenceException();
         }

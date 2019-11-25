@@ -1,5 +1,7 @@
 package nl.han.oose.sapporo.dto;
 
+import java.util.Objects;
+
 public class PlotDTO {
     private int ID;
     private int x;

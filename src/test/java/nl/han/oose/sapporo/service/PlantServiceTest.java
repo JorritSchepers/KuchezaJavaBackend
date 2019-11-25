@@ -38,10 +38,4 @@ class PlantServiceTest {
         sut.plantFullGrown(grownPlant);
         Mockito.verify(plantDAO, Mockito.times(1)).checkIfPlantFullGrown(grownPlant);
     }
-
-    @Test
-    void plantFullGrownReturnsRightValue() {
-        Assertions.assertTrue(sut.plantFullGrown(grownPlant));
-        Assertions.assertFalse(sut.plantFullGrown(notGrownPlant));
-    }
 }

@@ -1,10 +1,14 @@
 package nl.han.oose.sapporo.persistence;
 
 import nl.han.oose.sapporo.dto.PlantDTO;
+import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
+import nl.han.oose.sapporo.persistence.exception.PlotDoesNotExistException;
+import nl.han.oose.sapporo.persistence.exception.PlotHasNotPlantException;
 import nl.han.oose.sapporo.persistence.exception.PlotIsOccupiedException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.sql.*;
 
@@ -72,9 +76,29 @@ class PlotDAOTest extends DAOTest {
     }
 
     @Test
-    void removeObjectsFromPlotEmptysPlot() {
-        Assertions.assertFalse(plotIsEmpty(FULLPLOTID));
-        sut.removeObjectsFromPlot(FULLPLOTID);
-        Assertions.assertTrue(plotIsEmpty(FULLPLOTID));
+    void getPlotThrowsNoExpcetionWhenPlotDoesExist() {
+        Assertions.assertDoesNotThrow(() -> {
+            sut.getPlot(PLOTID);
+        });
+    }
+
+    @Test
+    void getPlotThrowsExpcetionWhenPlotDoesNotExist() {
+        int fakePlotID = 4;
+        Assertions.assertThrows(PlotDoesNotExistException.class, () -> {
+            sut.getPlot(fakePlotID);
+        });
+    }
+
+    @Test
+    void plotHasPlantReturnsTrueWhenTrue(){
+        Assertions.assertTrue(sut.plotHasPlant(FULLPLOTID));
+    }
+
+    @Test
+    void plotHasPlantThrowsExceptionWhenFalse(){
+        Assertions.assertThrows(PlotHasNotPlantException.class, () -> {
+            sut.plotHasPlant(PLOTID);
+        });
     }
 }

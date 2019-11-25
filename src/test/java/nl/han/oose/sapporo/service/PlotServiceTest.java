@@ -31,6 +31,7 @@ class PlotServiceTest {
         Mockito.when(plotDAO.checkIfPlotIsEmpty(PLOTID)).thenReturn(true);
         Mockito.when(plantService.plantFullGrown(plant)).thenReturn(true);
         Mockito.when(plantService.plantFullGrown(notGrownPlant)).thenReturn(false);
+        Mockito.when(plotDAO.plotHasPlant(PLOTID)).thenReturn(true);
     }
 
     @Test
@@ -95,13 +96,6 @@ class PlotServiceTest {
     @Test
     void harvestPlantReturnsRightPlot(){
         Assertions.assertEquals(plot,sut.harvesPlant(plant,user,PLOTID));
-    }
-
-    @Test
-    void harvestPlantThrowsNoExceptionWhenNotGrown(){
-        Assertions.assertThrows(PlantNotGrownException.class, () -> {
-            sut.harvesPlant(notGrownPlant,user,PLOTID);
-        });
     }
 
     @Test
