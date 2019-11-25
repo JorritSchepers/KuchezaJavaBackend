@@ -36,4 +36,5 @@ public class PlantDTO {
     public float getProfit() {
         return profit;
     }
+    
 }

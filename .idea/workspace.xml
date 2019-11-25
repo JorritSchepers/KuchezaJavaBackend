@@ -7,7 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/PlantDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/PlantDTO.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
