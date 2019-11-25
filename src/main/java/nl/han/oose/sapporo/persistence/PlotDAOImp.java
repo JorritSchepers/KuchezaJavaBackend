@@ -118,7 +118,7 @@ public class PlotDAOImp implements IPlotDAO {
             }
             if(plantID == 0){
                 throw new PlotHasNotPlantException();
-            }else return true;
+            }   else return true;
 
         } catch (SQLException e) {
             throw new PersistenceException();
