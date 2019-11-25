@@ -3,6 +3,8 @@ package nl.han.oose.sapporo.persistence;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 
+import java.util.ArrayList;
+
 public interface IPlotDAO {
     void addPlantToPlot(PlantDTO plantDTO, int plotID);
 
@@ -13,4 +15,6 @@ public interface IPlotDAO {
     void removeObjectsFromPlot(int plotID);
 
     boolean plotHasPlant(int plotID);
+
+    ArrayList<PlotDTO> getFarmPlots(int farmID);
 }
