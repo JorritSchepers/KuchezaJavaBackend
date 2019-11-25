@@ -2,7 +2,6 @@ package nl.han.oose.sapporo.resource;
 
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
-import nl.han.oose.sapporo.dto.TokenDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IPlotService;
@@ -24,6 +23,7 @@ public class PlotResourceTest {
         sut.setPlotService(plotService);
         Mockito.when(accountService.verifyToken(token)).thenReturn(user);
         Mockito.when(plotService.placePlant(plant,1,user)).thenReturn(plot);
+        Mockito.when(plotService.harvesPlant(plant,user,1)).thenReturn(plot);
     }
 
     @Test
@@ -40,6 +40,24 @@ public class PlotResourceTest {
 
     @Test
     public void placePlantsReturnsRightPlot() {
+        sut.placePlantOnPlot(token, 1,plant);
         Assert.assertEquals(plot,sut.placePlantOnPlot(token, 1,plant).getEntity());
+    }
+
+    @Test
+    public void harvestPlantFromPlotCallsAuthenticateByToken() {
+        sut.harvestPlantFromPlot(token, 1,plant);
+        Mockito.verify(accountService, Mockito.times(1)).verifyToken(token);
+    }
+
+    @Test
+    public void harvestPlantFromPlotCallsHarvesPlot() {
+        sut.harvestPlantFromPlot(token, 1,plant);
+        Mockito.verify(plotService, Mockito.times(1)).harvesPlant(plant,user,1);
+    }
+
+    @Test
+    public void harvestPlantFromPlotReturnsRightPlot() {
+        Assert.assertEquals(plot,sut.harvestPlantFromPlot(token, 1,plant).getEntity());
     }
 }

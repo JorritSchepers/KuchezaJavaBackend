@@ -43,7 +43,7 @@ public class PlotResource {
     public Response harvestPlantFromPlot(@QueryParam("token") String token, @PathParam("id") int plotID, PlantDTO plantDTO) {
         UserDTO user = accountService.verifyToken(token);
         return Response.status(Response.Status.OK)
-                .entity(plotService.harvesPlot(plantDTO,user,plotID))
+                .entity(plotService.harvesPlant(plantDTO,user,plotID))
                 .build();
     }
 }

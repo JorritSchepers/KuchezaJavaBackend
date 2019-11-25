@@ -24,14 +24,19 @@ class InventoryServiceTest {
     }
 
     @Test
-    void lowerSaldoCallsLowerSalo(){
-        sut.lowerSaldo(TESTAMOUNT,user);
-        Mockito.verify(inventoryDAO, Mockito.times(1)).lowerSaldo(TESTAMOUNT,user);
-
+    void checkSaldoReturnsRightBoolean(){
+        Assertions.assertTrue(sut.checkSaldo(TESTAMOUNT,user));
     }
 
     @Test
-    void checkSaldoReturnsRightBoolean(){
-        Assertions.assertTrue(sut.checkSaldo(TESTAMOUNT,user));
+    void lowerSaldoCallsLowerSalo(){
+        sut.lowerSaldo(TESTAMOUNT,user);
+        Mockito.verify(inventoryDAO, Mockito.times(1)).lowerSaldo(TESTAMOUNT,user);
+    }
+
+    @Test
+    void increaseSaldoCallsIncreaseSaldo(){
+        sut.increaseSaldo(TESTAMOUNT,user);
+        Mockito.verify(inventoryDAO,Mockito.times(1)).increaseSaldo(TESTAMOUNT,user);
     }
 }

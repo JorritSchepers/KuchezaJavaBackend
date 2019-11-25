@@ -1,6 +1,7 @@
 package nl.han.oose.sapporo.service;
 
 import nl.han.oose.sapporo.dto.AllPlantDTO;
+import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.persistence.IPlantDAO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,10 +11,14 @@ class PlantServiceTest {
     private PlantServiceImp sut = new PlantServiceImp();
     private IPlantDAO plantDAO;
     private AllPlantDTO allPlantDTO = new AllPlantDTO(null);
+    private PlantDTO grownPlant = new PlantDTO();
+    private PlantDTO notGrownPlant = new PlantDTO();
 
     PlantServiceTest() {
         plantDAO = Mockito.mock(IPlantDAO.class);
         Mockito.when(plantDAO.getAllPlants()).thenReturn(allPlantDTO);
+        Mockito.when(plantDAO.checkIfPlantFullGrown(grownPlant)).thenReturn(true);
+        Mockito.when(plantDAO.checkIfPlantFullGrown(notGrownPlant)).thenReturn(false);
         sut.setPlantDAO(plantDAO);
     }
 
@@ -26,5 +31,17 @@ class PlantServiceTest {
     @Test
     void getAllPlantsReturnsRightGetAllPlants() {
         Assertions.assertEquals(allPlantDTO, sut.getAllPlants());
+    }
+
+    @Test
+    void plantFullGrownCallscheckIfPlantFullGrown() {
+        sut.plantFullGrown(grownPlant);
+        Mockito.verify(plantDAO, Mockito.times(1)).checkIfPlantFullGrown(grownPlant);
+    }
+
+    @Test
+    void plantFullGrownReturnsRightValue() {
+        Assertions.assertTrue(sut.plantFullGrown(grownPlant));
+        Assertions.assertFalse(sut.plantFullGrown(notGrownPlant));
     }
 }

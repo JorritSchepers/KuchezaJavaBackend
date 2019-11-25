@@ -1,6 +1,5 @@
 package nl.han.oose.sapporo.resource.exceptionmapper;
 
-import nl.han.oose.sapporo.persistence.exception.AccountAlreadyExistsException;
 import nl.han.oose.sapporo.service.exception.UserAlreadyLoggedOutException;
 
 import javax.ws.rs.core.Response;

@@ -40,16 +40,13 @@ public class PlotServiceImp implements IPlotService {
         return null;
     }
 
-    //TODO Implement methods that are called, return plot that is harvested!
     @Override
-    public PlotDTO harvesPlot(PlantDTO plantDTO,UserDTO user, int plotID) {
-        if (plantService.plantFullGrown(plantDTO)){
+    public PlotDTO harvesPlant(PlantDTO plantDTO, UserDTO user, int plotID) {
+        if (plantService.plantFullGrown(plantDTO)) {
             plotDAO.removeObjectsFromPlot(plotID);
-            inventoryService.increaseSaldo(plantDTO.getProfit(),user);
+            inventoryService.increaseSaldo(plantDTO.getProfit(), user);
             return plotDAO.getPlot(plotID);
-        } else  {
-            System.out.println("plant is niet gegroeid");
-            throw new PlantNotGrownException();
         }
+        return null;
     }
 }
