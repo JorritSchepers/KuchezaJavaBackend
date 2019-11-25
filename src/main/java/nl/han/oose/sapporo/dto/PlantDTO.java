@@ -28,4 +28,12 @@ public class PlantDTO {
     public int getId() {
         return id;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public float getProfit() {
+        return profit;
+    }
 }
