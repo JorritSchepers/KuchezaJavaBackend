@@ -4,8 +4,9 @@ import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.PersistenceException;
+import nl.han.oose.sapporo.persistence.exception.PlotHasNotPlantException;
 import nl.han.oose.sapporo.persistence.exception.PlotIsOccupiedException;
-import nl.han.oose.sapporo.persistence.exception.plotDoesNotExistException;
+import nl.han.oose.sapporo.persistence.exception.PlotDoesNotExistException;
 
 
 import javax.inject.Inject;
@@ -43,7 +44,7 @@ public class PlotDAOImp implements IPlotDAO {
             PlotDTO plotDTO = null;
 
             if (!resultSet.next()){
-                throw new plotDoesNotExistException();
+                throw new PlotDoesNotExistException();
             }
             while (resultSet.next()) {
                 int iD = resultSet.getInt("plotID");
@@ -98,6 +99,27 @@ public class PlotDAOImp implements IPlotDAO {
             PreparedStatement statement = connection.prepareStatement("update plot set animalId = null, waterManagerId = null, plantID = null where plotID = ?");
             statement.setInt(1, plotID);
             statement.execute();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public boolean plotHasPlant(int plotID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select plantID from plot where plotID = ?");
+            statement.setInt(1, plotID);
+            ResultSet resultSet = statement.executeQuery();
+
+            int plantID = 0;
+
+            while (resultSet.next()) {
+                plantID = resultSet.getInt("plantID");
+            }
+            if(plantID == 0){
+                throw new PlotHasNotPlantException();
+            }else return true;
+
         } catch (SQLException e) {
             throw new PersistenceException();
         }
