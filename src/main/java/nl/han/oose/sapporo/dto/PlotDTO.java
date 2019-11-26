@@ -1,7 +1,5 @@
 package nl.han.oose.sapporo.dto;
 
-import java.util.Objects;
-
 public class PlotDTO {
     private int ID;
     private int x;
@@ -23,7 +21,7 @@ public class PlotDTO {
         this.purchased = purchased;
     }
 
-    public PlotDTO(int ID, int x, int y, int animalId, int waterManagerId, int plantID, float price) {
+    public PlotDTO(int ID, int x, int y, int animalId, int waterManagerId, int plantID, float price, boolean purchased) {
         this.ID = ID;
         this.x = x;
         this.y = y;
@@ -31,6 +29,7 @@ public class PlotDTO {
         this.waterManagerId = waterManagerId;
         this.plantID = plantID;
         this.price = price;
+        this.purchased = purchased;
     }
 
     public PlotDTO(int iD, int x, int y, float price, boolean purchased) {

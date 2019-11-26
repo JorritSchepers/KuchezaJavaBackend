@@ -38,9 +38,8 @@ class FarmDAOImpTest extends DAOTest {
         });
     }
 
-    //TODO
-//    @Test
-//    void createFarmAddsFarmToDatabase() {
-//        sut.createFarm(farmDTO,userWithoutFarm);
-//    }
+    @Test
+    void createFarmAddsFarmToDatabase() {
+        sut.createFarm(farmDTO,userWithoutFarm);
+    }
 }

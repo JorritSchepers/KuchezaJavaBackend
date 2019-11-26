@@ -20,6 +20,7 @@ public class FarmDAOImp implements IFarmDAO {
     private IPlotDAO plotDAO;
 
     @Inject
+    @Override
     public void setPlotDAO(IPlotDAO plotDAO) {
         this.plotDAO = plotDAO;
     }
