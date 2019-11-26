@@ -82,7 +82,11 @@ public class PlotDAOImp implements IPlotDAO {
                 plotDTO = new PlotDTO(iD, x, y, price);
             }
 
-            return plotDTO;
+            if(plotDTO == null) {
+                throw new PlotDoesNotExistException();
+            } else {
+                return plotDTO;
+            }
         } catch (SQLException e) {
             throw new PersistenceException();
         }

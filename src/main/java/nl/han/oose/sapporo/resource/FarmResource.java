@@ -30,7 +30,7 @@ public class FarmResource {
     @Path("/new")
     @Produces(MediaType.APPLICATION_JSON)
     public Response addNewFarm(@QueryParam("token") String token){
-        UserDTO user = new UserDTO();
+        UserDTO user = accountService.verifyToken(token);
         return Response.status(STATUS_CODE_CREATED)
                 .entity(farmService.addFarm(user))
                 .build();
