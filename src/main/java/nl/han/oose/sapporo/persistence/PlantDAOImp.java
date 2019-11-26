@@ -37,7 +37,7 @@ public class PlantDAOImp implements IPlantDAO{
     public boolean checkIfPlantFullGrown(PlantDTO plantDTO) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select growingTime from plant where plantID = ?");
-            statement.setInt(1,plantDTO.getId());
+            statement.setInt(1,plantDTO.getID());
             ResultSet resultSet = statement.executeQuery();
             int neededGrowingTime = 0;
             while (resultSet.next()) {
