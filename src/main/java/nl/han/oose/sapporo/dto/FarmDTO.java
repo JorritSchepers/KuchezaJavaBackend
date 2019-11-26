@@ -18,8 +18,6 @@ public class FarmDTO {
 
     public int getFarmID() { return farmID;}
 
-    public int getOwnerID() { return ownerID;}
-
     public List<PlotDTO> getPlots(){
         return plots;
     }
@@ -30,10 +28,6 @@ public class FarmDTO {
 
     public void setFarmID(int farmID) {
         this.farmID = farmID;
-    }
-
-    public void setOwnerID(int ownerID) {
-        this.ownerID = ownerID;
     }
 
     @Override

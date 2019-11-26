@@ -12,7 +12,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/Farm")
+@Path("/farm")
 public class FarmResource {
     private IFarmService farmService;
     private IAccountService accountService;
@@ -29,20 +29,21 @@ public class FarmResource {
     }
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getFarm(@QueryParam("token") String token) {
+        UserDTO user = accountService.verifyToken(token);
+        return Response.status(Response.Status.OK)
+                .entity(farmService.getFarm(user))
+                .build();
+    }
+
+    @GET
     @Path("/new")
     @Produces(MediaType.APPLICATION_JSON)
     public Response createNewFarm(@QueryParam("token") String token) {
         UserDTO user = accountService.verifyToken(token);
         return Response.status(STATUS_CODE_CREATED)
                 .entity(farmService.createFarm(user))
-                .build();
-    }
-
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getFarm(@QueryParam("token") String token) {
-        UserDTO user = accountService.verifyToken(token);
-        return Response.status(Response.Status.OK)
-                .entity(farmService.getFarm(user))
                 .build();
     }
 }

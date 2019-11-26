@@ -157,7 +157,7 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public ArrayList<PlotDTO> getFarmPlots(int farmID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT plotID,x,y,price,animalID,waterManagerId,plantID FROM plot where farmID = ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT plotID,x,y,price,animalID,waterManagerID,plantID FROM plot where farmID = ?");
             statement.setInt(1, farmID);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<PlotDTO> plots = new ArrayList<>();
@@ -166,11 +166,11 @@ public class PlotDAOImp implements IPlotDAO {
                 int ID = resultSet.getInt("plotID");
                 int x = resultSet.getInt("x");
                 int y = resultSet.getInt("y");
-                int animalId = resultSet.getInt("animalId");
-                int waterManagerId = resultSet.getInt("waterManagerId");
+                int animalID = resultSet.getInt("animalID");
+                int waterManagerID = resultSet.getInt("waterManagerID");
                 int plantID = resultSet.getInt("plantID");
                 float price = resultSet.getFloat("price");
-                PlotDTO plot = new PlotDTO(ID, x, y, animalId, waterManagerId, plantID, price);
+                PlotDTO plot = new PlotDTO(ID, x, y, animalID, waterManagerID, plantID, price);
                 plots.add(plot);
             }
             return plots;

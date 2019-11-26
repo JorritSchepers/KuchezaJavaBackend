@@ -15,8 +15,6 @@ public class FarmServiceImp implements IFarmService {
     IFarmDAO farmDAO;
     IPlotService plotService;
 
-
-
     @Inject
     public void setPlotService(IPlotService plotService) {
         this.plotService = plotService;
