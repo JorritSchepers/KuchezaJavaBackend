@@ -3,18 +3,18 @@ package nl.han.oose.sapporo.dto;
 import java.util.Objects;
 
 public class UserDTO {
-    private int id;
+    private int ID;
     private String name;
     private String password;
     private String email;
 
     public UserDTO() {}
 
-    public UserDTO(int id, String name, String password, String email) {
+    public UserDTO(int ID, String name, String password, String email) {
         this.name = name;
         this.password = password;
         this.email = email;
-        this.id = id;
+        this.ID = ID;
     }
 
     public UserDTO(String name, String password, String email) {
@@ -35,8 +35,8 @@ public class UserDTO {
         return email;
     }
 
-    public int getId() {
-        return id;
+    public int getID() {
+        return ID;
     }
 
     @Override
@@ -44,7 +44,7 @@ public class UserDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserDTO userDTO = (UserDTO) o;
-        return id == userDTO.id &&
+        return ID == userDTO.ID &&
                 Objects.equals(name, userDTO.name) &&
                 Objects.equals(password, userDTO.password) &&
                 Objects.equals(email, userDTO.email);
@@ -52,6 +52,6 @@ public class UserDTO {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, password, email);
+        return Objects.hash(ID, name, password, email);
     }
 }

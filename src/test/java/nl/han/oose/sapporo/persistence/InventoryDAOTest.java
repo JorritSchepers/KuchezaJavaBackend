@@ -48,18 +48,18 @@ class InventoryDAOTest extends DAOTest {
     @Test
     void lowerSaldoLowersSaldoWithRightAmount(){
         float removedSaldo = 10;
-        float oldSaldo = getSaldoFromUser(userDTO.getId());
+        float oldSaldo = getSaldoFromUser(userDTO.getID());
         sut.lowerSaldo(removedSaldo, userDTO);
-        float newSaldo = getSaldoFromUser(userDTO.getId());
+        float newSaldo = getSaldoFromUser(userDTO.getID());
         Assertions.assertEquals((oldSaldo-removedSaldo),newSaldo);
     }
 
     @Test
     void increaseSaldoIncreasesSaldoWithRightAmount(){
         float extraSaldo = 10;
-        float oldSaldo = getSaldoFromUser(userDTO.getId());
+        float oldSaldo = getSaldoFromUser(userDTO.getID());
         sut.increaseSaldo(extraSaldo, userDTO);
-        float newSaldo = getSaldoFromUser(userDTO.getId());
+        float newSaldo = getSaldoFromUser(userDTO.getID());
         Assertions.assertEquals((oldSaldo+extraSaldo),newSaldo);
     }
 }

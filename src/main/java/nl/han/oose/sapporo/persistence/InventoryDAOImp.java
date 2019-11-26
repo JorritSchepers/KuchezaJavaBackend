@@ -27,7 +27,7 @@ public class InventoryDAOImp implements IInventoryDAO {
             float moneyInInventory = 0;
             PreparedStatement statement = connection.prepareStatement
                     ("SELECT money FROM inventory where userID = ?");
-            statement.setInt(1,userDTO.getId());
+            statement.setInt(1,userDTO.getID());
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
@@ -50,7 +50,7 @@ public class InventoryDAOImp implements IInventoryDAO {
             PreparedStatement statement = connection.prepareStatement
                     ("update inventory set money = money-? where userID = ?");
             statement.setFloat(1,amount);
-            statement.setInt(2,userDTO.getId());
+            statement.setInt(2,userDTO.getID());
             statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();
@@ -63,7 +63,7 @@ public class InventoryDAOImp implements IInventoryDAO {
             PreparedStatement statement = connection.prepareStatement
                     ("update inventory set money = money+? where userID = ?");
             statement.setFloat(1,amount);
-            statement.setInt(2,userDTO.getId());
+            statement.setInt(2,userDTO.getID());
             statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();

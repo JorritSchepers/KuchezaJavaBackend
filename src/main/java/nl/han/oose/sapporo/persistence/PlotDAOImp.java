@@ -28,7 +28,7 @@ public class PlotDAOImp implements IPlotDAO {
     public void addPlantToPlot(PlantDTO plantDTO, int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("update plot set plantID = ? where plotID = ? ");
-            statement.setInt(1, plantDTO.getId());
+            statement.setInt(1, plantDTO.getID());
             statement.setInt(2, plotID);
             statement.execute();
         } catch (SQLException e) {

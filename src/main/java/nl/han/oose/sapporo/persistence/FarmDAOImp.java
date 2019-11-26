@@ -34,7 +34,7 @@ public class FarmDAOImp implements IFarmDAO {
     public FarmDTO getFarm(UserDTO user) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * from farm where ownerID = ?");
-            statement.setInt(1, user.getId());
+            statement.setInt(1, user.getID());
 
             FarmDTO farm = null;
             ResultSet resultSet = statement.executeQuery();
@@ -53,7 +53,7 @@ public class FarmDAOImp implements IFarmDAO {
     public void checkIfUserHasAFarm(UserDTO userDTO) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM farm WHERE ownerID = ?");
-            statement.setInt(1, userDTO.getId());
+            statement.setInt(1, userDTO.getID());
             ResultSet resultSet = statement.executeQuery();
 
             if(resultSet.next()) {
@@ -68,7 +68,7 @@ public class FarmDAOImp implements IFarmDAO {
     public FarmDTO createFarm(FarmDTO farmDTO, UserDTO userDTO){
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO farm (ownerID) VALUES (?)");
-            statement.setInt(1, userDTO.getId());
+            statement.setInt(1, userDTO.getID());
             statement.execute();
 
             getFarmID(connection,farmDTO,userDTO);
@@ -84,7 +84,7 @@ public class FarmDAOImp implements IFarmDAO {
     private void getFarmID(Connection connection, FarmDTO farmDTO, UserDTO userDTO) {
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT farmID FROM farm WHERE ownerID = ?");
-            statement.setInt(1, userDTO.getId());
+            statement.setInt(1, userDTO.getID());
             ResultSet resultSet = statement.executeQuery();
 
             if(resultSet.next()) {

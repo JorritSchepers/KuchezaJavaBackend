@@ -70,7 +70,7 @@ class PlotDAOTest extends DAOTest {
     @Test
     void checkIfAddPlantToPlotAddsPlant() {
         sut.addPlantToPlot(plant, PLOTID);
-        Assertions.assertEquals(getPlantIDFromPlot(plant.getId()), getPlantIDFromPlot(PLOTID));
+        Assertions.assertEquals(getPlantIDFromPlot(plant.getID()), getPlantIDFromPlot(PLOTID));
     }
 
     @Test
