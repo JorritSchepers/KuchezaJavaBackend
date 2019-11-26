@@ -2,12 +2,12 @@ package nl.han.oose.sapporo.service;
 
 import nl.han.oose.sapporo.dto.FarmDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
-import nl.han.oose.sapporo.persistence.IfarmDAO;
+import nl.han.oose.sapporo.persistence.IFarmDAO;
 
 import javax.inject.Inject;
 
 public class FarmService implements IFarmService {
-    IfarmDAO farmDAO;
+    IFarmDAO farmDAO;
     IPlotService plotService;
 
     @Inject
@@ -16,7 +16,7 @@ public class FarmService implements IFarmService {
     }
 
     @Inject
-    public void setIfarmDAO(IfarmDAO ifarmDAO) {
+    public void setIfarmDAO(IFarmDAO ifarmDAO) {
         this.farmDAO = ifarmDAO;
     }
 
