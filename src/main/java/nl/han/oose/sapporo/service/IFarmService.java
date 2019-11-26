@@ -12,4 +12,6 @@ public interface IFarmService {
     void setFarm(IFarmDAO farmDAO);
 
     FarmDTO createFarm(UserDTO userDTO);
+
+    FarmDTO getFarm(UserDTO user);
 }

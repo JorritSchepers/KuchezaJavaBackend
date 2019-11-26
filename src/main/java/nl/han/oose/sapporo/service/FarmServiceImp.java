@@ -13,11 +13,24 @@ public class FarmServiceImp implements IFarmService {
     private static final int FARM_SIZE = 10;
     private static final float PLOT_PRICE = 10;
     IFarmDAO farmDAO;
+    IPlotService plotService;
+
+    @Inject
+    public void setPlotService(IPlotService plotService) {
+        this.plotService = plotService;
+    }
 
     @Inject
     @Override
     public void setFarm(IFarmDAO farmDAO){
         this.farmDAO = farmDAO;
+    }
+
+    @Override
+    public FarmDTO getFarm(UserDTO user) {
+        FarmDTO farm = farmDAO.getFarm(user);
+        farm.setPlots(plotService.getFarmPlots(farm.getFarmID()));
+        return farm;
     }
 
     @Override
