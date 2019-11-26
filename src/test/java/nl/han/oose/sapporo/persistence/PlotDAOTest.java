@@ -101,4 +101,11 @@ class PlotDAOTest extends DAOTest {
             sut.plotHasPlant(PLOTID);
         });
     }
+
+    @Test
+    void removeObjectsFromPlotRemovesObject(){
+        Assertions.assertFalse(plotIsEmpty(FULLPLOTID));
+        sut.removeObjectsFromPlot(FULLPLOTID);
+        Assertions.assertTrue(plotIsEmpty(FULLPLOTID));
+    }
 }

@@ -4,7 +4,6 @@ import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IFarmService;
 
-import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -21,7 +20,7 @@ public class FarmResource {
     }
 
     @Inject
-    public void setAccountService(IAccountService accountService){
+    public void setAccountService(IAccountService accountService) {
         this.accountService = accountService;
     }
 
@@ -32,6 +31,14 @@ public class FarmResource {
         UserDTO user = accountService.verifyToken(token);
         return Response.status(STATUS_CODE_CREATED)
                 .entity(farmService.createFarm(user))
+                .build();
+    }
+}
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getFarm(@QueryParam("token") String token) {
+        UserDTO user = accountService.verifyToken(token);
+        return Response.status(Response.Status.OK)
+                .entity(farmService.getFarm(user))
                 .build();
     }
 }

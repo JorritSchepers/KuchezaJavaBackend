@@ -81,6 +81,12 @@ VALUES
 ('Thomi','DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937','Geitenzijncool@hotmail.com'),
 ('TestUser','wachtwoord','oose.sapporo@gmail.com');
 
+INSERT INTO farm (ownerID)
+VALUES
+(1),
+(2),
+(3);
+
 Insert into inventory Values
 (1,2000),
 (2,2000),

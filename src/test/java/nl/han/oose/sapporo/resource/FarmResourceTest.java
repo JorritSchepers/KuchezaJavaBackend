@@ -13,8 +13,7 @@ import org.junit.jupiter.api.Test;
 import javax.ws.rs.core.Response;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class FarmResourceTest {
     private FarmResource sut;
@@ -36,6 +35,7 @@ class FarmResourceTest {
 
         when(farmService.createFarm(userDTO)).thenReturn(farmDTO);
         when(accountService.verifyToken(tokenDTO.getToken())).thenReturn(userDTO);
+        when(farmService.getFarm(userDTO)).thenReturn(farmDTO);
 
         sut.setAccountService(accountService);
         sut.setFarmService(farmService);
@@ -49,5 +49,17 @@ class FarmResourceTest {
         Response result = sut.createNewFarm(tokenDTO.getToken());
 
         assertEquals(expected.toString(),result.toString());
+    }
+
+    @Test
+    void getFarmCallsVerifyToken(){
+        sut.getFarm(tokenDTO.getToken());
+        verify(accountService, Mockito.times(1)).verifyToken(tokenDTO.getToken());
+    }
+
+    @Test
+    void getFarmCallsGetFarm(){
+        sut.getFarm(tokenDTO.getToken());
+        verify(farmService, Mockito.times(1)).getFarm(user);
     }
 }

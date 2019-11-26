@@ -4,6 +4,8 @@ import nl.han.oose.sapporo.dto.FarmDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 
+import java.util.ArrayList;
+
 public interface IPlotDAO {
     void addPlantToPlot(PlantDTO plantDTO, int plotID);
 
@@ -18,4 +20,6 @@ public interface IPlotDAO {
     void createPlot(int x, int y);
 
     void insertPlots(FarmDTO farmDTO);
+
+    ArrayList<PlotDTO> getFarmPlots(int farmID);
 }

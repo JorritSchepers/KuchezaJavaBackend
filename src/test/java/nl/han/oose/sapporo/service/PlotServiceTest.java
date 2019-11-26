@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.ArrayList;
+
 class PlotServiceTest {
     private PlotServiceImp sut = new PlotServiceImp();
     private IPlantService plantService = Mockito.mock(IPlantService.class);
@@ -16,11 +18,12 @@ class PlotServiceTest {
     private IInventoryService inventoryService = Mockito.mock(IInventoryService.class);
     private final int PLOTID = 1;
     private final float PRICE = 5;
+    private final int FARMID =1;
     private PlantDTO plant = new PlantDTO(1,"Cabbage",5,10,20,PRICE,16);
     private PlantDTO notGrownPlant = new PlantDTO(1,"Cabbage",5,100,20,PRICE,5);
     private UserDTO user = new UserDTO(1,"PatrickSt3r","DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937","Patrick@Ster.com");
     private PlotDTO plot = new PlotDTO(1,1,1,1,0,0,0);
-
+    private ArrayList<PlotDTO> plots= new ArrayList<>();
 
     PlotServiceTest(){
         sut.setPlotDAO(plotDAO);
@@ -32,6 +35,7 @@ class PlotServiceTest {
         Mockito.when(plantService.plantFullGrown(plant)).thenReturn(true);
         Mockito.when(plantService.plantFullGrown(notGrownPlant)).thenReturn(false);
         Mockito.when(plotDAO.plotHasPlant(PLOTID)).thenReturn(true);
+        Mockito.when(plotDAO.getFarmPlots(FARMID)).thenReturn(plots);
     }
 
     @Test
@@ -103,5 +107,16 @@ class PlotServiceTest {
         Assertions.assertDoesNotThrow(() -> {
             sut.harvesPlant(plant,user,PLOTID);
         });
+    }
+
+    @Test
+    void getFarmPlotsCallsGetFarmPlots(){
+        sut.getFarmPlots(FARMID);
+        Mockito.verify(plotDAO, Mockito.times(1)).getFarmPlots(PLOTID);
+    }
+
+    @Test
+    void getFarmPlotsReturnsPlots(){
+        Assertions.assertEquals(plots,sut.getFarmPlots(FARMID));
     }
 }

@@ -8,6 +8,7 @@ import nl.han.oose.sapporo.persistence.exception.PlantNotGrownException;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
+import java.util.ArrayList;
 
 @Default
 public class PlotServiceImp implements IPlotService {
@@ -48,5 +49,10 @@ public class PlotServiceImp implements IPlotService {
             return plotDAO.getPlot(plotID);
         }
         return null;
+    }
+
+    @Override
+    public ArrayList<PlotDTO> getFarmPlots(int farmID) {
+        return plotDAO.getFarmPlots(farmID);
     }
 }
