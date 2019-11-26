@@ -1,11 +1,11 @@
 package nl.han.oose.sapporo.resource;
 
 import nl.han.oose.sapporo.dto.AllPlantDTO;
+import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IPlantService;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 
 public class PlantResourceTest {
@@ -14,11 +14,12 @@ public class PlantResourceTest {
     private IAccountService accountService = Mockito.mock(IAccountService.class);
     private IPlantService plantService = Mockito.mock(IPlantService.class);
     private AllPlantDTO allpants = new AllPlantDTO(null);
+    private UserDTO user = new UserDTO();
 
-    @BeforeEach
-    public void setup() {
+    public PlantResourceTest() {
         sut.setAccountService(accountService);
         sut.setPlantService(plantService);
+        Mockito.when(accountService.verifyToken(token)).thenReturn(user);
         Mockito.when(plantService.getAllPlants()).thenReturn(allpants);
     }
 

@@ -83,9 +83,7 @@ VALUES
 
 INSERT INTO farm (ownerID)
 VALUES
-(1),
-(2),
-(3);
+(1);
 
 Insert into inventory Values
 (1,2000),
@@ -98,11 +96,6 @@ VALUES
 (10,5,20,7.5,'Tomato'),
 (2.5,50,40,10,'Banana');
 
-INSERT INTO farm (ownerID)
-VALUES
-(1);
-
-/*Insert plot*/
 INSERT INTO plot (x,y,price,purchased, farmID)
 VALUES
 (1,1,10,1,1),

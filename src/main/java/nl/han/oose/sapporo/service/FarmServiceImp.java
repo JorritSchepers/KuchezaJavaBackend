@@ -15,6 +15,8 @@ public class FarmServiceImp implements IFarmService {
     IFarmDAO farmDAO;
     IPlotService plotService;
 
+
+
     @Inject
     public void setPlotService(IPlotService plotService) {
         this.plotService = plotService;
@@ -22,7 +24,7 @@ public class FarmServiceImp implements IFarmService {
 
     @Inject
     @Override
-    public void setFarm(IFarmDAO farmDAO){
+    public void setFarmDAO(IFarmDAO farmDAO){
         this.farmDAO = farmDAO;
     }
 

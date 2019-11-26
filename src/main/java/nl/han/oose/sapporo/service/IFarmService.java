@@ -9,7 +9,7 @@ import javax.inject.Inject;
 
 public interface IFarmService {
     @Inject
-    void setFarm(IFarmDAO farmDAO);
+    void setFarmDAO(IFarmDAO farmDAO);
 
     FarmDTO createFarm(UserDTO userDTO);
 

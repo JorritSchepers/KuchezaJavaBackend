@@ -10,7 +10,7 @@ import org.mockito.Mockito;
 import java.util.ArrayList;
 
 public class FarmServiceTest {
-    FarmService sut = new FarmService();
+    FarmServiceImp sut = new FarmServiceImp();
     IFarmDAO farmDAO;
     IPlotService plotService;
     UserDTO user = new UserDTO(1,"test","testwachtwoord","Test@gmail.com");
@@ -20,7 +20,7 @@ public class FarmServiceTest {
         plotService = Mockito.mock(IPlotService.class);
         Mockito.when(farmDAO.getFarm(user)).thenReturn(new FarmDTO(1,1));
         Mockito.when(plotService.getFarmPlots(1)).thenReturn(new ArrayList<PlotDTO>());
-        sut.setIfarmDAO(farmDAO);
+        sut.setFarmDAO(farmDAO);
         sut.setPlotService(plotService);
     }
 

@@ -1,21 +1,19 @@
 package nl.han.oose.sapporo.persistence;
 
 import nl.han.oose.sapporo.dto.PlantDTO;
-import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.PlotDoesNotExistException;
 import nl.han.oose.sapporo.persistence.exception.PlotHasNotPlantException;
 import nl.han.oose.sapporo.persistence.exception.PlotIsOccupiedException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.sql.*;
 
 class PlotDAOTest extends DAOTest {
     private PlotDAOImp sut = new PlotDAOImp();
     private final int PLOTID = 1;
-    private final int FULLPLOTID = 3;
+    private final int FULLPLOTID = 2;
     private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1, 1);
 
     @Override

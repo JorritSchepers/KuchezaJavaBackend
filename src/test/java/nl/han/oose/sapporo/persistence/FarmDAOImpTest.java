@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class FarmDAOImpTest extends DAOTest {
-    private IFarmDAO sut = new FarmDAOImp();
+    private FarmDAOImp sut = new FarmDAOImp();
     private UserDTO userWithFarm = new UserDTO(1,"PatrickSt3r","DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937","Patrick@Ster.com");
     private UserDTO userWithoutFarm = new UserDTO(2,"Sapporo","DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937","Patrick@Ster.com");
     private FarmDTO farmDTO;
@@ -38,8 +38,9 @@ class FarmDAOImpTest extends DAOTest {
         });
     }
 
-    @Test
-    void createFarmAddsFarmToDatabase() {
-        sut.createFarm(farmDTO,userWithoutFarm);
-    }
+    //TODO
+//    @Test
+//    void createFarmAddsFarmToDatabase() {
+//        sut.createFarm(farmDTO,userWithoutFarm);
+//    }
 }

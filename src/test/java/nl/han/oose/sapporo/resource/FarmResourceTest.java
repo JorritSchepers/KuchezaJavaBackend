@@ -54,12 +54,12 @@ class FarmResourceTest {
     @Test
     void getFarmCallsVerifyToken(){
         sut.getFarm(tokenDTO.getToken());
-        verify(accountService, Mockito.times(1)).verifyToken(tokenDTO.getToken());
+        verify(accountService, times(1)).verifyToken(tokenDTO.getToken());
     }
 
     @Test
     void getFarmCallsGetFarm(){
         sut.getFarm(tokenDTO.getToken());
-        verify(farmService, Mockito.times(1)).getFarm(user);
+        verify(farmService, times(1)).getFarm(userDTO);
     }
 }

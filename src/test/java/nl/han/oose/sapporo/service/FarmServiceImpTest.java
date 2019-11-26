@@ -26,7 +26,7 @@ class FarmServiceImpTest {
         farmDTO = new FarmDTO(5,3);
 
         farmDAO = mock(FarmDAOImp.class);
-        sut.setFarm(farmDAO);
+        sut.setFarmDAO(farmDAO);
         when(farmDAO.createFarm(anyObject(),anyObject())).thenReturn(farmDTO);
     }
 
