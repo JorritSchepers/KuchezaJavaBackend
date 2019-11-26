@@ -7,6 +7,7 @@ import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IPlotService;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 
 public class PlotResourceTest {
@@ -18,7 +19,8 @@ public class PlotResourceTest {
     private UserDTO user = new UserDTO();
     private PlotDTO plot = new PlotDTO(1,1,1,1,0,0,0);
 
-    public PlotResourceTest(){
+    @BeforeEach
+    public void setup(){
         sut.setAccountService(accountService);
         sut.setPlotService(plotService);
         Mockito.when(accountService.verifyToken(token)).thenReturn(user);

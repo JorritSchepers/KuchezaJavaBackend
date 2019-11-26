@@ -5,6 +5,7 @@ import nl.han.oose.sapporo.dto.TokenDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.service.IAccountService;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -19,17 +20,13 @@ class AccountResourceTest {
     private AccountResource sut = new AccountResource();
     private IAccountService accountService;
 
-    AccountResourceTest() {
+    @BeforeEach
+    void setup() {
         accountService = Mockito.mock(IAccountService.class);
         sut.setAccountService(accountService);
 
         Mockito.when(accountService.registerUser(userDTO)).thenReturn(token);
         Mockito.when(accountService.loginUser(loginDTO)).thenReturn(token);
-    }
-
-    @Test
-    void buildTest() {
-        assertEquals(true, true);
     }
 
     @Test

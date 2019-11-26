@@ -14,7 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class FarmDAOImp implements IFarmDAO {
     private ConnectionFactoryImp connectionFactory;
@@ -26,7 +25,8 @@ public class FarmDAOImp implements IFarmDAO {
     }
 
     @Inject
-    public void setConnectionFactoryImp(ConnectionFactoryImp connectionFactory){
+    @Override
+    public void setConnectionFactory(ConnectionFactoryImp connectionFactory){
         this.connectionFactory = connectionFactory;
     }
 

@@ -1,7 +1,7 @@
 package nl.han.oose.sapporo.dto;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class FarmDTO {
 
@@ -34,5 +34,20 @@ public class FarmDTO {
 
     public void setOwnerID(int ownerID) {
         this.ownerID = ownerID;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FarmDTO farmDTO = (FarmDTO) o;
+        return farmID == farmDTO.farmID &&
+                ownerID == farmDTO.ownerID &&
+                Objects.equals(plots, farmDTO.plots);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(farmID, ownerID, plots);
     }
 }

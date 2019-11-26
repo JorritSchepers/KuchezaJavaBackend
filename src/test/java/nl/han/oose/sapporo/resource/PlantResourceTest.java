@@ -5,6 +5,7 @@ import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IPlantService;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 
 public class PlantResourceTest {
@@ -14,7 +15,8 @@ public class PlantResourceTest {
     private IPlantService plantService = Mockito.mock(IPlantService.class);
     private AllPlantDTO allpants = new AllPlantDTO(null);
 
-    public PlantResourceTest() {
+    @BeforeEach
+    public void setup() {
         sut.setAccountService(accountService);
         sut.setPlantService(plantService);
         Mockito.when(plantService.getAllPlants()).thenReturn(allpants);

@@ -1,111 +1,78 @@
-create table animal
+CREATE TABLE user
 (
-    animalId int auto_increment
-        primary key,
-    waterUsage int null,
-    profit float null,
-    purchasePrice float not null,
-    name varchar(45) not null
+    userID INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(45) NOT NULL,
+    password CHAR(70) NOT NULL,
+    email VARCHAR(45) UNIQUE NOT NULL
 );
 
-create table plant
-(
-    plantID int auto_increment
-        primary key,
-    waterUsage int not null,
-    growingTime int not null,
-    profit float not null,
-    purchasePrice float not null,
-    name varchar(45) not null
+CREATE TABLE inventory (
+                           userID INT,
+                           money INT NOT NULL,
+                           PRIMARY KEY (userID),
+
+                           FOREIGN KEY (userID)
+                               REFERENCES user(userID)
+                               ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-create table user
-(
-    userID int auto_increment
-        primary key,
-    name varchar(45) not null,
-    password char(70) not null,
-    email varchar(45) not null,
-    constraint email
-        unique (email)
+CREATE TABLE farm (
+                      farmID INT PRIMARY KEY AUTO_INCREMENT,
+                      ownerID INT UNIQUE NOT NULL,
+
+                      FOREIGN KEY (ownerID)
+                          REFERENCES user(userID)
+                          ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-create table farm
-(
-    farmID int auto_increment
-        primary key,
-    ownerID int not null,
-    constraint farm_ibfk_1
-        foreign key (ownerID) references user (userID)
-            on update cascade on delete cascade
+CREATE TABLE plant(
+                      plantID INT PRIMARY KEY AUTO_INCREMENT,
+                      waterUsage INT NOT NULL,
+                      growingTime INT NOT NULL,
+                      profit INT NOT NULL,
+                      purchasePrice INT NOT NULL,
+                      name VARCHAR(45) NOT NULL
 );
 
-create index ownerID
-    on farm (ownerID);
-
-create table inventory
-(
-    userID int not null,
-    money int not null,
-    primary key (userID, money),
-    constraint inventory_ibfk_1
-        foreign key (userID) references user (userID)
-            on update cascade on delete cascade
+CREATE TABLE waterManager(
+                             waterManagerId INT PRIMARY KEY AUTO_INCREMENT,
+                             waterYield INT NOT NULL,
+                             purchasePrice INT NOT NULL,
+                             name VARCHAR(45) NOT NULL
 );
 
-create table waterManager
-(
-    waterManagerId int auto_increment
-        primary key,
-    waterYield int null,
-    purchasePrice float not null,
-    name varchar(45) not null
+
+CREATE TABLE animal(
+                       animalId int PRIMARY KEY AUTO_INCREMENT,
+                       waterUsage int,
+                       profit float,
+                       purchasePrice float not null,
+                       name varchar(45) not null
 );
 
-create table plot
-(
-    plotID int auto_increment
-        primary key,
-    x int not null,
-    y int not null,
-    price float not null,
-    animalId int null,
-    waterManagerId int null,
-    plantID int null,
-    purchased bit null,
-    constraint plot_ibfk_1
-        foreign key (animalId) references animal (animalId)
-            on update cascade on delete cascade,
-    constraint plot_ibfk_2
-        foreign key (waterManagerId) references waterManager (waterManagerId)
-            on update cascade on delete cascade,
-    constraint plot_ibfk_3
-        foreign key (plantID) references plant (plantID)
-            on update cascade on delete cascade
-);
+CREATE TABLE plot (
+                      plotID int PRIMARY KEY AUTO_INCREMENT,
+                      farmID int not null,
+                      x int not null,
+                      y int not null,
+                      price float not null,
+                      animalId int null,
+                      waterManagerId int null,
+                      plantID int null,
+                      purchased bit,
 
-create index animalId
-    on plot (animalId);
-
-create index plantID
-    on plot (plantID);
-
-create index waterManagerId
-    on plot (waterManagerId);
-
-create table plotInFarm
-(
-    farmID int not null,
-    plotID int not null,
-    primary key (farmID, plotID),
-    constraint plotID
-        unique (plotID),
-    constraint plotinfarm_ibfk_1
-        foreign key (farmID) references farm (farmID)
-            on update cascade on delete cascade,
-    constraint plotinfarm_ibfk_2
-        foreign key (plotID) references plot (plotID)
-            on update cascade on delete cascade
+                      FOREIGN KEY (farmID)
+                          REFERENCES farm(farmID)
+                          ON UPDATE CASCADE ON DELETE CASCADE,
+                      FOREIGN KEY (animalId)
+                          REFERENCES animal(animalId)
+                          ON UPDATE CASCADE ON DELETE CASCADE,
+                      FOREIGN KEY (waterManagerId)
+                          REFERENCES waterManager(waterManagerId)
+                          ON UPDATE CASCADE ON DELETE CASCADE,
+                      FOREIGN KEY (plantID)
+                          REFERENCES plant(plantID)
+                          ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO user (name,password,email)
@@ -125,17 +92,15 @@ VALUES
 (10,5,20,7.5,'Tomato'),
 (2.5,50,40,10,'Banana');
 
-INSERT INTO plot (x,y,price,purchased)
+INSERT INTO farm (ownerID)
 VALUES
-(1,1,10,1),
-(1,2,10,1);
+(1);
 
-Insert INTO plot (x,y,price,purchased,plantID)
-VALUES (2,2,10,1,2);
+/*Insert plot*/
+INSERT INTO plot (x,y,price,purchased, farmID)
+VALUES
+(1,1,10,1,1),
+(1,2,10,1,1),
+(1,3,10,1,1);
 
 update plot set plantID = 1 where plotID =2;
-
-INSERT INTO plotInFarm (farmID,plotID)
-VALUES (1,1),
-       (1,2),
-       (1,3)

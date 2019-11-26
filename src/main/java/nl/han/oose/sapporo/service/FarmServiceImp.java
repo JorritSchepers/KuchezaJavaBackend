@@ -15,12 +15,15 @@ public class FarmServiceImp implements IFarmService {
     IFarmDAO farmDAO;
 
     @Inject
+    @Override
     public void setFarm(IFarmDAO farmDAO){
         this.farmDAO = farmDAO;
     }
 
     @Override
-    public FarmDTO addFarm(UserDTO userDTO) {
+    public FarmDTO createFarm(UserDTO userDTO) {
+        farmDAO.checkIfUserHasAFarm(userDTO);
+
         FarmDTO farmDTO = new FarmDTO();
         List<PlotDTO> plots = new ArrayList<PlotDTO>();
         for(int x = 0; x < FARM_SIZE; x++) {
@@ -35,7 +38,6 @@ public class FarmServiceImp implements IFarmService {
         }
         farmDTO.setPlots(plots);
 
-        farmDAO.checkIfUserHasAFarm(userDTO);
         return farmDAO.createFarm(farmDTO, userDTO);
     }
 }
