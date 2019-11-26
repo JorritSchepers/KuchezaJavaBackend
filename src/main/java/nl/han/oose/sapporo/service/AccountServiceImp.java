@@ -51,6 +51,10 @@ public class AccountServiceImp implements IAccountService {
         }
         return tokens.get(token);
     }
+    public UserDTO authenticateByToken(String token) {
+        return null;
+    }
+
 
     private TokenDTO generateRandomToken(UserDTO userDTO){
         String token = customUuid.randomUUID();

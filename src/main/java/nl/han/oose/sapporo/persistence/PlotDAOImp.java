@@ -1,5 +1,6 @@
 package nl.han.oose.sapporo.persistence;
 
+import nl.han.oose.sapporo.dto.FarmDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
@@ -59,7 +60,29 @@ public class PlotDAOImp implements IPlotDAO {
             } else {
                 throw new PlotIsOccupiedException();
             }
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
 
+    @Override
+    public PlotDTO getPlot(int PlotiD) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select * from plot where plotID = ?");
+            statement.setInt(1, PlotiD);
+            ResultSet resultSet = statement.executeQuery();
+            PlotDTO plotDTO = null;
+
+            while (resultSet.next()) {
+                int iD = resultSet.getInt("plotID");
+                ;
+                int x = resultSet.getInt("x");
+                int y = resultSet.getInt("y");
+                float price = resultSet.getFloat("price");
+                plotDTO = new PlotDTO(iD, x, y, price);
+            }
+
+            return plotDTO;
         } catch (SQLException e) {
             throw new PersistenceException();
         }
@@ -77,28 +100,14 @@ public class PlotDAOImp implements IPlotDAO {
     }
 
     @Override
-    public PlotDTO getPlot(int PlotiD) {
+    public void createPlot(int x, int y){
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("select * from plot where plotID = ?");
-            statement.setInt(1, PlotiD);
-            ResultSet resultSet = statement.executeQuery();
-            PlotDTO plotDTO = null;
-
-                while (resultSet.next()) {
-                    int iD = resultSet.getInt("plotID");
-                    int x = resultSet.getInt("x");
-                    int y = resultSet.getInt("y");
-                    int animalId = resultSet.getInt("animalId");
-                    int waterManagerId = resultSet.getInt("waterManagerId");
-                    int plantID = resultSet.getInt("plantID");
-                    float price = resultSet.getFloat("price");
-                    plotDTO = new PlotDTO(iD, x, y, animalId, waterManagerId, plantID, price);
-                }
-                if (plotDTO == null){
-                    throw new PlotDoesNotExistException();
-                } else{
-                    return plotDTO;
-                }
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO plot (x, y, price, purchased) VALUE (?,?,?,?)");
+            statement.setInt(1, x);
+            statement.setInt(2, y);
+            statement.setInt(3, 2);
+            statement.setBoolean(4, false);
+            statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();
         }
@@ -119,7 +128,22 @@ public class PlotDAOImp implements IPlotDAO {
             if (plantID == 0) {
                 throw new PlotHasNotPlantException();
             } else return true;
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
 
+    public void insertPlots(FarmDTO farmDTO) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            for(PlotDTO plot: farmDTO.getPlots()) {
+                PreparedStatement statement = connection.prepareStatement("INSERT INTO plot (x,y,price,purchased,farmID) VALUES(?,?,?,?,?);");
+                statement.setInt(1,plot.getX());
+                statement.setInt(2,plot.getY());
+                statement.setFloat(3,plot.getPrice());
+                statement.setBoolean(4,plot.isPurchased());
+                statement.setInt(5,farmDTO.getFarmID());
+                statement.execute();
+            }
         } catch (SQLException e) {
             throw new PersistenceException();
         }
