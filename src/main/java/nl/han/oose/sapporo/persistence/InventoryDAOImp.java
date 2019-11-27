@@ -69,4 +69,18 @@ public class InventoryDAOImp implements IInventoryDAO {
             throw new PersistenceException();
         }
     }
+
+    @Override
+    public void createInventory(UserDTO user) {
+        int STARTMONEY = 10000;
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement
+                    ("INSERT INTO inventory values (?,?)");
+            statement.setInt(1,user.getID());
+            statement.setInt(2,STARTMONEY);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
 }

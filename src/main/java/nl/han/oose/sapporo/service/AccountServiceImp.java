@@ -14,9 +14,9 @@ import java.util.UUID;
 
 public class AccountServiceImp implements IAccountService {
     static private HashMap<String, UserDTO> tokens = new HashMap<String, UserDTO>();
-
     private CustomUuid customUuid;
     private IAccountDAO accountDAO;
+    private IInventoryService inventoryService;
 
     AccountServiceImp() {
         customUuid = () -> UUID.randomUUID().toString();
@@ -27,6 +27,11 @@ public class AccountServiceImp implements IAccountService {
         this.accountDAO = accountDAO;
     }
 
+    @Inject
+    public void setInventoryService(IInventoryService inventoryService) {
+        this.inventoryService = inventoryService;
+    }
+
     void setCustomUuid(CustomUuid customUuid) {
         this.customUuid = customUuid;
     }
@@ -35,6 +40,7 @@ public class AccountServiceImp implements IAccountService {
     public TokenDTO registerUser(UserDTO userDTO) {
         accountDAO.addUser(userDTO);
         UserDTO user = accountDAO.getUser(new LoginDTO(userDTO.getEmail(), userDTO.getPassword()));
+        inventoryService.createInventory(user);
         return generateRandomToken(user);
     }
 

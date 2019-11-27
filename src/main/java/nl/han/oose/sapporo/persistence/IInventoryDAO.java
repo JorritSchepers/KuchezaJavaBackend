@@ -8,4 +8,6 @@ public interface IInventoryDAO {
     void lowerSaldo(float amount, UserDTO userDTO);
 
     void increaseSaldo(float amount, UserDTO userDTO);
+
+    void createInventory(UserDTO user);
 }
