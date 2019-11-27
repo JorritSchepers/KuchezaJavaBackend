@@ -40,7 +40,7 @@ public class AccountResource {
     }
 
     @POST
-    @Path("/logout/")
+    @Path("/logout")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response logout(@QueryParam("token") String token) {
         accountService.logoutUser(token);
