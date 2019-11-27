@@ -5,7 +5,6 @@ public class LoginDTO {
     private String password;
 
     public LoginDTO() {
-
     }
 
     public LoginDTO(String email, String password) {

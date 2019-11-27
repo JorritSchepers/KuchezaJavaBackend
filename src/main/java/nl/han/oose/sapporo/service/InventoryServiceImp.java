@@ -5,7 +5,7 @@ import nl.han.oose.sapporo.persistence.IInventoryDAO;
 
 import javax.inject.Inject;
 
-public class InventoryServiceImp implements  IInventoryService {
+public class InventoryServiceImp implements IInventoryService {
     IInventoryDAO inventoryDAO;
 
     @Inject
@@ -15,16 +15,16 @@ public class InventoryServiceImp implements  IInventoryService {
 
     @Override
     public Boolean checkSaldo(float amount, UserDTO userDTO) {
-        return inventoryDAO.checkSaldo(amount,userDTO);
+        return inventoryDAO.checkSaldo(amount, userDTO);
     }
 
     @Override
     public void lowerSaldo(float amount, UserDTO userDTO) {
-        inventoryDAO.lowerSaldo(amount,userDTO);
+        inventoryDAO.lowerSaldo(amount, userDTO);
     }
 
     @Override
     public void increaseSaldo(float amount, UserDTO userDTO) {
-        inventoryDAO.increaseSaldo(amount,userDTO);
+        inventoryDAO.increaseSaldo(amount, userDTO);
     }
 }

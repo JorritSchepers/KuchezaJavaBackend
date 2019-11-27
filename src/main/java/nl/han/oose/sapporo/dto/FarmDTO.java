@@ -7,18 +7,21 @@ public class FarmDTO {
 
     private int farmID;
     private int ownerID;
-    List<PlotDTO> plots;
+    private List<PlotDTO> plots;
 
-    public FarmDTO(){}
+    public FarmDTO() {
+    }
 
-    public FarmDTO(int farmID, int ownerID){
+    public FarmDTO(int farmID, int ownerID) {
         this.farmID = farmID;
         this.ownerID = ownerID;
     }
 
-    public int getFarmID() { return farmID;}
+    public int getFarmID() {
+        return farmID;
+    }
 
-    public List<PlotDTO> getPlots(){
+    public List<PlotDTO> getPlots() {
         return plots;
     }
 

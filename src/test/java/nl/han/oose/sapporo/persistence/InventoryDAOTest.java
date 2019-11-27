@@ -10,7 +10,7 @@ import java.sql.*;
 
 class InventoryDAOTest extends DAOTest {
     private InventoryDAOImp sut = new InventoryDAOImp();
-    private UserDTO userDTO = new UserDTO(1,"PatrickSt3r","DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937","Patrick@Ster.com");
+    private UserDTO userDTO = new UserDTO(1, "PatrickSt3r", "DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937", "Patrick@Ster.com");
 
     @Override
     void setfactory(ConnectionFactoryImp connectionFactoryImp) {
@@ -21,7 +21,7 @@ class InventoryDAOTest extends DAOTest {
         int saldo = 0;
         try (Connection connection = DriverManager.getConnection(dbUrl)) {
             PreparedStatement statement = connection.prepareStatement("SELECT money FROM inventory where userID =?");
-            statement.setInt(1,userId);
+            statement.setInt(1, userId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 saldo = resultSet.getInt("money");
@@ -32,34 +32,34 @@ class InventoryDAOTest extends DAOTest {
     }
 
     @Test
-    void checkSaldoReturnsTrueWhenSaldoIsEnough(){
+    void checkSaldoReturnsTrueWhenSaldoIsEnough() {
         int availableAmount = 10;
-        Assertions.assertTrue(sut.checkSaldo(availableAmount,userDTO));
+        Assertions.assertTrue(sut.checkSaldo(availableAmount, userDTO));
     }
 
     @Test
-    void checkSaldoThrowsExceptionWhenSaldoIsNotEnough(){
+    void checkSaldoThrowsExceptionWhenSaldoIsNotEnough() {
         int unavailableAmount = 10000;
         Assertions.assertThrows(InsufficientFundsException.class, () -> {
-            sut.checkSaldo(unavailableAmount,userDTO);
+            sut.checkSaldo(unavailableAmount, userDTO);
         });
     }
 
     @Test
-    void lowerSaldoLowersSaldoWithRightAmount(){
+    void lowerSaldoLowersSaldoWithRightAmount() {
         float removedSaldo = 10;
         float oldSaldo = getSaldoFromUser(userDTO.getID());
         sut.lowerSaldo(removedSaldo, userDTO);
         float newSaldo = getSaldoFromUser(userDTO.getID());
-        Assertions.assertEquals((oldSaldo-removedSaldo),newSaldo);
+        Assertions.assertEquals((oldSaldo - removedSaldo), newSaldo);
     }
 
     @Test
-    void increaseSaldoIncreasesSaldoWithRightAmount(){
+    void increaseSaldoIncreasesSaldoWithRightAmount() {
         float extraSaldo = 10;
         float oldSaldo = getSaldoFromUser(userDTO.getID());
         sut.increaseSaldo(extraSaldo, userDTO);
         float newSaldo = getSaldoFromUser(userDTO.getID());
-        Assertions.assertEquals((oldSaldo+extraSaldo),newSaldo);
+        Assertions.assertEquals((oldSaldo + extraSaldo), newSaldo);
     }
 }

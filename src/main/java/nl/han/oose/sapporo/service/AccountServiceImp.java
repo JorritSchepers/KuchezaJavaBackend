@@ -25,7 +25,7 @@ public class AccountServiceImp implements IAccountService {
     @Override
     public TokenDTO registerUser(UserDTO userDTO) {
         accountDAO.addUser(userDTO);
-        return generateRandomToken(accountDAO.getUser(new LoginDTO(userDTO.getName(),userDTO.getPassword())));
+        return generateRandomToken(accountDAO.getUser(new LoginDTO(userDTO.getName(), userDTO.getPassword())));
     }
 
     @Override
@@ -37,7 +37,7 @@ public class AccountServiceImp implements IAccountService {
 
     @Override
     public void logoutUser(String token) {
-        if(tokens.get(token) != null) {
+        if (tokens.get(token) != null) {
             tokens.remove(token);
         } else {
             throw new UserAlreadyLoggedOutException();
@@ -46,20 +46,17 @@ public class AccountServiceImp implements IAccountService {
 
     @Override
     public UserDTO verifyToken(String token) {
-        if(tokens.get(token) == null) {
+        if (tokens.get(token) == null) {
             throw new UserAlreadyLoggedOutException();
         }
         return tokens.get(token);
     }
-    public UserDTO authenticateByToken(String token) {
-        return null;
-    }
 
 
-    private TokenDTO generateRandomToken(UserDTO userDTO){
+    private TokenDTO generateRandomToken(UserDTO userDTO) {
         String token = customUuid.randomUUID();
-        tokens.put(token,userDTO);
-        return new TokenDTO(userDTO,token);
+        tokens.put(token, userDTO);
+        return new TokenDTO(userDTO, token);
     }
 
     private void removeOldToken(UserDTO user) {

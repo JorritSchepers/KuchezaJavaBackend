@@ -8,8 +8,6 @@ import nl.han.oose.sapporo.persistence.IFarmDAO;
 import javax.inject.Inject;
 
 public interface IFarmService {
-    @Inject
-    void setFarmDAO(IFarmDAO farmDAO);
 
     FarmDTO createFarm(UserDTO userDTO);
 

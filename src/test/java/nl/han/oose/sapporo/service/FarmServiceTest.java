@@ -13,25 +13,25 @@ public class FarmServiceTest {
     FarmServiceImp sut = new FarmServiceImp();
     IFarmDAO farmDAO;
     IPlotService plotService;
-    UserDTO user = new UserDTO(1,"test","testwachtwoord","Test@gmail.com");
+    UserDTO user = new UserDTO(1, "test", "testwachtwoord", "Test@gmail.com");
 
-    FarmServiceTest(){
+    FarmServiceTest() {
         farmDAO = Mockito.mock(IFarmDAO.class);
         plotService = Mockito.mock(IPlotService.class);
-        Mockito.when(farmDAO.getFarm(user)).thenReturn(new FarmDTO(1,1));
+        Mockito.when(farmDAO.getFarm(user)).thenReturn(new FarmDTO(1, 1));
         Mockito.when(plotService.getFarmPlots(1)).thenReturn(new ArrayList<PlotDTO>());
         sut.setFarmDAO(farmDAO);
         sut.setPlotService(plotService);
     }
 
     @Test
-    void getFarmPlotsCallsGetFarm(){
+    void getFarmPlotsCallsGetFarm() {
         sut.getFarm(user);
         Mockito.verify(farmDAO, Mockito.times(1)).getFarm(user);
     }
 
     @Test
-    void getFarmPlotsCallsGetFarmPlots(){
+    void getFarmPlotsCallsGetFarmPlots() {
         sut.getFarm(user);
         Mockito.verify(plotService, Mockito.times(1)).getFarmPlots(user.getID());
     }

@@ -9,7 +9,8 @@ public class PlantDTO {
     private float purchasePrice;
     private int age;
 
-    public PlantDTO() { }
+    public PlantDTO() {
+    }
 
     public PlantDTO(int ID, String name, int waterUsage, int growingTime, float profit, float purchasePrice, int age) {
         this.ID = ID;

@@ -42,7 +42,7 @@ public class PlotDTO {
         this.price = price;
     }
 
-    public PlotDTO(int iD, int x, int y, float price, boolean purchased) {
+    public PlotDTO(int ID, int x, int y, float price, boolean purchased) {
         this.ID = ID;
         this.x = x;
         this.y = y;
@@ -50,22 +50,18 @@ public class PlotDTO {
         this.purchased = purchased;
     }
 
-    public PlotDTO(int iD, int x, int y, float price) {
+    public PlotDTO(int ID, int x, int y, float price) {
         this.ID = ID;
         this.x = x;
         this.y = y;
         this.price = price;
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    public int getX(){
+    public int getX() {
         return x;
     }
 
-    public int getY(){
+    public int getY() {
         return y;
     }
 
@@ -75,10 +71,6 @@ public class PlotDTO {
 
     public boolean isPurchased() {
         return purchased;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 
     public void setPurchased(boolean purchased) {

@@ -11,8 +11,6 @@ import org.mockito.Mockito;
 
 import javax.ws.rs.core.Response;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class AccountResourceTest {
     private UserDTO userDTO = new UserDTO();
     private TokenDTO token = new TokenDTO(userDTO, "12345677");
@@ -38,8 +36,8 @@ class AccountResourceTest {
     @Test
     void registerUserReturnsRightToken() {
         Response response = sut.registerUser(userDTO);
-        Assertions.assertEquals(token,response.getEntity());
-        Assertions.assertEquals(201,response.getStatus());
+        Assertions.assertEquals(token, response.getEntity());
+        Assertions.assertEquals(201, response.getStatus());
     }
 
     @Test
@@ -51,8 +49,8 @@ class AccountResourceTest {
     @Test
     void loginUserReturnsRightResponse() {
         Response response = sut.login(loginDTO);
-        Assertions.assertEquals(token,response.getEntity());
-        Assertions.assertEquals(Response.Status.OK.getStatusCode(),response.getStatus());
+        Assertions.assertEquals(token, response.getEntity());
+        Assertions.assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
 
     @Test
@@ -64,6 +62,6 @@ class AccountResourceTest {
     @Test
     void logoutUserReturnsRightResponse() {
         Response response = sut.logout(token.getToken());
-        Assertions.assertEquals(Response.Status.OK.getStatusCode(),response.getStatus());
+        Assertions.assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
     }
 }

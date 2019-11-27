@@ -6,7 +6,7 @@ import java.util.Properties;
 public class DatabaseProperties {
     private Properties properties;
 
-    public DatabaseProperties() {
+    DatabaseProperties() {
         readProperties();
     }
 
@@ -25,11 +25,11 @@ public class DatabaseProperties {
         return properties.getProperty("db.user");
     }
 
-    public String getPassword() {
+    String getPassword() {
         return properties.getProperty("db.password");
     }
 
-    public String getUrl() {
+    String getUrl() {
         return properties.getProperty("db.url");
     }
 

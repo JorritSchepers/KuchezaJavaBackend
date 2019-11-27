@@ -8,12 +8,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.*;
 
 class FarmServiceImpTest {
-    private IFarmService sut;
+    private FarmServiceImp sut;
     private IFarmDAO farmDAO;
     private UserDTO userDTO;
     private FarmDTO farmDTO;
@@ -23,11 +23,11 @@ class FarmServiceImpTest {
         sut = new FarmServiceImp();
 
         userDTO = new UserDTO();
-        farmDTO = new FarmDTO(5,3);
+        farmDTO = new FarmDTO(5, 3);
 
         farmDAO = mock(FarmDAOImp.class);
         sut.setFarmDAO(farmDAO);
-        when(farmDAO.createFarm(anyObject(),anyObject())).thenReturn(farmDTO);
+        when(farmDAO.createFarm(anyObject(), anyObject())).thenReturn(farmDTO);
     }
 
     @Test
@@ -39,6 +39,6 @@ class FarmServiceImpTest {
     @Test
     void createFarmReturnsFarm() {
         FarmDTO result = sut.createFarm(userDTO);
-        assertEquals(farmDTO,result);
+        assertEquals(farmDTO, result);
     }
 }

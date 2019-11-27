@@ -1,6 +1,5 @@
 package nl.han.oose.sapporo.resource.exceptionmapper;
 
-import nl.han.oose.sapporo.persistence.exception.InsufficientFundsException;
 import nl.han.oose.sapporo.persistence.exception.PlantNotGrownException;
 import org.junit.jupiter.api.Test;
 

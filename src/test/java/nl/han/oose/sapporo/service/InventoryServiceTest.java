@@ -12,31 +12,31 @@ class InventoryServiceTest {
     private final int TESTAMOUNT = 10;
     private UserDTO user = new UserDTO();
 
-    InventoryServiceTest(){
-      sut.setInventoryDAO(inventoryDAO);
-      Mockito.when(inventoryDAO.checkSaldo(TESTAMOUNT,user)).thenReturn(true);
+    InventoryServiceTest() {
+        sut.setInventoryDAO(inventoryDAO);
+        Mockito.when(inventoryDAO.checkSaldo(TESTAMOUNT, user)).thenReturn(true);
     }
 
     @Test
-    void checkSaldoCallsCheckSalo(){
-        sut.checkSaldo(TESTAMOUNT,user);
-        Mockito.verify(inventoryDAO, Mockito.times(1)).checkSaldo(TESTAMOUNT,user);
+    void checkSaldoCallsCheckSalo() {
+        sut.checkSaldo(TESTAMOUNT, user);
+        Mockito.verify(inventoryDAO, Mockito.times(1)).checkSaldo(TESTAMOUNT, user);
     }
 
     @Test
-    void checkSaldoReturnsRightBoolean(){
-        Assertions.assertTrue(sut.checkSaldo(TESTAMOUNT,user));
+    void checkSaldoReturnsRightBoolean() {
+        Assertions.assertTrue(sut.checkSaldo(TESTAMOUNT, user));
     }
 
     @Test
-    void lowerSaldoCallsLowerSalo(){
-        sut.lowerSaldo(TESTAMOUNT,user);
-        Mockito.verify(inventoryDAO, Mockito.times(1)).lowerSaldo(TESTAMOUNT,user);
+    void lowerSaldoCallsLowerSalo() {
+        sut.lowerSaldo(TESTAMOUNT, user);
+        Mockito.verify(inventoryDAO, Mockito.times(1)).lowerSaldo(TESTAMOUNT, user);
     }
 
     @Test
-    void increaseSaldoCallsIncreaseSaldo(){
-        sut.increaseSaldo(TESTAMOUNT,user);
-        Mockito.verify(inventoryDAO,Mockito.times(1)).increaseSaldo(TESTAMOUNT,user);
+    void increaseSaldoCallsIncreaseSaldo() {
+        sut.increaseSaldo(TESTAMOUNT, user);
+        Mockito.verify(inventoryDAO, Mockito.times(1)).increaseSaldo(TESTAMOUNT, user);
     }
 }

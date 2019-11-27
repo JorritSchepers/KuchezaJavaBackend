@@ -24,9 +24,9 @@ public class PlantServiceImp implements IPlantService {
 
     @Override
     public boolean plantFullGrown(PlantDTO plantDTO) {
-        if(!plantDAO.checkIfPlantFullGrown(plantDTO)){
+        if (!plantDAO.checkIfPlantFullGrown(plantDTO)) {
             throw new PlantNotGrownException();
         }
-        return  true;
+        return true;
     }
 }

@@ -31,7 +31,7 @@ class FarmResourceTest {
 
         farmDTO = new FarmDTO();
         userDTO = new UserDTO();
-        tokenDTO = new TokenDTO(userDTO,"1234");
+        tokenDTO = new TokenDTO(userDTO, "1234");
 
         when(farmService.createFarm(userDTO)).thenReturn(farmDTO);
         when(accountService.verifyToken(tokenDTO.getToken())).thenReturn(userDTO);
@@ -48,17 +48,17 @@ class FarmResourceTest {
                 .build();
         Response result = sut.createNewFarm(tokenDTO.getToken());
 
-        assertEquals(expected.toString(),result.toString());
+        assertEquals(expected.toString(), result.toString());
     }
 
     @Test
-    void getFarmCallsVerifyToken(){
+    void getFarmCallsVerifyToken() {
         sut.getFarm(tokenDTO.getToken());
         verify(accountService, times(1)).verifyToken(tokenDTO.getToken());
     }
 
     @Test
-    void getFarmCallsGetFarm(){
+    void getFarmCallsGetFarm() {
         sut.getFarm(tokenDTO.getToken());
         verify(farmService, times(1)).getFarm(userDTO);
     }

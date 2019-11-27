@@ -21,8 +21,7 @@ public class FarmServiceImp implements IFarmService {
     }
 
     @Inject
-    @Override
-    public void setFarmDAO(IFarmDAO farmDAO){
+    public void setFarmDAO(IFarmDAO farmDAO) {
         this.farmDAO = farmDAO;
     }
 
@@ -39,12 +38,12 @@ public class FarmServiceImp implements IFarmService {
 
         FarmDTO farmDTO = new FarmDTO();
         List<PlotDTO> plots = new ArrayList<PlotDTO>();
-        for(int x = 0; x < FARM_SIZE; x++) {
-            for(int y = 0; y < FARM_SIZE; y++) {
-                PlotDTO plotDTO = new PlotDTO(x,y,PLOT_PRICE,false);
+        for (int x = 0; x < FARM_SIZE; x++) {
+            for (int y = 0; y < FARM_SIZE; y++) {
+                PlotDTO plotDTO = new PlotDTO(x, y, PLOT_PRICE, false);
                 plots.add(plotDTO);
 
-                if(x < FARM_SIZE/2 && y < FARM_SIZE/2) {
+                if (x < FARM_SIZE / 2 && y < FARM_SIZE / 2) {
                     plotDTO.setPurchased(true);
                 }
             }

@@ -49,15 +49,15 @@ public class AccountDAOTest extends DAOTest {
 
     @Test
     void checkUserWithCorrectLoginInformationReturnsUserDTO() {
-        UserDTO expected = new UserDTO(3,"TestUser", "wachtwoord", "oose.sapporo@gmail.com");
+        UserDTO expected = new UserDTO(3, "TestUser", "wachtwoord", "oose.sapporo@gmail.com");
         UserDTO result = sut.getUser(loginDTO);
-        assertEquals(expected,result);
+        assertEquals(expected, result);
     }
 
     @Test
     void checkUserWithInCorrectLoginInformationThrowsException() {
-        assertThrows(InvalidLoginInformationException.class, ()-> {
-            sut.getUser(new LoginDTO("fout","fout"));
+        assertThrows(InvalidLoginInformationException.class, () -> {
+            sut.getUser(new LoginDTO("fout", "fout"));
         });
     }
 

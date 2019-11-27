@@ -1,7 +1,6 @@
 package nl.han.oose.sapporo.resource.exceptionmapper;
 
 import nl.han.oose.sapporo.persistence.exception.PlotHasNotPlantException;
-import nl.han.oose.sapporo.service.exception.UserAlreadyLoggedOutException;
 import org.junit.jupiter.api.Test;
 
 import javax.ws.rs.core.Response;

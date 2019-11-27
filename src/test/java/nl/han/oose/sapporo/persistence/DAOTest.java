@@ -17,14 +17,14 @@ import static org.mockito.Mockito.when;
 public abstract class DAOTest {
     String dbUrl = "jdbc:h2:mem:TestDatabase";
 
-    abstract void setfactory (ConnectionFactoryImp connectionFactoryImp);
+    abstract void setfactory(ConnectionFactoryImp connectionFactoryImp);
 
     @BeforeEach
     private void setup() {
         ConnectionFactoryImp connectionFactoryImp = Mockito.mock(ConnectionFactoryImp.class);
         try {
             when(connectionFactoryImp.getConnection()).thenReturn(DriverManager.getConnection(dbUrl));
-            setfactory (connectionFactoryImp);
+            setfactory(connectionFactoryImp);
         } catch (SQLException e) {
             e.printStackTrace();
         }

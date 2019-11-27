@@ -51,7 +51,8 @@ class PlotDAOTest extends DAOTest {
                 plantId = resultSet.getInt("plantID");
             }
             return (full + animalId + waterManagerId + plantId == 0);
-        } catch (SQLException ignored) { }
+        } catch (SQLException ignored) {
+        }
         return false;
     }
 
@@ -89,19 +90,19 @@ class PlotDAOTest extends DAOTest {
     }
 
     @Test
-    void plotHasPlantReturnsTrueWhenTrue(){
+    void plotHasPlantReturnsTrueWhenTrue() {
         Assertions.assertTrue(sut.plotHasPlant(FULLPLOTID));
     }
 
     @Test
-    void plotHasPlantThrowsExceptionWhenFalse(){
+    void plotHasPlantThrowsExceptionWhenFalse() {
         Assertions.assertThrows(PlotHasNotPlantException.class, () -> {
             sut.plotHasPlant(PLOTID);
         });
     }
 
     @Test
-    void removeObjectsFromPlotRemovesObject(){
+    void removeObjectsFromPlotRemovesObject() {
         Assertions.assertFalse(plotIsEmpty(FULLPLOTID));
         sut.removeObjectsFromPlot(FULLPLOTID);
         Assertions.assertTrue(plotIsEmpty(FULLPLOTID));

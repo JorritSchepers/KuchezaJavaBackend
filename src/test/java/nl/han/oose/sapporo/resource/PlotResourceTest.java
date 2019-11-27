@@ -16,48 +16,48 @@ public class PlotResourceTest {
     private IPlotService plotService = Mockito.mock(IPlotService.class);
     private PlantDTO plant = new PlantDTO();
     private UserDTO user = new UserDTO();
-    private PlotDTO plot = new PlotDTO(1,1,1,1,0,0,0);
+    private PlotDTO plot = new PlotDTO(1, 1, 1, 1, 0, 0, 0);
 
-    public PlotResourceTest(){
+    public PlotResourceTest() {
         sut.setAccountService(accountService);
         sut.setPlotService(plotService);
         Mockito.when(accountService.verifyToken(token)).thenReturn(user);
-        Mockito.when(plotService.placePlant(plant,1,user)).thenReturn(plot);
-        Mockito.when(plotService.harvesPlant(plant,user,1)).thenReturn(plot);
+        Mockito.when(plotService.placePlant(plant, 1, user)).thenReturn(plot);
+        Mockito.when(plotService.harvesPlant(plant, user, 1)).thenReturn(plot);
     }
 
     @Test
     public void placePlantsCallsAuthenticateByToken() {
-        sut.placePlantOnPlot(token, 1,plant);
+        sut.placePlantOnPlot(token, 1, plant);
         Mockito.verify(accountService, Mockito.times(1)).verifyToken(token);
     }
 
     @Test
     public void placePlantsCallsPlacePlant() {
-        sut.placePlantOnPlot(token, 1,plant);
-        Mockito.verify(plotService, Mockito.times(1)).placePlant(plant,1,user);
+        sut.placePlantOnPlot(token, 1, plant);
+        Mockito.verify(plotService, Mockito.times(1)).placePlant(plant, 1, user);
     }
 
     @Test
     public void placePlantsReturnsRightPlot() {
-        sut.placePlantOnPlot(token, 1,plant);
-        Assert.assertEquals(plot,sut.placePlantOnPlot(token, 1,plant).getEntity());
+        sut.placePlantOnPlot(token, 1, plant);
+        Assert.assertEquals(plot, sut.placePlantOnPlot(token, 1, plant).getEntity());
     }
 
     @Test
     public void harvestPlantFromPlotCallsAuthenticateByToken() {
-        sut.harvestPlantFromPlot(token, 1,plant);
+        sut.harvestPlantFromPlot(token, 1, plant);
         Mockito.verify(accountService, Mockito.times(1)).verifyToken(token);
     }
 
     @Test
     public void harvestPlantFromPlotCallsHarvesPlot() {
-        sut.harvestPlantFromPlot(token, 1,plant);
-        Mockito.verify(plotService, Mockito.times(1)).harvesPlant(plant,user,1);
+        sut.harvestPlantFromPlot(token, 1, plant);
+        Mockito.verify(plotService, Mockito.times(1)).harvesPlant(plant, user, 1);
     }
 
     @Test
     public void harvestPlantFromPlotReturnsRightPlot() {
-        Assert.assertEquals(plot,sut.harvestPlantFromPlot(token, 1,plant).getEntity());
+        Assert.assertEquals(plot, sut.harvestPlantFromPlot(token, 1, plant).getEntity());
     }
 }

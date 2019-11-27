@@ -4,7 +4,6 @@ import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.IPlotDAO;
-import nl.han.oose.sapporo.persistence.exception.PlantNotGrownException;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
