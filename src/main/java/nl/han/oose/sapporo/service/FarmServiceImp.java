@@ -44,7 +44,7 @@ public class FarmServiceImp implements IFarmService {
                 PlotDTO plotDTO = new PlotDTO(x,y,PLOT_PRICE,false);
                 plots.add(plotDTO);
 
-                if(x < FARM_SIZE/2 && y < FARM_SIZE) {
+                if(x < FARM_SIZE/2 && y < FARM_SIZE/2) {
                     plotDTO.setPurchased(true);
                 }
             }
