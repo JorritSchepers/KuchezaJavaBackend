@@ -25,7 +25,7 @@ public class AccountServiceImp implements IAccountService {
     @Override
     public TokenDTO registerUser(UserDTO userDTO) {
         accountDAO.addUser(userDTO);
-        return generateRandomToken(accountDAO.getUser(new LoginDTO(userDTO.getName(), userDTO.getPassword())));
+        return generateRandomToken(accountDAO.getUser(new LoginDTO(userDTO.getEmail(), userDTO.getPassword())));
     }
 
     @Override
