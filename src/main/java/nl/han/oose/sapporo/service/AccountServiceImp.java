@@ -17,6 +17,7 @@ public class AccountServiceImp implements IAccountService {
     private CustomUuid customUuid;
     private IAccountDAO accountDAO;
     private IInventoryService inventoryService;
+    private IFarmService farmService;
 
     AccountServiceImp() {
         customUuid = () -> UUID.randomUUID().toString();
@@ -32,6 +33,11 @@ public class AccountServiceImp implements IAccountService {
         this.inventoryService = inventoryService;
     }
 
+    @Inject
+    public void setFarmService(IFarmService farmService) {
+        this.farmService = farmService;
+    }
+
     void setCustomUuid(CustomUuid customUuid) {
         this.customUuid = customUuid;
     }
@@ -41,6 +47,7 @@ public class AccountServiceImp implements IAccountService {
         accountDAO.addUser(userDTO);
         UserDTO user = accountDAO.getUser(new LoginDTO(userDTO.getEmail(), userDTO.getPassword()));
         inventoryService.createInventory(user);
+        farmService.createFarm(user);
         return generateRandomToken(user);
     }
 
