@@ -51,8 +51,8 @@ public class PlotServiceImp implements IPlotService {
     public PlotDTO harvesPlant(PlantDTO plantDTO, UserDTO user, int plotID) {
         if (plantService.plantFullGrown(plantDTO) && plotDAO.plotHasPlant(plotID)) {
             plotDAO.removeObjectsFromPlot(plotID);
-            int price = plantDAO.getProfit(plantDTO.getID());
-            inventoryService.increaseSaldo(price, user);
+            int profit = plantDAO.getProfit(plantDTO.getID());
+            inventoryService.increaseSaldo(profit, user);
             return plotDAO.getPlot(plotID);
         }
         return null;
