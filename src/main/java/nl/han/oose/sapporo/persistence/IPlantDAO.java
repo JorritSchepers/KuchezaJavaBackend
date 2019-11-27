@@ -7,4 +7,6 @@ public interface IPlantDAO {
     AllPlantDTO getAllPlants();
 
     boolean checkIfPlantFullGrown(PlantDTO plantDTO);
+
+    int getProfit(int id);
 }
