@@ -16,8 +16,6 @@ public interface IPlotDAO {
     void removeObjectsFromPlot(int plotID);
 
     boolean plotHasPlant(int plotID);
-    
-    void createPlot(int x, int y);
 
     void insertPlots(FarmDTO farmDTO);
 

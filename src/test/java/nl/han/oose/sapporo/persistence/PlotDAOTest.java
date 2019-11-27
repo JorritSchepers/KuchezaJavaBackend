@@ -14,6 +14,7 @@ class PlotDAOTest extends DAOTest {
     private PlotDAOImp sut = new PlotDAOImp();
     private final int PLOTID = 1;
     private final int FULLPLOTID = 2;
+    private final int FARMID = 1;
     private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1, 1);
 
     @Override
@@ -56,6 +57,20 @@ class PlotDAOTest extends DAOTest {
         return false;
     }
 
+    private int getAmountofPlots(int x, int y){
+        int plotAmount = 0;
+        try (Connection connection = DriverManager.getConnection(dbUrl)) {
+            PreparedStatement statement = connection.prepareStatement("select count(plotID) as amount from plot where x =? and y=?");
+            statement.setInt(1,x);
+            statement.setInt(2,y);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                plotAmount = resultSet.getInt("amount");
+            }
+        } catch (SQLException ignored) {
+        }
+       return plotAmount;
+    }
     @Test
     void checkIfPlotIsEmptyReturnsTrueWhenEmpty() {
         Assertions.assertTrue(sut.checkIfPlotIsEmpty(1));
@@ -106,5 +121,11 @@ class PlotDAOTest extends DAOTest {
         Assertions.assertFalse(plotIsEmpty(FULLPLOTID));
         sut.removeObjectsFromPlot(FULLPLOTID);
         Assertions.assertTrue(plotIsEmpty(FULLPLOTID));
+    }
+
+    @Test
+    void getFarmPlotsGetsRightAmountOfPlots(){
+        int AMOUNTOFPLOTS = 3;
+        Assertions.assertEquals(sut.getFarmPlots(FARMID).size(),AMOUNTOFPLOTS);
     }
 }

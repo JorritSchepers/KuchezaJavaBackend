@@ -10,10 +10,7 @@ import nl.han.oose.sapporo.persistence.exception.PlotHasNotPlantException;
 import nl.han.oose.sapporo.persistence.exception.PlotIsOccupiedException;
 
 import javax.inject.Inject;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class PlotDAOImp implements IPlotDAO {
@@ -98,20 +95,6 @@ public class PlotDAOImp implements IPlotDAO {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("update plot set animalId = null, waterManagerId = null, plantID = null where plotID = ?");
             statement.setInt(1, plotID);
-            statement.execute();
-        } catch (SQLException e) {
-            throw new PersistenceException();
-        }
-    }
-
-    @Override
-    public void createPlot(int x, int y){
-        try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO plot (x, y, price, purchased) VALUE (?,?,?,?)");
-            statement.setInt(1, x);
-            statement.setInt(2, y);
-            statement.setInt(3, 2);
-            statement.setBoolean(4, false);
             statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();

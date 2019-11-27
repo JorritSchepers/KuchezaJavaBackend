@@ -5,6 +5,8 @@ import nl.han.oose.sapporo.dto.TokenDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.IAccountDAO;
 import nl.han.oose.sapporo.service.exception.UserAlreadyLoggedOutException;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -17,12 +19,12 @@ class AccountServiceTest {
     private String token = "1234";
     private IAccountDAO accountDAO;
 
-    AccountServiceTest() {
+    @BeforeEach
+    void settingUp() {
         accountDAO = Mockito.mock(IAccountDAO.class);
+        Mockito.when(accountDAO.getUser(loginDTO)).thenReturn(userDTO);
         sut.setAccountDAO(accountDAO);
-        sut.setCustomUuid(() -> {
-            return token;
-        });
+        sut.setCustomUuid(() -> token);
     }
 
     @Test
@@ -44,4 +46,16 @@ class AccountServiceTest {
         });
     }
 
+    @Test
+    void loginUserReturnsRandomToken(){
+        sut.loginUser(loginDTO);
+        Assertions.assertEquals(token,sut.loginUser(loginDTO).getToken());
+    }
+
+    @Test
+    void verifyTokenReturnsThrowsExceptionWhenEmpty(){
+        assertThrows(UserAlreadyLoggedOutException.class, () -> {
+            sut.verifyToken(token);
+        });
+    }
 }
