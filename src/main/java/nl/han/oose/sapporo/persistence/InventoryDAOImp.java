@@ -31,7 +31,7 @@ public class InventoryDAOImp implements IInventoryDAO {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                moneyInInventory = resultSet.getFloat("money");;
+                moneyInInventory = resultSet.getFloat("money");
             }
 
             if (moneyInInventory < amount){

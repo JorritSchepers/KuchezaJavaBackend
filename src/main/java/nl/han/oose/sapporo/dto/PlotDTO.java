@@ -10,9 +10,7 @@ public class PlotDTO {
     private int plantID;
     private float price;
 
-    public PlotDTO() {
-
-    }
+    public PlotDTO() { }
 
     public PlotDTO(int x, int y, float price, boolean purchased) {
         this.x = x;

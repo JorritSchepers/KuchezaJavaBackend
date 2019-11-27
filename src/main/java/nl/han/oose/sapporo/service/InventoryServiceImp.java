@@ -6,7 +6,7 @@ import nl.han.oose.sapporo.persistence.IInventoryDAO;
 import javax.inject.Inject;
 
 public class InventoryServiceImp implements IInventoryService {
-    IInventoryDAO inventoryDAO;
+    private IInventoryDAO inventoryDAO;
 
     @Inject
     public void setInventoryDAO(IInventoryDAO inventoryDAO) {

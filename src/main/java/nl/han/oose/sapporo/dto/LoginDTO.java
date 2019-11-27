@@ -4,8 +4,7 @@ public class LoginDTO {
     private String email;
     private String password;
 
-    public LoginDTO() {
-    }
+    public LoginDTO() { }
 
     public LoginDTO(String email, String password) {
         this.email = email;

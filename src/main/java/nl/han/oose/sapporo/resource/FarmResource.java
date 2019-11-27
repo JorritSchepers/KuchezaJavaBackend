@@ -16,7 +16,6 @@ import javax.ws.rs.core.Response;
 public class FarmResource {
     private IFarmService farmService;
     private IAccountService accountService;
-    private final int STATUS_CODE_CREATED = 201;
 
     @Inject
     public void setFarmService(IFarmService farmService) {
@@ -42,7 +41,7 @@ public class FarmResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response createNewFarm(@QueryParam("token") String token) {
         UserDTO user = accountService.verifyToken(token);
-        return Response.status(STATUS_CODE_CREATED)
+        return Response.status(Response.Status.CREATED)
                 .entity(farmService.createFarm(user))
                 .build();
     }

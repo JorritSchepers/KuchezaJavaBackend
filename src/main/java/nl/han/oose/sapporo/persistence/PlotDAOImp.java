@@ -33,6 +33,7 @@ public class PlotDAOImp implements IPlotDAO {
         }
     }
 
+    @Override
     public boolean checkIfPlotIsEmpty(int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select animalID,watermanagerID,plantID from plot where plotID = ?");

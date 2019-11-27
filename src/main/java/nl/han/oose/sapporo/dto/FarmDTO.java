@@ -4,13 +4,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class FarmDTO {
-
     private int farmID;
     private int ownerID;
     private List<PlotDTO> plots;
 
-    public FarmDTO() {
-    }
+    public FarmDTO() { }
 
     public FarmDTO(int farmID, int ownerID) {
         this.farmID = farmID;

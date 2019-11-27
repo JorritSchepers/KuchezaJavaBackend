@@ -15,8 +15,15 @@ import java.sql.SQLException;
 public class AccountDAOImp implements IAccountDAO {
     private ConnectionFactoryImp connectionFactory;
 
+    @Inject
+    public void setConnectionFactory(ConnectionFactoryImp connectionFactory) {
+        this.connectionFactory = connectionFactory;
+    }
+
     @Override
     public void addUser(UserDTO userDTO) {
+        final int DUPLICATE_VALUE_CODE = 1062;
+
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO user (name,password,email) VALUES (?,?,?)");
             statement.setString(1, userDTO.getName());
@@ -25,7 +32,6 @@ public class AccountDAOImp implements IAccountDAO {
 
             statement.execute();
         } catch (SQLException e) {
-            final int DUPLICATE_VALUE_CODE = 1062;
             if (e.getErrorCode() == DUPLICATE_VALUE_CODE) {
                 throw new AccountAlreadyExistsException();
             } else {
@@ -51,14 +57,9 @@ public class AccountDAOImp implements IAccountDAO {
                 return user;
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e.getMessage());
+            throw new PersistenceException();
         }
         throw new InvalidLoginInformationException();
-    }
-
-    @Inject
-    public void setConnectionFactory(ConnectionFactoryImp connectionFactory) {
-        this.connectionFactory = connectionFactory;
     }
 }
 

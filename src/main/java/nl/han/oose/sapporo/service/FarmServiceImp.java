@@ -12,8 +12,8 @@ import java.util.List;
 public class FarmServiceImp implements IFarmService {
     private static final int FARM_SIZE = 10;
     private static final float PLOT_PRICE = 10;
-    IFarmDAO farmDAO;
-    IPlotService plotService;
+    private IFarmDAO farmDAO;
+    private IPlotService plotService;
 
     @Inject
     public void setPlotService(IPlotService plotService) {

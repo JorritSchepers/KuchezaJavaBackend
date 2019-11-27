@@ -22,6 +22,15 @@ public class AccountServiceImp implements IAccountService {
         customUuid = () -> UUID.randomUUID().toString();
     }
 
+    @Inject
+    public void setAccountDAO(IAccountDAO accountDAO) {
+        this.accountDAO = accountDAO;
+    }
+
+    void setCustomUuid(CustomUuid customUuid) {
+        this.customUuid = customUuid;
+    }
+
     @Override
     public TokenDTO registerUser(UserDTO userDTO) {
         accountDAO.addUser(userDTO);
@@ -53,7 +62,6 @@ public class AccountServiceImp implements IAccountService {
         return tokens.get(token);
     }
 
-
     private TokenDTO generateRandomToken(UserDTO userDTO) {
         String token = customUuid.randomUUID();
         tokens.put(token, userDTO);
@@ -77,14 +85,5 @@ public class AccountServiceImp implements IAccountService {
             }
         }
         return null;
-    }
-
-    @Inject
-    public void setAccountDAO(IAccountDAO accountDAO) {
-        this.accountDAO = accountDAO;
-    }
-
-    void setCustomUuid(CustomUuid customUuid) {
-        this.customUuid = customUuid;
     }
 }

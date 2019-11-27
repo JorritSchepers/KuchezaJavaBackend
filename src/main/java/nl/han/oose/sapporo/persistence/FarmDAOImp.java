@@ -55,9 +55,8 @@ public class FarmDAOImp implements IFarmDAO {
             statement.setInt(1, userDTO.getID());
             ResultSet resultSet = statement.executeQuery();
 
-            if(resultSet.next()) {
-                throw new UserAlreadyHasFarmException();
-            }
+            if(resultSet.next()) {throw new UserAlreadyHasFarmException(); }
+
         } catch (SQLException e) {
             throw new PersistenceException();
         }
@@ -117,5 +116,4 @@ public class FarmDAOImp implements IFarmDAO {
         }
         return plotDTOS;
     }
-
 }
