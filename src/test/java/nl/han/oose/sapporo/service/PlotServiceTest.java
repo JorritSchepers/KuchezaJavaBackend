@@ -26,7 +26,6 @@ class PlotServiceTest {
     private UserDTO user = new UserDTO(1, "PatrickSt3r", "DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937", "Patrick@Ster.com");
     private PlotDTO plot = new PlotDTO(1, 1, 1, 1, 0, 0, 0);
     private ArrayList<PlotDTO> plots = new ArrayList<>();
-    private
 
     PlotServiceTest() {
         sut.setPlotDAO(plotDAO);

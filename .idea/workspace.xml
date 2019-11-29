@@ -6,9 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/InventoryDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/InventoryDAOImp.java" afterDir="false" />
-    </list>
+    <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -340,7 +338,7 @@
       <workItem from="1574781879157" duration="357000" />
       <workItem from="1574845569913" duration="544000" />
       <workItem from="1574846423381" duration="8711000" />
-      <workItem from="1575030472003" duration="3141000" />
+      <workItem from="1575030472003" duration="3394000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1574072988467</created>
