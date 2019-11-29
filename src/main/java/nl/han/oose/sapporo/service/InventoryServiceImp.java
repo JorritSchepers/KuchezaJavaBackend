@@ -1,5 +1,6 @@
 package nl.han.oose.sapporo.service;
 
+import nl.han.oose.sapporo.dto.InventoryDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.IInventoryDAO;
 
@@ -31,5 +32,10 @@ public class InventoryServiceImp implements IInventoryService {
     @Override
     public void createInventory(UserDTO user) {
         inventoryDAO.createInventory(user);
+    }
+
+    @Override
+    public InventoryDTO getInventory(UserDTO user) {
+        return inventoryDAO.getInventory(user);
     }
 }

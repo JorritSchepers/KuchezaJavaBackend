@@ -39,4 +39,10 @@ class InventoryServiceTest {
         sut.increaseSaldo(TESTAMOUNT, user);
         Mockito.verify(inventoryDAO, Mockito.times(1)).increaseSaldo(TESTAMOUNT, user);
     }
+
+    @Test
+    void getInventorycallsGetInventory(){
+        sut.getInventory(user);
+        Mockito.verify(inventoryDAO, Mockito.times(1)).getInventory(user);
+    }
 }

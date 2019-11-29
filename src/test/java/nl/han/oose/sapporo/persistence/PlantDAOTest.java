@@ -36,4 +36,9 @@ class PlantDAOTest extends DAOTest {
         Assertions.assertFalse(sut.checkIfPlantFullGrown(notGrownPlant));
     }
 
+    @Test
+    void getProfitGetsRightProfit(){
+        Assertions.assertEquals(20,sut.getProfit(1));
+    }
+
 }
