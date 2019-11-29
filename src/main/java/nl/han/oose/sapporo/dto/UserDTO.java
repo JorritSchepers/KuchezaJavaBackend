@@ -49,9 +49,4 @@ public class UserDTO {
                 Objects.equals(password, userDTO.password) &&
                 Objects.equals(email, userDTO.email);
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(ID, name, password, email);
-    }
 }

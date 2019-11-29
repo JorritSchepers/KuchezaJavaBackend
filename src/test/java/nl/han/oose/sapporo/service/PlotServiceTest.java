@@ -3,7 +3,9 @@ package nl.han.oose.sapporo.service;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
+import nl.han.oose.sapporo.persistence.IPlantDAO;
 import nl.han.oose.sapporo.persistence.IPlotDAO;
+import nl.han.oose.sapporo.persistence.PlantDAOImp;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -14,6 +16,7 @@ class PlotServiceTest {
     private PlotServiceImp sut = new PlotServiceImp();
     private IPlantService plantService = Mockito.mock(IPlantService.class);
     private IPlotDAO plotDAO = Mockito.mock(IPlotDAO.class);
+    private IPlantDAO plantDAO = Mockito.mock(IPlantDAO.class);
     private IInventoryService inventoryService = Mockito.mock(IInventoryService.class);
     private final int PLOTID = 1;
     private final float PRICE = 5;
@@ -23,11 +26,14 @@ class PlotServiceTest {
     private UserDTO user = new UserDTO(1, "PatrickSt3r", "DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937", "Patrick@Ster.com");
     private PlotDTO plot = new PlotDTO(1, 1, 1, 1, 0, 0, 0);
     private ArrayList<PlotDTO> plots = new ArrayList<>();
+    private
 
     PlotServiceTest() {
         sut.setPlotDAO(plotDAO);
         sut.setInventoryService(inventoryService);
         sut.setPlantService(plantService);
+        sut.setPlantDAO(plantDAO);
+        Mockito.when(plantDAO.getProfit(plant.getID())).thenReturn(20);
         Mockito.when(inventoryService.checkSaldo(PRICE, user)).thenReturn(true);
         Mockito.when(plotDAO.getPlot(PLOTID)).thenReturn(plot);
         Mockito.when(plotDAO.checkIfPlotIsEmpty(PLOTID)).thenReturn(true);
@@ -35,6 +41,7 @@ class PlotServiceTest {
         Mockito.when(plantService.plantFullGrown(notGrownPlant)).thenReturn(false);
         Mockito.when(plotDAO.plotHasPlant(PLOTID)).thenReturn(true);
         Mockito.when(plotDAO.getFarmPlots(FARMID)).thenReturn(plots);
+
     }
 
     @Test

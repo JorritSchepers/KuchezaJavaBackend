@@ -8,6 +8,7 @@ CREATE TABLE user
 
 CREATE TABLE inventory (
                            userID INT,
+                           water INT,
                            money INT NOT NULL,
                            PRIMARY KEY (userID),
 
@@ -86,9 +87,9 @@ VALUES
 (1);
 
 Insert into inventory Values
-(1,2000),
-(2,2000),
-(3,2000);
+(1,1000,2000),
+(2,1000,2000),
+(3,1000,2000);
 
 INSERT INTO plant (waterUsage,growingTime,profit,purchasePrice,name)
 VALUES

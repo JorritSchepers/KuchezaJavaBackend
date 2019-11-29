@@ -1,5 +1,6 @@
 package nl.han.oose.sapporo.persistence;
 
+import nl.han.oose.sapporo.dto.InventoryDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.InsufficientFundsException;
@@ -73,12 +74,35 @@ public class InventoryDAOImp implements IInventoryDAO {
     @Override
     public void createInventory(UserDTO user) {
         int STARTMONEY = 10000;
+        int STARTWATER = 20000;
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
-                    ("INSERT INTO inventory values (?,?)");
+                    ("INSERT INTO inventory values (?,?,?)");
             statement.setInt(1,user.getID());
-            statement.setInt(2,STARTMONEY);
+            statement.setInt(2,STARTWATER);
+            statement.setInt(3,STARTMONEY);
             statement.execute();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public InventoryDTO getInventory(UserDTO user) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            InventoryDTO inventory = null;
+            PreparedStatement statement = connection.prepareStatement
+                    ("select * from inventory where userID = ?");
+            statement.setInt(1,user.getID());
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("userID");
+                int money = resultSet.getInt("money");
+                int water = resultSet.getInt("water");
+                inventory = new InventoryDTO(id,money,water);
+            }
+            return  inventory;
         } catch (SQLException e) {
             throw new PersistenceException();
         }

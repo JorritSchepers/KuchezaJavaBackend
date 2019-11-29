@@ -1,5 +1,6 @@
 package nl.han.oose.sapporo.persistence;
 
+import nl.han.oose.sapporo.dto.InventoryDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.InsufficientFundsException;
@@ -61,5 +62,11 @@ class InventoryDAOTest extends DAOTest {
         sut.increaseSaldo(extraSaldo, userDTO);
         float newSaldo = getSaldoFromUser(userDTO.getID());
         Assertions.assertEquals((oldSaldo + extraSaldo), newSaldo);
+    }
+
+    @Test
+    void getInventoryReturnsRightInventory(){
+        InventoryDTO expected =  new InventoryDTO(1,2000,1000);
+        Assertions.assertEquals(expected,sut.getInventory(userDTO));
     }
 }
