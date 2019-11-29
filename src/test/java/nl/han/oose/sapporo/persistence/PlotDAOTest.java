@@ -15,7 +15,7 @@ class PlotDAOTest extends DAOTest {
     private final int PLOTID = 1;
     private final int FULLPLOTID = 2;
     private final int FARMID = 1;
-    private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1, 1);
+    private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1);
 
     @Override
     void setfactory(ConnectionFactoryImp connectionFactoryImp) {
@@ -43,15 +43,17 @@ class PlotDAOTest extends DAOTest {
             int animalId = 0;
             int waterManagerId = 0;
             int plantId = 0;
-            PreparedStatement statement = connection.prepareStatement("Select animalId, waterManagerId, plantID from plot where plotID = ?");
+            int age = 0;
+            PreparedStatement statement = connection.prepareStatement("Select animalId, waterManagerId, plantID, age from plot where plotID = ?");
             statement.setInt(1, plotId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 animalId = resultSet.getInt("animalId");
                 waterManagerId = resultSet.getInt("waterManagerId");
                 plantId = resultSet.getInt("plantID");
+                age = resultSet.getInt("age");
             }
-            return (full + animalId + waterManagerId + plantId == 0);
+            return (full + animalId + waterManagerId + plantId + age == 0);
         } catch (SQLException ignored) {
         }
         return false;

@@ -1,6 +1,7 @@
 package nl.han.oose.sapporo.resource;
 
 import nl.han.oose.sapporo.dto.PlantDTO;
+import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IPlotService;
@@ -40,10 +41,19 @@ public class PlotResource {
     @Path("/{id}/harvest")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response harvestPlantFromPlot(@QueryParam("token") String token, @PathParam("id") int plotID, PlantDTO plantDTO) {
+    public Response harvestPlantFromPlot(@QueryParam("token") String token, @PathParam("id") int plotID, PlotDTO plotDTO) {
         UserDTO user = accountService.verifyToken(token);
         return Response.status(Response.Status.OK)
-                .entity(plotService.harvesPlant(plantDTO, user, plotID))
+                .entity(plotService.harvesPlant(plotDTO, user, plotID))
                 .build();
+    }
+
+    @POST
+    @Path("/{id}/updateAge/{age}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateAge(@QueryParam("token") String token, @PathParam("id") int plotID, @PathParam("age") int age) {
+        UserDTO user = accountService.verifyToken(token);
+        plotService.updageAge(plotID,age);
+        return Response.status(Response.Status.OK).entity("plant").build();
     }
 }

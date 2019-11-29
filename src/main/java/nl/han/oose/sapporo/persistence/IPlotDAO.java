@@ -20,4 +20,6 @@ public interface IPlotDAO {
     void insertPlots(FarmDTO farmDTO);
 
     ArrayList<PlotDTO> getFarmPlots(int farmID);
+
+    void updateAge(int plotID, int age);
 }

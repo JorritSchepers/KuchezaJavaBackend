@@ -2,6 +2,7 @@ package nl.han.oose.sapporo.service;
 
 import nl.han.oose.sapporo.dto.AllPlantDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
+import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.IPlantDAO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -13,12 +14,14 @@ class PlantServiceTest {
     private AllPlantDTO allPlantDTO = new AllPlantDTO(null);
     private PlantDTO grownPlant = new PlantDTO();
     private PlantDTO notGrownPlant = new PlantDTO();
+    private PlotDTO plotWithGrownPlant = new PlotDTO(1, 1, 1, 1, 0, 0, 0, 100);
+    private PlotDTO plotWithoutGrownPlant = new PlotDTO(2, 1, 1, 1, 0, 0, 0, 0);
 
     PlantServiceTest() {
         plantDAO = Mockito.mock(IPlantDAO.class);
         Mockito.when(plantDAO.getAllPlants()).thenReturn(allPlantDTO);
-        Mockito.when(plantDAO.checkIfPlantFullGrown(grownPlant)).thenReturn(true);
-        Mockito.when(plantDAO.checkIfPlantFullGrown(notGrownPlant)).thenReturn(false);
+        Mockito.when(plantDAO.checkIfPlantFullGrown(plotWithGrownPlant)).thenReturn(true);
+        Mockito.when(plantDAO.checkIfPlantFullGrown(plotWithoutGrownPlant)).thenReturn(false);
         sut.setPlantDAO(plantDAO);
     }
 
@@ -35,7 +38,7 @@ class PlantServiceTest {
 
     @Test
     void plantFullGrownCallscheckIfPlantFullGrown() {
-        sut.plantFullGrown(grownPlant);
-        Mockito.verify(plantDAO, Mockito.times(1)).checkIfPlantFullGrown(grownPlant);
+        sut.plantFullGrown(plotWithGrownPlant);
+        Mockito.verify(plantDAO, Mockito.times(1)).checkIfPlantFullGrown(plotWithGrownPlant);
     }
 }

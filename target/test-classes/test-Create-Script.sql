@@ -60,6 +60,7 @@ CREATE TABLE plot (
                       waterManagerId int null,
                       plantID int null,
                       purchased bit,
+                      age int DEFAULT 0,
 
                       FOREIGN KEY (farmID)
                           REFERENCES farm(farmID)
@@ -96,10 +97,10 @@ VALUES
 (10,5,20,7.5,'Tomato'),
 (2.5,50,40,10,'Banana');
 
-INSERT INTO plot (x,y,price,purchased, farmID)
+INSERT INTO plot (x,y,price,purchased, farmID,age)
 VALUES
-(1,1,10,1,1),
-(1,2,10,1,1),
-(1,3,10,1,1);
+(1,1,10,1,1,10),
+(1,2,10,1,1,10),
+(1,3,10,1,1,2000);
 
 update plot set plantID = 1 where plotID =2;

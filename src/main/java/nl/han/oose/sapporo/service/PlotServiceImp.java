@@ -48,10 +48,10 @@ public class PlotServiceImp implements IPlotService {
     }
 
     @Override
-    public PlotDTO harvesPlant(PlantDTO plantDTO, UserDTO user, int plotID) {
-        if (plantService.plantFullGrown(plantDTO) && plotDAO.plotHasPlant(plotID)) {
+    public PlotDTO harvesPlant(PlotDTO plotDTO, UserDTO user, int plotID) {
+        if (plantService.plantFullGrown(plotDTO) && plotDAO.plotHasPlant(plotID)) {
             plotDAO.removeObjectsFromPlot(plotID);
-            int profit = plantDAO.getProfit(plantDTO.getID());
+            int profit = plantDAO.getProfit(plotDTO.getPlantID());
             inventoryService.increaseSaldo(profit, user);
             return plotDAO.getPlot(plotID);
         }
@@ -61,5 +61,10 @@ public class PlotServiceImp implements IPlotService {
     @Override
     public ArrayList<PlotDTO> getFarmPlots(int farmID) {
         return plotDAO.getFarmPlots(farmID);
+    }
+
+    @Override
+    public void updageAge(int plotID, int age) {
+        plotDAO.updateAge(plotID,age);
     }
 }

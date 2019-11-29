@@ -9,7 +9,9 @@ import java.util.ArrayList;
 public interface IPlotService {
     PlotDTO placePlant(PlantDTO plantDTO, int plotID, UserDTO userDTO);
 
-    PlotDTO harvesPlant(PlantDTO plantDTO, UserDTO user, int plotID);
+    PlotDTO harvesPlant(PlotDTO plotDTO, UserDTO user, int plotID);
 
     ArrayList<PlotDTO> getFarmPlots(int farmID);
+
+    void updageAge(int plotID, int age);
 }
