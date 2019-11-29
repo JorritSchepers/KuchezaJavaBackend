@@ -73,8 +73,8 @@ public class InventoryDAOImp implements IInventoryDAO {
 
     @Override
     public void createInventory(UserDTO user) {
-        int STARTMONEY = 10000;
-        int STARTWATER = 20000;
+        final int STARTMONEY = 10000;
+        final int STARTWATER = 20000;
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
                     ("INSERT INTO inventory values (?,?,?)");
