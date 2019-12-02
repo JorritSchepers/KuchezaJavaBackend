@@ -10,17 +10,17 @@ import java.util.ArrayList;
 
 class PlantDAOTest extends DAOTest {
     private PlantDAOImp sut = new PlantDAOImp();
-    private final int AMOUNT_OF_PLANTS = 3;
 
     @Override
-    void setfactory(ConnectionFactoryImp connectionFactoryImp) {
+    void setFactory(ConnectionFactoryImp connectionFactoryImp) {
         sut.setConnectionFactory(connectionFactoryImp);
     }
 
     @Test
     void getAllPlantsGetsRightAmountOfPlants() {
-        AllPlantDTO allplants = sut.getAllPlants();
-        ArrayList<PlantDTO> plants = allplants.getPlants();
+        int AMOUNT_OF_PLANTS = 3;
+        AllPlantDTO allPlants = sut.getAllPlants();
+        ArrayList<PlantDTO> plants = allPlants.getPlants();
         Assertions.assertEquals(AMOUNT_OF_PLANTS, plants.size());
     }
 
@@ -40,5 +40,4 @@ class PlantDAOTest extends DAOTest {
     void getProfitGetsRightProfit(){
         Assertions.assertEquals(20,sut.getProfit(1));
     }
-
 }

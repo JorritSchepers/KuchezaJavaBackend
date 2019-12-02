@@ -14,22 +14,8 @@ class InventoryDAOTest extends DAOTest {
     private UserDTO userDTO = new UserDTO(1, "PatrickSt3r", "DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937", "Patrick@Ster.com");
 
     @Override
-    void setfactory(ConnectionFactoryImp connectionFactoryImp) {
+    void setFactory(ConnectionFactoryImp connectionFactoryImp) {
         sut.setConnectionFactory(connectionFactoryImp);
-    }
-
-    private int getSaldoFromUser(int userId) {
-        int saldo = 0;
-        try (Connection connection = DriverManager.getConnection(dbUrl)) {
-            PreparedStatement statement = connection.prepareStatement("SELECT money FROM inventory where userID =?");
-            statement.setInt(1, userId);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                saldo = resultSet.getInt("money");
-            }
-        } catch (SQLException ignored) {
-        }
-        return saldo;
     }
 
     @Test
@@ -66,7 +52,21 @@ class InventoryDAOTest extends DAOTest {
 
     @Test
     void getInventoryReturnsRightInventory(){
-        InventoryDTO expected =  new InventoryDTO(1,2000,1000);
-        Assertions.assertEquals(expected,sut.getInventory(userDTO));
+        InventoryDTO expectedInventoryDTO =  new InventoryDTO(1,2000,1000);
+        Assertions.assertEquals(expectedInventoryDTO, sut.getInventory(userDTO));
+    }
+
+    private int getSaldoFromUser(int userId) {
+        int saldo = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("SELECT money FROM inventory where userID =?");
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                saldo = resultSet.getInt("money");
+            }
+        } catch (SQLException ignored) {
+        }
+        return saldo;
     }
 }

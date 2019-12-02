@@ -15,22 +15,22 @@ import java.sql.SQLException;
 import static org.mockito.Mockito.when;
 
 public abstract class DAOTest {
-    String dbUrl = "jdbc:h2:mem:TestDatabase";
+    final String DB_URL = "jdbc:h2:mem:TestDatabase";
 
-    abstract void setfactory(ConnectionFactoryImp connectionFactoryImp);
+    abstract void setFactory(ConnectionFactoryImp connectionFactoryImp);
 
     @BeforeEach
     private void setup() {
         ConnectionFactoryImp connectionFactoryImp = Mockito.mock(ConnectionFactoryImp.class);
         try {
-            when(connectionFactoryImp.getConnection()).thenReturn(DriverManager.getConnection(dbUrl));
-            setfactory(connectionFactoryImp);
+            when(connectionFactoryImp.getConnection()).thenReturn(DriverManager.getConnection(DB_URL));
+            setFactory(connectionFactoryImp);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         //Inserting the scripts
         try {
-            Connection connection = DriverManager.getConnection(dbUrl);
+            Connection connection = DriverManager.getConnection(DB_URL);
             InputStream resource = getClass().getClassLoader().getResourceAsStream("test-Create-Script.sql");
             RunScript.execute(connection, new InputStreamReader(resource));
         } catch (SQLException e) {
@@ -41,7 +41,7 @@ public abstract class DAOTest {
     @AfterEach
     private void destroyDB() {
         try {
-            Connection connection = DriverManager.getConnection(dbUrl);
+            Connection connection = DriverManager.getConnection(DB_URL);
             InputStream resource = getClass().getClassLoader().getResourceAsStream("test-DestroyScript.sql");
             RunScript.execute(connection, new InputStreamReader(resource));
         } catch (SQLException e) {
