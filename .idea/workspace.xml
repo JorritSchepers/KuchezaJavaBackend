@@ -6,28 +6,20 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
+    <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/AdminDAOImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/IAdminDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/resource/AdminResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/resource/exceptionmapper/UserIsNotAnAdministratorExceptionMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/AdminServiceImp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/IAdminService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/exception/UserIsNotAnAdministratorException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/TokenDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/TokenDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/database.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/AccountDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/AccountDAOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/DAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/DAOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/FarmDAOImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/farmDAOImpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/InventoryDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/InventoryDAOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/PlantDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/PlantDAOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/PlotDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/PlotDAOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/InventoryServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/InventoryServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/database.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/database.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/FarmDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/FarmDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/InventoryDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/InventoryDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/UserDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/InventoryDAOImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/InventoryDAOImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/database.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/InventoryDAOImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/InventoryDAOImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/service/PlotServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/service/PlotServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/AccountDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/AccountDAOTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/DAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/DAOTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/FarmDAOImpTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/FarmDAOImpTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/PlotDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/PlotDAOTest.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,8 +70,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -110,6 +102,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="h2.unified&#10;h2&#10;mysql" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -134,21 +127,22 @@
       <recent name="nl.han.oose.sapporo.resource" />
       <recent name="nl.han.oose.sapporo.persistence.datasource" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="nl.han.oose.sapporo.persistence.exception" />
-      <recent name="nl.han.oose.sapporo.service.exception" />
-      <recent name="nl.han.oose.sapporo.persistence" />
-      <recent name="nl.han.oose.sapporo.service" />
-      <recent name="nl.han.oose.sapporo.dto" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="nl.han.oose.sapporo.service" />
       <recent name="nl.han.oose.sapporo.persistence" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="nl.han.oose.sapporo.service.exception" />
+      <recent name="nl.han.oose.sapporo.persistence" />
+      <recent name="nl.han.oose.sapporo.resource" />
+      <recent name="nl.han.oose.sapporo.persistence.exception" />
+      <recent name="nl.han.oose.sapporo.service" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -163,7 +157,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in kuchezagame">
+  <component name="RunManager" selected="TomEE Server.TomEE 8.5.41">
     <configuration name="AccountServiceTest.registerUserCallsAddUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="KuchezaGame" />
       <extension name="coverage">
@@ -307,8 +301,8 @@
       <item itemvalue="JUnit.PlotServiceTest" />
       <item itemvalue="JUnit.AccountServiceTest.registerUserCallsAddUser" />
       <item itemvalue="JUnit.AccountServiceTest.verifyTokenReturnsThrowsExceptionWhenEmpty" />
-      <item itemvalue="TomEE Server.TomEE 8.5.41" />
       <item itemvalue="JUnit.All in kuchezagame" />
+      <item itemvalue="TomEE Server.TomEE 8.5.41" />
     </list>
     <recent_temporary>
       <list>
@@ -353,7 +347,8 @@
       <workItem from="1574845569913" duration="544000" />
       <workItem from="1574846423381" duration="8711000" />
       <workItem from="1575030472003" duration="3394000" />
-      <workItem from="1575279266894" duration="1938000" />
+      <workItem from="1575279266894" duration="3784000" />
+      <workItem from="1575461642810" duration="4642000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1574072988467</created>
@@ -362,7 +357,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574072988467</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="code cleanup in tests">
+      <created>1575282179380</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1575282179380</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,7 +387,8 @@
     <option name="RELOAD_CONTEXT" value="false" />
     <MESSAGE value="test" />
     <MESSAGE value="Werkt deze push?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Werkt deze push?" />
+    <MESSAGE value="code cleanup in tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="code cleanup in tests" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__1_.ic" NAME="All in KuchezaGame (1) Coverage Results" MODIFIED="1575033719946" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
