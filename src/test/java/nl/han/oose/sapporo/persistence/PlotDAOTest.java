@@ -73,6 +73,22 @@ class PlotDAOTest extends DAOTest {
         }
        return plotAmount;
     }
+
+    private int getAge(int x, int y){
+        int age = 0;
+        try (Connection connection = DriverManager.getConnection(dbUrl)) {
+            PreparedStatement statement = connection.prepareStatement("select age from plot where x =? and y=?");
+            statement.setInt(1,x);
+            statement.setInt(2,y);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                age = resultSet.getInt("age");
+            }
+        } catch (SQLException ignored) {
+        }
+        return age;
+    }
+
     @Test
     void checkIfPlotIsEmptyReturnsTrueWhenEmpty() {
         Assertions.assertTrue(sut.checkIfPlotIsEmpty(1));
@@ -129,5 +145,12 @@ class PlotDAOTest extends DAOTest {
     void getFarmPlotsGetsRightAmountOfPlots(){
         int AMOUNTOFPLOTS = 3;
         Assertions.assertEquals(sut.getFarmPlots(FARMID).size(),AMOUNTOFPLOTS);
+    }
+
+    @Test
+    void updateAgeUpdatesAge() {
+        Assertions.assertEquals(10,getAge(1,1));
+        sut.updateAge(1,1000);
+        Assertions.assertEquals(1000,getAge(1,1));
     }
 }
