@@ -60,4 +60,10 @@ public class PlotResourceTest {
     public void harvestPlantFromPlotReturnsRightPlot() {
         Assert.assertEquals(plot, sut.harvestPlantFromPlot(token, 1, plot).getEntity());
     }
+
+    @Test
+    public void updateAgeCallsUpdateAge() {
+        sut.updateAge(token,1,1000);
+        Mockito.verify(plotService, Mockito.times(1)).updageAge(1,1000);
+    }
 }
