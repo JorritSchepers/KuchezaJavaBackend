@@ -59,8 +59,4 @@ public class FarmDTO {
                 Objects.equals(plots, farmDTO.plots);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(farmID, ownerID, plots);
-    }
 }

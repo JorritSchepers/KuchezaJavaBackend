@@ -48,12 +48,12 @@ public class AccountDAOImp implements IAccountDAO {
 
             var result = statement.executeQuery();
             if (result.next()) {
-                UserDTO user = new UserDTO(
+                return new UserDTO(
                         result.getInt("userID"),
                         result.getString("name"),
                         result.getString("password"),
-                        result.getString("email"));
-                return user;
+                        result.getString("email"),
+                        result.getBoolean("admin"));
             }
         } catch (SQLException e) {
             throw new PersistenceException();

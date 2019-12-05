@@ -1,10 +1,10 @@
 package nl.han.oose.sapporo.service;
 
-import nl.han.oose.sapporo.dto.PlantDTO;
-import nl.han.oose.sapporo.dto.PlotDTO;
-import nl.han.oose.sapporo.dto.UserDTO;
+import nl.han.oose.sapporo.dto.*;
+import nl.han.oose.sapporo.persistence.IFarmDAO;
 import nl.han.oose.sapporo.persistence.IPlantDAO;
 import nl.han.oose.sapporo.persistence.IPlotDAO;
+import nl.han.oose.sapporo.service.exception.PlotIsAlreadyPurchasedException;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class PlotServiceImp implements IPlotService {
     private IPlotDAO plotDAO;
     private IPlantDAO plantDAO;
+    private IFarmDAO farmDAO;
     private IInventoryService inventoryService;
     private IPlantService plantService;
 
@@ -25,6 +26,11 @@ public class PlotServiceImp implements IPlotService {
     @Inject
     public void setPlotDAO(IPlotDAO plotDAO) {
         this.plotDAO = plotDAO;
+    }
+
+    @Inject
+    public void setFarmDAO(IFarmDAO farmDAO) {
+        this.farmDAO = farmDAO;
     }
 
     @Inject
@@ -55,6 +61,21 @@ public class PlotServiceImp implements IPlotService {
             int profit = plantDAO.getProfit(plotDTO.getPlantID());
             inventoryService.increaseSaldo(profit, user);
             return plotDAO.getPlot(plotID);
+        }
+        return null;
+    }
+
+    @Override
+    public AllPlotDTO purchasePlot(int plotID, UserDTO userDTO) {
+        PlotDTO plotDTO = plotDAO.getPlot(plotID);
+        if(plotDAO.plotIsPurchased(plotID)) {
+            throw new PlotIsAlreadyPurchasedException();
+        }
+        if (inventoryService.checkSaldo(plotDTO.getPrice(), userDTO) && !plotDAO.plotIsPurchased(plotID)) {
+            inventoryService.lowerSaldo(plotDTO.getPrice(), userDTO);
+            plotDAO.purchasePlot(plotID);
+            FarmDTO farmDTO = farmDAO.getFarm(userDTO);
+            return new AllPlotDTO(getFarmPlots(farmDTO.getFarmID()));
         }
         return null;
     }

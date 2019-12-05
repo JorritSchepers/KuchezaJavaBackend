@@ -49,6 +49,17 @@ public class PlotResource {
     }
 
     @POST
+    @Path("/{id}/purchase")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response purchasePlot(@QueryParam("token") String token, @PathParam("id") int plotID) {
+        UserDTO user = accountService.verifyToken(token);
+        return Response.status(Response.Status.OK)
+                .entity(plotService.purchasePlot(plotID, user))
+                .build();
+    }
+
+    @POST
     @Path("/{id}/updateAge/{age}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateAge(@QueryParam("token") String token, @PathParam("id") int plotID, @PathParam("age") int age) {

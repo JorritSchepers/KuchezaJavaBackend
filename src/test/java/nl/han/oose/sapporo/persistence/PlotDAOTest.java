@@ -15,26 +15,25 @@ class PlotDAOTest extends DAOTest {
     private final int PLOTID = 1;
     private final int FULLPLOTID = 2;
     private final int FARMID = 1;
-    private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1);
+    private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1, 1);
 
     @Override
-    void setfactory(ConnectionFactoryImp connectionFactoryImp) {
+    void setFactory(ConnectionFactoryImp connectionFactoryImp) {
         sut.setConnectionFactory(connectionFactoryImp);
     }
 
     int getPlantIDFromPlot(int plotId) {
-        int plantId = 0;
-
-        try (Connection connection = DriverManager.getConnection(dbUrl)) {
+        int plantID = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
             PreparedStatement statement = connection.prepareStatement("select plantID from plot where plotID = ?");
             statement.setInt(1, plotId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                plantId = resultSet.getInt("plantID");
+                plantID = resultSet.getInt("plantID");
             }
         } catch (SQLException ignored) {
         }
-        return plantId;
+        return plantID;
     }
 
     private boolean plotIsEmpty(int plotId) {
@@ -108,7 +107,7 @@ class PlotDAOTest extends DAOTest {
     }
 
     @Test
-    void getPlotThrowsNoExpcetionWhenPlotDoesExist() {
+    void getPlotThrowsNoExceptionWhenPlotDoesExist() {
         Assertions.assertDoesNotThrow(() -> {
             sut.getPlot(PLOTID);
         });
@@ -143,8 +142,24 @@ class PlotDAOTest extends DAOTest {
 
     @Test
     void getFarmPlotsGetsRightAmountOfPlots(){
-        int AMOUNTOFPLOTS = 3;
-        Assertions.assertEquals(sut.getFarmPlots(FARMID).size(),AMOUNTOFPLOTS);
+        int AMOUNT_OF_PLOTS = 3;
+        int FARM_ID = 1;
+        Assertions.assertEquals(sut.getFarmPlots(FARM_ID).size(),AMOUNT_OF_PLOTS);
+    }
+
+    private int getAmountOfPlots(int x, int y){
+        int plotAmount = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("select count(plotID) as amount from plot where x =? and y=?");
+            statement.setInt(1,x);
+            statement.setInt(2,y);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                plotAmount = resultSet.getInt("amount");
+            }
+        } catch (SQLException ignored) {
+        }
+        return plotAmount;
     }
 
     @Test

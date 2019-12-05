@@ -9,34 +9,40 @@ import org.mockito.Mockito;
 class InventoryServiceTest {
     private InventoryServiceImp sut = new InventoryServiceImp();
     private IInventoryDAO inventoryDAO = Mockito.mock(IInventoryDAO.class);
-    private final int TESTAMOUNT = 10;
+    private final int TEST_AMOUNT = 10;
     private UserDTO user = new UserDTO();
-
-    InventoryServiceTest() {
-        sut.setInventoryDAO(inventoryDAO);
-        Mockito.when(inventoryDAO.checkSaldo(TESTAMOUNT, user)).thenReturn(true);
-    }
 
     @Test
     void checkSaldoCallsCheckSalo() {
-        sut.checkSaldo(TESTAMOUNT, user);
-        Mockito.verify(inventoryDAO, Mockito.times(1)).checkSaldo(TESTAMOUNT, user);
+        sut.checkSaldo(TEST_AMOUNT, user);
+        Mockito.verify(inventoryDAO, Mockito.times(1)).checkSaldo(TEST_AMOUNT, user);
     }
 
     @Test
     void checkSaldoReturnsRightBoolean() {
-        Assertions.assertTrue(sut.checkSaldo(TESTAMOUNT, user));
+        Assertions.assertTrue(sut.checkSaldo(TEST_AMOUNT, user));
     }
 
     @Test
-    void lowerSaldoCallsLowerSalo() {
-        sut.lowerSaldo(TESTAMOUNT, user);
-        Mockito.verify(inventoryDAO, Mockito.times(1)).lowerSaldo(TESTAMOUNT, user);
+    void lowerSaldoCallsLowerSaldo() {
+        sut.lowerSaldo(TEST_AMOUNT, user);
+        Mockito.verify(inventoryDAO, Mockito.times(1)).lowerSaldo(TEST_AMOUNT, user);
     }
 
     @Test
     void increaseSaldoCallsIncreaseSaldo() {
-        sut.increaseSaldo(TESTAMOUNT, user);
-        Mockito.verify(inventoryDAO, Mockito.times(1)).increaseSaldo(TESTAMOUNT, user);
+        sut.increaseSaldo(TEST_AMOUNT, user);
+        Mockito.verify(inventoryDAO, Mockito.times(1)).increaseSaldo(TEST_AMOUNT, user);
+    }
+
+    @Test
+    void getInventoryCallsGetInventory(){
+        sut.getInventory(user);
+        Mockito.verify(inventoryDAO, Mockito.times(1)).getInventory(user);
+    }
+
+    private InventoryServiceTest() {
+        sut.setInventoryDAO(inventoryDAO);
+        Mockito.when(inventoryDAO.checkSaldo(TEST_AMOUNT, user)).thenReturn(true);
     }
 }

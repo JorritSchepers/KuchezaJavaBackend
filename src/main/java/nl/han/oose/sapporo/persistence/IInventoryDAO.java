@@ -1,5 +1,6 @@
 package nl.han.oose.sapporo.persistence;
 
+import nl.han.oose.sapporo.dto.InventoryDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 
 public interface IInventoryDAO {
@@ -10,4 +11,6 @@ public interface IInventoryDAO {
     void increaseSaldo(float amount, UserDTO userDTO);
 
     void createInventory(UserDTO user);
+
+    InventoryDTO getInventory(UserDTO user);
 }

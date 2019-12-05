@@ -7,6 +7,7 @@ public class UserDTO {
     private String name;
     private String password;
     private String email;
+    private boolean admin;
 
     public UserDTO() { }
 
@@ -21,6 +22,21 @@ public class UserDTO {
         this.name = name;
         this.password = password;
         this.email = email;
+    }
+
+    public UserDTO(int ID, String name, String password, String email, boolean admin) {
+        this.ID = ID;
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.admin = admin;
+    }
+
+    public UserDTO(String name, String password, String email, boolean admin) {
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.admin = admin;
     }
 
     public String getName() {
@@ -48,10 +64,5 @@ public class UserDTO {
                 Objects.equals(name, userDTO.name) &&
                 Objects.equals(password, userDTO.password) &&
                 Objects.equals(email, userDTO.email);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(ID, name, password, email);
     }
 }

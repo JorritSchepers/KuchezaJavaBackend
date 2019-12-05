@@ -13,7 +13,11 @@ public interface IPlotDAO {
 
     boolean checkIfPlotIsEmpty(int plotID);
 
+    boolean plotIsPurchased(int plotID);
+
     void removeObjectsFromPlot(int plotID);
+
+    void purchasePlot(int plotID);
 
     boolean plotHasPlant(int plotID);
 

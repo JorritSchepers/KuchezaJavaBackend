@@ -1,5 +1,6 @@
 package nl.han.oose.sapporo.resource;
 
+import nl.han.oose.sapporo.dto.AllPlotDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
@@ -9,6 +10,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import java.util.ArrayList;
+
 public class PlotResourceTest {
     private PlotResource sut = new PlotResource();
     private String token = "123456890";
@@ -17,6 +20,8 @@ public class PlotResourceTest {
     private PlantDTO plant = new PlantDTO();
     private UserDTO user = new UserDTO();
     private PlotDTO plot = new PlotDTO(1, 1, 1, 1, 0, 0, 0);
+    private ArrayList<PlotDTO> plots = new ArrayList<>() {{ add(plot); }};
+    private AllPlotDTO allPlots = new AllPlotDTO(plots);
 
     public PlotResourceTest() {
         sut.setAccountService(accountService);
@@ -24,6 +29,7 @@ public class PlotResourceTest {
         Mockito.when(accountService.verifyToken(token)).thenReturn(user);
         Mockito.when(plotService.placePlant(plant, 1, user)).thenReturn(plot);
         Mockito.when(plotService.harvesPlant(plot, user, 1)).thenReturn(plot);
+        Mockito.when(plotService.purchasePlot(1, user)).thenReturn(allPlots);
     }
 
     @Test
@@ -65,5 +71,23 @@ public class PlotResourceTest {
     public void updateAgeCallsUpdateAge() {
         sut.updateAge(token,1,1000);
         Mockito.verify(plotService, Mockito.times(1)).updageAge(1,1000);
+    }
+
+    @Test
+    public void purchasePlotCallsAuthenticateByToken() {
+        sut.purchasePlot(token, 1);
+        Mockito.verify(accountService, Mockito.times(1)).verifyToken(token);
+    }
+
+    @Test
+    public void purchasePlotCallsPurchasePlot() {
+        sut.purchasePlot(token, 1);
+        Mockito.verify(plotService, Mockito.times(1)).purchasePlot(1, user);
+    }
+
+    @Test
+    public void purchasePlotReturnsAllPlots() {
+        sut.purchasePlot(token, 1);
+        Assert.assertEquals(allPlots, sut.purchasePlot(token, 1).getEntity());
     }
 }
