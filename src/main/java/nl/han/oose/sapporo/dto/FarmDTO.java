@@ -6,8 +6,8 @@ import java.util.Objects;
 public class FarmDTO {
     private int farmID;
     private int ownerID;
-    private static int WIDTH = 10;
-    private static int HEIGHT = 5;
+    private static int WIDTH = 14;
+    private static int HEIGHT = 7;
     private List<PlotDTO> plots;
 
     public FarmDTO() { }
