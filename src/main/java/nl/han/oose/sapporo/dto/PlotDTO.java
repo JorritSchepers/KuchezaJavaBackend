@@ -8,6 +8,7 @@ public class PlotDTO {
     private int animalID;
     private int waterManagerID;
     private int plantID;
+    private int waterAvailable;
     private float price;
 
     public PlotDTO() { }
@@ -19,7 +20,7 @@ public class PlotDTO {
         this.purchased = purchased;
     }
 
-    public PlotDTO(int ID, int x, int y, int animalID, int waterManagerID, int plantID, float price, boolean purchased) {
+    public PlotDTO(int ID, int x, int y, int animalID, int waterManagerID, int plantID, float price, boolean purchased, int waterAvailable) {
         this.ID = ID;
         this.x = x;
         this.y = y;
@@ -28,6 +29,7 @@ public class PlotDTO {
         this.plantID = plantID;
         this.price = price;
         this.purchased = purchased;
+        this.waterAvailable = waterAvailable;
     }
 
     public PlotDTO(int ID, int x, int y, int animalID, int waterManagerID, int plantID, float price) {
@@ -40,19 +42,21 @@ public class PlotDTO {
         this.price = price;
     }
 
-    public PlotDTO(int ID, int x, int y, float price, boolean purchased) {
+    public PlotDTO(int ID, int x, int y, float price, boolean purchased, int waterAvailable) {
         this.ID = ID;
         this.x = x;
         this.y = y;
         this.price = price;
         this.purchased = purchased;
+        this.waterAvailable = waterAvailable;
     }
 
-    public PlotDTO(int ID, int x, int y, float price) {
+    public PlotDTO(int ID, int x, int y, float price, int waterAvailable) {
         this.ID = ID;
         this.x = x;
         this.y = y;
         this.price = price;
+        this.waterAvailable = waterAvailable;
     }
 
     public int getX() {

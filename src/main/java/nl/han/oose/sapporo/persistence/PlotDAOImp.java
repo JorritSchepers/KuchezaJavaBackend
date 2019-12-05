@@ -4,10 +4,7 @@ import nl.han.oose.sapporo.dto.FarmDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
-import nl.han.oose.sapporo.persistence.exception.PersistenceException;
-import nl.han.oose.sapporo.persistence.exception.PlotDoesNotExistException;
-import nl.han.oose.sapporo.persistence.exception.PlotHasNotPlantException;
-import nl.han.oose.sapporo.persistence.exception.PlotIsOccupiedException;
+import nl.han.oose.sapporo.persistence.exception.*;
 
 import javax.inject.Inject;
 import java.sql.*;
@@ -78,7 +75,8 @@ public class PlotDAOImp implements IPlotDAO {
                 int x = resultSet.getInt("x");
                 int y = resultSet.getInt("y");
                 float price = resultSet.getFloat("price");
-                plotDTO = new PlotDTO(iD, x, y, price);
+                int waterAvailable = resultSet.getInt("waterAvailable");
+                plotDTO = new PlotDTO(iD, x, y, price, waterAvailable);
             }
 
             if(plotDTO == null) {
@@ -141,7 +139,7 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public ArrayList<PlotDTO> getFarmPlots(int farmID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT plotID,x,y,price,animalID,waterManagerID,plantID,purchased FROM plot where farmID = ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT plotID,x,y,price,animalID,waterManagerID,plantID,purchased,waterAvailable FROM plot where farmID = ?");
             statement.setInt(1, farmID);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<PlotDTO> plots = new ArrayList<>();
@@ -154,13 +152,27 @@ public class PlotDAOImp implements IPlotDAO {
                 int waterManagerID = resultSet.getInt("waterManagerID");
                 int plantID = resultSet.getInt("plantID");
                 float price = resultSet.getFloat("price");
+                int waterAvailable = resultSet.getInt("waterAvailable");
                 boolean purchased = resultSet.getBoolean("purchased");
-                PlotDTO plot = new PlotDTO(ID, x, y, animalID, waterManagerID, plantID, price, purchased);
+                PlotDTO plot = new PlotDTO(ID, x, y, animalID, waterManagerID, plantID, price, purchased, waterAvailable);
                 plots.add(plot);
             }
             return plots;
         } catch (SQLException e) {
             throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public void increaseWaterAvailable(int amount, int plotID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement
+                    ("update plot set waterAvailable = waterAvailable+? where plotID = ?");
+            statement.setInt(1,amount);
+            statement.setInt(2,plotID);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new PlotHasMaximumWaterException();
         }
     }
 }

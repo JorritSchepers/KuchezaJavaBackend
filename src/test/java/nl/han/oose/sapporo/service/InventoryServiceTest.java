@@ -41,6 +41,29 @@ class InventoryServiceTest {
         Mockito.verify(inventoryDAO, Mockito.times(1)).getInventory(user);
     }
 
+    @Test
+    void checkWaterCallsCheckWater() {
+        sut.checkWater(TEST_AMOUNT, user);
+        Mockito.verify(inventoryDAO, Mockito.times(1)).checkWater(TEST_AMOUNT, user);
+    }
+
+    @Test
+    void checkWaterReturnsRightBoolean() {
+        Assertions.assertTrue(sut.checkWater(TEST_AMOUNT, user));
+    }
+
+    @Test
+    void lowerWaterCallsLowerWater() {
+        sut.lowerSaldo(TEST_AMOUNT, user);
+        Mockito.verify(inventoryDAO, Mockito.times(1)).lowerWater(TEST_AMOUNT, user);
+    }
+
+    @Test
+    void increaseWaterCallsIncreaseWater() {
+        sut.increaseSaldo(TEST_AMOUNT, user);
+        Mockito.verify(inventoryDAO, Mockito.times(1)).increaseWater(TEST_AMOUNT, user);
+    }
+
     private InventoryServiceTest() {
         sut.setInventoryDAO(inventoryDAO);
         Mockito.when(inventoryDAO.checkSaldo(TEST_AMOUNT, user)).thenReturn(true);

@@ -24,6 +24,7 @@ public class PlotResourceTest {
         Mockito.when(accountService.verifyToken(token)).thenReturn(user);
         Mockito.when(plotService.placePlant(plant, 1, user)).thenReturn(plot);
         Mockito.when(plotService.harvesPlant(plant, user, 1)).thenReturn(plot);
+        Mockito.when(plotService.waterPlant(user, 1)).thenReturn(plot);
     }
 
     @Test
@@ -59,5 +60,22 @@ public class PlotResourceTest {
     @Test
     public void harvestPlantFromPlotReturnsRightPlot() {
         Assert.assertEquals(plot, sut.harvestPlantFromPlot(token, 1, plant).getEntity());
+    }
+
+    @Test
+    public void waterPlantFromPlotCallsAuthenticateByToken() {
+        sut.waterPlantOnPlot(token, 1);
+        Mockito.verify(accountService, Mockito.times(1)).verifyToken(token);
+    }
+
+    @Test
+    public void waterPlantFromPlotCallsHarvesPlot() {
+        sut.waterPlantOnPlot(token, 1);
+        Mockito.verify(plotService, Mockito.times(1)).waterPlant(user, 1);
+    }
+
+    @Test
+    public void waterPlantFromPlotReturnsRightPlot() {
+        Assert.assertEquals(plot, sut.waterPlantOnPlot(token, 1).getEntity());
     }
 }

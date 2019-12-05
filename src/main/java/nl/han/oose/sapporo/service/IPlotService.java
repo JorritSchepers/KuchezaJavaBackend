@@ -12,4 +12,6 @@ public interface IPlotService {
     PlotDTO harvesPlant(PlantDTO plantDTO, UserDTO user, int plotID);
 
     ArrayList<PlotDTO> getFarmPlots(int farmID);
+
+    PlotDTO waterPlant(UserDTO user, int plotID);
 }

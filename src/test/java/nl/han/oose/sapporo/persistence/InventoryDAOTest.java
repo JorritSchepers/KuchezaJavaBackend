@@ -4,6 +4,7 @@ import nl.han.oose.sapporo.dto.InventoryDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.InsufficientFundsException;
+import nl.han.oose.sapporo.persistence.exception.InsufficientWaterException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -51,6 +52,38 @@ class InventoryDAOTest extends DAOTest {
     }
 
     @Test
+    void checkWaterReturnsTrueWhenWaterIsEnough() {
+        int availableAmount = 10;
+        Assertions.assertTrue(sut.checkWater(availableAmount, userDTO));
+    }
+
+    @Test
+    void checkWaterThrowsExceptionWhenWaterIsNotEnough() {
+        int unavailableAmount = 10000;
+        Assertions.assertThrows(InsufficientWaterException.class, () -> {
+            sut.checkWater(unavailableAmount, userDTO);
+        });
+    }
+
+    @Test
+    void lowerWaterLowersWaterWithRightAmount() {
+        int removedWater = 10;
+        int oldWater = getWaterFromUser(userDTO.getID());
+        sut.lowerWater(removedWater, userDTO);
+        int newWater = getWaterFromUser(userDTO.getID());
+        Assertions.assertEquals((oldWater - removedWater), newWater);
+    }
+
+    @Test
+    void increaseWaterIncreasesWaterWithRightAmount() {
+        int extraWater = 10;
+        int oldWater = getWaterFromUser(userDTO.getID());
+        sut.increaseWater(extraWater, userDTO);
+        int newWater = getWaterFromUser(userDTO.getID());
+        Assertions.assertEquals((oldWater + extraWater), newWater);
+    }
+
+    @Test
     void getInventoryReturnsRightInventory(){
         InventoryDTO expectedInventoryDTO =  new InventoryDTO(1,2000,1000);
         Assertions.assertEquals(expectedInventoryDTO, sut.getInventory(userDTO));
@@ -68,5 +101,19 @@ class InventoryDAOTest extends DAOTest {
         } catch (SQLException ignored) {
         }
         return saldo;
+    }
+
+    private int getWaterFromUser(int userId) {
+        int water = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("SELECT water FROM inventory where userID =?");
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                water = resultSet.getInt("water");
+            }
+        } catch (SQLException ignored) {
+        }
+        return water;
     }
 }
