@@ -3,7 +3,8 @@ CREATE TABLE user
     userID INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(45) NOT NULL,
     password CHAR(70) NOT NULL,
-    email VARCHAR(45) UNIQUE NOT NULL
+    email VARCHAR(45) UNIQUE NOT NULL,
+    admin bit NOT NULL
 );
 
 CREATE TABLE inventory (
@@ -61,6 +62,7 @@ CREATE TABLE plot (
                       waterManagerId int null,
                       plantID int null,
                       purchased bit,
+                      age int DEFAULT 0,
 
                       FOREIGN KEY (farmID)
                           REFERENCES farm(farmID)
@@ -76,11 +78,12 @@ CREATE TABLE plot (
                           ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-INSERT INTO user (name,password,email)
+INSERT INTO user (name,password,email,admin)
 VALUES
-('PatrickSt3r','DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937','Patrick@Ster.com'),
-('Thomi','DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937','Geitenzijncool@hotmail.com'),
-('TestUser','wachtwoord','oose.sapporo@gmail.com');
+('PatrickSt3r','DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937','Patrick@Ster.com', 0),
+('Thomi','DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937','Geitenzijncool@hotmail.com', 0),
+('TestUser','wachtwoord','oose.sapporo@gmail.com', 0),
+('admin', 'admin', 'admin@admin.com', 1);
 
 INSERT INTO farm (ownerID)
 VALUES
@@ -97,10 +100,10 @@ VALUES
 (10,5,20,7.5,'Tomato'),
 (2.5,50,40,10,'Banana');
 
-INSERT INTO plot (x,y,price,purchased, farmID)
+INSERT INTO plot (x,y,price,purchased, farmID,age)
 VALUES
-(1,1,10,1,1),
-(1,2,10,1,1),
-(1,3,10,1,1);
+(1,1,10,1,1,10),
+(1,2,10,1,1,10),
+(1,3,10,1,1,2000);
 
 update plot set plantID = 1 where plotID =2;

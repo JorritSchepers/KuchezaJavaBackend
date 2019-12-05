@@ -28,7 +28,7 @@ public class PlotResourceTest {
         sut.setPlotService(plotService);
         Mockito.when(accountService.verifyToken(token)).thenReturn(user);
         Mockito.when(plotService.placePlant(plant, 1, user)).thenReturn(plot);
-        Mockito.when(plotService.harvestPlant(plant, user, 1)).thenReturn(plot);
+        Mockito.when(plotService.harvestPlant(plot, user, 1)).thenReturn(plot);
         Mockito.when(plotService.purchasePlot(1, user)).thenReturn(allPlots);
     }
 
@@ -52,19 +52,25 @@ public class PlotResourceTest {
 
     @Test
     public void harvestPlantFromPlotCallsAuthenticateByToken() {
-        sut.harvestPlantFromPlot(token, 1, plant);
+        sut.harvestPlantFromPlot(token, 1, plot);
         Mockito.verify(accountService, Mockito.times(1)).verifyToken(token);
     }
 
     @Test
     public void harvestPlantFromPlotCallsHarvesPlot() {
-        sut.harvestPlantFromPlot(token, 1, plant);
-        Mockito.verify(plotService, Mockito.times(1)).harvestPlant(plant, user, 1);
+        sut.harvestPlantFromPlot(token, 1, plot);
+        Mockito.verify(plotService, Mockito.times(1)).harvestPlant(plot, user, 1);
     }
 
     @Test
     public void harvestPlantFromPlotReturnsRightPlot() {
-        Assert.assertEquals(plot, sut.harvestPlantFromPlot(token, 1, plant).getEntity());
+        Assert.assertEquals(plot, sut.harvestPlantFromPlot(token, 1, plot).getEntity());
+    }
+
+    @Test
+    public void updateAgeCallsUpdateAge() {
+        sut.updateAge(token,1,1000);
+        Mockito.verify(plotService, Mockito.times(1)).updageAge(1,1000);
     }
 
     @Test

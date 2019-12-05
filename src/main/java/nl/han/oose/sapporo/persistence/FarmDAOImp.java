@@ -75,7 +75,6 @@ public class FarmDAOImp implements IFarmDAO {
         } catch (SQLException e) {
             throw new PersistenceException();
         }
-
         return farmDTO;
     }
 
@@ -108,7 +107,8 @@ public class FarmDAOImp implements IFarmDAO {
                         resultSet.getInt("x"),
                         resultSet.getInt("y"),
                         resultSet.getInt("price"),
-                        resultSet.getBoolean("purchased")));
+                        resultSet.getBoolean("purchased"),
+                        resultSet.getInt("objectAge")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

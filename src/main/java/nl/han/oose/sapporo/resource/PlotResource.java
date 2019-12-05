@@ -41,10 +41,10 @@ public class PlotResource {
     @Path("/{id}/harvest")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response harvestPlantFromPlot(@QueryParam("token") String token, @PathParam("id") int plotID, PlantDTO plantDTO) {
+    public Response harvestPlantFromPlot(@QueryParam("token") String token, @PathParam("id") int plotID, PlotDTO plotDTO) {
         UserDTO user = accountService.verifyToken(token);
         return Response.status(Response.Status.OK)
-                .entity(plotService.harvestPlant(plantDTO, user, plotID))
+                .entity(plotService.harvestPlant(plotDTO, user, plotID))
                 .build();
     }
 
@@ -57,5 +57,13 @@ public class PlotResource {
         return Response.status(Response.Status.OK)
                 .entity(plotService.purchasePlot(plotID, user))
                 .build();
+    }
+
+    @POST
+    @Path("/{id}/updateAge/{age}")
+    public Response updateAge(@QueryParam("token") String token, @PathParam("id") int plotID, @PathParam("age") int age) {
+        UserDTO user = accountService.verifyToken(token);
+        plotService.updageAge(plotID,age);
+        return Response.status(Response.Status.OK).entity("plant").build();
     }
 }

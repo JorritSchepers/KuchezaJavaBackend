@@ -2,6 +2,7 @@ package nl.han.oose.sapporo.persistence;
 
 import nl.han.oose.sapporo.dto.AllPlantDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
+import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,9 @@ import java.util.ArrayList;
 
 class PlantDAOTest extends DAOTest {
     private PlantDAOImp sut = new PlantDAOImp();
+    private final int AMOUNT_OF_PLANTS = 3;
+    private PlotDTO plotWithGrownPlant = new PlotDTO(1, 1, 1, 1, 0, 1, 0, 100);
+    private PlotDTO plotWithoutGrownPlant = new PlotDTO(2, 1, 1, 1, 0, 1, 0, 0);
 
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
@@ -26,14 +30,12 @@ class PlantDAOTest extends DAOTest {
 
     @Test
     void checkIfPlantFullGrownReturnsTrueWhenGrown() {
-        PlantDTO grownPlant = new PlantDTO(1, "plant", 1, 1, 1, 1, 10);
-        Assertions.assertTrue(sut.checkIfPlantFullGrown(grownPlant));
+        Assertions.assertTrue(sut.checkIfPlantFullGrown(plotWithGrownPlant));
     }
 
     @Test
     void checkIfPlantFullGrownReturnsFalseWhenNotGrown() {
-        PlantDTO notGrownPlant = new PlantDTO(1, "plant", 1, 500, 1, 1, 1);
-        Assertions.assertFalse(sut.checkIfPlantFullGrown(notGrownPlant));
+        Assertions.assertFalse(sut.checkIfPlantFullGrown(plotWithoutGrownPlant));
     }
 
     @Test

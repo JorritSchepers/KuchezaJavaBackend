@@ -12,9 +12,10 @@ import java.sql.*;
 
 class PlotDAOTest extends DAOTest {
     private PlotDAOImp sut = new PlotDAOImp();
-    private final int PLOT_ID = 1;
-    private final int FULL_PLOT_ID = 2;
-    private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1, 1);
+    private final int PLOTID = 1;
+    private final int FULLPLOTID = 2;
+    private final int FARMID = 1;
+    private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1);
 
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
@@ -38,21 +39,53 @@ class PlotDAOTest extends DAOTest {
     private boolean plotIsEmpty(int plotId) {
         int full = 0;
         try (Connection connection = DriverManager.getConnection(DB_URL)) {
-            int animalID = 0;
-            int waterManagerID = 0;
-            int plantID = 0;
-            PreparedStatement statement = connection.prepareStatement("Select animalId, waterManagerId, plantID from plot where plotID = ?");
+            int animalId = 0;
+            int waterManagerId = 0;
+            int plantId = 0;
+            int age = 0;
+            PreparedStatement statement = connection.prepareStatement("Select animalId, waterManagerId, plantID, age from plot where plotID = ?");
             statement.setInt(1, plotId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                animalID = resultSet.getInt("animalID");
-                waterManagerID = resultSet.getInt("waterManagerID");
-                plantID = resultSet.getInt("plantID");
+                animalId = resultSet.getInt("animalId");
+                waterManagerId = resultSet.getInt("waterManagerId");
+                plantId = resultSet.getInt("plantID");
+                age = resultSet.getInt("age");
             }
-            return (full + animalID + waterManagerID + plantID == 0);
+            return (full + animalId + waterManagerId + plantId + age == 0);
         } catch (SQLException ignored) {
         }
         return false;
+    }
+
+    private int getAmountofPlots(int x, int y){
+        int plotAmount = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("select count(plotID) as amount from plot where x =? and y=?");
+            statement.setInt(1,x);
+            statement.setInt(2,y);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                plotAmount = resultSet.getInt("amount");
+            }
+        } catch (SQLException ignored) {
+        }
+       return plotAmount;
+    }
+
+    private int getAge(int x, int y){
+        int age = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("select objectAge from plot where x =? and y=?");
+            statement.setInt(1,x);
+            statement.setInt(2,y);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                age = resultSet.getInt("objectAge");
+            }
+        } catch (SQLException ignored) {
+        }
+        return age;
     }
 
     @Test
@@ -69,14 +102,14 @@ class PlotDAOTest extends DAOTest {
 
     @Test
     void checkIfAddPlantToPlotAddsPlant() {
-        sut.addPlantToPlot(plant, PLOT_ID);
-        Assertions.assertEquals(getPlantIDFromPlot(plant.getID()), getPlantIDFromPlot(PLOT_ID));
+        sut.addPlantToPlot(plant, PLOTID);
+        Assertions.assertEquals(getPlantIDFromPlot(plant.getID()), getPlantIDFromPlot(PLOTID));
     }
 
     @Test
     void getPlotThrowsNoExceptionWhenPlotDoesExist() {
         Assertions.assertDoesNotThrow(() -> {
-            sut.getPlot(PLOT_ID);
+            sut.getPlot(PLOTID);
         });
     }
 
@@ -90,21 +123,21 @@ class PlotDAOTest extends DAOTest {
 
     @Test
     void plotHasPlantReturnsTrueWhenTrue() {
-        Assertions.assertTrue(sut.plotHasPlant(FULL_PLOT_ID));
+        Assertions.assertTrue(sut.plotHasPlant(FULLPLOTID));
     }
 
     @Test
     void plotHasPlantThrowsExceptionWhenFalse() {
         Assertions.assertThrows(PlotHasNotPlantException.class, () -> {
-            sut.plotHasPlant(PLOT_ID);
+            sut.plotHasPlant(PLOTID);
         });
     }
 
     @Test
     void removeObjectsFromPlotRemovesObject() {
-        Assertions.assertFalse(plotIsEmpty(FULL_PLOT_ID));
-        sut.removeObjectsFromPlot(FULL_PLOT_ID);
-        Assertions.assertTrue(plotIsEmpty(FULL_PLOT_ID));
+        Assertions.assertFalse(plotIsEmpty(FULLPLOTID));
+        sut.removeObjectsFromPlot(FULLPLOTID);
+        Assertions.assertTrue(plotIsEmpty(FULLPLOTID));
     }
 
     @Test
@@ -127,5 +160,12 @@ class PlotDAOTest extends DAOTest {
         } catch (SQLException ignored) {
         }
         return plotAmount;
+    }
+
+    @Test
+    void updateAgeUpdatesAge() {
+        Assertions.assertEquals(10,getAge(1,1));
+        sut.updateAge(1,1000);
+        Assertions.assertEquals(1000,getAge(1,1));
     }
 }
