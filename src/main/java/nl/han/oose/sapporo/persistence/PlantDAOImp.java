@@ -44,9 +44,6 @@ public class PlantDAOImp implements IPlantDAO{
             while (resultSet.next()) {
                 neededGrowingTime = resultSet.getInt("growingTime");
             }
-            System.out.println("plantID "+plotDTO.getPlantID());
-            System.out.println("age "+plotDTO.getAge());
-            System.out.println("growingtime "+neededGrowingTime);
             return (plotDTO.getAge() >= neededGrowingTime);
         } catch (SQLException e) {
             throw new PersistenceException();
