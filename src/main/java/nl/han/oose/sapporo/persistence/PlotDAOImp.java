@@ -65,6 +65,24 @@ public class PlotDAOImp implements IPlotDAO {
     }
 
     @Override
+    public boolean plotIsPurchased(int plotID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select purchased from plot where plotID = ?");
+            statement.setInt(1, plotID);
+            ResultSet resultSet = statement.executeQuery();
+            boolean plotPurchased = false;
+
+            while (resultSet.next()) {
+                plotPurchased = resultSet.getBoolean("purchased");
+            }
+
+            return plotPurchased;
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
     public PlotDTO getPlot(int PlotiD) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select * from plot where plotID = ?");
@@ -95,6 +113,17 @@ public class PlotDAOImp implements IPlotDAO {
     public void removeObjectsFromPlot(int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("update plot set animalId = null, waterManagerId = null, plantID = null where plotID = ?");
+            statement.setInt(1, plotID);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public void purchasePlot(int plotID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("update plot set purchased = 1 where plotID = ?");
             statement.setInt(1, plotID);
             statement.execute();
         } catch (SQLException e) {

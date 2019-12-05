@@ -74,4 +74,6 @@ public class PlotDTO {
     public void setPurchased(boolean purchased) {
         this.purchased = purchased;
     }
+
+
 }

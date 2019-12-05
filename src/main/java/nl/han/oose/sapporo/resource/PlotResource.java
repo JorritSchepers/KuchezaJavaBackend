@@ -1,6 +1,7 @@
 package nl.han.oose.sapporo.resource;
 
 import nl.han.oose.sapporo.dto.PlantDTO;
+import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IPlotService;
@@ -43,7 +44,18 @@ public class PlotResource {
     public Response harvestPlantFromPlot(@QueryParam("token") String token, @PathParam("id") int plotID, PlantDTO plantDTO) {
         UserDTO user = accountService.verifyToken(token);
         return Response.status(Response.Status.OK)
-                .entity(plotService.harvesPlant(plantDTO, user, plotID))
+                .entity(plotService.harvestPlant(plantDTO, user, plotID))
+                .build();
+    }
+
+    @POST
+    @Path("/{id}/purchase")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response purchasePlot(@QueryParam("token") String token, @PathParam("id") int plotID) {
+        UserDTO user = accountService.verifyToken(token);
+        return Response.status(Response.Status.OK)
+                .entity(plotService.purchasePlot(plotID, user))
                 .build();
     }
 }
