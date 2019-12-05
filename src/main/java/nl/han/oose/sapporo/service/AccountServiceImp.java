@@ -78,7 +78,6 @@ public class AccountServiceImp implements IAccountService {
     private TokenDTO generateRandomToken(UserDTO userDTO) {
         String token = customUuid.randomUUID();
         tokens.put(token, userDTO);
-        System.out.println(tokens);
         return new TokenDTO(userDTO, token);
     }
 

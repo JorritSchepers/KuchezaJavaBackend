@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public interface IPlotService {
     PlotDTO placePlant(PlantDTO plantDTO, int plotID, UserDTO userDTO);
 
-    PlotDTO harvesPlant(PlotDTO plotDTO, UserDTO user, int plotID);
+    PlotDTO harvestPlant(PlotDTO plotDTO, UserDTO user, int plotID);
 
     ArrayList<PlotDTO> getFarmPlots(int farmID);
 

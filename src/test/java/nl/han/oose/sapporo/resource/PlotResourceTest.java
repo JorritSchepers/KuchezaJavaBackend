@@ -28,7 +28,7 @@ public class PlotResourceTest {
         sut.setPlotService(plotService);
         Mockito.when(accountService.verifyToken(token)).thenReturn(user);
         Mockito.when(plotService.placePlant(plant, 1, user)).thenReturn(plot);
-        Mockito.when(plotService.harvesPlant(plot, user, 1)).thenReturn(plot);
+        Mockito.when(plotService.harvestPlant(plot, user, 1)).thenReturn(plot);
         Mockito.when(plotService.purchasePlot(1, user)).thenReturn(allPlots);
     }
 
@@ -59,7 +59,7 @@ public class PlotResourceTest {
     @Test
     public void harvestPlantFromPlotCallsHarvesPlot() {
         sut.harvestPlantFromPlot(token, 1, plot);
-        Mockito.verify(plotService, Mockito.times(1)).harvesPlant(plot, user, 1);
+        Mockito.verify(plotService, Mockito.times(1)).harvestPlant(plot, user, 1);
     }
 
     @Test

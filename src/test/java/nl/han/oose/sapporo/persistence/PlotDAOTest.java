@@ -15,7 +15,7 @@ class PlotDAOTest extends DAOTest {
     private final int PLOTID = 1;
     private final int FULLPLOTID = 2;
     private final int FARMID = 1;
-    private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1, 1);
+    private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1);
 
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
@@ -38,7 +38,7 @@ class PlotDAOTest extends DAOTest {
 
     private boolean plotIsEmpty(int plotId) {
         int full = 0;
-        try (Connection connection = DriverManager.getConnection(dbUrl)) {
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
             int animalId = 0;
             int waterManagerId = 0;
             int plantId = 0;
@@ -60,7 +60,7 @@ class PlotDAOTest extends DAOTest {
 
     private int getAmountofPlots(int x, int y){
         int plotAmount = 0;
-        try (Connection connection = DriverManager.getConnection(dbUrl)) {
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
             PreparedStatement statement = connection.prepareStatement("select count(plotID) as amount from plot where x =? and y=?");
             statement.setInt(1,x);
             statement.setInt(2,y);
@@ -75,7 +75,7 @@ class PlotDAOTest extends DAOTest {
 
     private int getAge(int x, int y){
         int age = 0;
-        try (Connection connection = DriverManager.getConnection(dbUrl)) {
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
             PreparedStatement statement = connection.prepareStatement("select objectAge from plot where x =? and y=?");
             statement.setInt(1,x);
             statement.setInt(2,y);

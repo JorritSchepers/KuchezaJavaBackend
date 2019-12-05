@@ -44,7 +44,7 @@ public class PlotResource {
     public Response harvestPlantFromPlot(@QueryParam("token") String token, @PathParam("id") int plotID, PlotDTO plotDTO) {
         UserDTO user = accountService.verifyToken(token);
         return Response.status(Response.Status.OK)
-                .entity(plotService.harvesPlant(plotDTO, user, plotID))
+                .entity(plotService.harvestPlant(plotDTO, user, plotID))
                 .build();
     }
 
@@ -61,7 +61,6 @@ public class PlotResource {
 
     @POST
     @Path("/{id}/updateAge/{age}")
-    @Produces(MediaType.APPLICATION_JSON)
     public Response updateAge(@QueryParam("token") String token, @PathParam("id") int plotID, @PathParam("age") int age) {
         UserDTO user = accountService.verifyToken(token);
         plotService.updageAge(plotID,age);
