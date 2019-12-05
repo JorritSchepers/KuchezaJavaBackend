@@ -1,8 +1,7 @@
 package nl.han.oose.sapporo.service;
 
-import nl.han.oose.sapporo.dto.PlantDTO;
-import nl.han.oose.sapporo.dto.PlotDTO;
-import nl.han.oose.sapporo.dto.UserDTO;
+import nl.han.oose.sapporo.dto.*;
+import nl.han.oose.sapporo.persistence.IFarmDAO;
 import nl.han.oose.sapporo.persistence.IPlantDAO;
 import nl.han.oose.sapporo.persistence.IPlotDAO;
 
@@ -14,6 +13,7 @@ import java.util.ArrayList;
 public class PlotServiceImp implements IPlotService {
     private IPlotDAO plotDAO;
     private IPlantDAO plantDAO;
+    private IFarmDAO farmDAO;
     private IInventoryService inventoryService;
     private IPlantService plantService;
 
@@ -25,6 +25,11 @@ public class PlotServiceImp implements IPlotService {
     @Inject
     public void setPlotDAO(IPlotDAO plotDAO) {
         this.plotDAO = plotDAO;
+    }
+
+    @Inject
+    public void setFarmDAO(IFarmDAO farmDAO) {
+        this.farmDAO = farmDAO;
     }
 
     @Inject
@@ -48,12 +53,23 @@ public class PlotServiceImp implements IPlotService {
     }
 
     @Override
-    public PlotDTO harvesPlant(PlantDTO plantDTO, UserDTO user, int plotID) {
+    public PlotDTO harvestPlant(PlantDTO plantDTO, UserDTO user, int plotID) {
         if (plantService.plantFullGrown(plantDTO) && plotDAO.plotHasPlant(plotID)) {
             plotDAO.removeObjectsFromPlot(plotID);
             int profit = plantDAO.getProfit(plantDTO.getID());
             inventoryService.increaseSaldo(profit, user);
             return plotDAO.getPlot(plotID);
+        }
+        return null;
+    }
+
+    public AllPlotDTO purchasePlot(int plotID, UserDTO userDTO) {
+        PlotDTO plotDTO = plotDAO.getPlot(plotID);
+        if (inventoryService.checkSaldo(plotDTO.getPrice(), userDTO) && !plotDAO.plotIsPurchased(plotID)) {
+            inventoryService.lowerSaldo(plotDTO.getPrice(), userDTO);
+            plotDAO.purchasePlot(plotID);
+            FarmDTO farmDTO = farmDAO.getFarm(userDTO);
+            return new AllPlotDTO(getFarmPlots(farmDTO.getFarmID()));
         }
         return null;
     }

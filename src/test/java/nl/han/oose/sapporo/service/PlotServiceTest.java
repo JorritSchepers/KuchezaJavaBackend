@@ -80,37 +80,37 @@ class PlotServiceTest {
 
     @Test
     void harvestPlantCallsplantFullGrown() {
-        sut.harvesPlant(plant, user, PLOTID);
+        sut.harvestPlant(plant, user, PLOTID);
         Mockito.verify(plantService, Mockito.times(1)).plantFullGrown(plant);
     }
 
     @Test
     void harvestPlantCallsremoveObjectsFromPlot() {
-        sut.harvesPlant(plant, user, PLOTID);
+        sut.harvestPlant(plant, user, PLOTID);
         Mockito.verify(plotDAO, Mockito.times(1)).removeObjectsFromPlot(PLOTID);
     }
 
     @Test
     void harvestPlantCallsincreaseSaldo() {
-        sut.harvesPlant(plant, user, PLOTID);
+        sut.harvestPlant(plant, user, PLOTID);
         Mockito.verify(inventoryService, Mockito.times(1)).increaseSaldo(plant.getProfit(), user);
     }
 
     @Test
     void harvestPlantCallsgetPlot() {
-        sut.harvesPlant(plant, user, PLOTID);
+        sut.harvestPlant(plant, user, PLOTID);
         Mockito.verify(plotDAO, Mockito.times(1)).getPlot(PLOTID);
     }
 
     @Test
     void harvestPlantReturnsRightPlot() {
-        Assertions.assertEquals(plot, sut.harvesPlant(plant, user, PLOTID));
+        Assertions.assertEquals(plot, sut.harvestPlant(plant, user, PLOTID));
     }
 
     @Test
     void harvestPlantThrowsExceptionWhenNotGrown() {
         Assertions.assertDoesNotThrow(() -> {
-            sut.harvesPlant(plant, user, PLOTID);
+            sut.harvestPlant(plant, user, PLOTID);
         });
     }
 
