@@ -4,6 +4,7 @@ import nl.han.oose.sapporo.dto.*;
 import nl.han.oose.sapporo.persistence.IFarmDAO;
 import nl.han.oose.sapporo.persistence.IPlantDAO;
 import nl.han.oose.sapporo.persistence.IPlotDAO;
+import nl.han.oose.sapporo.service.exception.PlotIsAlreadyPurchasedException;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
@@ -63,8 +64,12 @@ public class PlotServiceImp implements IPlotService {
         return null;
     }
 
+    @Override
     public AllPlotDTO purchasePlot(int plotID, UserDTO userDTO) {
         PlotDTO plotDTO = plotDAO.getPlot(plotID);
+        if(plotDAO.plotIsPurchased(plotID)) {
+            throw new PlotIsAlreadyPurchasedException();
+        }
         if (inventoryService.checkSaldo(plotDTO.getPrice(), userDTO) && !plotDAO.plotIsPurchased(plotID)) {
             inventoryService.lowerSaldo(plotDTO.getPrice(), userDTO);
             plotDAO.purchasePlot(plotID);
