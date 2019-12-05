@@ -12,4 +12,8 @@ public class AllUsersDTO {
     public void addUser(UserDTO user) {
         this.users.add(user);
     }
+
+    public ArrayList<UserDTO> getUsers() {
+        return users;
+    }
 }
