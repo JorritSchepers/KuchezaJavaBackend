@@ -10,7 +10,7 @@ class InventoryResourceTest {
     private InventoryResource sut = new InventoryResource();
     private IAccountService accountService;
     private IInventoryService inventoryService;
-    private String TOKEN = "123456789";
+    private final String TOKEN = "123456789";
     private UserDTO user = new UserDTO();
 
     private InventoryResourceTest() {
