@@ -20,18 +20,17 @@ public class AdminResource {
     }
 
     @Inject
-    public void setAccountService(IAdminService adminService) {
+    public void setAdminService(IAdminService adminService) {
         this.adminService = adminService;
     }
 
     @GET
     @Path("/users")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllNonAdminUsers(@QueryParam("token") String token, UserDTO userDTO) {
+    public Response getAllNonAdminUsers(@QueryParam("token") String token) {
         UserDTO user  = accountService.verifyToken(token);
-        adminService.checkIfUserIsAdmin(user);
-        return Response.status(Response.Status.CREATED)
-                .entity(accountService.registerUser(userDTO))
+        return Response.status(Response.Status.OK)
+                .entity(adminService.getAllNonAdminUsers(user))
                 .build();
     }
 }

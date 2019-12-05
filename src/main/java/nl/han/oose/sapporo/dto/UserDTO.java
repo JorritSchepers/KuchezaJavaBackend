@@ -7,6 +7,7 @@ public class UserDTO {
     private String name;
     private String password;
     private String email;
+    private boolean admin;
 
     public UserDTO() { }
 
@@ -23,6 +24,14 @@ public class UserDTO {
         this.email = email;
     }
 
+    public UserDTO(int ID, String name, String password, String email, boolean admin) {
+        this.ID = ID;
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.admin = admin;
+    }
+
     public String getName() {
         return name;
     }
@@ -37,6 +46,14 @@ public class UserDTO {
 
     public int getID() {
         return ID;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     @Override

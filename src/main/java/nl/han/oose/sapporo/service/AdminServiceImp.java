@@ -1,5 +1,6 @@
 package nl.han.oose.sapporo.service;
 
+import nl.han.oose.sapporo.dto.AllUsersDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.IAdminDAO;
 import nl.han.oose.sapporo.service.exception.UserIsNotAnAdministratorException;
@@ -16,6 +17,12 @@ public class AdminServiceImp implements IAdminService {
 
     @Override
     public void checkIfUserIsAdmin(UserDTO user) {
-        if (adminDAO.isAdmin(user)) throw new UserIsNotAnAdministratorException();
+        if (!adminDAO.isAdmin(user)) throw new UserIsNotAnAdministratorException();
+    }
+
+    @Override
+    public AllUsersDTO getAllNonAdminUsers(UserDTO user) {
+        checkIfUserIsAdmin(user);
+        return adminDAO.getAllNonAdminUsers();
     }
 }

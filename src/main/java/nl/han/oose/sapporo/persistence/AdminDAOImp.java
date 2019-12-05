@@ -1,8 +1,8 @@
 package nl.han.oose.sapporo.persistence;
 
+import nl.han.oose.sapporo.dto.AllUsersDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
-import nl.han.oose.sapporo.persistence.exception.InvalidLoginInformationException;
 import nl.han.oose.sapporo.persistence.exception.PersistenceException;
 
 import javax.inject.Inject;
@@ -26,6 +26,27 @@ public class AdminDAOImp implements IAdminDAO {
             statement.setString(1, userDTO.getEmail());
             ResultSet result = statement.executeQuery();
             return result.next();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public AllUsersDTO getAllNonAdminUsers() {
+        try (Connection connection = connectionFactory.getConnection()) {
+            AllUsersDTO users = new AllUsersDTO();
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM user WHERE admin = false");
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                users.addUser(new UserDTO(
+                        result.getInt("userID"),
+                        result.getString("name"),
+                        result.getString("password"),
+                        result.getString("email"),
+                        result.getBoolean("admin")
+                ));
+            }
+            return users;
         } catch (SQLException e) {
             throw new PersistenceException();
         }
