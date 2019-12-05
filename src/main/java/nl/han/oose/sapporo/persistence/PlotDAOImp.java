@@ -79,6 +79,8 @@ public class PlotDAOImp implements IPlotDAO {
                 int y = resultSet.getInt("y");
                 float price = resultSet.getFloat("price");
                 plotDTO = new PlotDTO(iD, x, y, price);
+                plotDTO.setAge(resultSet.getInt("objectAge"));
+                plotDTO.setPlantID(resultSet.getInt("plantID"));
             }
 
             if(plotDTO == null) {
@@ -94,7 +96,7 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public void removeObjectsFromPlot(int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("update plot set animalId = null, waterManagerId = null, plantID = null, age = 0 where plotID = ?");
+            PreparedStatement statement = connection.prepareStatement("update plot set animalId = null, waterManagerId = null, plantID = null, objectAge = 0 where plotID = ?");
             statement.setInt(1, plotID);
             statement.execute();
         } catch (SQLException e) {
@@ -155,7 +157,7 @@ public class PlotDAOImp implements IPlotDAO {
                 int plantID = resultSet.getInt("plantID");
                 float price = resultSet.getFloat("price");
                 boolean purchased = resultSet.getBoolean("purchased");
-                int age = resultSet.getInt("age");
+                int age = resultSet.getInt("objectAge");
                 PlotDTO plot = new PlotDTO(ID, x, y, animalID, waterManagerID, plantID, price, purchased,age);
                 plots.add(plot);
             }

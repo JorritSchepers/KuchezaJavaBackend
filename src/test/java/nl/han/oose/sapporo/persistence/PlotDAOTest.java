@@ -77,12 +77,12 @@ class PlotDAOTest extends DAOTest {
     private int getAge(int x, int y){
         int age = 0;
         try (Connection connection = DriverManager.getConnection(dbUrl)) {
-            PreparedStatement statement = connection.prepareStatement("select age from plot where x =? and y=?");
+            PreparedStatement statement = connection.prepareStatement("select objectAge from plot where x =? and y=?");
             statement.setInt(1,x);
             statement.setInt(2,y);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                age = resultSet.getInt("age");
+                age = resultSet.getInt("objectAge");
             }
         } catch (SQLException ignored) {
         }

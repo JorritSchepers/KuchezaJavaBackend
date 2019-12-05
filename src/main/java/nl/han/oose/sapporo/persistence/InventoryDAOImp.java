@@ -75,9 +75,10 @@ public class InventoryDAOImp implements IInventoryDAO {
         int STARTMONEY = 10000;
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
-                    ("INSERT INTO inventory values (?,?)");
+                    ("INSERT INTO inventory values (?,?,?)");
             statement.setInt(1,user.getID());
-            statement.setInt(2,STARTMONEY);
+            statement.setInt(2,100);
+            statement.setInt(3,STARTMONEY);
             statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();

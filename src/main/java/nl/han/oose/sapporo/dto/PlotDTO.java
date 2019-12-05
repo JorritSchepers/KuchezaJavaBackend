@@ -79,6 +79,15 @@ public class PlotDTO {
         this.price = price;
     }
 
+    public PlotDTO(int ID, int x, int y, int price, boolean purchased, int objectAge) {
+        this.ID = ID;
+        this.x = x;
+        this.y = y;
+        this.price = price;
+        this.purchased = purchased;
+        this.age = objectAge;
+    }
+
     public int getAge() {
         return age;
     }

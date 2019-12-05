@@ -23,7 +23,6 @@ public class AccountDAOImp implements IAccountDAO {
     @Override
     public void addUser(UserDTO userDTO) {
         final int DUPLICATE_VALUE_CODE = 1062;
-
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO user (name,password,email) VALUES (?,?,?)");
             statement.setString(1, userDTO.getName());
