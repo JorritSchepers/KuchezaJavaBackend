@@ -2,6 +2,7 @@ package nl.han.oose.sapporo.persistence;
 
 import nl.han.oose.sapporo.dto.AllPlantDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
+import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.PersistenceException;
 
@@ -34,22 +35,21 @@ public class PlantDAOImp implements IPlantDAO{
     }
 
     @Override
-    public boolean checkIfPlantFullGrown(PlantDTO plantDTO) {
+    public boolean checkIfPlantFullGrown(PlotDTO plotDTO) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select growingTime from plant where plantID = ?");
-            statement.setInt(1,plantDTO.getID());
+            statement.setInt(1,plotDTO.getPlantID());
             ResultSet resultSet = statement.executeQuery();
             int neededGrowingTime = 0;
             while (resultSet.next()) {
                 neededGrowingTime = resultSet.getInt("growingTime");
             }
-            return (plantDTO.getAge() >= neededGrowingTime);
+            return (plotDTO.getAge() >= neededGrowingTime);
         } catch (SQLException e) {
             throw new PersistenceException();
         }
     }
 
-    @Override
     public int getProfit(int id) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select profit from plant where plantID = ?");
@@ -74,8 +74,7 @@ public class PlantDAOImp implements IPlantDAO{
             int growingTime = resultSet.getInt("growingTime");
             float profit = resultSet.getFloat("profit");
             float purchasePrice = resultSet.getFloat("purchasePrice");
-            int age = 0;
-            plants.add(new PlantDTO(id,name,waterUsage,growingTime,profit,purchasePrice,age));
+            plants.add(new PlantDTO(id,name,waterUsage,growingTime,profit,purchasePrice));
         }
         return new AllPlantDTO(plants);
     }

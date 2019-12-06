@@ -6,6 +6,8 @@ import java.util.Objects;
 public class FarmDTO {
     private int farmID;
     private int ownerID;
+    private static int WIDTH = 14;
+    private static int HEIGHT = 7;
     private List<PlotDTO> plots;
 
     public FarmDTO() { }
@@ -29,6 +31,22 @@ public class FarmDTO {
 
     public void setFarmID(int farmID) {
         this.farmID = farmID;
+    }
+
+    public int getWIDTH() {
+        return WIDTH;
+    }
+
+    public int getHEIGHT() {
+        return HEIGHT;
+    }
+
+    public void setWIDTH(int WIDTH) {
+        FarmDTO.WIDTH = WIDTH;
+    }
+
+    public void setHEIGHT(int HEIGHT) {
+        FarmDTO.HEIGHT = HEIGHT;
     }
 
     @Override

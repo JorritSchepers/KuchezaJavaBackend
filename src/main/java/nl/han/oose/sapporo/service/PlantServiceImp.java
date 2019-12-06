@@ -2,6 +2,7 @@ package nl.han.oose.sapporo.service;
 
 import nl.han.oose.sapporo.dto.AllPlantDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
+import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.IPlantDAO;
 import nl.han.oose.sapporo.persistence.exception.PlantNotGrownException;
 
@@ -23,8 +24,8 @@ public class PlantServiceImp implements IPlantService {
     }
 
     @Override
-    public boolean plantFullGrown(PlantDTO plantDTO) {
-        if (!plantDAO.checkIfPlantFullGrown(plantDTO)) {
+    public boolean plantFullGrown(PlotDTO plotDTO) {
+        if (!plantDAO.checkIfPlantFullGrown(plotDTO)) {
             throw new PlantNotGrownException();
         }
         return true;

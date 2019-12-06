@@ -65,6 +65,24 @@ public class PlotDAOImp implements IPlotDAO {
     }
 
     @Override
+    public boolean plotIsPurchased(int plotID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select purchased from plot where plotID = ?");
+            statement.setInt(1, plotID);
+            ResultSet resultSet = statement.executeQuery();
+            boolean plotPurchased = false;
+
+            while (resultSet.next()) {
+                plotPurchased = resultSet.getBoolean("purchased");
+            }
+
+            return plotPurchased;
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
     public PlotDTO getPlot(int PlotiD) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select * from plot where plotID = ?");
@@ -79,6 +97,8 @@ public class PlotDAOImp implements IPlotDAO {
                 int y = resultSet.getInt("y");
                 float price = resultSet.getFloat("price");
                 plotDTO = new PlotDTO(iD, x, y, price);
+                plotDTO.setAge(resultSet.getInt("objectAge"));
+                plotDTO.setPlantID(resultSet.getInt("plantID"));
             }
 
             if(plotDTO == null) {
@@ -94,7 +114,18 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public void removeObjectsFromPlot(int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("update plot set animalId = null, waterManagerId = null, plantID = null where plotID = ?");
+            PreparedStatement statement = connection.prepareStatement("update plot set animalId = null, waterManagerId = null, plantID = null, objectAge = 0 where plotID = ?");
+            statement.setInt(1, plotID);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public void purchasePlot(int plotID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("update plot set purchased = 1 where plotID = ?");
             statement.setInt(1, plotID);
             statement.execute();
         } catch (SQLException e) {
@@ -141,7 +172,7 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public ArrayList<PlotDTO> getFarmPlots(int farmID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT plotID,x,y,price,animalID,waterManagerID,plantID,purchased FROM plot where farmID = ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT plotID,x,y,price,animalID,waterManagerID,plantID,purchased,objectAge FROM plot where farmID = ?");
             statement.setInt(1, farmID);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<PlotDTO> plots = new ArrayList<>();
@@ -155,10 +186,23 @@ public class PlotDAOImp implements IPlotDAO {
                 int plantID = resultSet.getInt("plantID");
                 float price = resultSet.getFloat("price");
                 boolean purchased = resultSet.getBoolean("purchased");
-                PlotDTO plot = new PlotDTO(ID, x, y, animalID, waterManagerID, plantID, price, purchased);
+                int age = resultSet.getInt("objectAge");
+                PlotDTO plot = new PlotDTO(ID, x, y, animalID, waterManagerID, plantID, price, purchased,age);
                 plots.add(plot);
             }
             return plots;
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public void updateAge(int plotID, int age) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("UPDATE plot SET objectAge = ? WHERE plotID = ?");
+            statement.setInt(1,age);
+            statement.setInt(2,plotID);
+            statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();
         }
