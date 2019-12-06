@@ -7,11 +7,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class AdminResourceTest {
-    private final String MOCKED_TOKEN = "1234";
-    private final UserDTO MOCKED_USER = new UserDTO();
+    private final String TOKEN = "1234";
+    private final UserDTO USER = new UserDTO();
 
     private AdminResource sut;
     private IAccountService mockedAccountService;
@@ -22,20 +20,39 @@ class AdminResourceTest {
         sut = new AdminResource();
         mockedAccountService = Mockito.mock(IAccountService.class);
         sut.setAccountService(mockedAccountService);
-        Mockito.when(mockedAccountService.verifyToken(MOCKED_TOKEN)).thenReturn(MOCKED_USER);
+        Mockito.when(mockedAccountService.verifyToken(TOKEN)).thenReturn(USER);
         mockedAdminService = Mockito.mock(IAdminService.class);
         sut.setAdminService(mockedAdminService);
     }
 
     @Test
     void getAllNonAdminUsersCallsVerifyTokenInAccountService() {
-        sut.getAllNonAdminUsers(MOCKED_TOKEN);
-        Mockito.verify(mockedAccountService, Mockito.times(1)).verifyToken(MOCKED_TOKEN);
+        sut.getAllNonAdminUsers(TOKEN);
+        Mockito.verify(mockedAccountService, Mockito.times(1)).verifyToken(TOKEN);
     }
 
     @Test
     void getAllNonAdminUsersCallsGetAllNonAdminUsersInAdminService() {
-        sut.getAllNonAdminUsers(MOCKED_TOKEN);
-        Mockito.verify(mockedAdminService, Mockito.times(1)).getAllNonAdminUsers(MOCKED_USER);
+        sut.getAllNonAdminUsers(TOKEN);
+        Mockito.verify(mockedAdminService, Mockito.times(1)).getAllNonAdminUsers(USER);
+    }
+
+    @Test
+    void deleteUserCallsVerifyTokenInAccountService() {
+        sut.getAllNonAdminUsers(TOKEN);
+        Mockito.verify(mockedAccountService, Mockito.times(1)).verifyToken(TOKEN);
+    }
+
+    @Test
+    void deleteUserCallsDeleteUserInAdminService() {
+        final int MOCKED_USER_ID = 1;
+        sut.deleteUser(TOKEN, MOCKED_USER_ID);
+        Mockito.verify(mockedAdminService, Mockito.times(1)).deleteUser(USER, MOCKED_USER_ID);
+    }
+
+    @Test
+    void deleteUserCallsGetAllNonAdminUsersInAdminService() {
+        sut.getAllNonAdminUsers(TOKEN);
+        Mockito.verify(mockedAdminService, Mockito.times(1)).getAllNonAdminUsers(USER);
     }
 }

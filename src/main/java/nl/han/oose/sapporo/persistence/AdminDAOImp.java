@@ -35,8 +35,8 @@ public class AdminDAOImp implements IAdminDAO {
     public AllUsersDTO getAllNonAdminUsers() {
         try (Connection connection = connectionFactory.getConnection()) {
             AllUsersDTO users = new AllUsersDTO();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM user WHERE admin = false");
-            ResultSet result = statement.executeQuery();
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM user WHERE admin = false");
+            ResultSet result = preparedStatement.executeQuery();
             while (result.next()) {
                 users.addUser(new UserDTO(
                         result.getInt("userID"),
@@ -47,6 +47,17 @@ public class AdminDAOImp implements IAdminDAO {
                 ));
             }
             return users;
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public void deleteUser(int userID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM user WHERE userID = ?");
+            preparedStatement.setInt(1, userID);
+            preparedStatement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();
         }

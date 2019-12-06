@@ -13,7 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class AdminServiceImpTest {
     private final UserDTO ADMIN_USER = new UserDTO(1, "admin", "admin","admin@admin.nl", true);
     private final UserDTO NON_ADMIN_USER = new UserDTO(2, "player", "password","player@player.nl", false);
-    private final AllUsersDTO MOCKED_ALL_USERS = new AllUsersDTO();
+    private final int USER_ID = 1;
+    private final AllUsersDTO ALL_USERS = new AllUsersDTO();
 
     private AdminServiceImp sut;
     private IAdminDAO mockedAdminDAO;
@@ -51,7 +52,13 @@ class AdminServiceImpTest {
 
     @Test
     void getAllNonAdminUsersReturnAllUsersDTO() {
-        Mockito.when(mockedAdminDAO.getAllNonAdminUsers()).thenReturn(MOCKED_ALL_USERS);
-        assertEquals(sut.getAllNonAdminUsers(ADMIN_USER), MOCKED_ALL_USERS);
+        Mockito.when(mockedAdminDAO.getAllNonAdminUsers()).thenReturn(ALL_USERS);
+        assertEquals(sut.getAllNonAdminUsers(ADMIN_USER), ALL_USERS);
+    }
+
+    @Test
+    void deleteUserCallsDeleteUserInAdminDAO() {
+        sut.deleteUser(ADMIN_USER, USER_ID);
+        Mockito.verify(mockedAdminDAO, Mockito.times(1)).deleteUser(USER_ID);
     }
 }
