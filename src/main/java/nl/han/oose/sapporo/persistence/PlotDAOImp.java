@@ -199,7 +199,7 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public void updateAge(int plotID, int age) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("UPDATE plot SET objectAge = ? WHERE plotID = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE plot SET objectAge = ? WHERE plotID = ? and plantID != null");
             statement.setInt(1,age);
             statement.setInt(2,plotID);
             statement.execute();
