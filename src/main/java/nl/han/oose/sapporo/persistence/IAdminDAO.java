@@ -7,4 +7,6 @@ public interface IAdminDAO {
     boolean isAdmin(UserDTO userDTO);
 
     AllUsersDTO getAllNonAdminUsers();
+
+    void deleteUser(int userID);
 }

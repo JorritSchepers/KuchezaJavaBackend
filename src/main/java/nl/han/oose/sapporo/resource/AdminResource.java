@@ -33,5 +33,16 @@ public class AdminResource {
                 .entity(adminService.getAllNonAdminUsers(user))
                 .build();
     }
+
+    @DELETE
+    @Path("/user/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteUser(@QueryParam("token") String token, @PathParam("id") int userID) {
+        UserDTO user  = accountService.verifyToken(token);
+        adminService.deleteUser(user, userID);
+        return Response.status(Response.Status.OK)
+                .entity(adminService.getAllNonAdminUsers(user))
+                .build();
+    }
 }
 

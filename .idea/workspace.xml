@@ -103,6 +103,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="nl.han.oose.sapporo.resource.exceptionmapper" />
       <recent name="nl.han.oose.sapporo.persistence" />
       <recent name="nl.han.oose.sapporo.service" />
       <recent name="nl.han.oose.sapporo.resource" />
@@ -190,7 +191,7 @@
       <module name="KuchezaGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="nl.han.oose.sapporo.service.*" />
+          <option name="PATTERN" value="nl.han.oose.sapporo.resource.exceptionmapper.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -376,7 +377,21 @@
       <option name="project" value="LOCAL" />
       <updated>1575539916885</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Klaar (zonder tests)">
+      <created>1575623335761</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1575623335761</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Klaar (met tests)">
+      <created>1575624699723</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1575624699723</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -403,7 +418,8 @@
     <MESSAGE value="Begin nog" />
     <MESSAGE value="Eind van de dag 4/12" />
     <MESSAGE value="Klaar (zonder tests)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Klaar (zonder tests)" />
+    <MESSAGE value="Klaar (met tests)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Klaar (met tests)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__1_.ic" NAME="All in KuchezaGame (1) Coverage Results" MODIFIED="1574860668654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

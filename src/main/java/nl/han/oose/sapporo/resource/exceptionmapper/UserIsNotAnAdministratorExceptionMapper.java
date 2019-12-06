@@ -10,8 +10,7 @@ import javax.ws.rs.ext.Provider;
 public class UserIsNotAnAdministratorExceptionMapper implements ExceptionMapper<UserIsNotAnAdministratorException> {
     @Override
     public Response toResponse(UserIsNotAnAdministratorException e) {
-        int HTTP_STATUS_CODE_FORBIDDEN = 403;
-        return Response.status(HTTP_STATUS_CODE_FORBIDDEN)
+        return Response.status(Response.Status.FORBIDDEN)
                 .entity("The user is not an administrator.")
                 .build();
     }
