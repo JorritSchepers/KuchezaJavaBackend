@@ -146,5 +146,17 @@ class PlotServiceTest {
     }
 
     @Test
+    void waterPlantCallsGetPlot(){
+        sut.waterPlant(user, PLOTID);
+        Mockito.verify(plotDAO, Mockito.times(1)).getPlot(PLOTID);
+    }
+
+    @Test
+    void waterPlantCallsPlotHasPlant(){
+        sut.waterPlant(user, PLOTID);
+        Mockito.verify(plotDAO, Mockito.times(1)).plotHasPlant(PLOTID);
+    }
+
+    @Test
     void waterPlantReturnsPlot(){ Assertions.assertEquals(plot, sut.waterPlant(user, PLOTID));}
 }

@@ -11,6 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class PlotDAOImp implements IPlotDAO {
+    public static final int START_WATER = 25;
     private ConnectionFactoryImp connectionFactory;
 
     @Inject
@@ -21,9 +22,10 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public void addPlantToPlot(PlantDTO plantDTO, int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("update plot set plantID = ? where plotID = ? ");
+            PreparedStatement statement = connection.prepareStatement("update plot set plantID = ?, waterAvailable = ? where plotID = ? ");
             statement.setInt(1, plantDTO.getID());
-            statement.setInt(2, plotID);
+            statement.setInt(2, START_WATER);
+            statement.setInt(3, plotID);
             statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();

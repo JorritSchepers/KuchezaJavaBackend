@@ -69,7 +69,7 @@ public class PlotResourceTest {
     }
 
     @Test
-    public void waterPlantFromPlotCallsHarvesPlot() {
+    public void waterPlantFromPlotCallsWaterPlot() {
         sut.waterPlantOnPlot(token, 1);
         Mockito.verify(plotService, Mockito.times(1)).waterPlant(user, 1);
     }
