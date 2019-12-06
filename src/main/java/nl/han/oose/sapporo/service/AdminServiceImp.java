@@ -25,4 +25,10 @@ public class AdminServiceImp implements IAdminService {
         checkIfUserIsAdmin(user);
         return adminDAO.getAllNonAdminUsers();
     }
+
+    @Override
+    public void deleteUser(UserDTO user, int userID) {
+        checkIfUserIsAdmin(user);
+        adminDAO.deleteUser(userID);
+    }
 }

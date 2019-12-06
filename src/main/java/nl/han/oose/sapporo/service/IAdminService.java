@@ -7,4 +7,6 @@ public interface IAdminService {
     void checkIfUserIsAdmin(UserDTO user);
 
     AllUsersDTO getAllNonAdminUsers(UserDTO user);
+
+    void deleteUser(UserDTO user, int userID);
 }
