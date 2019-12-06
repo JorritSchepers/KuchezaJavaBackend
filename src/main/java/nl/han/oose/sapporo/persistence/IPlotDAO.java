@@ -26,4 +26,6 @@ public interface IPlotDAO {
     ArrayList<PlotDTO> getFarmPlots(int farmID);
 
     void updateAge(int plotID, int age);
+    
+    void increaseWaterAvailable(int amount, int plotID);
 }

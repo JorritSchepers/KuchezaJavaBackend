@@ -61,6 +61,7 @@ CREATE TABLE plot (
                       animalId int null,
                       waterManagerId int null,
                       plantID int null,
+                      waterAvailable int default 0 not null,
                       purchased bit,
                       age int DEFAULT 0,
 
@@ -76,6 +77,11 @@ CREATE TABLE plot (
                       FOREIGN KEY (plantID)
                           REFERENCES plant(plantID)
                           ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+ALTER TABLE plot
+    ADD (
+        CONSTRAINT CHK_waterAvailablePlot CHECK (waterAvailable >= 0 and waterAvailable <= 100)
 );
 
 INSERT INTO user (name,password,email,admin)
@@ -100,10 +106,10 @@ VALUES
 (10,5,20,7.5,'Tomato'),
 (2.5,50,40,10,'Banana');
 
-INSERT INTO plot (x,y,price,purchased, farmID,age)
+INSERT INTO plot (x,y,price,purchased, farmID,age,waterAvailable)
 VALUES
-(1,1,10,1,1,10),
-(1,2,10,1,1,10),
-(1,3,10,1,1,2000);
+(1,1,10,1,1,10,0),
+(1,2,10,1,1,10,100),
+(1,3,10,1,1,2000,0);
 
 update plot set plantID = 1 where plotID =2;

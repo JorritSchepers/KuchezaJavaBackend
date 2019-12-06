@@ -7,6 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/95907cb8-d1cb-499b-8dad-a0cfd0d21759.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/95907cb8-d1cb-499b-8dad-a0cfd0d21759.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/PlotDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/PlotDAOImp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" afterDir="false" />
@@ -62,6 +63,13 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\Sven\Documents\HAN_DEA\kuchezagame\.idea" />
+      </set>
+    </option>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -307,6 +315,9 @@
         <item itemvalue="JUnit.PlotServiceTest.updateAgeCallsUpdateAge" />
         <item itemvalue="JUnit.PlotDAOTest.updateAgeUpdatesAge" />
         <item itemvalue="JUnit.PlotServiceTest" />
+        <item itemvalue="JUnit.PlotServiceTest.waterPlantCallsGetPlot" />
+        <item itemvalue="JUnit.PlotServiceTest.waterPlantCallsPlotHasPlant" />
+        <item itemvalue="JUnit.PlotServiceTest.waterPlantCallGetPlot" />
       </list>
     </recent_temporary>
   </component>

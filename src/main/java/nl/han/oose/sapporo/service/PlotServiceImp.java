@@ -17,6 +17,7 @@ public class PlotServiceImp implements IPlotService {
     private IFarmDAO farmDAO;
     private IInventoryService inventoryService;
     private IPlantService plantService;
+    private static final int MAGIC_WATER_NUMBER_CHANGE_LATER = 10;
 
     @Inject
     public void setPlantDAO(IPlantDAO plantDAO) {
@@ -88,4 +89,16 @@ public class PlotServiceImp implements IPlotService {
     public void updageAge(int plotID, int age) {
         plotDAO.updateAge(plotID,age);
     }
+
+    @Override
+    public PlotDTO waterPlant(UserDTO user, int plotID) {
+        if (inventoryService.checkWater(MAGIC_WATER_NUMBER_CHANGE_LATER, user) && plotDAO.plotHasPlant(plotID)){
+            inventoryService.lowerWater(MAGIC_WATER_NUMBER_CHANGE_LATER, user);
+            plotDAO.increaseWaterAvailable(MAGIC_WATER_NUMBER_CHANGE_LATER, plotID);
+            return plotDAO.getPlot(plotID);
+        }
+        return null;
+    }
+
+
 }
