@@ -12,6 +12,7 @@ class InventoryServiceTest {
     private final int TEST_AMOUNT = 10;
     private UserDTO user = new UserDTO();
 
+
     @Test
     void checkSaldoCallsCheckSalo() {
         sut.checkSaldo(TEST_AMOUNT, user);
@@ -48,19 +49,19 @@ class InventoryServiceTest {
     }
 
     @Test
-    void checkWaterReturnsRightBoolean() {
-        Assertions.assertTrue(sut.checkWater(TEST_AMOUNT, user));
+    void checkWaterReturnsFalseBoolean() {
+        Assertions.assertFalse(sut.checkWater(TEST_AMOUNT, user));
     }
 
     @Test
     void lowerWaterCallsLowerWater() {
-        sut.lowerSaldo(TEST_AMOUNT, user);
+        sut.lowerWater(TEST_AMOUNT, user);
         Mockito.verify(inventoryDAO, Mockito.times(1)).lowerWater(TEST_AMOUNT, user);
     }
 
     @Test
     void increaseWaterCallsIncreaseWater() {
-        sut.increaseSaldo(TEST_AMOUNT, user);
+        sut.increaseWater(TEST_AMOUNT, user);
         Mockito.verify(inventoryDAO, Mockito.times(1)).increaseWater(TEST_AMOUNT, user);
     }
 

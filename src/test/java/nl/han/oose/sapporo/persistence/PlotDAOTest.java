@@ -12,6 +12,7 @@ class PlotDAOTest extends DAOTest {
     private PlotDAOImp sut = new PlotDAOImp();
     private final int PLOT_ID = 1;
     private final int FULL_PLOT_ID = 2;
+    private final int WATER_ADD = 20;
     private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1, 1);
 
     @Override
@@ -122,23 +123,23 @@ class PlotDAOTest extends DAOTest {
     @Test
     void checkIfPlotHasBeenFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
         Assertions.assertThrows(PlotHasMaximumWaterException.class, () -> {
-            sut.increaseWaterAvailable(100, FULL_PLOT_ID);
+            sut.increaseWaterAvailable(WATER_ADD, FULL_PLOT_ID);
         });
     }
 
     @Test
     void checkIfPlotIsNotFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
         Assertions.assertDoesNotThrow( () -> {
-            sut.increaseWaterAvailable(20, FULL_PLOT_ID);
+            sut.increaseWaterAvailable(WATER_ADD, PLOT_ID);
         });
     }
 
     @Test
     void increaseWaterIncreasesWaterWithRightAmount() {
-        int extraWater = 10;
-        int oldWater = getWaterFromPlot(FULL_PLOT_ID);
-        sut.increaseWaterAvailable(extraWater, FULL_PLOT_ID);
-        int newWater = getWaterFromPlot(FULL_PLOT_ID);
+        int extraWater = WATER_ADD;
+        int oldWater = getWaterFromPlot(PLOT_ID);
+        sut.increaseWaterAvailable(extraWater, PLOT_ID);
+        int newWater = getWaterFromPlot(PLOT_ID);
         Assertions.assertEquals((oldWater + extraWater), newWater);
     }
 
