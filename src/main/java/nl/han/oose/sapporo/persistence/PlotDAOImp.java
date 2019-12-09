@@ -107,7 +107,6 @@ public class PlotDAOImp implements IPlotDAO {
                 return plotDTO;
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
             throw new PersistenceException();
         }
     }
