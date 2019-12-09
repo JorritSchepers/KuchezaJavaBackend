@@ -14,6 +14,7 @@ class PlotDAOTest extends DAOTest {
     private final int FULLPLOTID = 2;
     private final int FARMID = 1;
     private final int WATER_ADD = 20;
+    private final int PURCHASE_PLOT_ID = 3;
     private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1);
 
     @Override
@@ -87,6 +88,23 @@ class PlotDAOTest extends DAOTest {
         return age;
     }
 
+    private boolean plotIsPurchased(int plotID) {
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("select purchased from plot where plotID = ?");
+            statement.setInt(1, plotID);
+            ResultSet resultSet = statement.executeQuery();
+            boolean plotPurchased = false;
+
+            while (resultSet.next()) {
+                plotPurchased = resultSet.getBoolean("purchased");
+            }
+
+            return plotPurchased;
+        } catch (SQLException ignored) {
+        }
+        return false;
+    }
+
     @Test
     void checkIfPlotIsEmptyReturnsTrueWhenEmpty() {
         Assertions.assertTrue(sut.checkIfPlotIsEmpty(1));
@@ -97,6 +115,11 @@ class PlotDAOTest extends DAOTest {
         Assertions.assertThrows(PlotIsOccupiedException.class, () -> {
             sut.checkIfPlotIsEmpty(2);
         });
+    }
+
+    @Test
+    void plotIsPurchasedReturnsTrueWhenPurchased() {
+        Assertions.assertTrue(sut.plotIsPurchased(1));
     }
 
     @Test
@@ -137,6 +160,13 @@ class PlotDAOTest extends DAOTest {
         Assertions.assertFalse(plotIsEmpty(FULLPLOTID));
         sut.removeObjectsFromPlot(FULLPLOTID);
         Assertions.assertTrue(plotIsEmpty(FULLPLOTID));
+    }
+
+    @Test
+    void checkIfPurchasePlotPurchasedPlot() {
+        Assertions.assertFalse(plotIsPurchased(PURCHASE_PLOT_ID));
+        sut.purchasePlot(PURCHASE_PLOT_ID);
+        Assertions.assertTrue(plotIsPurchased(PURCHASE_PLOT_ID));
     }
 
     @Test
