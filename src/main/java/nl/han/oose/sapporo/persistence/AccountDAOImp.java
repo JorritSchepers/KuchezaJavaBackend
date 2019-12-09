@@ -34,6 +34,7 @@ public class AccountDAOImp implements IAccountDAO {
             if (e.getErrorCode() == DUPLICATE_VALUE_CODE) {
                 throw new AccountAlreadyExistsException();
             } else {
+                System.out.println(e.getMessage());
                 throw new PersistenceException();
             }
         }

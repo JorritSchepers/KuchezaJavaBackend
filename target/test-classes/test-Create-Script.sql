@@ -4,7 +4,7 @@ CREATE TABLE user
     name VARCHAR(45) NOT NULL,
     password CHAR(70) NOT NULL,
     email VARCHAR(45) UNIQUE NOT NULL,
-    admin bit NOT NULL
+    admin bit NOT NULL default 0
 );
 
 CREATE TABLE inventory (
