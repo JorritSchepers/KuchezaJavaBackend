@@ -95,10 +95,11 @@ public class PlotDAOImp implements IPlotDAO {
                 int x = resultSet.getInt("x");
                 int y = resultSet.getInt("y");
                 float price = resultSet.getFloat("price");
-                plotDTO = new PlotDTO(iD, x, y, price);
+                int waterAvailable = resultSet.getInt("waterAvailable");
+                boolean purchased = resultSet.getBoolean("purchased");
+                plotDTO = new PlotDTO(iD, x, y, price, purchased, waterAvailable);
                 plotDTO.setAge(resultSet.getInt("objectAge"));
                 plotDTO.setPlantID(resultSet.getInt("plantID"));
-                plotDTO.setWaterAvailable(resultSet.getInt("waterAvailable"));
             }
 
             if(plotDTO == null) {
