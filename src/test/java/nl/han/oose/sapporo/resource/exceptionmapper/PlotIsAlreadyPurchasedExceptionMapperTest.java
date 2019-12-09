@@ -9,7 +9,7 @@ public class PlotIsAlreadyPurchasedExceptionMapperTest {
     private PlotIsAlreadyPurchasedExceptionMapper sut = new PlotIsAlreadyPurchasedExceptionMapper();
 
     @Test
-    void PlotIsAlreadyPurchasedExceptionMapperReturnsBadRequestCode() {
+    public void PlotIsAlreadyPurchasedExceptionMapperReturnsBadRequestCode() {
         Response response = sut.toResponse(new PlotIsAlreadyPurchasedException());
         assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
     }
