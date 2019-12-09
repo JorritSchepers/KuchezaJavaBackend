@@ -66,4 +66,14 @@ public class PlotResource {
         plotService.updageAge(plotID,age);
         return Response.status(Response.Status.OK).entity("plant").build();
     }
+
+    @POST
+    @Path("/{id}/water")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response waterPlantOnPlot(@QueryParam("token") String token, @PathParam("id") int plotID) {
+        UserDTO user = accountService.verifyToken(token);
+        return Response.status(Response.Status.OK)
+                .entity(plotService.waterPlant(user, plotID))
+                .build();
+    }
 }

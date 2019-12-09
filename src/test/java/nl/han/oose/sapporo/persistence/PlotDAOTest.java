@@ -2,9 +2,7 @@ package nl.han.oose.sapporo.persistence;
 
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
-import nl.han.oose.sapporo.persistence.exception.PlotDoesNotExistException;
-import nl.han.oose.sapporo.persistence.exception.PlotHasNotPlantException;
-import nl.han.oose.sapporo.persistence.exception.PlotIsOccupiedException;
+import nl.han.oose.sapporo.persistence.exception.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -15,6 +13,7 @@ class PlotDAOTest extends DAOTest {
     private final int PLOTID = 1;
     private final int FULLPLOTID = 2;
     private final int FARMID = 1;
+    private final int WATER_ADD = 20;
     private final int PURCHASE_PLOT_ID = 3;
     private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1);
 
@@ -175,6 +174,50 @@ class PlotDAOTest extends DAOTest {
         int AMOUNT_OF_PLOTS = 3;
         int FARM_ID = 1;
         Assertions.assertEquals(sut.getFarmPlots(FARM_ID).size(),AMOUNT_OF_PLOTS);
+    }
+
+    @Test
+    void checkIfPlotIsEmptyThrowsExceptionPlotHasMaximumWater() {
+        Assertions.assertThrows(PlotIsOccupiedException.class, () -> {
+            sut.checkIfPlotIsEmpty(2);
+        });
+    }
+
+    @Test
+    void checkIfPlotHasBeenFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
+        Assertions.assertThrows(PlotHasMaximumWaterException.class, () -> {
+            sut.increaseWaterAvailable(WATER_ADD, FULLPLOTID);
+        });
+    }
+
+    @Test
+    void checkIfPlotIsNotFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
+        Assertions.assertDoesNotThrow( () -> {
+            sut.increaseWaterAvailable(WATER_ADD, PLOTID);
+        });
+    }
+
+    @Test
+    void increaseWaterIncreasesWaterWithRightAmount() {
+        int extraWater = WATER_ADD;
+        int oldWater = getWaterFromPlot(PLOTID);
+        sut.increaseWaterAvailable(extraWater, PLOTID);
+        int newWater = getWaterFromPlot(PLOTID);
+        Assertions.assertEquals((oldWater + extraWater), newWater);
+    }
+
+    private int getWaterFromPlot(int plotId) {
+        int waterAvailable = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("SELECT waterAvailable FROM plot where plotID =?");
+            statement.setInt(1, plotId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                waterAvailable = resultSet.getInt("waterAvailable");
+            }
+        } catch (SQLException ignored) {
+        }
+        return waterAvailable;
     }
 
     private int getAmountOfPlots(int x, int y){

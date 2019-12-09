@@ -8,6 +8,7 @@ public class PlotDTO {
     private int animalID;
     private int waterManagerID;
     private int plantID;
+    private int waterAvailable;
     private float price;
     private int age;
 
@@ -20,18 +21,7 @@ public class PlotDTO {
         this.purchased = purchased;
     }
 
-    public PlotDTO(int ID, int x, int y, int animalID, int waterManagerID, int plantID, float price, boolean purchased) {
-        this.ID = ID;
-        this.x = x;
-        this.y = y;
-        this.animalID = animalID;
-        this.waterManagerID = waterManagerID;
-        this.plantID = plantID;
-        this.price = price;
-        this.purchased = purchased;
-    }
-
-    public PlotDTO(int ID, int x, int y, int animalID, int waterManagerID, int plantID, float price, boolean purchased, int age) {
+    public PlotDTO(int ID, int x, int y, int animalID, int waterManagerID, int plantID, float price, boolean purchased, int age, int waterAvailable) {
         this.ID = ID;
         this.x = x;
         this.y = y;
@@ -41,6 +31,7 @@ public class PlotDTO {
         this.price = price;
         this.purchased = purchased;
         this.age = age;
+        this.waterAvailable = waterAvailable;
     }
 
     public PlotDTO(int ID, int x, int y, int animalID, int waterManagerID, int plantID, float price) {
@@ -64,19 +55,21 @@ public class PlotDTO {
         this.age = age;
     }
 
-    public PlotDTO(int ID, int x, int y, float price, boolean purchased) {
+    public PlotDTO(int ID, int x, int y, float price, boolean purchased, int waterAvailable) {
         this.ID = ID;
         this.x = x;
         this.y = y;
         this.price = price;
         this.purchased = purchased;
+        this.waterAvailable = waterAvailable;
     }
 
-    public PlotDTO(int ID, int x, int y, float price) {
+    public PlotDTO(int ID, int x, int y, float price, int waterAvailable) {
         this.ID = ID;
         this.x = x;
         this.y = y;
         this.price = price;
+        this.waterAvailable = waterAvailable;
     }
 
     public PlotDTO(int ID, int x, int y, int price, boolean purchased, int objectAge) {
@@ -86,6 +79,15 @@ public class PlotDTO {
         this.price = price;
         this.purchased = purchased;
         this.age = objectAge;
+    }
+
+    public PlotDTO(int plotID, int x, int y, int price, boolean purchased, int objectAge, int waterAvailable) {
+        this.ID = plotID;
+        this.x = x;
+        this.y = y;
+        this.price = price;
+        this.purchased = purchased;
+        this.waterAvailable = waterAvailable;
     }
 
     public int getAge() {
@@ -144,5 +146,11 @@ public class PlotDTO {
         this.purchased = purchased;
     }
 
+    public int getWaterAvailable() {
+        return waterAvailable;
+    }
 
+    public void setWaterAvailable(int waterAvailable) {
+        this.waterAvailable = waterAvailable;
+    }
 }

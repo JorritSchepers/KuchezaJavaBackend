@@ -4,6 +4,7 @@ import nl.han.oose.sapporo.dto.InventoryDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.InsufficientFundsException;
+import nl.han.oose.sapporo.persistence.exception.InsufficientWaterException;
 import nl.han.oose.sapporo.persistence.exception.PersistenceException;
 
 import javax.enterprise.inject.Default;
@@ -31,8 +32,10 @@ public class InventoryDAOImp implements IInventoryDAO {
             statement.setInt(1,userDTO.getID());
             ResultSet resultSet = statement.executeQuery();
 
-            while (resultSet.next()) {
+            if (resultSet.next()) {
                 moneyInInventory = resultSet.getFloat("money");
+            } else {
+                return false;
             }
 
             if (moneyInInventory < amount){
@@ -63,6 +66,55 @@ public class InventoryDAOImp implements IInventoryDAO {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
                     ("update inventory set money = money+? where userID = ?");
+            statement.setFloat(1,amount);
+            statement.setInt(2,userDTO.getID());
+            statement.execute();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public boolean checkWater(int amount, UserDTO userDTO) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            int waterInInventory = 0;
+            PreparedStatement statement = connection.prepareStatement
+                    ("SELECT water FROM inventory where userID = ?");
+            statement.setInt(1,userDTO.getID());
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                waterInInventory = resultSet.getInt("water");
+            }
+
+            if (waterInInventory < amount){
+                throw new InsufficientWaterException();
+            }
+
+            return (true);
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public void lowerWater(int amount, UserDTO userDTO) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement
+                    ("update inventory set water = water-? where userID = ?");
+            statement.setFloat(1,amount);
+            statement.setInt(2,userDTO.getID());
+            statement.execute();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public void increaseWater(int amount, UserDTO userDTO) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement
+                    ("update inventory set water = water+? where userID = ?");
             statement.setFloat(1,amount);
             statement.setInt(2,userDTO.getID());
             statement.execute();

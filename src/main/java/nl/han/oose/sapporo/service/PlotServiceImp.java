@@ -17,6 +17,7 @@ public class PlotServiceImp implements IPlotService {
     private IFarmDAO farmDAO;
     private IInventoryService inventoryService;
     private IPlantService plantService;
+    private static final int MAGIC_WATER_NUMBER_CHANGE_LATER = 10;
 
     @Inject
     public void setPlantDAO(IPlantDAO plantDAO) {
@@ -45,7 +46,7 @@ public class PlotServiceImp implements IPlotService {
 
     @Override
     public PlotDTO placePlant(PlantDTO plantDTO, int plotID, UserDTO userDTO) {
-        if (inventoryService.checkSaldo(plantDTO.getPurchasePrice(),userDTO) && plotDAO.checkIfPlotIsEmpty(plotID)) {
+        if (inventoryService.checkIfPlayerHasEnoughSaldo(plantDTO.getPurchasePrice(),userDTO) && plotDAO.checkIfPlotIsEmpty(plotID)) {
             inventoryService.lowerSaldo(plantDTO.getPurchasePrice(), userDTO);
             plotDAO.addPlantToPlot(plantDTO, plotID);
             return plotDAO.getPlot(plotID);
@@ -70,7 +71,7 @@ public class PlotServiceImp implements IPlotService {
         if(plotDAO.plotIsPurchased(plotID)) {
             throw new PlotIsAlreadyPurchasedException();
         }
-        if (inventoryService.checkSaldo(plotDTO.getPrice(), userDTO) && !plotDAO.plotIsPurchased(plotID)) {
+        if (inventoryService.checkIfPlayerHasEnoughSaldo(plotDTO.getPrice(), userDTO) && !plotDAO.plotIsPurchased(plotID)) {
             inventoryService.lowerSaldo(plotDTO.getPrice(), userDTO);
             plotDAO.purchasePlot(plotID);
             FarmDTO farmDTO = farmDAO.getFarm(userDTO);
@@ -88,4 +89,16 @@ public class PlotServiceImp implements IPlotService {
     public void updageAge(int plotID, int age) {
         plotDAO.updateAge(plotID,age);
     }
+
+    @Override
+    public PlotDTO waterPlant(UserDTO user, int plotID) {
+        if (inventoryService.checkIfPlayerHasEnoughWater(MAGIC_WATER_NUMBER_CHANGE_LATER, user) && plotDAO.plotHasPlant(plotID)){
+            inventoryService.lowerWater(MAGIC_WATER_NUMBER_CHANGE_LATER, user);
+            plotDAO.increaseWaterAvailable(MAGIC_WATER_NUMBER_CHANGE_LATER, plotID);
+            return plotDAO.getPlot(plotID);
+        }
+        return null;
+    }
+
+
 }

@@ -108,7 +108,8 @@ public class FarmDAOImp implements IFarmDAO {
                         resultSet.getInt("y"),
                         resultSet.getInt("price"),
                         resultSet.getBoolean("purchased"),
-                        resultSet.getInt("objectAge")));
+                        resultSet.getInt("objectAge"),
+                        resultSet.getInt("waterAvailable")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

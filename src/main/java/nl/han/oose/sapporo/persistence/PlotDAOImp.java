@@ -4,16 +4,14 @@ import nl.han.oose.sapporo.dto.FarmDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
-import nl.han.oose.sapporo.persistence.exception.PersistenceException;
-import nl.han.oose.sapporo.persistence.exception.PlotDoesNotExistException;
-import nl.han.oose.sapporo.persistence.exception.PlotHasNotPlantException;
-import nl.han.oose.sapporo.persistence.exception.PlotIsOccupiedException;
+import nl.han.oose.sapporo.persistence.exception.*;
 
 import javax.inject.Inject;
 import java.sql.*;
 import java.util.ArrayList;
 
 public class PlotDAOImp implements IPlotDAO {
+    public static final int START_WATER = 25;
     private ConnectionFactoryImp connectionFactory;
 
     @Inject
@@ -24,9 +22,10 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public void addPlantToPlot(PlantDTO plantDTO, int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("update plot set plantID = ? where plotID = ? ");
+            PreparedStatement statement = connection.prepareStatement("update plot set plantID = ?, waterAvailable = ? where plotID = ? ");
             statement.setInt(1, plantDTO.getID());
-            statement.setInt(2, plotID);
+            statement.setInt(2, START_WATER);
+            statement.setInt(3, plotID);
             statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();
@@ -96,7 +95,9 @@ public class PlotDAOImp implements IPlotDAO {
                 int x = resultSet.getInt("x");
                 int y = resultSet.getInt("y");
                 float price = resultSet.getFloat("price");
-                plotDTO = new PlotDTO(iD, x, y, price);
+                int waterAvailable = resultSet.getInt("waterAvailable");
+                boolean purchased = resultSet.getBoolean("purchased");
+                plotDTO = new PlotDTO(iD, x, y, price, purchased, waterAvailable);
                 plotDTO.setAge(resultSet.getInt("objectAge"));
                 plotDTO.setPlantID(resultSet.getInt("plantID"));
             }
@@ -172,7 +173,7 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public ArrayList<PlotDTO> getFarmPlots(int farmID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT plotID,x,y,price,animalID,waterManagerID,plantID,purchased,objectAge FROM plot where farmID = ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT plotID,x,y,price,animalID,waterManagerID,plantID,purchased,objectAge,waterAvailable FROM plot where farmID = ?");
             statement.setInt(1, farmID);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<PlotDTO> plots = new ArrayList<>();
@@ -185,9 +186,10 @@ public class PlotDAOImp implements IPlotDAO {
                 int waterManagerID = resultSet.getInt("waterManagerID");
                 int plantID = resultSet.getInt("plantID");
                 float price = resultSet.getFloat("price");
+                int waterAvailable = resultSet.getInt("waterAvailable");
                 boolean purchased = resultSet.getBoolean("purchased");
                 int age = resultSet.getInt("objectAge");
-                PlotDTO plot = new PlotDTO(ID, x, y, animalID, waterManagerID, plantID, price, purchased,age);
+                PlotDTO plot = new PlotDTO(ID, x, y, animalID, waterManagerID, plantID, price, purchased,age, waterAvailable);
                 plots.add(plot);
             }
             return plots;
@@ -205,6 +207,18 @@ public class PlotDAOImp implements IPlotDAO {
             statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();
+        }
+    }
+    
+    public void increaseWaterAvailable(int amount, int plotID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement
+                    ("update plot set waterAvailable = waterAvailable+? where plotID = ?");
+            statement.setInt(1,amount);
+            statement.setInt(2,plotID);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new PlotHasMaximumWaterException();
         }
     }
 }

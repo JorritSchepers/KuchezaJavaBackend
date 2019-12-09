@@ -10,6 +10,12 @@ public interface IInventoryDAO {
 
     void increaseSaldo(float amount, UserDTO userDTO);
 
+    boolean checkWater(int amount, UserDTO userDTO);
+
+    void lowerWater(int amount, UserDTO userDTO);
+
+    void increaseWater(int amount, UserDTO userDTO);
+
     void createInventory(UserDTO user);
 
     InventoryDTO getInventory(UserDTO user);
