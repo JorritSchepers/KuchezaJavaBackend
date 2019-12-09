@@ -4,13 +4,13 @@ import nl.han.oose.sapporo.dto.InventoryDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 
 public interface IInventoryService {
-    boolean checkSaldo(float amount, UserDTO userDTO);
+    boolean checkIfPlayerHasEnoughSaldo(float amount, UserDTO userDTO);
 
     void lowerSaldo(float amount, UserDTO userDTO);
 
     void increaseSaldo(float amount, UserDTO userDTO);
 
-    boolean checkWater(int amount, UserDTO userDTO);
+    boolean checkIfPlayerHasEnoughWater(int amount, UserDTO userDTO);
 
     void lowerWater(int amount, UserDTO userDTO);
 

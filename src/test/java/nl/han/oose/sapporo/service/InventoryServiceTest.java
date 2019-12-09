@@ -15,13 +15,13 @@ class InventoryServiceTest {
 
     @Test
     void checkSaldoCallsCheckSalo() {
-        sut.checkSaldo(TEST_AMOUNT, user);
+        sut.checkIfPlayerHasEnoughSaldo(TEST_AMOUNT, user);
         Mockito.verify(inventoryDAO, Mockito.times(1)).checkSaldo(TEST_AMOUNT, user);
     }
 
     @Test
     void checkSaldoReturnsRightBoolean() {
-        Assertions.assertTrue(sut.checkSaldo(TEST_AMOUNT, user));
+        Assertions.assertTrue(sut.checkIfPlayerHasEnoughSaldo(TEST_AMOUNT, user));
     }
 
     @Test
@@ -44,13 +44,13 @@ class InventoryServiceTest {
 
     @Test
     void checkWaterCallsCheckWater() {
-        sut.checkWater(TEST_AMOUNT, user);
+        sut.checkIfPlayerHasEnoughWater(TEST_AMOUNT, user);
         Mockito.verify(inventoryDAO, Mockito.times(1)).checkWater(TEST_AMOUNT, user);
     }
 
     @Test
     void checkWaterReturnsFalseBoolean() {
-        Assertions.assertFalse(sut.checkWater(TEST_AMOUNT, user));
+        Assertions.assertFalse(sut.checkIfPlayerHasEnoughWater(TEST_AMOUNT, user));
     }
 
     @Test

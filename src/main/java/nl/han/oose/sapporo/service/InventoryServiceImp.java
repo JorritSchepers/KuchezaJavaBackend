@@ -15,7 +15,7 @@ public class InventoryServiceImp implements IInventoryService {
     }
 
     @Override
-    public boolean checkSaldo(float amount, UserDTO userDTO) {
+    public boolean checkIfPlayerHasEnoughSaldo(float amount, UserDTO userDTO) {
         return inventoryDAO.checkSaldo(amount, userDTO);
     }
 
@@ -30,7 +30,7 @@ public class InventoryServiceImp implements IInventoryService {
     }
 
     @Override
-    public boolean checkWater(int amount, UserDTO userDTO) { return inventoryDAO.checkWater(amount, userDTO); }
+    public boolean checkIfPlayerHasEnoughWater(int amount, UserDTO userDTO) { return inventoryDAO.checkWater(amount, userDTO); }
 
     @Override
     public void lowerWater(int amount, UserDTO userDTO) { inventoryDAO.lowerWater(amount, userDTO); }

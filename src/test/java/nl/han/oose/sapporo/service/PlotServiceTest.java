@@ -41,9 +41,9 @@ class PlotServiceTest {
         sut.setPlantDAO(plantDAO);
         sut.setFarmDAO(farmDAO);
         Mockito.when(plantDAO.getProfit(plant.getID())).thenReturn(20);
-        Mockito.when(inventoryService.checkSaldo(PRICE, user)).thenReturn(true);
+        Mockito.when(inventoryService.checkIfPlayerHasEnoughSaldo(PRICE, user)).thenReturn(true);
         Mockito.when(plotDAO.getPlot(PLOTID)).thenReturn(plotWithGrownPlant);
-        Mockito.when(inventoryService.checkWater(10, user)).thenReturn(true);
+        Mockito.when(inventoryService.checkIfPlayerHasEnoughWater(10, user)).thenReturn(true);
         Mockito.when(plotDAO.checkIfPlotIsEmpty(PLOTID)).thenReturn(true);
         Mockito.when(plantDAO.getProfit(Mockito.anyInt())).thenReturn(10);
         Mockito.when(plantService.plantFullGrown(plotWithGrownPlant)).thenReturn(true);
@@ -53,13 +53,13 @@ class PlotServiceTest {
         Mockito.when(plantDAO.getProfit(plant.getID())).thenReturn(20);
         Mockito.when(plotDAO.plotIsPurchased(PLOTID)).thenReturn(false);
         Mockito.when(farmDAO.getFarm(user)).thenReturn(farm);
-        Mockito.when(inventoryService.checkSaldo(PLOTPRICE, user)).thenReturn(true);
+        Mockito.when(inventoryService.checkIfPlayerHasEnoughSaldo(PLOTPRICE, user)).thenReturn(true);
     }
 
     @Test
     void placePlantCallsCheckSaldo() {
         sut.placePlant(plant, PLOTID, user);
-        Mockito.verify(inventoryService, Mockito.times(1)).checkSaldo(PRICE, user);
+        Mockito.verify(inventoryService, Mockito.times(1)).checkIfPlayerHasEnoughSaldo(PRICE, user);
     }
 
     @Test
@@ -153,7 +153,7 @@ class PlotServiceTest {
     @Test
     void purchasePlotCallsCheckSaldo() {
         sut.purchasePlot(PLOTID, user);
-        Mockito.verify(inventoryService, Mockito.times(1)).checkSaldo(PLOTPRICE, user);
+        Mockito.verify(inventoryService, Mockito.times(1)).checkIfPlayerHasEnoughSaldo(PLOTPRICE, user);
     }
 
     @Test
@@ -182,7 +182,7 @@ class PlotServiceTest {
     @Test
     void waterPlantCallsCheckWater(){
         sut.waterPlant(user, PLOTID);
-        Mockito.verify(inventoryService, Mockito.times(1)).checkWater(WATER, user);
+        Mockito.verify(inventoryService, Mockito.times(1)).checkIfPlayerHasEnoughWater(WATER, user);
     }
 
     @Test
