@@ -17,7 +17,6 @@ public class PlotServiceImp implements IPlotService {
     private IFarmDAO farmDAO;
     private IInventoryService inventoryService;
     private IPlantService plantService;
-    private static final int MAGIC_WATER_NUMBER_CHANGE_LATER = 10;
 
     @Inject
     public void setPlantDAO(IPlantDAO plantDAO) {
@@ -91,10 +90,10 @@ public class PlotServiceImp implements IPlotService {
     }
 
     @Override
-    public PlotDTO waterPlant(UserDTO user, int plotID) {
-        if (inventoryService.checkIfPlayerHasEnoughWater(MAGIC_WATER_NUMBER_CHANGE_LATER, user) && plotDAO.plotHasPlant(plotID)){
-            inventoryService.lowerWater(MAGIC_WATER_NUMBER_CHANGE_LATER, user);
-            plotDAO.increaseWaterAvailable(MAGIC_WATER_NUMBER_CHANGE_LATER, plotID);
+    public PlotDTO editWater(UserDTO user, int plotID, int amount) {
+        if (inventoryService.checkIfPlayerHasEnoughWater(amount, user) && plotDAO.plotHasPlant(plotID)){
+            inventoryService.lowerWater(amount, user);
+            plotDAO.editWaterAvailable(amount, plotID);
             return plotDAO.getPlot(plotID);
         }
         return null;

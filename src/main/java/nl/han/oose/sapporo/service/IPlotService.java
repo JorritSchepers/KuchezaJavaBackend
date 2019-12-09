@@ -17,5 +17,5 @@ public interface IPlotService {
     void updageAge(int plotID, int age);
 
     AllPlotDTO purchasePlot(int plotID, UserDTO userDTO);
-    PlotDTO waterPlant(UserDTO user, int plotID);
+    PlotDTO editWater(UserDTO user, int plotID, int amount);
 }

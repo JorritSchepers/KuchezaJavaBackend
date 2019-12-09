@@ -181,36 +181,36 @@ class PlotServiceTest {
 
     @Test
     void waterPlantCallsCheckWater(){
-        sut.waterPlant(user, PLOTID);
+        sut.editWater(user, PLOTID, WATER);
         Mockito.verify(inventoryService, Mockito.times(1)).checkIfPlayerHasEnoughWater(WATER, user);
     }
 
     @Test
     void waterPlantCallsLowerWater(){
-        sut.waterPlant(user, PLOTID);
+        sut.editWater(user, PLOTID, WATER);
         Mockito.verify(inventoryService, Mockito.times(1)).lowerWater(WATER, user);
     }
 
     @Test
     void waterPlantCallsIncreaseWater(){
-        sut.waterPlant(user, PLOTID);
-        Mockito.verify(plotDAO, Mockito.times(1)).increaseWaterAvailable(WATER, PLOTID);
+        sut.editWater(user, PLOTID, WATER);
+        Mockito.verify(plotDAO, Mockito.times(1)).editWaterAvailable(WATER, PLOTID);
     }
 
     @Test
     void waterPlantCallsGetPlot(){
-        sut.waterPlant(user, PLOTID);
+        sut.editWater(user, PLOTID, WATER);
         Mockito.verify(plotDAO, Mockito.times(1)).getPlot(PLOTID);
     }
 
     @Test
     void waterPlantCallsPlotHasPlant(){
-        sut.waterPlant(user, PLOTID);
+        sut.editWater(user, PLOTID, WATER);
         Mockito.verify(plotDAO, Mockito.times(1)).plotHasPlant(PLOTID);
     }
 
     @Test
-    void waterPlantReturnsPlot(){ Assertions.assertEquals(plot, sut.waterPlant(user, PLOTID));}
+    void waterPlantReturnsPlot(){ Assertions.assertEquals(plot, sut.editWater(user, PLOTID, WATER));}
 
     @Test
     void purchasePlotReturnsAllPlots() {
