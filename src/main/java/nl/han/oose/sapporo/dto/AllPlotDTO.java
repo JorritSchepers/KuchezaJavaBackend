@@ -8,4 +8,8 @@ public class AllPlotDTO {
     public AllPlotDTO(ArrayList<PlotDTO> plots) {
         this.plots = plots;
     }
+
+    public ArrayList<PlotDTO> getPlots() {
+        return plots;
+    }
 }

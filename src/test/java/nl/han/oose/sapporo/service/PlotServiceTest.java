@@ -5,6 +5,7 @@ import nl.han.oose.sapporo.persistence.IFarmDAO;
 import nl.han.oose.sapporo.persistence.IPlantDAO;
 import nl.han.oose.sapporo.persistence.IPlotDAO;
 import nl.han.oose.sapporo.persistence.PlantDAOImp;
+import nl.han.oose.sapporo.service.exception.PlotIsAlreadyPurchasedException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -140,6 +141,8 @@ class PlotServiceTest {
         sut.updageAge(1,1000);
         Mockito.verify(plotDAO, Mockito.times(1)).updateAge(1,1000);
     }
+
+    @Test
     void purchasePlotCallsgetPlot() {
         sut.purchasePlot(PLOTID, user);
         Mockito.verify(plotDAO, Mockito.times(1)).getPlot(PLOTID);
@@ -169,8 +172,20 @@ class PlotServiceTest {
         Mockito.verify(plotDAO, Mockito.times(1)).purchasePlot(PLOTID);
     }
 
-//    @Test
-//    void purchasePlotReturnsAllPlots() {
-//        Assertions.assertEquals(allPlots, sut.purchasePlot(PLOTID, user));
-//    }
+    @Test
+    void purchasePlotReturnsAllPlots() {
+        Assertions.assertEquals(allPlots.getPlots().size(), sut.purchasePlot(PLOTID, user).getPlots().size());
+    }
+
+    @Test
+    void purchasePlotCallsGetFarm() {
+        sut.purchasePlot(PLOTID, user);
+        Mockito.verify(farmDAO, Mockito.times(1)).getFarm(user);
+    }
+
+    @Test
+    void purchasePlotThrowsExceptionWhenPlotIsAlreadyPurchased() {
+        Mockito.when(plotDAO.plotIsPurchased(PLOTID)).thenReturn(true);
+        Assertions.assertThrows(PlotIsAlreadyPurchasedException.class, () -> { sut.purchasePlot(PLOTID, user); });
+    }
 }
