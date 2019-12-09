@@ -12,7 +12,7 @@ import java.sql.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class AccountDAOTest extends DAOTest {
+class AccountDAOTest extends DAOTest {
     private AccountDAOImp sut = new AccountDAOImp();
     private UserDTO userDTO = new UserDTO(1, "TestUser", "wachtwoord", "TestUser@Hotmail.com");
     private LoginDTO loginDTO = new LoginDTO("oose.sapporo@gmail.com", "wachtwoord");

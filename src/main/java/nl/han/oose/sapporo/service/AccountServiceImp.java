@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class AccountServiceImp implements IAccountService {
-    static private HashMap<String, UserDTO> tokens = new HashMap<String, UserDTO>();
+    static private HashMap<String, UserDTO> tokens = new HashMap<>();
     private CustomUuid customUuid;
     private IAccountDAO accountDAO;
     private IInventoryService inventoryService;

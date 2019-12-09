@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 import static org.mockito.Mockito.when;
 
-public abstract class DAOTest {
+abstract class DAOTest {
     final String DB_URL = "jdbc:h2:mem:TestDatabase";
 
     abstract void setFactory(ConnectionFactoryImp connectionFactoryImp);
