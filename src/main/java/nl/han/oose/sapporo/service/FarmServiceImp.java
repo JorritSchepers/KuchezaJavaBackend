@@ -35,7 +35,7 @@ public class FarmServiceImp implements IFarmService {
     public FarmDTO createFarm(UserDTO userDTO) {
         farmDAO.checkIfUserHasAFarm(userDTO);
         FarmDTO farmDTO = new FarmDTO();
-        List<PlotDTO> plots = new ArrayList<PlotDTO>();
+        List<PlotDTO> plots = new ArrayList<>();
         for (int x = 0; x < farmDTO.getWIDTH(); x++) {
             for (int y = 0; y < farmDTO.getHEIGHT(); y++) {
                 PlotDTO plotDTO = new PlotDTO(x, y, PLOT_PRICE, false);

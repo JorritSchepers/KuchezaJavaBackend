@@ -12,7 +12,7 @@ import java.sql.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class AccountDAOTest extends DAOTest {
+class AccountDAOTest extends DAOTest {
     private AccountDAOImp sut = new AccountDAOImp();
     private UserDTO userDTO = new UserDTO(1, "TestUser", "wachtwoord", "TestUser@Hotmail.com");
     private LoginDTO loginDTO = new LoginDTO("oose.sapporo@gmail.com", "wachtwoord");
@@ -20,6 +20,29 @@ public class AccountDAOTest extends DAOTest {
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
         sut.setConnectionFactory(connectionFactoryImp);
+    }
+    private int getAmountOfUsers() {
+        int amountOfUsers = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("select count(userID) as total from user");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                amountOfUsers = resultSet.getInt("total");
+            }
+        } catch (SQLException ignored) {
+        }
+        return amountOfUsers;
+    }
+
+    private Boolean userExists(String email) {
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("select * from user where email = ?");
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            return (resultSet.next());
+        } catch (SQLException ignored) {
+        }
+        return false;
     }
 
     @Test
@@ -48,29 +71,5 @@ public class AccountDAOTest extends DAOTest {
         Assertions.assertFalse(userExists(userDTO.getEmail()));
         sut.addUser(userDTO);
         Assertions.assertTrue(userExists(userDTO.getEmail()));
-    }
-
-    private int getAmountOfUsers() {
-        int amountOfUsers = 0;
-        try (Connection connection = DriverManager.getConnection(DB_URL)) {
-            PreparedStatement statement = connection.prepareStatement("select count(userID) as total from user");
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                amountOfUsers = resultSet.getInt("total");
-            }
-        } catch (SQLException ignored) {
-        }
-        return amountOfUsers;
-    }
-
-    private Boolean userExists(String email) {
-        try (Connection connection = DriverManager.getConnection(DB_URL)) {
-            PreparedStatement statement = connection.prepareStatement("select * from user where email = ?");
-            statement.setString(1, email);
-            ResultSet resultSet = statement.executeQuery();
-            return (resultSet.next());
-        } catch (SQLException ignored) {
-        }
-        return false;
     }
 }

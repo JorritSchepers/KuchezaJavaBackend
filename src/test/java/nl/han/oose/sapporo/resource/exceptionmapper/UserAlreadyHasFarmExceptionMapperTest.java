@@ -8,7 +8,7 @@ import javax.ws.rs.core.Response;
 import static org.junit.Assert.assertEquals;
 
 public class UserAlreadyHasFarmExceptionMapperTest {
-    UserAlreadyHasFarmExceptionMapper sut = new UserAlreadyHasFarmExceptionMapper();
+    private UserAlreadyHasFarmExceptionMapper sut = new UserAlreadyHasFarmExceptionMapper();
 
     @Test
     void PlotIsOccupiedMapperReturnsBadRequestCode() {

@@ -11,7 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class PlotDAOImp implements IPlotDAO {
-    public static final int START_WATER = 25;
+    private static final int START_WATER = 25;
     private ConnectionFactoryImp connectionFactory;
 
     @Inject
@@ -91,7 +91,6 @@ public class PlotDAOImp implements IPlotDAO {
 
             while (resultSet.next()) {
                 int iD = resultSet.getInt("plotID");
-                ;
                 int x = resultSet.getInt("x");
                 int y = resultSet.getInt("y");
                 float price = resultSet.getFloat("price");

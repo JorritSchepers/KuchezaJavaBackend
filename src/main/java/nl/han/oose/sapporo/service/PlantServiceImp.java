@@ -1,7 +1,6 @@
 package nl.han.oose.sapporo.service;
 
 import nl.han.oose.sapporo.dto.AllPlantDTO;
-import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.IPlantDAO;
 import nl.han.oose.sapporo.persistence.exception.PlantNotGrownException;

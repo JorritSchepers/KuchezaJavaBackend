@@ -41,14 +41,6 @@ public class FarmDTO {
         return HEIGHT;
     }
 
-    public void setWIDTH(int WIDTH) {
-        FarmDTO.WIDTH = WIDTH;
-    }
-
-    public void setHEIGHT(int HEIGHT) {
-        FarmDTO.HEIGHT = HEIGHT;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

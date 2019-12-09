@@ -12,7 +12,6 @@ class PlotDAOTest extends DAOTest {
     private PlotDAOImp sut = new PlotDAOImp();
     private final int PLOTID = 1;
     private final int FULLPLOTID = 2;
-    private final int FARMID = 1;
     private final int WATER_ADD = 20;
     private final int PURCHASE_PLOT_ID = 3;
     private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1);
@@ -20,6 +19,20 @@ class PlotDAOTest extends DAOTest {
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
         sut.setConnectionFactory(connectionFactoryImp);
+    }
+
+    private int getWaterFromPlot(int plotId) {
+        int waterAvailable = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("SELECT waterAvailable FROM plot where plotID =?");
+            statement.setInt(1, plotId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                waterAvailable = resultSet.getInt("waterAvailable");
+            }
+        } catch (SQLException ignored) {
+        }
+        return waterAvailable;
     }
 
     int getPlantIDFromPlot(int plotId) {
@@ -37,22 +50,20 @@ class PlotDAOTest extends DAOTest {
     }
 
     private boolean plotIsEmpty(int plotId) {
-        int full = 0;
         try (Connection connection = DriverManager.getConnection(DB_URL)) {
             int animalId = 0;
             int waterManagerId = 0;
             int plantId = 0;
             int age = 0;
-            PreparedStatement statement = connection.prepareStatement("Select animalId, waterManagerId, plantID, age from plot where plotID = ?");
+            PreparedStatement statement = connection.prepareStatement("Select animalId, waterManagerId, plantID from plot where plotID = ?");
             statement.setInt(1, plotId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 animalId = resultSet.getInt("animalId");
                 waterManagerId = resultSet.getInt("waterManagerId");
                 plantId = resultSet.getInt("plantID");
-                age = resultSet.getInt("age");
             }
-            return (full + animalId + waterManagerId + plantId + age == 0);
+            return ((animalId + waterManagerId + plantId) == 0);
         } catch (SQLException ignored) {
         }
         return false;
@@ -83,9 +94,11 @@ class PlotDAOTest extends DAOTest {
             while (resultSet.next()) {
                 age = resultSet.getInt("objectAge");
             }
+            return age;
+
         } catch (SQLException ignored) {
         }
-        return age;
+        return 0;
     }
 
     private boolean plotIsPurchased(int plotID) {
@@ -184,13 +197,6 @@ class PlotDAOTest extends DAOTest {
     }
 
     @Test
-    void checkIfPlotHasBeenFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
-        Assertions.assertThrows(PlotHasMaximumWaterException.class, () -> {
-            sut.increaseWaterAvailable(WATER_ADD, FULLPLOTID);
-        });
-    }
-
-    @Test
     void checkIfPlotIsNotFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
         Assertions.assertDoesNotThrow( () -> {
             sut.increaseWaterAvailable(WATER_ADD, PLOTID);
@@ -204,41 +210,5 @@ class PlotDAOTest extends DAOTest {
         sut.increaseWaterAvailable(extraWater, PLOTID);
         int newWater = getWaterFromPlot(PLOTID);
         Assertions.assertEquals((oldWater + extraWater), newWater);
-    }
-
-    private int getWaterFromPlot(int plotId) {
-        int waterAvailable = 0;
-        try (Connection connection = DriverManager.getConnection(DB_URL)) {
-            PreparedStatement statement = connection.prepareStatement("SELECT waterAvailable FROM plot where plotID =?");
-            statement.setInt(1, plotId);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                waterAvailable = resultSet.getInt("waterAvailable");
-            }
-        } catch (SQLException ignored) {
-        }
-        return waterAvailable;
-    }
-
-    private int getAmountOfPlots(int x, int y){
-        int plotAmount = 0;
-        try (Connection connection = DriverManager.getConnection(DB_URL)) {
-            PreparedStatement statement = connection.prepareStatement("select count(plotID) as amount from plot where x =? and y=?");
-            statement.setInt(1,x);
-            statement.setInt(2,y);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                plotAmount = resultSet.getInt("amount");
-            }
-        } catch (SQLException ignored) {
-        }
-        return plotAmount;
-    }
-
-    @Test
-    void updateAgeUpdatesAge() {
-        Assertions.assertEquals(10,getAge(1,1));
-        sut.updateAge(1,1000);
-        Assertions.assertEquals(1000,getAge(1,1));
     }
 }

@@ -98,26 +98,6 @@ public class PlotDTO {
         this.age = age;
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    public int getAnimalID() {
-        return animalID;
-    }
-
-    public void setAnimalID(int animalID) {
-        this.animalID = animalID;
-    }
-
-    public int getWaterManagerID() {
-        return waterManagerID;
-    }
-
-    public void setWaterManagerID(int waterManagerID) {
-        this.waterManagerID = waterManagerID;
-    }
-
     public int getPlantID() {
         return plantID;
     }
@@ -144,13 +124,5 @@ public class PlotDTO {
 
     public void setPurchased(boolean purchased) {
         this.purchased = purchased;
-    }
-
-    public int getWaterAvailable() {
-        return waterAvailable;
-    }
-
-    public void setWaterAvailable(int waterAvailable) {
-        this.waterAvailable = waterAvailable;
     }
 }
