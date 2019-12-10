@@ -218,7 +218,7 @@ public class PlotDAOImp implements IPlotDAO {
             statement.setInt(2,plotID);
             statement.execute();
         } catch (SQLException e) {
-            throw new PlotHasMaximumWaterException();
+            throw new WaterOutOfBoundsException();
         }
     }
 }
