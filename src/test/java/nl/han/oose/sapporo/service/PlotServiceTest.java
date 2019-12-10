@@ -24,7 +24,7 @@ class PlotServiceTest {
     private final int FARMID = 1;
     private final float PLOTPRICE = 10;
     private final int WATER = 10;
-    private PlantDTO plant = new PlantDTO(1, "Cabbage", 5, 10, 10, PRICE);
+    private PlantDTO plant = new PlantDTO(1, "Cabbage", 5, 10, 20, PRICE);
     private FarmDTO farm = new FarmDTO(1, 1);
     private UserDTO user = new UserDTO(1, "PatrickSt3r", "DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937", "Patrick@Ster.com");
     private PlotDTO plot = new PlotDTO(1, 1, 1, 1, 0, 0, 10);
@@ -112,7 +112,7 @@ class PlotServiceTest {
     @Test
     void harvestPlantCallsgetPlot() {
         sut.harvestPlant(plotWithGrownPlant, user, PLOTID);
-        Mockito.verify(plotDAO, Mockito.times(1)).getPlot(PLOTID);
+        Mockito.verify(plotDAO, Mockito.times(2)).getPlot(PLOTID);
     }
 
     @Test
@@ -151,33 +151,10 @@ class PlotServiceTest {
     }
 
     @Test
-    void purchasePlotCallsCheckSaldo() {
-        sut.purchasePlot(PLOTID, user);
-        Mockito.verify(inventoryService, Mockito.times(1)).checkIfPlayerHasEnoughSaldo(PLOTPRICE, user);
-    }
-
-    @Test
     void purchasePlotCallsPlotIsPurchased() {
         sut.purchasePlot(PLOTID, user);
         Mockito.verify(plotDAO, Mockito.times(1)).plotIsPurchased(PLOTID);
     }
-
-    @Test
-    void purchasePlotCallsLowerSaldo() {
-        sut.purchasePlot(PLOTID, user);
-        Mockito.verify(inventoryService, Mockito.times(1)).lowerSaldo(PLOTPRICE, user);
-    }
-
-    @Test
-    void purchasePlotCallsPurchasePlot() {
-        sut.purchasePlot(PLOTID, user);
-        Mockito.verify(plotDAO, Mockito.times(1)).purchasePlot(PLOTID);
-    }
-
-//    @Test
-//    void purchasePlotReturnsAllPlots() {
-//        Assertions.assertEquals(allPlots, sut.purchasePlot(PLOTID, user));
-//    }
 
     @Test
     void waterPlantCallsCheckWater(){
@@ -210,6 +187,7 @@ class PlotServiceTest {
     }
 
     @Test
+<<<<<<< HEAD
     void waterPlantReturnsPlot(){ Assertions.assertEquals(plot, sut.editWater(user, PLOTID, WATER));}
 
     @Test
@@ -224,6 +202,8 @@ class PlotServiceTest {
     }
 
     @Test
+=======
+>>>>>>> 0c85f8958c7508024bcb49e8de5b1ffe8409f888
     void purchasePlotThrowsExceptionWhenPlotIsAlreadyPurchased() {
         Mockito.when(plotDAO.plotIsPurchased(PLOTID)).thenReturn(true);
         Assertions.assertThrows(PlotIsAlreadyPurchasedException.class, () -> { sut.purchasePlot(PLOTID, user); });
