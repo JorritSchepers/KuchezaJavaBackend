@@ -8,7 +8,7 @@ import javax.ws.rs.core.Response;
 import static org.junit.Assert.assertEquals;
 
 public class PlotHasNotPlantExceptionMapperTest {
-    PlotHasNotPlantExceptionMapper sut = new PlotHasNotPlantExceptionMapper();
+    private PlotHasNotPlantExceptionMapper sut = new PlotHasNotPlantExceptionMapper();
 
     @Test
     void PlotIsOccupiedMapperReturnsBadRequestCode() {

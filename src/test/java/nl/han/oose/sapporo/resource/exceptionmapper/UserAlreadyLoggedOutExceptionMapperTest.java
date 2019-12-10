@@ -8,7 +8,7 @@ import javax.ws.rs.core.Response;
 import static org.junit.Assert.assertEquals;
 
 class UserAlreadyLoggedOutExceptionMapperTest {
-    UserAlreadyLoggedOutExceptionMapper sut = new UserAlreadyLoggedOutExceptionMapper();
+    private UserAlreadyLoggedOutExceptionMapper sut = new UserAlreadyLoggedOutExceptionMapper();
 
     @Test
     void PlotIsOccupiedMapperReturnsBadRequestCode() {
