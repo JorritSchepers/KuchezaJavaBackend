@@ -55,21 +55,15 @@ class PlotDAOTest extends DAOTest {
             int waterManagerId = 0;
             int plantId = 0;
             int age = 0;
-<<<<<<< HEAD
+
             PreparedStatement statement = connection.prepareStatement("Select animalId, waterManagerId, plantID, objectAge from plot where plotID = ?");
-=======
-            PreparedStatement statement = connection.prepareStatement("Select animalId, waterManagerId, plantID from plot where plotID = ?");
->>>>>>> 0c85f8958c7508024bcb49e8de5b1ffe8409f888
             statement.setInt(1, plotId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 animalId = resultSet.getInt("animalId");
                 waterManagerId = resultSet.getInt("waterManagerId");
                 plantId = resultSet.getInt("plantID");
-<<<<<<< HEAD
                 age = resultSet.getInt("objectAge");
-=======
->>>>>>> 0c85f8958c7508024bcb49e8de5b1ffe8409f888
             }
             return ((animalId + waterManagerId + plantId) == 0);
         } catch (SQLException ignored) {
@@ -205,7 +199,6 @@ class PlotDAOTest extends DAOTest {
     }
 
     @Test
-<<<<<<< HEAD
     void checkIfPlotHasBeenFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
         Assertions.assertThrows(WaterOutOfBoundsException.class, () -> {
             sut.editWaterAvailable(WATER_ADD, FULLPLOTID);
@@ -213,8 +206,6 @@ class PlotDAOTest extends DAOTest {
     }
 
     @Test
-=======
->>>>>>> 0c85f8958c7508024bcb49e8de5b1ffe8409f888
     void checkIfPlotIsNotFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
         Assertions.assertDoesNotThrow( () -> {
             sut.editWaterAvailable(WATER_ADD, PLOTID);

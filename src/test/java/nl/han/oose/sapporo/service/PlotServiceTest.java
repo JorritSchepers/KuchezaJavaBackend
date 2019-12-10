@@ -187,7 +187,6 @@ class PlotServiceTest {
     }
 
     @Test
-<<<<<<< HEAD
     void waterPlantReturnsPlot(){ Assertions.assertEquals(plot, sut.editWater(user, PLOTID, WATER));}
 
     @Test
@@ -202,8 +201,6 @@ class PlotServiceTest {
     }
 
     @Test
-=======
->>>>>>> 0c85f8958c7508024bcb49e8de5b1ffe8409f888
     void purchasePlotThrowsExceptionWhenPlotIsAlreadyPurchased() {
         Mockito.when(plotDAO.plotIsPurchased(PLOTID)).thenReturn(true);
         Assertions.assertThrows(PlotIsAlreadyPurchasedException.class, () -> { sut.purchasePlot(PLOTID, user); });
