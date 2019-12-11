@@ -55,13 +55,15 @@ class PlotDAOTest extends DAOTest {
             int waterManagerId = 0;
             int plantId = 0;
             int age = 0;
-            PreparedStatement statement = connection.prepareStatement("Select animalId, waterManagerId, plantID from plot where plotID = ?");
+
+            PreparedStatement statement = connection.prepareStatement("Select animalId, waterManagerId, plantID, objectAge from plot where plotID = ?");
             statement.setInt(1, plotId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 animalId = resultSet.getInt("animalId");
                 waterManagerId = resultSet.getInt("waterManagerId");
                 plantId = resultSet.getInt("plantID");
+                age = resultSet.getInt("objectAge");
             }
             return ((animalId + waterManagerId + plantId) == 0);
         } catch (SQLException ignored) {
@@ -197,9 +199,16 @@ class PlotDAOTest extends DAOTest {
     }
 
     @Test
+    void checkIfPlotHasBeenFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
+        Assertions.assertThrows(WaterOutOfBoundsException.class, () -> {
+            sut.editWaterAvailable(WATER_ADD, FULLPLOTID);
+        });
+    }
+
+    @Test
     void checkIfPlotIsNotFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
         Assertions.assertDoesNotThrow( () -> {
-            sut.increaseWaterAvailable(WATER_ADD, PLOTID);
+            sut.editWaterAvailable(WATER_ADD, PLOTID);
         });
     }
 
@@ -207,7 +216,7 @@ class PlotDAOTest extends DAOTest {
     void increaseWaterIncreasesWaterWithRightAmount() {
         int extraWater = WATER_ADD;
         int oldWater = getWaterFromPlot(PLOTID);
-        sut.increaseWaterAvailable(extraWater, PLOTID);
+        sut.editWaterAvailable(extraWater, PLOTID);
         int newWater = getWaterFromPlot(PLOTID);
         Assertions.assertEquals((oldWater + extraWater), newWater);
     }

@@ -68,12 +68,12 @@ public class PlotResource {
     }
 
     @POST
-    @Path("/{id}/water")
+    @Path("/{id}/water/{amount}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response waterPlantOnPlot(@QueryParam("token") String token, @PathParam("id") int plotID) {
+    public Response editWaterAmountForPlot(@QueryParam("token") String token, @PathParam("id") int plotID, @PathParam("amount") int amount) {
         UserDTO user = accountService.verifyToken(token);
         return Response.status(Response.Status.OK)
-                .entity(plotService.waterPlant(user, plotID))
+                .entity(plotService.editWater(user, plotID, amount))
                 .build();
     }
 }

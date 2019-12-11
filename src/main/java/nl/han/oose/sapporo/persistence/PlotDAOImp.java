@@ -114,7 +114,7 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public void removeObjectsFromPlot(int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("update plot set animalId = null, waterManagerId = null, plantID = null, objectAge = 0 where plotID = ?");
+            PreparedStatement statement = connection.prepareStatement("update plot set animalId = null, waterManagerId = null, plantID = null, objectAge = 0, waterAvailable = 0 where plotID = ?");
             statement.setInt(1, plotID);
             statement.execute();
         } catch (SQLException e) {
@@ -209,7 +209,7 @@ public class PlotDAOImp implements IPlotDAO {
         }
     }
     
-    public void increaseWaterAvailable(int amount, int plotID) {
+    public void editWaterAvailable(int amount, int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
                     ("update plot set waterAvailable = waterAvailable+? where plotID = ?");
@@ -217,7 +217,7 @@ public class PlotDAOImp implements IPlotDAO {
             statement.setInt(2,plotID);
             statement.execute();
         } catch (SQLException e) {
-            throw new PlotHasMaximumWaterException();
+            throw new WaterOutOfBoundsException();
         }
     }
 }

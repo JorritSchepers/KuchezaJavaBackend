@@ -27,5 +27,5 @@ public interface IPlotDAO {
 
     void updateAge(int plotID, int age);
     
-    void increaseWaterAvailable(int amount, int plotID);
+    void editWaterAvailable(int amount, int plotID);
 }
