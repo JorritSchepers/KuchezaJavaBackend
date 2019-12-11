@@ -17,6 +17,7 @@ public class PlotServiceImp implements IPlotService {
     private IFarmDAO farmDAO;
     private IInventoryService inventoryService;
     private IPlantService plantService;
+    private final int START_WATER = 25;
 
     @Inject
     public void setPlantDAO(IPlantDAO plantDAO) {
@@ -47,6 +48,7 @@ public class PlotServiceImp implements IPlotService {
     public PlotDTO placePlant(PlantDTO plantDTO, int plotID, UserDTO userDTO) {
         if (inventoryService.checkIfPlayerHasEnoughSaldo(plantDTO.getPurchasePrice(),userDTO) && plotDAO.checkIfPlotIsEmpty(plotID)) {
             inventoryService.lowerSaldo(plantDTO.getPurchasePrice(), userDTO);
+            inventoryService.lowerWater(START_WATER,userDTO);
             plotDAO.addPlantToPlot(plantDTO, plotID);
             return plotDAO.getPlot(plotID);
         }
