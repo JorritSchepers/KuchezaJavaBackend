@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FarmServiceImp implements IFarmService {
-    private static final float PLOT_PRICE = 1000;
+    private static final float PLOT_PRICE = 10000;
     private IFarmDAO farmDAO;
     private IPlotService plotService;
 
