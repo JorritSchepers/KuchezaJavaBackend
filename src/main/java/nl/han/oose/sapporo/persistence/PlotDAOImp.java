@@ -223,11 +223,11 @@ public class PlotDAOImp implements IPlotDAO {
 
     @Override
     public void createSilo(FarmDTO farmDTO) {
-        final int SILOID =1;
+        final int SILO_ID =1;
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
                     ("update plot set waterManagerID = ? where farmID = ? order by plotID ASC LIMIT 1 ");
-            statement.setInt(1,SILOID);
+            statement.setInt(1,SILO_ID);
             statement.setInt(2,farmDTO.getFarmID());
             statement.execute();
         } catch (SQLException e) {
