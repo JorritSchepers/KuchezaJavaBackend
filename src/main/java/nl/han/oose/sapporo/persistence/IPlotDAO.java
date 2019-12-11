@@ -30,4 +30,6 @@ public interface IPlotDAO {
     void editWaterAvailable(int amount, int plotID);
 
     void createSilo(FarmDTO farmDTO);
+
+    int getWater(int plotID);
 }

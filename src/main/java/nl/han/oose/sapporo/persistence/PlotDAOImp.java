@@ -234,4 +234,23 @@ public class PlotDAOImp implements IPlotDAO {
             throw new PersistenceException();
         }
     }
+
+    @Override
+    public int getWater(int plotID) {
+        int water = 0;
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select waterAvailable from plot where plotID = ?");
+            statement.setInt(1, plotID);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                water = resultSet.getInt("waterAvailable");
+            } else {
+                throw new PlotDoesNotExistException();
+            }
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+        return water;
+    }
 }

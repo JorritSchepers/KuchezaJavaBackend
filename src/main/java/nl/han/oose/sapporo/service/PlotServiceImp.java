@@ -18,6 +18,8 @@ public class PlotServiceImp implements IPlotService {
     private IInventoryService inventoryService;
     private IPlantService plantService;
     private final int START_WATER = 25;
+    private final int MINIMUM_PLOT_WATER = 0;
+    private final int MAXIMUM_PLOT_WATER = 100;
 
     @Inject
     public void setPlantDAO(IPlantDAO plantDAO) {
@@ -94,8 +96,21 @@ public class PlotServiceImp implements IPlotService {
     @Override
     public PlotDTO editWater(UserDTO user, int plotID, int amount) {
         if (inventoryService.checkIfPlayerHasEnoughWater(amount, user) && plotDAO.plotHasPlant(plotID)){
-            inventoryService.lowerWater(amount, user);
-            plotDAO.editWaterAvailable(amount, plotID);
+            int plotWater = plotDAO.getWater(plotID);
+
+            if(plotWater + amount < MINIMUM_PLOT_WATER) {
+                int waterThatFits = -(MINIMUM_PLOT_WATER+plotWater);
+                inventoryService.lowerWater(waterThatFits, user);
+                plotDAO.editWaterAvailable(waterThatFits, plotID);
+            } else if (plotWater + amount > 100) {
+                int waterThatFits = MAXIMUM_PLOT_WATER-plotWater;
+                inventoryService.lowerWater(waterThatFits, user);
+                plotDAO.editWaterAvailable(waterThatFits, plotID);
+            } else {
+                inventoryService.lowerWater(amount, user);
+                plotDAO.editWaterAvailable(amount, plotID);
+            }
+
             return plotDAO.getPlot(plotID);
         }
         return null;
