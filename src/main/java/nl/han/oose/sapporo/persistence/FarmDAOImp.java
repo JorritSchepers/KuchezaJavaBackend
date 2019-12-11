@@ -71,6 +71,7 @@ public class FarmDAOImp implements IFarmDAO {
 
             getFarmID(connection,farmDTO,userDTO);
             plotDAO.insertPlots(farmDTO);
+            plotDAO.createSilo(farmDTO);
             farmDTO.setPlots(getAllPlotsFromFarm(connection, farmDTO));
         } catch (SQLException e) {
             throw new PersistenceException();
