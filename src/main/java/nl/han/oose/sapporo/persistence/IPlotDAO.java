@@ -1,5 +1,6 @@
 package nl.han.oose.sapporo.persistence;
 
+import nl.han.oose.sapporo.dto.AnimalDTO;
 import nl.han.oose.sapporo.dto.FarmDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
@@ -32,4 +33,6 @@ public interface IPlotDAO {
     void createSilo(FarmDTO farmDTO);
 
     int getWater(int plotID);
+
+    void addAnimalToPlot(AnimalDTO animalDTO, int plotID);
 }
