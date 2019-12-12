@@ -17,7 +17,7 @@ public class ActionService implements IActionService {
     }
 
     @Inject
-    public void setInventoryServicel(IInventoryService inventoryService) {
+    public void setInventoryService(IInventoryService inventoryService) {
         this.inventoryService = inventoryService;
     }
 
