@@ -140,7 +140,7 @@ class PlotServiceTest {
 
     @Test
     void updateAgeCallsUpdateAge() {
-        sut.updageAge(1,1000);
+        sut.updateAge(1,1000);
         Mockito.verify(plotDAO, Mockito.times(1)).updateAge(1,1000);
     }
 

@@ -42,7 +42,7 @@ public class PlantDAOImp implements IPlantDAO{
             ResultSet resultSet = statement.executeQuery();
             int neededGrowingTime = 0;
             while (resultSet.next()) {
-                neededGrowingTime = resultSet.getInt("growingTime");
+                neededGrowingTime = resultSet.  getInt("growingTime");
             }
             return (plotDTO.getAge() >= neededGrowingTime);
         } catch (SQLException e) {
@@ -60,6 +60,17 @@ public class PlantDAOImp implements IPlantDAO{
                 profit = resultSet.getInt("profit");
             }
             return profit;
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public void deletePlant(int plantIDToDelete) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("delete from plant where plantID = ?");
+            statement.setInt(1, plantIDToDelete);
+            statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();
         }

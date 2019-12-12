@@ -89,7 +89,7 @@ public class PlotServiceImp implements IPlotService {
     }
 
     @Override
-    public void updageAge(int plotID, int age) {
+    public void updateAge(int plotID, int age) {
         plotDAO.updateAge(plotID,age);
     }
 
@@ -97,7 +97,6 @@ public class PlotServiceImp implements IPlotService {
     public PlotDTO editWater(UserDTO user, int plotID, int amount) {
         if (inventoryService.checkIfPlayerHasEnoughWater(amount, user) && plotDAO.plotHasPlant(plotID)){
             int plotWater = plotDAO.getWater(plotID);
-
             if(plotWater + amount < MINIMUM_PLOT_WATER) {
                 int waterThatFits = -(MINIMUM_PLOT_WATER+plotWater);
                 inventoryService.lowerWater(waterThatFits, user);
@@ -110,11 +109,13 @@ public class PlotServiceImp implements IPlotService {
                 inventoryService.lowerWater(amount, user);
                 plotDAO.editWaterAvailable(amount, plotID);
             }
-
             return plotDAO.getPlot(plotID);
         }
         return null;
     }
 
-
+    @Override
+    public void updatePlantsOnAllPlots(int plantIDToDelete, int plantIDToReplaceWith) {
+        plotDAO.updatePlantsOnAllPlots(plantIDToDelete, plantIDToReplaceWith);
+    }
 }

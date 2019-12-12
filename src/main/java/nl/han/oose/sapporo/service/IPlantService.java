@@ -7,4 +7,6 @@ public interface IPlantService {
     AllPlantDTO getAllPlants();
 
     boolean plantFullGrown(PlotDTO plotDTO);
+
+    void deletePlant(int plantIDToDelete);
 }

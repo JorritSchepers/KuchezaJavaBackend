@@ -32,4 +32,6 @@ public interface IPlotDAO {
     void createSilo(FarmDTO farmDTO);
 
     int getWater(int plotID);
+
+    void updatePlantsOnAllPlots(int plantIDToDelete, int plantIDToReplaceWith);
 }

@@ -7,6 +7,7 @@ import nl.han.oose.sapporo.persistence.exception.PlantNotGrownException;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
+import java.util.ArrayList;
 
 @Default
 public class PlantServiceImp implements IPlantService {
@@ -28,5 +29,10 @@ public class PlantServiceImp implements IPlantService {
             throw new PlantNotGrownException();
         }
         return true;
+    }
+
+    @Override
+    public void deletePlant(int plantIDToDelete) {
+        plantDAO.deletePlant(plantIDToDelete);
     }
 }

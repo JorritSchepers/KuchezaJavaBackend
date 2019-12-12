@@ -14,8 +14,10 @@ public interface IPlotService {
 
     ArrayList<PlotDTO> getFarmPlots(int farmID);
 
-    void updageAge(int plotID, int age);
+    void updateAge(int plotID, int age);
 
     AllPlotDTO purchasePlot(int plotID, UserDTO userDTO);
     PlotDTO editWater(UserDTO user, int plotID, int amount);
+
+    void updatePlantsOnAllPlots(int plantIDToDelete, int plantIDToReplaceWith);
 }
