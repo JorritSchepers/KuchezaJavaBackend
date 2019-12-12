@@ -18,4 +18,6 @@ public interface IPlotService {
 
     AllPlotDTO purchasePlot(int plotID, UserDTO userDTO);
     PlotDTO editWater(UserDTO user, int plotID, int amount);
+
+    PlotDTO changeStatus(int plotID, String status);
 }

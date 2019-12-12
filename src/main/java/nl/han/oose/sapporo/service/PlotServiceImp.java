@@ -93,6 +93,11 @@ public class PlotServiceImp implements IPlotService {
         plotDAO.updateAge(plotID,age);
     }
 
+    public PlotDTO changeStatus(int plotID, String status) {
+        plotDAO.changeStatus(plotID,status);
+        return plotDAO.getPlot(plotID);
+    }
+
     @Override
     public PlotDTO editWater(UserDTO user, int plotID, int amount) {
         if (inventoryService.checkIfPlayerHasEnoughWater(amount, user) && plotDAO.plotHasPlant(plotID)){

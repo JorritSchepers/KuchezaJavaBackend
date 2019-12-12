@@ -76,4 +76,14 @@ public class PlotResource {
                 .entity(plotService.editWater(user, plotID, amount))
                 .build();
     }
+
+    @POST
+    @Path("/{id}/status/{status}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response changeStatus(@QueryParam("token") String token, @PathParam("id") int plotID, @PathParam("status") String status) {
+        UserDTO user = accountService.verifyToken(token);
+        return Response.status(Response.Status.OK)
+                .entity(plotService.changeStatus(plotID, status))
+                .build();
+    }
 }
