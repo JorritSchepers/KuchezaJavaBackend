@@ -21,10 +21,10 @@ public class ActionDao implements IActionDao {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into actionPerPlayer (userID,actionID,affectedItem,currentWater,currentMoney) values(?,?,?,?,?)");
             preparedStatement.setInt(1, id);
-            preparedStatement.setInt(1, actionID);
-            preparedStatement.setString(1, affectedName);
-            preparedStatement.setInt(1, water);
-            preparedStatement.setInt(1, money);
+            preparedStatement.setInt(2, actionID);
+            preparedStatement.setString(3, affectedName);
+            preparedStatement.setInt(4, water);
+            preparedStatement.setInt(5, money);
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();

@@ -17,6 +17,7 @@ public class PlotServiceImp implements IPlotService {
     private IFarmDAO farmDAO;
     private IInventoryService inventoryService;
     private IPlantService plantService;
+    private IActionService actionService;
     private final int START_WATER = 25;
     private final int MINIMUM_PLOT_WATER = 0;
     private final int MAXIMUM_PLOT_WATER = 100;
@@ -46,12 +47,19 @@ public class PlotServiceImp implements IPlotService {
         this.plantService = plantService;
     }
 
+    @Inject
+    public void setActionService(IActionService actionService) {
+        this.actionService = actionService;
+    }
+
     @Override
     public PlotDTO placePlant(PlantDTO plantDTO, int plotID, UserDTO userDTO) {
+        final int PLANT_SEED_ACTION_ID = 1;
         if (inventoryService.checkIfPlayerHasEnoughSaldo(plantDTO.getPurchasePrice(),userDTO) && plotDAO.checkIfPlotIsEmpty(plotID)) {
             inventoryService.lowerSaldo(plantDTO.getPurchasePrice(), userDTO);
             inventoryService.lowerWater(START_WATER,userDTO);
             plotDAO.addPlantToPlot(plantDTO, plotID);
+            actionService.setAction(userDTO,PLANT_SEED_ACTION_ID,plantDTO.getName());
             return plotDAO.getPlot(plotID);
         }
         return null;
@@ -59,10 +67,13 @@ public class PlotServiceImp implements IPlotService {
 
     @Override
     public PlotDTO harvestPlant(PlotDTO plotDTO, UserDTO user, int plotID) {
+        final int HARVEST_PLANT_ACTION_ID = 2;
         if (plantService.plantFullGrown(plotDAO.getPlot(plotID)) && plotDAO.plotHasPlant(plotID)) {
+            String affectedPlant = plantDAO.getname(plotDTO.getPlantID());
             plotDAO.removeObjectsFromPlot(plotID);
             int profit = plantDAO.getProfit(plotDTO.getPlantID());
             inventoryService.increaseSaldo(profit, user);
+            actionService.setAction(user,HARVEST_PLANT_ACTION_ID,affectedPlant);
             return plotDAO.getPlot(plotID);
         }
         return null;
@@ -70,6 +81,7 @@ public class PlotServiceImp implements IPlotService {
 
     @Override
     public AllPlotDTO purchasePlot(int plotID, UserDTO userDTO) {
+        final int PURCHASE_PLOT_ACTION_ID = 4;
         PlotDTO plotDTO = plotDAO.getPlot(plotID);
         if(plotDAO.plotIsPurchased(plotID)) {
             throw new PlotIsAlreadyPurchasedException();
@@ -78,6 +90,7 @@ public class PlotServiceImp implements IPlotService {
             inventoryService.lowerSaldo(plotDTO.getPrice(), userDTO);
             plotDAO.purchasePlot(plotID);
             FarmDTO farmDTO = farmDAO.getFarm(userDTO);
+            actionService.setAction(userDTO,PURCHASE_PLOT_ACTION_ID,null);
             return new AllPlotDTO(getFarmPlots(farmDTO.getFarmID()));
         }
         return null;
@@ -95,6 +108,9 @@ public class PlotServiceImp implements IPlotService {
 
     @Override
     public PlotDTO editWater(UserDTO user, int plotID, int amount) {
+        final int GIVE_WATER_ACTION_ID = 3;
+        PlotDTO plotDTO =  plotDAO.getPlot(plotID);
+        String affectedPlant = plantDAO.getname(plotDTO.getPlantID());
         if (inventoryService.checkIfPlayerHasEnoughWater(amount, user) && plotDAO.plotHasPlant(plotID)){
             int plotWater = plotDAO.getWater(plotID);
 
@@ -111,6 +127,7 @@ public class PlotServiceImp implements IPlotService {
                 plotDAO.editWaterAvailable(amount, plotID);
             }
 
+            actionService.setAction(user,GIVE_WATER_ACTION_ID,affectedPlant);
             return plotDAO.getPlot(plotID);
         }
         return null;
