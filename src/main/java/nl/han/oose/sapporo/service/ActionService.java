@@ -23,7 +23,6 @@ public class ActionService implements IActionService {
 
     @Override
     public void setAction(UserDTO user, int actionID, String affectedName){
-        System.out.println("here");
         InventoryDTO inventory = inventoryService.getInventory(user);
         actionDao.insertAction(user.getID(),actionID,affectedName,inventory.getWater(),inventory.getMoney());
     }
