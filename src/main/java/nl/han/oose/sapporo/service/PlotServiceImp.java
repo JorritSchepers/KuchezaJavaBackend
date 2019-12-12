@@ -102,24 +102,22 @@ public class PlotServiceImp implements IPlotService {
     public PlotDTO editWater(UserDTO user, int plotID, int amount) {
         if (inventoryService.checkIfPlayerHasEnoughWater(amount, user) && plotDAO.plotHasPlant(plotID)){
             int plotWater = plotDAO.getWater(plotID);
+            int amountThatFits = calculateWaterThatFits(plotWater,amount,MINIMUM_PLOT_WATER,MAXIMUM_PLOT_WATER);
 
-            if(plotWater + amount < MINIMUM_PLOT_WATER) {
-                int waterThatFits = -(MINIMUM_PLOT_WATER+plotWater);
-                inventoryService.lowerWater(waterThatFits, user);
-                plotDAO.editWaterAvailable(waterThatFits, plotID);
-            } else if (plotWater + amount > 100) {
-                int waterThatFits = MAXIMUM_PLOT_WATER-plotWater;
-                inventoryService.lowerWater(waterThatFits, user);
-                plotDAO.editWaterAvailable(waterThatFits, plotID);
-            } else {
-                inventoryService.lowerWater(amount, user);
-                plotDAO.editWaterAvailable(amount, plotID);
-            }
-
+            inventoryService.lowerWater(amount, user);
+            plotDAO.editWaterAvailable(amount, plotID);
             return plotDAO.getPlot(plotID);
         }
         return null;
     }
 
-
+    public int calculateWaterThatFits(int originalAmount, int amountAdded, int min, int max) {
+        if(originalAmount + amountAdded < MINIMUM_PLOT_WATER) {
+            return -(MINIMUM_PLOT_WATER+originalAmount);
+        } else if (originalAmount + amountAdded > 100) {
+            return MAXIMUM_PLOT_WATER-originalAmount;
+        } else {
+            return amountAdded;
+        }
+    }
 }
