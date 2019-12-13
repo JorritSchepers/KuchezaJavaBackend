@@ -105,7 +105,7 @@ public class PlotServiceImp implements IPlotService {
     public void updageAge(int plotID, int age) {
         plotDAO.updateAge(plotID,age);
     }
-
+    
     @Override
     public PlotDTO editWater(UserDTO user, int plotID, int amount) {
         final int GIVE_WATER_ACTION_ID = 3;
@@ -113,23 +113,24 @@ public class PlotServiceImp implements IPlotService {
         String affectedPlant = plantDAO.getname(plotDTO.getPlantID());
         if (inventoryService.checkIfPlayerHasEnoughWater(amount, user) && plotDAO.plotHasPlant(plotID)){
             int plotWater = plotDAO.getWater(plotID);
-
-            if(plotWater + amount < MINIMUM_PLOT_WATER) {
-                int waterThatFits = -(MINIMUM_PLOT_WATER+plotWater);
-                inventoryService.lowerWater(waterThatFits, user);
-                plotDAO.editWaterAvailable(waterThatFits, plotID);
+            int amountThatFits = calculateWaterThatFits(plotWater,amount,MINIMUM_PLOT_WATER,MAXIMUM_PLOT_WATER);
+            if (amountThatFits >0){
                 actionService.setAction(user,GIVE_WATER_ACTION_ID,affectedPlant);
-            } else if (plotWater + amount > 100) {
-                int waterThatFits = MAXIMUM_PLOT_WATER-plotWater;
-                inventoryService.lowerWater(waterThatFits, user);
-                plotDAO.editWaterAvailable(waterThatFits, plotID);
-                actionService.setAction(user,GIVE_WATER_ACTION_ID,affectedPlant);
-            } else {
-                inventoryService.lowerWater(amount, user);
-                plotDAO.editWaterAvailable(amount, plotID);
             }
+            inventoryService.lowerWater(amountThatFits, user);
+            plotDAO.editWaterAvailable(amountThatFits, plotID);
             return plotDAO.getPlot(plotID);
         }
         return null;
+    }
+
+    private int calculateWaterThatFits(int originalAmount, int amountAdded, int min, int max) {
+        if (originalAmount + amountAdded < MINIMUM_PLOT_WATER) {
+            return -(MINIMUM_PLOT_WATER + originalAmount);
+        } else if (originalAmount + amountAdded > 100) {
+            return MAXIMUM_PLOT_WATER - originalAmount;
+        } else {
+            return amountAdded;
+        }
     }
 }
