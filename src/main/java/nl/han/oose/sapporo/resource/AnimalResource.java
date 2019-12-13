@@ -17,7 +17,7 @@ public class AnimalResource {
     private IAccountService accountService;
 
     @Inject
-    public void setPlantService(IAnimalService animalService) {
+    public void setAnimalService(IAnimalService animalService) {
         this.animalService = animalService;
     }
 

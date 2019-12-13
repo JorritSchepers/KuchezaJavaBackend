@@ -1,5 +1,6 @@
 package nl.han.oose.sapporo.persistence;
 
+import nl.han.oose.sapporo.dto.AnimalDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.*;
@@ -14,7 +15,9 @@ class PlotDAOTest extends DAOTest {
     private final int FULLPLOTID = 2;
     private final int WATER_ADD = 20;
     private final int PURCHASE_PLOT_ID = 3;
+    private final int ANIMALPLOTID = 3;
     private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1);
+    private AnimalDTO animal = new AnimalDTO(1, "Cabbage", 10, 300, 10, 20, 1);
 
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
@@ -47,6 +50,20 @@ class PlotDAOTest extends DAOTest {
         } catch (SQLException ignored) {
         }
         return plantID;
+    }
+
+    int getAnimalIDFromPlot(int plotId) {
+        int animalID = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("select animalID from plot where plotID = ?");
+            statement.setInt(1, plotId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                animalID = resultSet.getInt("animalID");
+            }
+        } catch (SQLException ignored) {
+        }
+        return animalID;
     }
 
     private boolean plotIsEmpty(int plotId) {
@@ -219,5 +236,11 @@ class PlotDAOTest extends DAOTest {
         sut.editWaterAvailable(extraWater, PLOTID);
         int newWater = getWaterFromPlot(PLOTID);
         Assertions.assertEquals((oldWater + extraWater), newWater);
+    }
+
+    @Test
+    void checkIfAddAnimalToPlotAddsAnimal() {
+        sut.addAnimalToPlot(animal, ANIMALPLOTID);
+        Assertions.assertEquals(animal.getID(), getAnimalIDFromPlot(ANIMALPLOTID));
     }
 }

@@ -1,9 +1,6 @@
 package nl.han.oose.sapporo.resource;
 
-import nl.han.oose.sapporo.dto.AllPlotDTO;
-import nl.han.oose.sapporo.dto.PlantDTO;
-import nl.han.oose.sapporo.dto.PlotDTO;
-import nl.han.oose.sapporo.dto.UserDTO;
+import nl.han.oose.sapporo.dto.*;
 import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IPlotService;
 import org.junit.Assert;
@@ -22,6 +19,7 @@ public class PlotResourceTest {
     private PlotDTO plot = new PlotDTO(1, 1, 1, 1, 0, 0, 0);
     private ArrayList<PlotDTO> plots = new ArrayList<>() {{ add(plot); }};
     private AllPlotDTO allPlots = new AllPlotDTO(plots);
+    private AnimalDTO animal = new AnimalDTO();
 
     public PlotResourceTest() {
         sut.setAccountService(accountService);
@@ -31,6 +29,7 @@ public class PlotResourceTest {
         Mockito.when(plotService.harvestPlant(plot, user, 1)).thenReturn(plot);
         Mockito.when(plotService.purchasePlot(1, user)).thenReturn(allPlots);
         Mockito.when(plotService.editWater(user, 1, 10)).thenReturn(plot);
+        Mockito.when(plotService.placeAnimal(animal, 1, user)).thenReturn(allPlots);
     }
 
     @Test
@@ -107,5 +106,23 @@ public class PlotResourceTest {
     @Test
     public void waterPlantFromPlotReturnsRightPlot() {
         Assert.assertEquals(plot, sut.editWaterAmountForPlot(token, 1,10).getEntity());
+    }
+
+    @Test
+    public void placeAnimalCallsAuthenticateByToken() {
+        sut.placeAnimalOnPlot(token, 1, animal);
+        Mockito.verify(accountService, Mockito.times(1)).verifyToken(token);
+    }
+
+    @Test
+    public void placeAnimalCallsPlaceAnimal() {
+        sut.placeAnimalOnPlot(token, 1, animal);
+        Mockito.verify(plotService, Mockito.times(1)).placeAnimal(animal, 1, user);
+    }
+
+    @Test
+    public void placeAnimalReturnsAllPlots() {
+        sut.placeAnimalOnPlot(token, 1, animal);
+        Assert.assertEquals(allPlots, sut.placeAnimalOnPlot(token, 1, animal).getEntity());
     }
 }

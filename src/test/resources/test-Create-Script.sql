@@ -45,11 +45,13 @@ CREATE TABLE waterManager(
 
 
 CREATE TABLE animal(
-                       animalId int PRIMARY KEY AUTO_INCREMENT,
-                       waterUsage int,
-                       profit float,
-                       purchasePrice float not null,
-                       name varchar(45) not null
+                       animalId INT PRIMARY KEY AUTO_INCREMENT,
+                       waterUsage INT NOT NULL,
+                       productionTime INT NOT NULL,
+                       maximumWater INT,
+                       profit INT NOT NULL,
+                       purchasePrice INT NOT NULL,
+                       name VARCHAR(45) NOT NULL
 );
 
 CREATE TABLE plot (
@@ -107,5 +109,9 @@ VALUES
 (1,1,10,1,1,10,0,0),
 (1,2,10,1,1,10,100,0),
 (1,3,10,0,1,2000,0,0);
+
+INSERT INTO animal (waterUsage,productionTime,maximumWater,profit,purchasePrice,name)
+VALUES
+(10,10,300,20,5,'Cow');
 
 update plot set plantID = 1 where plotID = 2;

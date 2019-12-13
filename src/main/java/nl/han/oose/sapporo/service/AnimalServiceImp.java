@@ -11,7 +11,7 @@ public class AnimalServiceImp implements IAnimalService {
     private IAnimalDAO AnimalDAO;
 
     @Inject
-    public void setPlantDAO(IAnimalDAO AnimalDAO) {
+    public void setAnimalDAO(IAnimalDAO AnimalDAO) {
         this.AnimalDAO = AnimalDAO;
     }
 

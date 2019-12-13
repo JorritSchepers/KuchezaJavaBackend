@@ -9,4 +9,8 @@ public class AllAnimalDTO {
     public AllAnimalDTO(ArrayList<AnimalDTO> animals) {
         this.animals = animals;
     }
+
+    public ArrayList<AnimalDTO> getAnimals() {
+        return animals;
+    }
 }
