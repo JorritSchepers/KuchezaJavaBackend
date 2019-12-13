@@ -57,5 +57,5 @@ class AccountServiceTest {
 //        assertThrows(UserAlreadyLoggedOutException.class, () -> {
 //            sut.verifyToken(token);
 //        });
-    }
+//    }
 }
