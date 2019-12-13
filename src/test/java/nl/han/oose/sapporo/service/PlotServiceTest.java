@@ -83,6 +83,13 @@ class PlotServiceTest {
     }
 
     @Test
+    void placePlantCallsactionService() {
+        final int PLANT_SEED_ACTION_ID = 1;
+        sut.placePlant(plant, PLOTID, user);
+        Mockito.verify(actionService, Mockito.times(1)).setAction(user,PLANT_SEED_ACTION_ID,plant.getName());
+    }
+
+    @Test
     void placePlantCallsgetPlot() {
         sut.placePlant(plant, PLOTID, user);
         Mockito.verify(plotDAO, Mockito.times(1)).getPlot(PLOTID);
@@ -115,6 +122,15 @@ class PlotServiceTest {
     void harvestPlantCallsgetPlot() {
         sut.harvestPlant(plotWithGrownPlant, user, PLOTID);
         Mockito.verify(plotDAO, Mockito.times(2)).getPlot(PLOTID);
+    }
+
+    @Test
+    void harvestPlantCallsactionService() {
+        final int HARVEST_PLANT_ACTION_ID = 2;
+        final String NAME = "orange";
+        Mockito.when(plantDAO.getname(1)).thenReturn(NAME);
+        sut.harvestPlant(plotWithGrownPlant, user, PLOTID);
+        Mockito.verify(actionService, Mockito.times(1)).setAction(user,HARVEST_PLANT_ACTION_ID,NAME);
     }
 
     @Test
@@ -156,6 +172,13 @@ class PlotServiceTest {
     void purchasePlotCallsGetPlot() {
         sut.purchasePlot(PLOTID, user);
         Mockito.verify(plotDAO, Mockito.times(1)).getPlot(PLOTID);
+    }
+
+    @Test
+    void purchasePlotCallssactionService() {
+        final int PURCHASE_PLOT_ACTION_ID = 4;
+        sut.purchasePlot(PLOTID, user);
+        Mockito.verify(actionService, Mockito.times(1)).setAction(user,PURCHASE_PLOT_ACTION_ID,null);
     }
 
     @Test
