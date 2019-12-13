@@ -105,7 +105,7 @@ public class PlotServiceImp implements IPlotService {
     public void updageAge(int plotID, int age) {
         plotDAO.updateAge(plotID,age);
     }
-    
+
     @Override
     public PlotDTO editWater(UserDTO user, int plotID, int amount) {
         final int GIVE_WATER_ACTION_ID = 3;
@@ -125,10 +125,10 @@ public class PlotServiceImp implements IPlotService {
     }
 
     private int calculateWaterThatFits(int originalAmount, int amountAdded, int min, int max) {
-        if (originalAmount + amountAdded < MINIMUM_PLOT_WATER) {
-            return -(MINIMUM_PLOT_WATER + originalAmount);
-        } else if (originalAmount + amountAdded > 100) {
-            return MAXIMUM_PLOT_WATER - originalAmount;
+        if (originalAmount + amountAdded < min) {
+            return -(min + originalAmount);
+        } else if (originalAmount + amountAdded > max) {
+            return max - originalAmount;
         } else {
             return amountAdded;
         }
