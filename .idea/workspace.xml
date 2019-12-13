@@ -8,10 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/ActionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/ActionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/service/ActionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/service/ActionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/PlotServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/PlotServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/service/ActionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/service/ActionService.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -153,7 +150,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TomEE Server.TomEE 8.5.41">
+  <component name="RunManager" selected="JUnit.PlotServiceTest.waterPlantCallsGetPlot">
+    <configuration name="All in KuchezaGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KuchezaGame" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PlotServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="KuchezaGame" />
       <extension name="coverage">
@@ -169,7 +174,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlotServiceTest.purchasePlotCallsCheckSaldo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlotServiceTest.waterPlantCallsGetPlot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="KuchezaGame" />
       <extension name="coverage">
         <pattern>
@@ -179,23 +184,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.service" />
       <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.service.PlotServiceTest" />
-      <option name="METHOD_NAME" value="purchasePlotCallsCheckSaldo" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlotServiceTest.purchasePlotCallsPurchasePlot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KuchezaGame" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="nl.han.oose.sapporo.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.service" />
-      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.service.PlotServiceTest" />
-      <option name="METHOD_NAME" value="purchasePlotCallsPurchasePlot" />
+      <option name="METHOD_NAME" value="waterPlantCallsGetPlot" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -305,20 +294,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.PlotServiceTest" />
-      <item itemvalue="JUnit.PlotServiceTest.purchasePlotCallsPurchasePlot" />
-      <item itemvalue="JUnit.PlotServiceTest.purchasePlotCallsCheckSaldo" />
       <item itemvalue="JUnit.nl.han.oose.sapporo in kuchezagame" />
       <item itemvalue="JUnit.nl.han.oose.sapporo in KuchezaGame" />
       <item itemvalue="TomEE Server.TomEE 8.5.41" />
+      <item itemvalue="JUnit.All in KuchezaGame" />
+      <item itemvalue="JUnit.PlotServiceTest" />
+      <item itemvalue="JUnit.PlotServiceTest.waterPlantCallsGetPlot" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlotServiceTest.waterPlantCallsGetPlot" />
+        <item itemvalue="JUnit.PlotServiceTest" />
+        <item itemvalue="JUnit.All in KuchezaGame" />
         <item itemvalue="JUnit.nl.han.oose.sapporo in KuchezaGame" />
         <item itemvalue="JUnit.nl.han.oose.sapporo in kuchezagame" />
-        <item itemvalue="JUnit.PlotServiceTest.purchasePlotCallsCheckSaldo" />
-        <item itemvalue="JUnit.PlotServiceTest.purchasePlotCallsPurchasePlot" />
-        <item itemvalue="JUnit.PlotServiceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -372,6 +361,7 @@
       <workItem from="1576061775077" duration="2437000" />
       <workItem from="1576070683085" duration="7688000" />
       <workItem from="1576163758735" duration="967000" />
+      <workItem from="1576231031518" duration="370000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1574072988467</created>
@@ -446,27 +436,27 @@
     <option name="LAST_COMMIT_MESSAGE" value="Klaar (met tests)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__1_.ic" NAME="All in KuchezaGame (1) Coverage Results" MODIFIED="1575901740031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/kuchezagame$PlotResourceTest.ic" NAME="PlotResourceTest Coverage Results" MODIFIED="1574328539549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.sapporo.resource.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__5_.ic" NAME="All in KuchezaGame (5) Coverage Results" MODIFIED="1575900349284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__1_.ic" NAME="All in KuchezaGame (1) Coverage Results" MODIFIED="1575901740031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__4_.ic" NAME="All in KuchezaGame (4) Coverage Results" MODIFIED="1575899841050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/kuchezagame$PlotServiceTest.ic" NAME="PlotServiceTest Coverage Results" MODIFIED="1575548335718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.sapporo.service.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/kuchezagame$AdminDAOImpTest.ic" NAME="AdminDAOImpTest Coverage Results" MODIFIED="1575548363345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.sapporo.persistence.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/kuchezagame$All_in_kuchezagame.ic" NAME="All in kuchezagame Coverage Results" MODIFIED="1575280710056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__5_.ic" NAME="All in KuchezaGame (5) Coverage Results" MODIFIED="1575900349284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame.ic" NAME="All in KuchezaGame Coverage Results" MODIFIED="1575902426792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__2_.ic" NAME="All in KuchezaGame (2) Coverage Results" MODIFIED="1575904311552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__3_.ic" NAME="All in KuchezaGame (3) Coverage Results" MODIFIED="1575899664806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame.ic" NAME="All in KuchezaGame Coverage Results" MODIFIED="1576231048461" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/kuchezagame$nl_han_oose_sapporo_in_KuchezaGame.ic" NAME="nl.han.oose.sapporo in KuchezaGame Coverage Results" MODIFIED="1574760252334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.sapporo.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/kuchezagame$nl_han_oose_sapporo_in_kuchezagame.ic" NAME="nl.han.oose.sapporo in kuchezagame Coverage Results" MODIFIED="1575905820855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.sapporo.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/kuchezagame$AdminDAOImpTest.ic" NAME="AdminDAOImpTest Coverage Results" MODIFIED="1575548363345" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>nl.han.oose.sapporo.persistence.*</FILTER>
     </SUITE>
   </component>
 </project>

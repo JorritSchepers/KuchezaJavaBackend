@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 class PlotServiceTest {
     private PlotServiceImp sut = new PlotServiceImp();
+    private IActionService actionService = Mockito.mock(IActionService.class);
     private IPlantService plantService = Mockito.mock(IPlantService.class);
     private IPlotDAO plotDAO = Mockito.mock(IPlotDAO.class);
     private IPlantDAO plantDAO = Mockito.mock(PlantDAOImp.class);
@@ -35,6 +36,7 @@ class PlotServiceTest {
     private AllPlotDTO allPlots = new AllPlotDTO(plots);
 
     PlotServiceTest() {
+        sut.setActionService(actionService);
         sut.setPlotDAO(plotDAO);
         sut.setInventoryService(inventoryService);
         sut.setPlantService(plantService);
@@ -53,7 +55,7 @@ class PlotServiceTest {
         Mockito.when(plantDAO.getProfit(plant.getID())).thenReturn(20);
         Mockito.when(plotDAO.plotIsPurchased(PLOTID)).thenReturn(false);
         Mockito.when(farmDAO.getFarm(user)).thenReturn(farm);
-        Mockito.when(inventoryService.checkIfPlayerHasEnoughSaldo(PLOTPRICE, user)).thenReturn(true);
+        Mockito.when(inventoryService.checkIfPlayerHasEnoughSaldo(0, user)).thenReturn(true);
     }
 
     @Test
@@ -145,15 +147,15 @@ class PlotServiceTest {
     }
 
     @Test
-    void purchasePlotCallsgetPlot() {
+    void purchasePlotCallsPlotIsPurchased() {
         sut.purchasePlot(PLOTID, user);
-        Mockito.verify(plotDAO, Mockito.times(1)).getPlot(PLOTID);
+        Mockito.verify(plotDAO, Mockito.times(2)).plotIsPurchased(PLOTID);
     }
 
     @Test
-    void purchasePlotCallsPlotIsPurchased() {
+    void purchasePlotCallsgetPlot() {
         sut.purchasePlot(PLOTID, user);
-        Mockito.verify(plotDAO, Mockito.times(1)).plotIsPurchased(PLOTID);
+        Mockito.verify(plotDAO, Mockito.times(1)).getPlot(PLOTID);
     }
 
     @Test
@@ -177,7 +179,7 @@ class PlotServiceTest {
     @Test
     void waterPlantCallsGetPlot(){
         sut.editWater(user, PLOTID, WATER);
-        Mockito.verify(plotDAO, Mockito.times(1)).getPlot(PLOTID);
+        Mockito.verify(plotDAO, Mockito.times(2)).getPlot(PLOTID);
     }
 
     @Test
@@ -187,7 +189,7 @@ class PlotServiceTest {
     }
 
     @Test
-    void waterPlantReturnsPlot(){ Assertions.assertEquals(plot, sut.editWater(user, PLOTID, WATER));}
+    void waterPlantReturnsPlot(){ Assertions.assertTrue(plotWithGrownPlant.equals(sut.editWater(user, PLOTID, WATER)));}
 
     @Test
     void purchasePlotReturnsAllPlots() {
