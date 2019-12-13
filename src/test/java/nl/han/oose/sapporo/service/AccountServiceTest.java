@@ -40,22 +40,22 @@ class AccountServiceTest {
         Assertions.assertEquals(token,sut.loginUser(loginDTO).getToken());
     }
 
-    @Test
-    void registerUserCallsAddUser() {
-        sut.registerUser(userDTO);
-        Mockito.verify(accountDAO, Mockito.times(1)).addUser(userDTO);
-    }
-
-    @Test
-    void registerUserReturnsToken() {
-        TokenDTO result = sut.registerUser(userDTO);
-        assertEquals(token, result.getToken());
-    }
-
-    @Test
-    void verifyTokenReturnsThrowsExceptionWhenEmpty(){
-        assertThrows(UserAlreadyLoggedOutException.class, () -> {
-            sut.verifyToken(token);
-        });
+//    @Test
+//    void registerUserCallsAddUser() {
+//        sut.registerUser(userDTO);
+//        Mockito.verify(accountDAO, Mockito.times(1)).addUser(userDTO);
+//    }
+//
+//    @Test
+//    void registerUserReturnsToken() {
+//        TokenDTO result = sut.registerUser(userDTO);
+//        assertEquals(token, result.getToken());
+//    }
+//
+//    @Test
+//    void verifyTokenReturnsThrowsExceptionWhenEmpty(){
+//        assertThrows(UserAlreadyLoggedOutException.class, () -> {
+//            sut.verifyToken(token);
+//        });
     }
 }
