@@ -12,8 +12,6 @@ class PlantServiceTest {
     private PlantServiceImp sut = new PlantServiceImp();
     private IPlantDAO plantDAO;
     private AllPlantDTO allPlantDTO = new AllPlantDTO(null);
-    private PlantDTO grownPlant = new PlantDTO();
-    private PlantDTO notGrownPlant = new PlantDTO();
     private PlotDTO plotWithGrownPlant = new PlotDTO(1, 1, 1, 1, 0, 0, 0, 100);
     private PlotDTO plotWithoutGrownPlant = new PlotDTO(2, 1, 1, 1, 0, 0, 0, 0);
 
@@ -37,7 +35,7 @@ class PlantServiceTest {
     }
 
     @Test
-    void plantFullGrownCallscheckIfPlantFullGrown() {
+    void plantFullGrownCallsCheckIfPlantFullGrown() {
         sut.plantFullGrown(plotWithGrownPlant);
         Mockito.verify(plantDAO, Mockito.times(1)).checkIfPlantFullGrown(plotWithGrownPlant);
     }

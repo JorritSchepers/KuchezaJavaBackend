@@ -153,7 +153,7 @@ class PlotServiceTest {
     }
 
     @Test
-    void purchasePlotCallsgetPlot() {
+    void purchasePlotCallsGetPlot() {
         sut.purchasePlot(PLOTID, user);
         Mockito.verify(plotDAO, Mockito.times(1)).getPlot(PLOTID);
     }
@@ -189,7 +189,8 @@ class PlotServiceTest {
     }
 
     @Test
-    void waterPlantReturnsPlot(){ Assertions.assertTrue(plotWithGrownPlant.equals(sut.editWater(user, PLOTID, WATER)));}
+    void waterPlantReturnsPlot(){
+        Assertions.assertEquals(plotWithGrownPlant, sut.editWater(user, PLOTID, WATER));}
 
     @Test
     void purchasePlotReturnsAllPlots() {

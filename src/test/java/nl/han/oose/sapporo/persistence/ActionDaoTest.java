@@ -16,7 +16,7 @@ class ActionDaoTest extends DAOTest {
         sut.setConnectionFactory(connectionFactoryImp);
     }
 
-    ActionDTO getActionWithIDANDACTIONID(int userID,int ActionID,int water){
+    ActionDTO getActionWithID_AND_ACTION_ID(int userID, int ActionID, int water){
         ActionDTO action = null;
         try (Connection connection = DriverManager.getConnection(DB_URL)) {
             PreparedStatement statement = connection.prepareStatement("select * from actionPerPlayer where userID = ? and actionID = ? and currentWater = ?");
@@ -40,15 +40,15 @@ class ActionDaoTest extends DAOTest {
 
     @Test
     void insertActionInsertsAction(){
-        int ID = 1;
-        int MONEY = 100;
-        int WATER = 100;
-        String AFFECTEDITEM = "Corn";
-        int ACTIONID = 1;
+        final int ID = 1;
+        final int MONEY = 100;
+        final int WATER = 100;
+        final String AFFECTED_ITEM = "Corn";
+        final int ACTION_ID = 1;
 
-        ActionDTO expectedAction = new ActionDTO(ID, ACTIONID,DATE, AFFECTEDITEM, WATER, MONEY);
-        sut.insertAction(ID, ACTIONID, AFFECTEDITEM, WATER, MONEY);
-        ActionDTO actualAction = getActionWithIDANDACTIONID(ID, ACTIONID, WATER);
+        ActionDTO expectedAction = new ActionDTO(ID, ACTION_ID,DATE, AFFECTED_ITEM, WATER, MONEY);
+        sut.insertAction(ID, ACTION_ID, AFFECTED_ITEM, WATER, MONEY);
+        ActionDTO actualAction = getActionWithID_AND_ACTION_ID(ID, ACTION_ID, WATER);
         Assertions.assertEquals(actualAction,expectedAction);
     }
 }
