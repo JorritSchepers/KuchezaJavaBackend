@@ -8,7 +8,6 @@ import nl.han.oose.sapporo.service.IPlantService;
 import nl.han.oose.sapporo.service.IPlotService;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 public class PlantResourceTest {
@@ -56,7 +55,7 @@ public class PlantResourceTest {
     @Test
     public void deletePlantCallsUpdatePlantsOnAllPlotsInPlotService() {
         sut.deletePlant(TOKEN, 1, 2);
-        Mockito.verify(mockedPlotService, Mockito.times(1)).updatePlantsOnAllPlots(1, 2);
+        Mockito.verify(mockedPlotService, Mockito.times(1)).replacePlantsOnAllPlots(1, 2);
     }
 
     @Test

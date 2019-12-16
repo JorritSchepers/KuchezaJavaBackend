@@ -149,7 +149,7 @@ public class PlotServiceImp implements IPlotService {
     }
 
     @Override
-    public void updatePlantsOnAllPlots(int plantIDToDelete, int plantIDToReplaceWith) {
-        plotDAO.updatePlantsOnAllPlots(plantIDToDelete, plantIDToReplaceWith);
+    public void replacePlantsOnAllPlots(int plantIDToDelete, int plantIDToReplaceWith) {
+        plotDAO.replacePlantsOnAllPlots(plantIDToDelete, plantIDToReplaceWith);
     }
 }

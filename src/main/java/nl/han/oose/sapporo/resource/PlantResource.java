@@ -51,7 +51,7 @@ public class PlantResource {
     public Response deletePlant(@QueryParam("token") String token, @PathParam("plantIDToDelete") int plantIDToDelete, @PathParam("plantIDToReplaceWith") int plantIDToReplaceWith) {
         UserDTO user  = accountService.verifyToken(token);
         adminService.checkIfUserIsAdmin(user);
-        plotService.updatePlantsOnAllPlots(plantIDToDelete, plantIDToReplaceWith);
+        plotService.replacePlantsOnAllPlots(plantIDToDelete, plantIDToReplaceWith);
         plantService.deletePlant(plantIDToDelete);
         return Response.status(Response.Status.OK)
                 .entity(plantService.getAllPlants())

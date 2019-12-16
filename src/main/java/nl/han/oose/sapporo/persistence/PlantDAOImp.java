@@ -42,7 +42,7 @@ public class PlantDAOImp implements IPlantDAO{
             ResultSet resultSet = statement.executeQuery();
             int neededGrowingTime = 0;
             while (resultSet.next()) {
-                neededGrowingTime = resultSet.  getInt("growingTime");
+                neededGrowingTime = resultSet.getInt("growingTime");
             }
             return (plotDTO.getAge() >= neededGrowingTime);
         } catch (SQLException e) {

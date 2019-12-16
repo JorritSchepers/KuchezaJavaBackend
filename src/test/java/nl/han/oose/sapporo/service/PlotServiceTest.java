@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import javax.ws.rs.HEAD;
 import java.util.ArrayList;
 
 class PlotServiceTest {
@@ -241,8 +240,8 @@ class PlotServiceTest {
 
     @Test
     void updatePlantsOnAllPlotsCallsUpdatePlantsOnAllPlotsInPlotDAO() {
-        sut.updatePlantsOnAllPlots(1, 2);
-        Mockito.verify(mockedPlotDAO, Mockito.times(1)).updatePlantsOnAllPlots(1, 2);
+        sut.replacePlantsOnAllPlots(1, 2);
+        Mockito.verify(mockedPlotDAO, Mockito.times(1)).replacePlantsOnAllPlots(1, 2);
     }
 
     @Test

@@ -256,7 +256,7 @@ public class PlotDAOImp implements IPlotDAO {
     }
 
     @Override
-    public void updatePlantsOnAllPlots(int plantIDToDelete, int plantIDToReplaceWith) {
+    public void replacePlantsOnAllPlots(int plantIDToDelete, int plantIDToReplaceWith) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("update plot set plantID = ? where plantID = ?");
             statement.setInt(1, plantIDToReplaceWith);

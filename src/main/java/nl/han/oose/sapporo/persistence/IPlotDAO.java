@@ -34,7 +34,7 @@ public interface IPlotDAO {
 
     int getWater(int plotID);
 
-    void updatePlantsOnAllPlots(int plantIDToDelete, int plantIDToReplaceWith);
+    void replacePlantsOnAllPlots(int plantIDToDelete, int plantIDToReplaceWith);
 
     void addAnimalToPlot(AnimalDTO animalDTO, int plotID);
 }
