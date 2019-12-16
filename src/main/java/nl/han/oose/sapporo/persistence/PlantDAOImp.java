@@ -76,6 +76,22 @@ public class PlantDAOImp implements IPlantDAO{
         }
     }
 
+    @Override
+    public String getname(int plantID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select name from plant where plantID = ?");
+            statement.setInt(1,plantID);
+            ResultSet resultSet = statement.executeQuery();
+            String name = null;
+            while (resultSet.next()) {
+                name = resultSet.getString("name");
+            }
+            return name;
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
     private AllPlantDTO makeAllPlantDTO(ResultSet resultSet) throws SQLException {
         ArrayList<PlantDTO> plants = new ArrayList<>();
         while (resultSet.next()) {

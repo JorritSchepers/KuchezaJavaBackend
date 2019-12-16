@@ -27,6 +27,10 @@ public class PlantDTO {
         return ID;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public float getProfit() {
         return profit;
     }

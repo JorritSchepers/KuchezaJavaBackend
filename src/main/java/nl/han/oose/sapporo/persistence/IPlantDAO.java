@@ -13,4 +13,6 @@ public interface IPlantDAO {
     void deletePlant(int plantIDToDelete);
 
     int getMaximumWater(int id);
+
+    String getname(int plantID);
 }

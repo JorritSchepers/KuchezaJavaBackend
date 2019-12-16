@@ -10,16 +10,17 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import javax.ws.rs.HEAD;
 import java.util.ArrayList;
 
 class PlotServiceTest {
     private PlotServiceImp sut = new PlotServiceImp();
+    private IActionService actionService = Mockito.mock(IActionService.class);
     private IPlantService mockedPlantService = Mockito.mock(IPlantService.class);
     private IPlotDAO mockedPlotDAO = Mockito.mock(IPlotDAO.class);
     private IPlantDAO mockedPlantDAO = Mockito.mock(PlantDAOImp.class);
     private IFarmDAO mockedFarmDAO = Mockito.mock(IFarmDAO.class);
     private IInventoryService mockedInventoryService = Mockito.mock(IInventoryService.class);
-
     private final int PLOT_ID = 1;
     private final float PRICE = 5;
     private final int FARM_ID = 1;
@@ -28,6 +29,7 @@ class PlotServiceTest {
     private final UserDTO USER = new UserDTO(1, "PatrickSt3r", "DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937", "Patrick@Ster.com");
     private final PlotDTO PLOT = new PlotDTO(1, 1, 1, 1, 0, 0, PRICE);
     private final PlotDTO PLOT_WITH_GROWN_PLANT = new PlotDTO(1, 1, 1, 1, 0, 1, 0, 100);
+    private final AnimalDTO ANIMAL = new AnimalDTO(1, "Cabbage", 10, 300, 10, 20, PRICE);
 
     PlotServiceTest() {
         sut.setPlotDAO(mockedPlotDAO);
@@ -35,6 +37,7 @@ class PlotServiceTest {
         sut.setPlantService(mockedPlantService);
         sut.setPlantDAO(mockedPlantDAO);
         sut.setFarmDAO(mockedFarmDAO);
+        sut.setActionService(actionService);
 
         Mockito.when(mockedPlotDAO.getPlot(PLOT_ID)).thenReturn(PLOT_WITH_GROWN_PLANT);
         Mockito.when(mockedPlotDAO.plotHasPlant(PLOT_ID)).thenReturn(true);
@@ -72,11 +75,18 @@ class PlotServiceTest {
     }
 
     @Test
-    void placePlantCallsgetPlot() {
+    void placePlantCallsGetPlot() {
         Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughSaldo(PRICE, USER)).thenReturn(true);
         Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
         sut.placePlant(PLANT, PLOT_ID, USER);
         Mockito.verify(mockedPlotDAO, Mockito.times(1)).getPlot(PLOT_ID);
+    }
+
+    @Test
+    void placePlantCallsActionService() {
+        final int PLANT_SEED_ACTION_ID = 1;
+        sut.placePlant(PLANT, PLOT_ID, USER);
+        Mockito.verify(actionService, Mockito.times(1)).setAction(USER,PLANT_SEED_ACTION_ID,PLANT.getName());
     }
 
     @Test
@@ -112,6 +122,15 @@ class PlotServiceTest {
         Mockito.when(mockedPlantService.plantFullGrown(PLOT_WITH_GROWN_PLANT)).thenReturn(true);
         sut.harvestPlant(PLOT_WITH_GROWN_PLANT, USER, PLOT_ID);
         Mockito.verify(mockedPlotDAO, Mockito.times(2)).getPlot(PLOT_ID);
+    }
+
+    @Test
+    void harvestPlantCallsActionService() {
+        final int HARVEST_PLANT_ACTION_ID = 2;
+        final String NAME = "orange";
+        Mockito.when(mockedPlantDAO.getname(1)).thenReturn(NAME);
+        sut.harvestPlant(PLOT_WITH_GROWN_PLANT, USER, PLOT_ID);
+        Mockito.verify(actionService, Mockito.times(1)).setAction(USER,HARVEST_PLANT_ACTION_ID,NAME);
     }
 
     @Test
@@ -160,9 +179,34 @@ class PlotServiceTest {
     }
 
     @Test
+    void purchasePlotCallsActionService() {
+        final int PURCHASE_PLOT_ACTION_ID = 4;
+        sut.purchasePlot(PLOT_ID, USER);
+        Mockito.verify(actionService, Mockito.times(1)).setAction(USER,PURCHASE_PLOT_ACTION_ID,null);
+    }
+
+    @Test
     void waterPlantCallsCheckWater(){
         sut.editWater(USER, PLOT_ID, WATER);
         Mockito.verify(mockedInventoryService, Mockito.times(1)).checkIfPlayerHasEnoughWater(WATER, USER);
+    }
+
+    @Test
+    void waterPlantCallsLowerWater(){
+        sut.editWater(USER, PLOT_ID, WATER);
+        Mockito.verify(mockedInventoryService, Mockito.times(1)).lowerWater(WATER, USER);
+    }
+
+    @Test
+    void waterPlantCallsIncreaseWater(){
+        sut.editWater(USER, PLOT_ID, WATER);
+        Mockito.verify(mockedPlotDAO, Mockito.times(1)).editWaterAvailable(WATER, PLOT_ID);
+    }
+
+    @Test
+    void waterPlantCallsGetPlot(){
+        sut.editWater(USER, PLOT_ID, WATER);
+        Mockito.verify(mockedPlotDAO, Mockito.times(2)).getPlot(PLOT_ID);
     }
 
     @Test
@@ -199,5 +243,43 @@ class PlotServiceTest {
     void updatePlantsOnAllPlotsCallsUpdatePlantsOnAllPlotsInPlotDAO() {
         sut.updatePlantsOnAllPlots(1, 2);
         Mockito.verify(mockedPlotDAO, Mockito.times(1)).updatePlantsOnAllPlots(1, 2);
+    }
+
+    @Test
+    void placeAnimalCallsCheckIfPlotIsEmpty() {
+        sut.placeAnimal(ANIMAL, PLOT_ID, USER);
+        Mockito.verify(mockedPlotDAO, Mockito.times(1)).checkIfPlotIsEmpty(PLOT_ID);
+    }
+
+    @Test
+    void placeAnimalCallsLowerSaldo() {
+        sut.placeAnimal(ANIMAL, PLOT_ID, USER);
+        Mockito.verify(mockedInventoryService, Mockito.times(1)).lowerSaldo(PRICE, USER);
+    }
+
+    @Test
+    void placeAnimalCallsLowerWater() {
+        final int START_WATER = 25;
+        sut.placeAnimal(ANIMAL, PLOT_ID, USER);
+        Mockito.verify(mockedInventoryService, Mockito.times(1)).lowerWater(START_WATER, USER);
+    }
+
+    @Test
+    void placeAnimalCallsAddAnimalToPlot() {
+        sut.placeAnimal(ANIMAL, PLOT_ID, USER);
+        Mockito.verify(mockedPlotDAO, Mockito.times(1)).addAnimalToPlot(ANIMAL, PLOT_ID);
+    }
+
+    @Test
+    void placeAnimalCallsGetFarm() {
+        sut.placeAnimal(ANIMAL, PLOT_ID, USER);
+        Mockito.verify(mockedFarmDAO, Mockito.times(1)).getFarm(USER);
+    }
+
+    @Test
+    void placeAnimalReturnsAllPlots() {
+        final ArrayList<PlotDTO> PLOTS = new ArrayList<>() {{ add(PLOT); }};
+        final AllPlotDTO ALL_PLOTS = new AllPlotDTO(PLOTS);
+        Assertions.assertEquals(ALL_PLOTS.getPlots().size(), sut.placeAnimal(ANIMAL, PLOT_ID, USER).getPlots().size());
     }
 }

@@ -1,5 +1,6 @@
 package nl.han.oose.sapporo.persistence;
 
+import nl.han.oose.sapporo.dto.AnimalDTO;
 import nl.han.oose.sapporo.dto.FarmDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
@@ -208,7 +209,7 @@ public class PlotDAOImp implements IPlotDAO {
             throw new PersistenceException();
         }
     }
-    
+
     public void editWaterAvailable(int amount, int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
@@ -260,6 +261,18 @@ public class PlotDAOImp implements IPlotDAO {
             PreparedStatement statement = connection.prepareStatement("update plot set plantID = ? where plantID = ?");
             statement.setInt(1, plantIDToReplaceWith);
             statement.setInt(2, plantIDToDelete);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    public void addAnimalToPlot(AnimalDTO animalDTO, int plotID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("update plot set animalID = ?, waterAvailable = ? where plotID = ? ");
+            statement.setInt(1, animalDTO.getID());
+            statement.setInt(2, START_WATER);
+            statement.setInt(3, plotID);
             statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();

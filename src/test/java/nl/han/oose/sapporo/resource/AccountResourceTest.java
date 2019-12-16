@@ -28,7 +28,7 @@ class AccountResourceTest {
     }
 
     @Test
-    void registerUserCallsregisterUserFunction() {
+    void registerUserCallsRegisterUserFunction() {
         sut.registerUser(userDTO);
         Mockito.verify(accountService, Mockito.times(1)).registerUser(userDTO);
     }
