@@ -88,4 +88,15 @@ public class PlotResource {
                 .entity(plotService.placeAnimal(animalDTO, plotID, user))
                 .build();
     }
+
+    @POST
+    @Path("/{id}/sellProduct")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response sellAnimalProduct(@QueryParam("token") String token, @PathParam("id") int plotID, PlotDTO plotDTO) {
+        UserDTO user = accountService.verifyToken(token);
+        return Response.status(Response.Status.OK)
+                .entity(plotService.sellProduct(plotDTO, user, plotID))
+                .build();
+    }
 }

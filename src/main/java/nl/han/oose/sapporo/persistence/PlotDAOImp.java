@@ -267,4 +267,24 @@ public class PlotDAOImp implements IPlotDAO {
             throw new PersistenceException();
         }
     }
+
+    @Override
+    public boolean plotHasAnimal(int plotID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select animalID from plot where plotID = ?");
+            statement.setInt(1, plotID);
+            ResultSet resultSet = statement.executeQuery();
+
+            int animalID = 0;
+
+            while (resultSet.next()) {
+                animalID = resultSet.getInt("animalID");
+            }
+            if (animalID == 0) {
+                throw new PlotHasNotAnimalException();
+            } else return true;
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
 }

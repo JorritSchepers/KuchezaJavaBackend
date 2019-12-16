@@ -35,4 +35,6 @@ public interface IPlotDAO {
     int getWater(int plotID);
 
     void addAnimalToPlot(AnimalDTO animalDTO, int plotID);
+
+    boolean plotHasAnimal(int plotID);
 }

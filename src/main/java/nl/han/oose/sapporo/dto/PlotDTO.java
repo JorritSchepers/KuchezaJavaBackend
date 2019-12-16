@@ -108,6 +108,10 @@ public class PlotDTO {
         this.plantID = plantID;
     }
 
+    public int getAnimalID() {
+        return animalID;
+    }
+
     public int getX() {
         return x;
     }

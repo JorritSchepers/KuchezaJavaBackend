@@ -22,4 +22,7 @@ public interface IPlotService {
     PlotDTO editWater(UserDTO user, int plotID, int amount);
 
     AllPlotDTO placeAnimal(AnimalDTO animalDTO, int plotID, UserDTO userDTO);
+
+    AllPlotDTO sellProduct(PlotDTO plotDTO, UserDTO user, int plotID);
+
 }
