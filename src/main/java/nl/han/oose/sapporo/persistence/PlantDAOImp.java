@@ -60,7 +60,7 @@ public class PlantDAOImp implements IPlantDAO{
                 profit = resultSet.getInt("profit");
             }
             return profit;
-        } catch (SQLException ignored) {
+        } catch (SQLException e) {
             throw new PersistenceException();
         }
     }
