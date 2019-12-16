@@ -1,9 +1,6 @@
 package nl.han.oose.sapporo.resource;
 
-import nl.han.oose.sapporo.dto.AllPlotDTO;
-import nl.han.oose.sapporo.dto.PlantDTO;
-import nl.han.oose.sapporo.dto.PlotDTO;
-import nl.han.oose.sapporo.dto.UserDTO;
+import nl.han.oose.sapporo.dto.*;
 import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IPlotService;
 import org.junit.Assert;
@@ -17,11 +14,12 @@ public class PlotResourceTest {
     private final String TOKEN = "123456890";
     private IAccountService accountService = Mockito.mock(IAccountService.class);
     private IPlotService plotService = Mockito.mock(IPlotService.class);
-    private final PlantDTO PLANT = new PlantDTO();
-    private final UserDTO USER = new UserDTO();
-    private final PlotDTO PLOT = new PlotDTO(1, 1, 1, 1, 0, 0, 0);
+    private PlantDTO PLANT = new PlantDTO();
+    private UserDTO USER = new UserDTO();
+    private PlotDTO PLOT = new PlotDTO(1, 1, 1, 1, 0, 0, 0);
     private ArrayList<PlotDTO> plots = new ArrayList<>() {{ add(PLOT); }};
-    private final AllPlotDTO ALL_PLOTS = new AllPlotDTO(plots);
+    private AllPlotDTO ALL_PLOTS = new AllPlotDTO(plots);
+    private AnimalDTO animal = new AnimalDTO();
 
     public PlotResourceTest() {
         sut.setAccountService(accountService);
@@ -31,6 +29,7 @@ public class PlotResourceTest {
         Mockito.when(plotService.harvestPlant(PLOT, USER, 1)).thenReturn(PLOT);
         Mockito.when(plotService.purchasePlot(1, USER)).thenReturn(ALL_PLOTS);
         Mockito.when(plotService.editWater(USER, 1, 10)).thenReturn(PLOT);
+        Mockito.when(plotService.placeAnimal(animal, 1, USER)).thenReturn(ALL_PLOTS);
     }
 
     @Test
@@ -107,5 +106,23 @@ public class PlotResourceTest {
     @Test
     public void waterPlantFromPlotReturnsRightPlot() {
         Assert.assertEquals(PLOT, sut.editWaterAmountForPlot(TOKEN, 1,10).getEntity());
+    }
+
+    @Test
+    public void placeAnimalCallsAuthenticateByToken() {
+        sut.placeAnimalOnPlot(TOKEN, 1, animal);
+        Mockito.verify(accountService, Mockito.times(1)).verifyToken(TOKEN);
+    }
+
+    @Test
+    public void placeAnimalCallsPlaceAnimal() {
+        sut.placeAnimalOnPlot(TOKEN, 1, animal);
+        Mockito.verify(plotService, Mockito.times(1)).placeAnimal(animal, 1, USER);
+    }
+
+    @Test
+    public void placeAnimalReturnsAllPlots() {
+        sut.placeAnimalOnPlot(TOKEN, 1, animal);
+        Assert.assertEquals(ALL_PLOTS, sut.placeAnimalOnPlot(TOKEN, 1, animal).getEntity());
     }
 }

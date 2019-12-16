@@ -24,12 +24,14 @@ class PlotServiceTest {
     private final float PRICE = 5;
     private final int FARM_ID = 1;
     private final int WATER = 10;
+    private final int START_WATER = 25;
     private PlantDTO plant = new PlantDTO(1, "Cabbage", 5, 10, 20, PRICE);
     private FarmDTO farm = new FarmDTO(1, 1);
     private UserDTO user = new UserDTO(1, "PatrickSt3r", "DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937", "Patrick@Ster.com");
     private PlotDTO plot = new PlotDTO(1, 1, 1, 1, 0, 0, 10);
     private PlotDTO plotWithGrownPlant = new PlotDTO(1, 1, 1, 1, 0, 1, 0, 100);
     private PlotDTO plotWithoutGrownPlant = new PlotDTO(2, 1, 1, 1, 0, 1, 0, 0);
+    private AnimalDTO animal = new AnimalDTO(1, "Cabbage", 10, 300, 10, 20, PRICE);
 
     private ArrayList<PlotDTO> plots = new ArrayList<>() {{ add(plot); }};
     private AllPlotDTO allPlots = new AllPlotDTO(plots);
@@ -229,5 +231,46 @@ class PlotServiceTest {
     void purchasePlotThrowsExceptionWhenPlotIsAlreadyPurchased() {
         Mockito.when(plotDAO.plotIsPurchased(PLOT_ID)).thenReturn(true);
         Assertions.assertThrows(PlotIsAlreadyPurchasedException.class, () -> { sut.purchasePlot(PLOT_ID, user); });
+    }
+
+    @Test
+    void placeAnimalCallsCheckSaldo() {
+        sut.placeAnimal(animal, PLOT_ID, user);
+        Mockito.verify(inventoryService, Mockito.times(1)).checkIfPlayerHasEnoughSaldo(PRICE, user);
+    }
+
+    @Test
+    void placeAnimalCallsCheckIfPlotIsEmpty() {
+        sut.placeAnimal(animal, PLOT_ID, user);
+        Mockito.verify(plotDAO, Mockito.times(1)).checkIfPlotIsEmpty(PLOT_ID);
+    }
+
+    @Test
+    void placeAnimalCallsLowerSaldo() {
+        sut.placeAnimal(animal, PLOT_ID, user);
+        Mockito.verify(inventoryService, Mockito.times(1)).lowerSaldo(PRICE, user);
+    }
+
+    @Test
+    void placeAnimalCallsLowerWater() {
+        sut.placeAnimal(animal, PLOT_ID, user);
+        Mockito.verify(inventoryService, Mockito.times(1)).lowerWater(START_WATER, user);
+    }
+
+    @Test
+    void placeAnimalCallsAddAnimalToPlot() {
+        sut.placeAnimal(animal, PLOT_ID, user);
+        Mockito.verify(plotDAO, Mockito.times(1)).addAnimalToPlot(animal, PLOT_ID);
+    }
+
+    @Test
+    void placeAnimalCallsGetFarm() {
+        sut.placeAnimal(animal, PLOT_ID, user);
+        Mockito.verify(farmDAO, Mockito.times(1)).getFarm(user);
+    }
+
+    @Test
+    void placeAnimalReturnsAllPlots() {
+        Assertions.assertEquals(allPlots.getPlots().size(), sut.placeAnimal(animal, PLOT_ID, user).getPlots().size());
     }
 }

@@ -1,6 +1,11 @@
 package nl.han.oose.sapporo.service;
 
-import nl.han.oose.sapporo.dto.*;
+import nl.han.oose.sapporo.dto.PlantDTO;
+import nl.han.oose.sapporo.dto.PlotDTO;
+import nl.han.oose.sapporo.dto.UserDTO;
+import nl.han.oose.sapporo.dto.AllPlotDTO;
+import nl.han.oose.sapporo.dto.AnimalDTO;
+import nl.han.oose.sapporo.dto.FarmDTO;
 import nl.han.oose.sapporo.persistence.IFarmDAO;
 import nl.han.oose.sapporo.persistence.IPlantDAO;
 import nl.han.oose.sapporo.persistence.IPlotDAO;
@@ -124,6 +129,18 @@ public class PlotServiceImp implements IPlotService {
         return null;
     }
 
+    @Override
+    public AllPlotDTO placeAnimal(AnimalDTO animalDTO, int plotID, UserDTO userDTO) {
+        if (inventoryService.checkIfPlayerHasEnoughSaldo(animalDTO.getPurchasePrice(),userDTO) && plotDAO.checkIfPlotIsEmpty(plotID)) {
+            inventoryService.lowerSaldo(animalDTO.getPurchasePrice(), userDTO);
+            inventoryService.lowerWater(START_WATER,userDTO);
+            plotDAO.addAnimalToPlot(animalDTO, plotID);
+            FarmDTO farmDTO = farmDAO.getFarm(userDTO);
+            return new AllPlotDTO(getFarmPlots(farmDTO.getFarmID()));
+        }
+        return null;
+    }
+    
     private int calculateWaterThatFits(int originalAmount, int amountAdded, int min, int max) {
         if (originalAmount + amountAdded < min) {
             return -(min + originalAmount);
