@@ -14,7 +14,7 @@ class PlotDAOTest extends DAOTest {
     private final int FULLPLOTID = 2;
     private final int WATER_ADD = 20;
     private final int PURCHASE_PLOT_ID = 3;
-    private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1);
+    private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1,100);
 
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {

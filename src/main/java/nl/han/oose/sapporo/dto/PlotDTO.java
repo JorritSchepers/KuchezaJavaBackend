@@ -150,4 +150,8 @@ public class PlotDTO {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public int getWaterAvailable() {
+        return waterAvailable;
+    }
 }

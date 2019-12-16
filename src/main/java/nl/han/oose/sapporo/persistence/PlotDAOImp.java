@@ -116,7 +116,7 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public void removeObjectsFromPlot(int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("update plot set animalId = null, waterManagerId = null, plantID = null, objectAge = 0, waterAvailable = 0 where plotID = ?");
+            PreparedStatement statement = connection.prepareStatement("update plot set animalId = null, waterManagerId = null, plantID = null, objectAge = 0, waterAvailable = 0, status='Normal' where plotID = ?");
             statement.setInt(1, plotID);
             statement.execute();
         } catch (SQLException e) {

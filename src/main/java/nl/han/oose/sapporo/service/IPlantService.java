@@ -6,5 +6,7 @@ import nl.han.oose.sapporo.dto.PlotDTO;
 public interface IPlantService {
     AllPlantDTO getAllPlants();
 
+    int getMaximumWater(int plantID);
+
     boolean plantFullGrown(PlotDTO plotDTO);
 }

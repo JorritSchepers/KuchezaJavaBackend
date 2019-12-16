@@ -7,16 +7,18 @@ public class PlantDTO {
     private int growingTime;
     private float profit;
     private float purchasePrice;
+    private int maximumWater;
 
     public PlantDTO() { }
 
-    public PlantDTO(int ID, String name, int waterUsage, int growingTime, float profit, float purchasePrice) {
+    public PlantDTO(int ID, String name, int waterUsage, int growingTime, float profit, float purchasePrice, int maximumWater) {
         this.ID = ID;
         this.name = name;
         this.waterUsage = waterUsage;
         this.growingTime = growingTime;
         this.profit = profit;
         this.purchasePrice = purchasePrice;
+        this.maximumWater = maximumWater;
     }
 
     public float getPurchasePrice() {
