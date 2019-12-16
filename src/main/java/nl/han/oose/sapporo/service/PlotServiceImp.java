@@ -1,6 +1,11 @@
 package nl.han.oose.sapporo.service;
 
-import nl.han.oose.sapporo.dto.*;
+import nl.han.oose.sapporo.dto.PlantDTO;
+import nl.han.oose.sapporo.dto.PlotDTO;
+import nl.han.oose.sapporo.dto.UserDTO;
+import nl.han.oose.sapporo.dto.AllPlotDTO;
+import nl.han.oose.sapporo.dto.AnimalDTO;
+import nl.han.oose.sapporo.dto.FarmDTO;
 import nl.han.oose.sapporo.persistence.IFarmDAO;
 import nl.han.oose.sapporo.persistence.IPlantDAO;
 import nl.han.oose.sapporo.persistence.IPlotDAO;
