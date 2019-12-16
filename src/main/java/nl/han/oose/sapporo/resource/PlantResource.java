@@ -15,8 +15,6 @@ import javax.ws.rs.core.Response;
 public class PlantResource {
     private IPlantService plantService;
     private IAccountService accountService;
-    private IAdminService adminService;
-    private IPlotService plotService;
 
     @Inject
     public void setPlantService(IPlantService plantService) {
@@ -26,14 +24,6 @@ public class PlantResource {
     @Inject
     public void setAccountService(IAccountService accountService) {
         this.accountService = accountService;
-    }
-
-    @Inject
-    public void setAdminService(IAdminService adminService) { this.adminService = adminService; }
-
-    @Inject
-    public void setPlotService(IPlotService plotService) {
-        this.plotService = plotService;
     }
 
     @GET
@@ -50,9 +40,7 @@ public class PlantResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response deletePlant(@QueryParam("token") String token, @PathParam("plantIDToDelete") int plantIDToDelete, @PathParam("plantIDToReplaceWith") int plantIDToReplaceWith) {
         UserDTO user  = accountService.verifyToken(token);
-        adminService.checkIfUserIsAdmin(user);
-        plotService.replacePlantsOnAllPlots(plantIDToDelete, plantIDToReplaceWith);
-        plantService.deletePlant(plantIDToDelete);
+        plantService.deletePlant(user, plantIDToDelete, plantIDToReplaceWith);
         return Response.status(Response.Status.OK)
                 .entity(plantService.getAllPlants())
                 .build();

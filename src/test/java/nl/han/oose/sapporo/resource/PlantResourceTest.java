@@ -15,16 +15,12 @@ public class PlantResourceTest {
     private PlantResource sut = new PlantResource();
     private IAccountService mockedAccountService = Mockito.mock(IAccountService.class);
     private IPlantService mockedPlantService = Mockito.mock(IPlantService.class);
-    private IPlotService mockedPlotService = Mockito.mock(IPlotService.class);
-    private IAdminService mockedAdminService = Mockito.mock(IAdminService.class);
     private AllPlantDTO ALL_PLANTS = new AllPlantDTO(null);
     private UserDTO USER = new UserDTO();
 
     public PlantResourceTest() {
         sut.setAccountService(mockedAccountService);
         sut.setPlantService(mockedPlantService);
-        sut.setPlotService(mockedPlotService);
-        sut.setAdminService(mockedAdminService);
         Mockito.when(mockedAccountService.verifyToken(TOKEN)).thenReturn(USER);
         Mockito.when(mockedPlantService.getAllPlants()).thenReturn(ALL_PLANTS);
     }
@@ -53,15 +49,9 @@ public class PlantResourceTest {
     }
 
     @Test
-    public void deletePlantCallsUpdatePlantsOnAllPlotsInPlotService() {
-        sut.deletePlant(TOKEN, 1, 2);
-        Mockito.verify(mockedPlotService, Mockito.times(1)).replacePlantsOnAllPlots(1, 2);
-    }
-
-    @Test
     public void deletePlantCallsDeletePlantInPlantService() {
         sut.deletePlant(TOKEN, 1, 2);
-        Mockito.verify(mockedPlantService, Mockito.times(1)).deletePlant(1);
+        Mockito.verify(mockedPlantService, Mockito.times(1)).deletePlant(USER, 1, 2);
     }
 
     @Test

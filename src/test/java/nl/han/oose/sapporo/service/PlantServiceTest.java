@@ -2,6 +2,7 @@ package nl.han.oose.sapporo.service;
 
 import nl.han.oose.sapporo.dto.AllPlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
+import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.IPlantDAO;
 import nl.han.oose.sapporo.persistence.exception.PlantNotGrownException;
 import org.junit.jupiter.api.Assertions;
@@ -11,6 +12,8 @@ import org.mockito.Mockito;
 class PlantServiceTest {
     private PlantServiceImp sut = new PlantServiceImp();
     private IPlantDAO mockedPlantDAO = Mockito.mock(IPlantDAO.class);
+    private IAdminService mockedAdminService = Mockito.mock(IAdminService.class);
+    private IPlotService mockedPlotService = Mockito.mock(IPlotService.class);
     private AllPlantDTO ALLPLANTDTO = new AllPlantDTO(null);
     private PlotDTO PLOT_WITH_GROWN_PLANT = new PlotDTO(1, 1, 1, 1, 0, 0, 0, 100);
     private PlotDTO PLOT_WITHOUT_GROWN_PLANT = new PlotDTO(2, 1, 1, 1, 0, 0, 0, 0);
@@ -20,6 +23,8 @@ class PlantServiceTest {
         Mockito.when(mockedPlantDAO.checkIfPlantFullGrown(PLOT_WITH_GROWN_PLANT)).thenReturn(true);
         Mockito.when(mockedPlantDAO.checkIfPlantFullGrown(PLOT_WITHOUT_GROWN_PLANT)).thenReturn(false);
         sut.setPlantDAO(mockedPlantDAO);
+        sut.setAdminService(mockedAdminService);
+        sut.setPlotService(mockedPlotService);
     }
 
     @Test
@@ -45,8 +50,23 @@ class PlantServiceTest {
     }
 
     @Test
+    void deletePlantCallsCheckIfUserIsAdmin() {
+        final UserDTO USER = new UserDTO(1, "test", "pass", "email");
+        sut.deletePlant(USER, 1, 2);
+        Mockito.verify(mockedAdminService, Mockito.times(1)).checkIfUserIsAdmin(USER);
+    }
+
+    @Test
+    void deletePlantCallsReplacePlantsOnAllPlots() {
+        final UserDTO USER = new UserDTO(1, "test", "pass", "email");
+        sut.deletePlant(USER, 1, 2);
+        Mockito.verify(mockedPlotService, Mockito.times(1)).replacePlantsOnAllPlots(1, 2);
+    }
+
+    @Test
     void deletePlantCallsDeletePlantInPlantDAO() {
-        sut.deletePlant(1);
+        final UserDTO USER = new UserDTO(1, "test", "pass", "email");
+        sut.deletePlant(USER, 1, 2);
         Mockito.verify(mockedPlantDAO, Mockito.times(1)).deletePlant(1);
     }
 }

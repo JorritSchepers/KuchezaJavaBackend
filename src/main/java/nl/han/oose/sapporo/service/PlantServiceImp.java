@@ -2,6 +2,7 @@ package nl.han.oose.sapporo.service;
 
 import nl.han.oose.sapporo.dto.AllPlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
+import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.IPlantDAO;
 import nl.han.oose.sapporo.persistence.exception.PlantNotGrownException;
 
@@ -12,11 +13,19 @@ import java.util.ArrayList;
 @Default
 public class PlantServiceImp implements IPlantService {
     private IPlantDAO plantDAO;
+    private IAdminService adminService;
+    private IPlotService plotService;
 
     @Inject
     public void setPlantDAO(IPlantDAO plantDAO) {
         this.plantDAO = plantDAO;
     }
+
+    @Inject
+    public void setAdminService(IAdminService adminService) { this.adminService = adminService; }
+
+    @Inject
+    public void setPlotService(IPlotService plotService) { this.plotService = plotService; }
 
     @Override
     public AllPlantDTO getAllPlants() {
@@ -32,7 +41,9 @@ public class PlantServiceImp implements IPlantService {
     }
 
     @Override
-    public void deletePlant(int plantIDToDelete) {
+    public void deletePlant(UserDTO user, int plantIDToDelete, int plantIDToReplaceWith) {
+        adminService.checkIfUserIsAdmin(user);
+        plotService.replacePlantsOnAllPlots(plantIDToDelete, plantIDToReplaceWith);
         plantDAO.deletePlant(plantIDToDelete);
     }
 
