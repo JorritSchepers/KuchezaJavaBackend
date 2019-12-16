@@ -16,8 +16,8 @@ class PlotDAOTest extends DAOTest {
     private final int WATER_ADD = 20;
     private final int PURCHASE_PLOT_ID = 3;
     private final int ANIMALPLOTID = 3;
-    private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1);
-    private AnimalDTO animal = new AnimalDTO(1, "Cabbage", 10, 300, 10, 20, 1);
+    private PlantDTO PLANT = new PlantDTO(1, "Cabbage", 1, 1, 1, 1);
+    private AnimalDTO ANIMAL = new AnimalDTO(1, "Cow", 10, 300, 10, 20, 1);
 
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
@@ -156,8 +156,8 @@ class PlotDAOTest extends DAOTest {
 
     @Test
     void checkIfAddPlantToPlotAddsPlant() {
-        sut.addPlantToPlot(plant, PLOTID);
-        Assertions.assertEquals(getPlantIDFromPlot(plant.getID()), getPlantIDFromPlot(PLOTID));
+        sut.addPlantToPlot(PLANT, PLOTID);
+        Assertions.assertEquals(getPlantIDFromPlot(PLANT.getID()), getPlantIDFromPlot(PLOTID));
     }
 
     @Test
@@ -233,7 +233,7 @@ class PlotDAOTest extends DAOTest {
 
     @Test
     void checkIfAddAnimalToPlotAddsAnimal() {
-        sut.addAnimalToPlot(animal, ANIMALPLOTID);
-        Assertions.assertEquals(animal.getID(), getAnimalIDFromPlot(ANIMALPLOTID));
+        sut.addAnimalToPlot(ANIMAL, ANIMALPLOTID);
+        Assertions.assertEquals(ANIMAL.getID(), getAnimalIDFromPlot(ANIMALPLOTID));
     }
 }
