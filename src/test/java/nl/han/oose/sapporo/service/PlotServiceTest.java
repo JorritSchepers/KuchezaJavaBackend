@@ -166,19 +166,19 @@ class PlotServiceTest {
     @Test
     void waterPlantCallsLowerWater(){
         sut.editWater(user, PLOTID, WATER);
-        Mockito.verify(inventoryService, Mockito.times(1)).lowerWater(WATER, user);
+        Mockito.verify(inventoryService, Mockito.times(1)).lowerWater(0, user);
     }
 
     @Test
     void waterPlantCallsIncreaseWater(){
         sut.editWater(user, PLOTID, WATER);
-        Mockito.verify(plotDAO, Mockito.times(1)).editWaterAvailable(WATER, PLOTID);
+        Mockito.verify(plotDAO, Mockito.times(1)).editWaterAvailable(0, PLOTID);
     }
 
     @Test
     void waterPlantCallsGetPlot(){
         sut.editWater(user, PLOTID, WATER);
-        Mockito.verify(plotDAO, Mockito.times(1)).getPlot(PLOTID);
+        Mockito.verify(plotDAO, Mockito.times(2)).getPlot(PLOTID);
     }
 
     @Test
@@ -188,7 +188,7 @@ class PlotServiceTest {
     }
 
     @Test
-    void waterPlantReturnsPlot(){ Assertions.assertEquals(plot, sut.editWater(user, PLOTID, WATER));}
+    void waterPlantReturnsPlot(){ Assertions.assertTrue(plotWithGrownPlant.equals(sut.editWater(user, PLOTID, WATER)));}
 
     @Test
     void purchasePlotReturnsAllPlots() {

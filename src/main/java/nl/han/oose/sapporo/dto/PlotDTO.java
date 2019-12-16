@@ -11,7 +11,7 @@ public class PlotDTO {
     private int waterAvailable;
     private float price;
     private int age;
-    private String status;
+    private String status = "";
 
     public PlotDTO() { }
 
