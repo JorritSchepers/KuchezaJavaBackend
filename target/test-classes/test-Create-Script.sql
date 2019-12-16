@@ -80,6 +80,29 @@ CREATE TABLE plot (
                           ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+create table action (
+                        actionID int PRIMARY KEY AUTO_INCREMENT,
+                        actionText varchar(45) not null
+);
+
+create table actionPerPlayer (
+                                 userID int,
+                                 actionID int,
+                                 dateOfAction DATETIME DEFAULT CURRENT_TIMESTAMP,
+                                 affectedItem varchar(45) null,
+                                 currentWater int not null,
+                                 currentMoney int not null,
+
+                                 PRIMARY KEY (userID, actionID,dateOfAction),
+
+                                 FOREIGN KEY (userID)
+                                     REFERENCES user(userID)
+                                     ON UPDATE CASCADE ON DELETE CASCADE,
+                                 FOREIGN KEY (actionID)
+                                     REFERENCES action(actionID)
+                                     ON UPDATE CASCADE ON DELETE CASCADE
+);
+
 INSERT INTO user (name,password,email,admin)
 VALUES
 ('PatrickSt3r','DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937','Patrick@Ster.com', 0),
@@ -109,3 +132,14 @@ VALUES
 (1,3,10,0,1,2000,0,0);
 
 update plot set plantID = 1 where plotID = 2;
+
+INSERT INTO action (actionText)
+VALUES
+('Planted a seed'),
+('Harvested a plant'),
+('Gave a plant water'),
+('Bought a plot'),
+('Lost a plant'),
+('Bought an animal'),
+('Lost an animal'),
+('Sold an item from an animal');

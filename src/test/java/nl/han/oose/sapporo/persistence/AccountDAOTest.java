@@ -14,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class AccountDAOTest extends DAOTest {
     private AccountDAOImp sut = new AccountDAOImp();
-    private UserDTO userDTO = new UserDTO(1, "TestUser", "wachtwoord", "TestUser@Hotmail.com");
-    private LoginDTO loginDTO = new LoginDTO("oose.sapporo@gmail.com", "wachtwoord");
+    private final UserDTO USER = new UserDTO(1, "TestUser", "wachtwoord", "TestUser@Hotmail.com");
+    private final LoginDTO LOGIN_DTO = new LoginDTO("oose.sapporo@gmail.com", "wachtwoord");
 
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
@@ -48,7 +48,7 @@ class AccountDAOTest extends DAOTest {
     @Test
     void checkUserWithCorrectLoginInformationReturnsUserDTO() {
         UserDTO expected = new UserDTO(3, "TestUser", "wachtwoord", "oose.sapporo@gmail.com");
-        UserDTO result = sut.getUser(loginDTO);
+        UserDTO result = sut.getUser(LOGIN_DTO);
         assertEquals(expected, result);
     }
 
@@ -62,14 +62,14 @@ class AccountDAOTest extends DAOTest {
     @Test
     void addUserIncreasesUserAmount() {
         int oldAmount = getAmountOfUsers();
-        sut.addUser(userDTO);
+        sut.addUser(USER);
         Assertions.assertEquals((oldAmount + 1), getAmountOfUsers());
     }
 
     @Test
     void userIsInDatabaseAfterAddUser() {
-        Assertions.assertFalse(userExists(userDTO.getEmail()));
-        sut.addUser(userDTO);
-        Assertions.assertTrue(userExists(userDTO.getEmail()));
+        Assertions.assertFalse(userExists(USER.getEmail()));
+        sut.addUser(USER);
+        Assertions.assertTrue(userExists(USER.getEmail()));
     }
 }

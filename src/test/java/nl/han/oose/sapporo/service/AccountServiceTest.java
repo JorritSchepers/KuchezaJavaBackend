@@ -1,6 +1,7 @@
 package nl.han.oose.sapporo.service;
 
 import nl.han.oose.sapporo.dto.LoginDTO;
+import nl.han.oose.sapporo.dto.TokenDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.IAccountDAO;
 import nl.han.oose.sapporo.service.exception.UserAlreadyLoggedOutException;
@@ -38,23 +39,4 @@ class AccountServiceTest {
         sut.loginUser(loginDTO);
         Assertions.assertEquals(token,sut.loginUser(loginDTO).getToken());
     }
-
-//    @Test
-//    void registerUserCallsAddUser() {
-//        sut.registerUser(userDTO);
-//        Mockito.verify(accountDAO, Mockito.times(1)).addUser(userDTO);
-//    }
-//
-//    @Test
-//    void registerUserReturnsToken() {
-//        TokenDTO result = sut.registerUser(userDTO);
-//        assertEquals(token, result.getToken());
-//    }
-//
-//    @Test
-//    void verifyTokenReturnsThrowsExceptionWhenEmpty(){
-//        assertThrows(UserAlreadyLoggedOutException.class, () -> {
-//            sut.verifyToken(token);
-//        });
-//    }
 }
