@@ -103,6 +103,23 @@ class PlotDAOTest extends DAOTest {
         return 0;
     }
 
+    private String getStatus(int x, int y){
+        String status = "";
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("select status from plot where x =? and y=?");
+            statement.setInt(1,x);
+            statement.setInt(2,y);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                status = resultSet.getString("status");
+            }
+            return status;
+
+        } catch (SQLException ignored) {
+        }
+        return "";
+    }
+
     private boolean plotIsPurchased(int plotID) {
         try (Connection connection = DriverManager.getConnection(DB_URL)) {
             PreparedStatement statement = connection.prepareStatement("select purchased from plot where plotID = ?");
@@ -219,5 +236,12 @@ class PlotDAOTest extends DAOTest {
         sut.editWaterAvailable(extraWater, PLOTID);
         int newWater = getWaterFromPlot(PLOTID);
         Assertions.assertEquals((oldWater + extraWater), newWater);
+    }
+
+    @Test
+    void changeStatusChangesStatusInDatabase() {
+        String expected = "Dead";
+        sut.changeStatus(1, "Dead");
+        Assertions.assertEquals(expected,getStatus(1,1));
     }
 }

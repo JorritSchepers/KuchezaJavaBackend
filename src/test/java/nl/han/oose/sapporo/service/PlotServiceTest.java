@@ -6,6 +6,7 @@ import nl.han.oose.sapporo.persistence.IPlantDAO;
 import nl.han.oose.sapporo.persistence.IPlotDAO;
 import nl.han.oose.sapporo.persistence.PlantDAOImp;
 import nl.han.oose.sapporo.service.exception.PlotIsAlreadyPurchasedException;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -204,5 +205,17 @@ class PlotServiceTest {
     void purchasePlotThrowsExceptionWhenPlotIsAlreadyPurchased() {
         Mockito.when(plotDAO.plotIsPurchased(PLOTID)).thenReturn(true);
         Assertions.assertThrows(PlotIsAlreadyPurchasedException.class, () -> { sut.purchasePlot(PLOTID, user); });
+    }
+
+    @Test
+    public void changeStatusReturnsPlot() {
+        PlotDTO result = sut.changeStatus(PLOTID,"Normal");
+        Assert.assertTrue(plotWithGrownPlant.equals(result));
+    }
+
+    @Test
+    public void changeStatusCallsChangeStatus() {
+        sut.changeStatus(PLOTID, "Normal");
+        Mockito.verify(plotDAO, Mockito.times(1)).changeStatus(PLOTID,"Normal");
     }
 }

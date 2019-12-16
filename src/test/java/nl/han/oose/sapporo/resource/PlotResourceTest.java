@@ -8,8 +8,10 @@ import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IPlotService;
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 
 public class PlotResourceTest {
@@ -31,6 +33,7 @@ public class PlotResourceTest {
         Mockito.when(plotService.harvestPlant(plot, user, 1)).thenReturn(plot);
         Mockito.when(plotService.purchasePlot(1, user)).thenReturn(allPlots);
         Mockito.when(plotService.editWater(user, 1, 10)).thenReturn(plot);
+        Mockito.when(plotService.changeStatus(10,"Normal")).thenReturn(plot);
     }
 
     @Test
@@ -107,5 +110,15 @@ public class PlotResourceTest {
     @Test
     public void waterPlantFromPlotReturnsRightPlot() {
         Assert.assertEquals(plot, sut.editWaterAmountForPlot(token, 1,10).getEntity());
+    }
+
+    @Test
+    public void waterPlantReturnsRightResponse() {
+        Response excpected = Response.status(Response.Status.OK)
+                .entity(plot)
+                .build();
+        Response result = sut.changeStatus(token,10,"Normal");
+
+        Assert.assertEquals(excpected.toString(),result.toString());
     }
 }
