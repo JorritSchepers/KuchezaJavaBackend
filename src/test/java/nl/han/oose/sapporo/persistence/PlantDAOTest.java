@@ -7,6 +7,8 @@ import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import javax.validation.constraints.AssertTrue;
+import java.sql.*;
 import java.util.ArrayList;
 
 class PlantDAOTest extends DAOTest {
@@ -41,5 +43,31 @@ class PlantDAOTest extends DAOTest {
     @Test
     void getProfitGetsRightProfit(){
         Assertions.assertEquals(20,sut.getProfit(1));
+    }
+
+    @Test
+    void deletePlantRemovesOneRowInDB() {
+        int oldAmount = getAmountOfPlants();
+        sut.deletePlant(1);
+        int newAmount = getAmountOfPlants();
+        Assertions.assertEquals(oldAmount-1, newAmount);
+    }
+
+    @Test
+    void getMaximumWaterReturnsCorrectAmount() {
+        Assertions.assertEquals(200, sut.getMaximumWater(2));
+    }
+
+    private int getAmountOfPlants() {
+        int totalPlants = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("select count(plantID) as amount from plant");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                totalPlants = resultSet.getInt("amount");
+            }
+        } catch (SQLException ignored) {
+        }
+        return totalPlants;
     }
 }

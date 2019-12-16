@@ -9,4 +9,6 @@ public interface IPlantService {
     boolean plantFullGrown(PlotDTO plotDTO);
 
     void deletePlant(int plantIDToDelete);
+
+    int getMaximumWater(int plantID);
 }

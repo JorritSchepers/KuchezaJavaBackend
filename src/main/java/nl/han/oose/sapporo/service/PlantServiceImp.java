@@ -35,4 +35,9 @@ public class PlantServiceImp implements IPlantService {
     public void deletePlant(int plantIDToDelete) {
         plantDAO.deletePlant(plantIDToDelete);
     }
+
+    @Override
+    public int getMaximumWater(int plantID) {
+        return plantDAO.getMaximumWater(plantID);
+    }
 }
