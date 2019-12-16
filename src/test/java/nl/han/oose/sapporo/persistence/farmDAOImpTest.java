@@ -15,10 +15,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class farmDAOImpTest extends DAOTest {
     private FarmDAOImp sut = new FarmDAOImp();
-    private IPlotDAO plotDAO;
-    private UserDTO userWithFarm = new UserDTO(1, "PatrickSt3r", "DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937", "Patrick@Ster.com");
-    private UserDTO userWithoutFarm = new UserDTO(2, "Sapporo", "DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937", "Patrick@Ster.com");
-    private FarmDTO farm = new FarmDTO(2,2);
+    private final UserDTO USER_WITH_FARM = new UserDTO(1, "PatrickSt3r", "DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937", "Patrick@Ster.com");
+    private final UserDTO USER_WITHOUT_FARM = new UserDTO(2, "Sapporo", "DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937", "Patrick@Ster.com");
+    private final FarmDTO FARM = new FarmDTO(2,2);
 
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
@@ -28,35 +27,35 @@ class farmDAOImpTest extends DAOTest {
     @Test
     void hasFarmDoesNotThrowExceptionWhenUserHasNoFarm() {
         assertDoesNotThrow(() -> {
-            sut.checkIfUserHasAFarm(userWithoutFarm);
+            sut.checkIfUserHasAFarm(USER_WITHOUT_FARM);
         });
     }
 
     @Test
     void hasFarmThrowsExceptionWhenUserHasFarm() {
         assertThrows(UserAlreadyHasFarmException.class, () -> {
-            sut.checkIfUserHasAFarm(userWithFarm);
+            sut.checkIfUserHasAFarm(USER_WITH_FARM);
         });
     }
 
     @Test
     void getFarmReturnsFarmFromUser(){
         FarmDTO expectedFarm = new FarmDTO(1,1);
-        FarmDTO receivedFarm = sut.getFarm(userWithFarm);
+        FarmDTO receivedFarm = sut.getFarm(USER_WITH_FARM);
         Assertions.assertEquals(expectedFarm,receivedFarm);
     }
 
     @Test
     void createFarmMakesExtraFarm(){
         int oldAmount = getAmountOfFarms();
-        sut.createFarm(farm,userWithoutFarm);
+        sut.createFarm(FARM, USER_WITHOUT_FARM);
         int newAmount = getAmountOfFarms();
         Assertions.assertEquals(oldAmount+1,newAmount);
     }
 
 
     private farmDAOImpTest(){
-        plotDAO = Mockito.mock(IPlotDAO.class);
+        IPlotDAO plotDAO = Mockito.mock(IPlotDAO.class);
         sut.setPlotDAO(plotDAO);
     }
 

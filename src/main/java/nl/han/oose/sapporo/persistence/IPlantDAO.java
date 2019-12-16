@@ -9,4 +9,6 @@ public interface IPlantDAO {
     boolean checkIfPlantFullGrown(PlotDTO plotDTO);
 
     int getProfit(int id);
+
+    String getname(int plantID);
 }

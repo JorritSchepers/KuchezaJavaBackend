@@ -30,7 +30,7 @@ public class PlantResourceTest {
     }
 
     @Test
-    public void getAllPlantsCallsgetAllPlants() {
+    public void getAllPlantsCallsGetAllPlants() {
         sut.getAllPlants(token);
         Mockito.verify(plantService, Mockito.times(1)).getAllPlants();
     }

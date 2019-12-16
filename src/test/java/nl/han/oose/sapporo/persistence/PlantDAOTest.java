@@ -11,9 +11,8 @@ import java.util.ArrayList;
 
 class PlantDAOTest extends DAOTest {
     private PlantDAOImp sut = new PlantDAOImp();
-    private final int AMOUNT_OF_PLANTS = 3;
-    private PlotDTO plotWithGrownPlant = new PlotDTO(1, 1, 1, 1, 0, 1, 0, 100);
-    private PlotDTO plotWithoutGrownPlant = new PlotDTO(2, 1, 1, 1, 0, 1, 0, 0);
+    private final PlotDTO PLOT_WITH_GROWN_PLANT = new PlotDTO(1, 1, 1, 1, 0, 1, 0, 100);
+    private final PlotDTO PLOT_WITHOUT_GROWN_PLANT = new PlotDTO(2, 1, 1, 1, 0, 1, 0, 0);
 
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
@@ -30,12 +29,12 @@ class PlantDAOTest extends DAOTest {
 
     @Test
     void checkIfPlantFullGrownReturnsTrueWhenGrown() {
-        Assertions.assertTrue(sut.checkIfPlantFullGrown(plotWithGrownPlant));
+        Assertions.assertTrue(sut.checkIfPlantFullGrown(PLOT_WITH_GROWN_PLANT));
     }
 
     @Test
     void checkIfPlantFullGrownReturnsFalseWhenNotGrown() {
-        Assertions.assertFalse(sut.checkIfPlantFullGrown(plotWithoutGrownPlant));
+        Assertions.assertFalse(sut.checkIfPlantFullGrown(PLOT_WITHOUT_GROWN_PLANT));
     }
 
     @Test
