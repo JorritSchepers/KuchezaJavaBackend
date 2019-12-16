@@ -60,7 +60,6 @@ public class PlotServiceImp implements IPlotService {
     @Override
     public PlotDTO harvestPlant(PlotDTO plotDTO, UserDTO user, int plotID) {
         if (plotDAO.plotHasPlant(plotID)) {
-            System.out.println(plotDTO.getStatus());
             if(!plotDTO.getStatus().equals("Dead")) {
                 int profit = plantDAO.getProfit(plotDTO.getPlantID());
 
