@@ -148,7 +148,7 @@
       <module name="KuchezaGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="nl.han.oose.sapporo.service.*" />
+          <option name="PATTERN" value="nl.han.oose.sapporo.persistence.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
