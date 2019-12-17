@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public interface IPlotDAO {
     void addPlantToPlot(PlantDTO plantDTO, int plotID);
 
-    PlotDTO getPlot(int PlotID);
+    PlotDTO getPlot(int plotID);
 
     boolean checkIfPlotIsEmpty(int plotID);
 

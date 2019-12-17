@@ -9,7 +9,6 @@ import nl.han.oose.sapporo.service.exception.PlotIsAlreadyPurchasedException;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
@@ -279,7 +278,7 @@ class PlotServiceTest {
 
     @Test
     void placeAnimalCallsLowerSaldo() {
-        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
+        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getId());
         Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
         Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(FARM);
         sut.placeAnimal(ANIMAL, PLOT_ID, USER);
@@ -288,7 +287,7 @@ class PlotServiceTest {
 
     @Test
     void placeAnimalCallsLowerWater() {
-        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
+        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getId());
         Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
         Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(FARM);
         final int START_WATER = 25;
@@ -298,7 +297,7 @@ class PlotServiceTest {
 
     @Test
     void placeAnimalCallsAddAnimalToPlot() {
-        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
+        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getId());
         Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
         Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(FARM);
         sut.placeAnimal(ANIMAL, PLOT_ID, USER);
@@ -307,7 +306,7 @@ class PlotServiceTest {
 
     @Test
     void placeAnimalCallsGetFarm() {
-        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
+        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getId());
         Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
         Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(FARM);
         sut.placeAnimal(ANIMAL, PLOT_ID, USER);
@@ -316,7 +315,7 @@ class PlotServiceTest {
 
     @Test
     void placeAnimalReturnsAllPlots() {
-        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
+        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getId());
         final ArrayList<PlotDTO> PLOTS = new ArrayList<>() {{ add(PLOT); }};
         final AllPlotDTO ALL_PLOTS = new AllPlotDTO(PLOTS);
         Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);

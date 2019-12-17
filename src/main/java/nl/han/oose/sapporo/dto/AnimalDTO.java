@@ -1,8 +1,7 @@
 package nl.han.oose.sapporo.dto;
 
 public class AnimalDTO {
-
-    private int ID;
+    private int id;
     private String name;
     private int waterUsage;
     private int maximumWater;
@@ -12,8 +11,8 @@ public class AnimalDTO {
 
     public AnimalDTO() { }
 
-    public AnimalDTO(int ID, String name, int waterUsage, int maximumWater, int productionTime, float profit, float purchasePrice) {
-        this.ID = ID;
+    public AnimalDTO(int id, String name, int waterUsage, int maximumWater, int productionTime, float profit, float purchasePrice) {
+        this.id = id;
         this.name = name;
         this.waterUsage = waterUsage;
         this.maximumWater = maximumWater;
@@ -26,7 +25,7 @@ public class AnimalDTO {
         return purchasePrice;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 }

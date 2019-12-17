@@ -33,7 +33,7 @@ public class FarmDAOImp implements IFarmDAO {
     public FarmDTO getFarm(UserDTO user) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * from farm where ownerID = ?");
-            statement.setInt(1, user.getID());
+            statement.setInt(1, user.getId());
 
             FarmDTO farm = null;
             ResultSet resultSet = statement.executeQuery();
@@ -52,7 +52,7 @@ public class FarmDAOImp implements IFarmDAO {
     public void checkIfUserHasAFarm(UserDTO userDTO) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM farm WHERE ownerID = ?");
-            statement.setInt(1, userDTO.getID());
+            statement.setInt(1, userDTO.getId());
             ResultSet resultSet = statement.executeQuery();
 
             if(resultSet.next()) {throw new UserAlreadyHasFarmException(); }
@@ -66,7 +66,7 @@ public class FarmDAOImp implements IFarmDAO {
     public FarmDTO createFarm(FarmDTO farmDTO, UserDTO userDTO){
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO farm (ownerID) VALUES (?)");
-            statement.setInt(1, userDTO.getID());
+            statement.setInt(1, userDTO.getId());
             statement.execute();
 
             getFarmID(connection,farmDTO,userDTO);
@@ -82,7 +82,7 @@ public class FarmDAOImp implements IFarmDAO {
     private void getFarmID(Connection connection, FarmDTO farmDTO, UserDTO userDTO) {
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT farmID FROM farm WHERE ownerID = ?");
-            statement.setInt(1, userDTO.getID());
+            statement.setInt(1, userDTO.getId());
             ResultSet resultSet = statement.executeQuery();
 
             if(resultSet.next()) {
@@ -90,7 +90,6 @@ public class FarmDAOImp implements IFarmDAO {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new PersistenceException();
         }
     }
@@ -114,7 +113,6 @@ public class FarmDAOImp implements IFarmDAO {
                         resultSet.getString("status")));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new PersistenceException();
         }
         return plotDTOS;

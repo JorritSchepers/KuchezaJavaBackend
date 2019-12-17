@@ -3,7 +3,7 @@ package nl.han.oose.sapporo.dto;
 import java.util.Objects;
 
 public class UserDTO {
-    private int ID;
+    private int id;
     private String name;
     private String password;
     private String email;
@@ -11,11 +11,11 @@ public class UserDTO {
 
     public UserDTO() { }
 
-    public UserDTO(int ID, String name, String password, String email) {
+    public UserDTO(int id, String name, String password, String email) {
         this.name = name;
         this.password = password;
         this.email = email;
-        this.ID = ID;
+        this.id = id;
     }
 
     public UserDTO(String name, String password, String email) {
@@ -24,8 +24,8 @@ public class UserDTO {
         this.email = email;
     }
 
-    public UserDTO(int ID, String name, String password, String email, boolean admin) {
-        this.ID = ID;
+    public UserDTO(int id, String name, String password, String email, boolean admin) {
+        this.id = id;
         this.name = name;
         this.password = password;
         this.email = email;
@@ -51,8 +51,12 @@ public class UserDTO {
         return email;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
+    }
+
+    public boolean isAdmin() {
+        return admin;
     }
 
     @Override
@@ -60,7 +64,7 @@ public class UserDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserDTO userDTO = (UserDTO) o;
-        return ID == userDTO.ID &&
+        return id == userDTO.id &&
                 Objects.equals(name, userDTO.name) &&
                 Objects.equals(password, userDTO.password) &&
                 Objects.equals(email, userDTO.email);
