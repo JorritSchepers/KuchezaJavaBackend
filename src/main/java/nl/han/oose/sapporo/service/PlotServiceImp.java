@@ -143,10 +143,13 @@ public class PlotServiceImp implements IPlotService {
 
     @Override
     public AllPlotDTO placeAnimal(AnimalDTO animalDTO, int plotID, UserDTO userDTO) {
+        final int BUY_ANIMAL_ACTION_ID = 6;
         if (inventoryService.checkIfPlayerHasEnoughSaldo(animalDTO.getPurchasePrice(),userDTO) && plotDAO.checkIfPlotIsEmpty(plotID)) {
             inventoryService.lowerSaldo(animalDTO.getPurchasePrice(), userDTO);
             inventoryService.lowerWater(START_WATER,userDTO);
             plotDAO.addAnimalToPlot(animalDTO, plotID);
+            String affectedAnimal = animalDAO.getAnimal(animalDTO.getID());
+            actionService.setAction(userDTO, BUY_ANIMAL_ACTION_ID, affectedAnimal);
             return getAllPlots(userDTO);
         }
         return null;
