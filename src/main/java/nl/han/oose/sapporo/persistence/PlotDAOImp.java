@@ -101,7 +101,6 @@ public class PlotDAOImp implements IPlotDAO {
                         resultSet.getString("status")
                 );
             }
-
             if(plotDTO == null) {
                 throw new PlotDoesNotExistException();
             } else {
@@ -179,18 +178,19 @@ public class PlotDAOImp implements IPlotDAO {
             ArrayList<PlotDTO> plots = new ArrayList<>();
 
             while (resultSet.next()) {
-                int ID = resultSet.getInt("plotID");
-                int x = resultSet.getInt("x");
-                int y = resultSet.getInt("y");
-                int animalID = resultSet.getInt("animalID");
-                int waterManagerID = resultSet.getInt("waterManagerID");
-                int plantID = resultSet.getInt("plantID");
-                float price = resultSet.getFloat("price");
-                int waterAvailable = resultSet.getInt("waterAvailable");
-                boolean purchased = resultSet.getBoolean("purchased");
-                int age = resultSet.getInt("objectAge");
-                String status = resultSet.getString("status");
-                PlotDTO plot = new PlotDTO(ID, x, y, animalID, waterManagerID, plantID, price, purchased,age, waterAvailable, status);
+                PlotDTO plot = new PlotDTO(
+                        resultSet.getInt("plotID"),
+                        resultSet.getInt("x"),
+                        resultSet.getInt("y"),
+                        resultSet.getInt("animalID"),
+                        resultSet.getInt("waterManagerID"),
+                        resultSet.getInt("plantID"),
+                        resultSet.getFloat("price"),
+                        resultSet.getBoolean("purchased"),
+                        resultSet.getInt("objectAge"),
+                        resultSet.getInt("waterAvailable"),
+                        resultSet.getString("status")
+                );
                 plots.add(plot);
             }
             return plots;

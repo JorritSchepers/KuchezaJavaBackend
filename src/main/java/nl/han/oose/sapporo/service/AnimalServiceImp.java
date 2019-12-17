@@ -8,15 +8,15 @@ import javax.inject.Inject;
 
 @Default
 public class AnimalServiceImp implements IAnimalService {
-    private IAnimalDAO AnimalDAO;
+    private IAnimalDAO animalDAO;
 
     @Inject
-    public void setAnimalDAO(IAnimalDAO AnimalDAO) {
-        this.AnimalDAO = AnimalDAO;
+    public void setAnimalDAO(IAnimalDAO animalDAO) {
+        this.animalDAO = animalDAO;
     }
 
     @Override
     public AllAnimalDTO getAllAnimals() {
-        return AnimalDAO.getAllAnimals();
+        return animalDAO.getAllAnimals();
     }
 }

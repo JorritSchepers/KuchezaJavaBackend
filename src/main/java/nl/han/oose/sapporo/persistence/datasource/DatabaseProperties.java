@@ -1,5 +1,7 @@
 package nl.han.oose.sapporo.persistence.datasource;
 
+import nl.han.oose.sapporo.persistence.exception.UnableToReadDatabasePropertiesException;
+
 import java.io.IOException;
 import java.util.Properties;
 
@@ -15,8 +17,7 @@ public class DatabaseProperties {
         try {
             properties.load(getClass().getResourceAsStream("/database.properties"));
         } catch (IOException ex) {
-            //TODO change to a mapped exception
-            System.out.println("Exception");
+            throw new UnableToReadDatabasePropertiesException();
         }
         return properties;
     }

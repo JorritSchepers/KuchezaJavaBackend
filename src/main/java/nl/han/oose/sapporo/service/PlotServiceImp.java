@@ -23,8 +23,8 @@ public class PlotServiceImp implements IPlotService {
     private IInventoryService inventoryService;
     private IPlantService plantService;
     private IActionService actionService;
-    private final int START_WATER = 25;
-    private final int MINIMUM_PLOT_WATER = 0;
+    private static final int START_WATER = 25;
+    private static final int MINIMUM_PLOT_WATER = 0;
 
     @Inject
     public void setPlantDAO(IPlantDAO plantDAO) {
