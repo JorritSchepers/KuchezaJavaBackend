@@ -33,7 +33,8 @@ CREATE TABLE plant(
                       growingTime INT NOT NULL,
                       profit INT NOT NULL,
                       purchasePrice INT NOT NULL,
-                      name VARCHAR(45) NOT NULL
+                      name VARCHAR(45) NOT NULL,
+                      maximumWater int NOT NULL
 );
 
 CREATE TABLE waterManager(
@@ -121,11 +122,11 @@ Insert into inventory Values
 (2,1000,2000),
 (3,1000,2000);
 
-INSERT INTO plant (waterUsage,growingTime,profit,purchasePrice,name)
+INSERT INTO plant (waterUsage,growingTime,profit,purchasePrice,name,maximumWater)
 VALUES
-(5,10,20,5,'Cabbage'),
-(10,5,20,7.5,'Tomato'),
-(2.5,50,40,10,'Banana');
+(5,10,20,5,'Cabbage', 100),
+(10,5,20,7.5,'Tomato', 200),
+(2.5,50,40,10,'Banana', 300);
 
 INSERT INTO plot (x,y,price,purchased, farmID,age,waterAvailable,objectAge)
 VALUES

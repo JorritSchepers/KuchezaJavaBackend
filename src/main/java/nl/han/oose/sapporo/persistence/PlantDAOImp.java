@@ -66,6 +66,17 @@ public class PlantDAOImp implements IPlantDAO{
     }
 
     @Override
+    public void deletePlant(int plantIDToDelete) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("delete from plant where plantID = ?");
+            statement.setInt(1, plantIDToDelete);
+            statement.execute();
+        } catch (SQLException ignored) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
     public String getname(int plantID) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select name from plant where plantID = ?");
@@ -93,5 +104,21 @@ public class PlantDAOImp implements IPlantDAO{
             plants.add(new PlantDTO(id,name,waterUsage,growingTime,profit,purchasePrice));
         }
         return new AllPlantDTO(plants);
+    }
+
+    @Override
+    public int getMaximumWater(int id) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select maximumWater from plant where plantID = ?");
+            statement.setInt(1,id);
+            ResultSet resultSet = statement.executeQuery();
+            int maximumWater = 0;
+            while (resultSet.next()) {
+                maximumWater = resultSet.getInt("maximumWater");
+            }
+            return maximumWater;
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
     }
 }

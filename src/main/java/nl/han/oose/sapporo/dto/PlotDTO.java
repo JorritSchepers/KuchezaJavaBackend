@@ -128,6 +128,8 @@ public class PlotDTO {
         this.purchased = purchased;
     }
 
+    public int getWaterAvailable() { return waterAvailable; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

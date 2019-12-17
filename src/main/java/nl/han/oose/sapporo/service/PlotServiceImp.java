@@ -25,7 +25,6 @@ public class PlotServiceImp implements IPlotService {
     private IActionService actionService;
     private final int START_WATER = 25;
     private final int MINIMUM_PLOT_WATER = 0;
-    private final int MAXIMUM_PLOT_WATER = 100;
 
     @Inject
     public void setPlantDAO(IPlantDAO plantDAO) {
@@ -107,7 +106,7 @@ public class PlotServiceImp implements IPlotService {
     }
 
     @Override
-    public void updageAge(int plotID, int age) {
+    public void updateAge(int plotID, int age) {
         plotDAO.updateAge(plotID,age);
     }
 
@@ -115,15 +114,23 @@ public class PlotServiceImp implements IPlotService {
     public PlotDTO editWater(UserDTO user, int plotID, int amount) {
         final int GIVE_WATER_ACTION_ID = 3;
         PlotDTO plotDTO =  plotDAO.getPlot(plotID);
+                System.out.println(0);
         String affectedPlant = plantDAO.getname(plotDTO.getPlantID());
+                System.out.println(1);
         if (inventoryService.checkIfPlayerHasEnoughWater(amount, user) && plotDAO.plotHasPlant(plotID)){
-            int plotWater = plotDAO.getWater(plotID);
-            int amountThatFits = calculateWaterThatFits(plotWater,amount,MINIMUM_PLOT_WATER,MAXIMUM_PLOT_WATER);
+            System.out.println(2);
+            PlotDTO plot = plotDAO.getPlot(plotID);
+                    System.out.println(3);
+            int amountThatFits = calculateWaterThatFits(plot.getWaterAvailable(),amount,MINIMUM_PLOT_WATER,plantService.getMaximumWater(plot.getPlantID()));
             if (amountThatFits >0){
+                        System.out.println(31);
                 actionService.setAction(user,GIVE_WATER_ACTION_ID,affectedPlant);
             }
+                    System.out.println(4);
             inventoryService.lowerWater(amountThatFits, user);
+                    System.out.println(5);
             plotDAO.editWaterAvailable(amountThatFits, plotID);
+                    System.out.println(6);
             return plotDAO.getPlot(plotID);
         }
         return null;
@@ -140,7 +147,7 @@ public class PlotServiceImp implements IPlotService {
         }
         return null;
     }
-    
+
     private int calculateWaterThatFits(int originalAmount, int amountAdded, int min, int max) {
         if (originalAmount + amountAdded < min) {
             return -(min + originalAmount);
@@ -149,5 +156,10 @@ public class PlotServiceImp implements IPlotService {
         } else {
             return amountAdded;
         }
+    }
+
+    @Override
+    public void replacePlantsOnAllPlots(int plantIDToDelete, int plantIDToReplaceWith) {
+        plotDAO.replacePlantsOnAllPlots(plantIDToDelete, plantIDToReplaceWith);
     }
 }
