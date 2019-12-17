@@ -254,12 +254,20 @@ class PlotServiceTest {
 
     @Test
     void placeAnimalCallsLowerSaldo() {
+        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
+        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughSaldo(PRICE, USER)).thenReturn(true);
+        Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
+        Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(FARM);
         sut.placeAnimal(ANIMAL, PLOT_ID, USER);
         Mockito.verify(mockedInventoryService, Mockito.times(1)).lowerSaldo(PRICE, USER);
     }
 
     @Test
     void placeAnimalCallsLowerWater() {
+        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
+        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughSaldo(PRICE, USER)).thenReturn(true);
+        Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
+        Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(FARM);
         final int START_WATER = 25;
         sut.placeAnimal(ANIMAL, PLOT_ID, USER);
         Mockito.verify(mockedInventoryService, Mockito.times(1)).lowerWater(START_WATER, USER);
@@ -267,20 +275,34 @@ class PlotServiceTest {
 
     @Test
     void placeAnimalCallsAddAnimalToPlot() {
+        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
+        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughSaldo(PRICE, USER)).thenReturn(true);
+        Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
+        Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(FARM);
         sut.placeAnimal(ANIMAL, PLOT_ID, USER);
         Mockito.verify(mockedPlotDAO, Mockito.times(1)).addAnimalToPlot(ANIMAL, PLOT_ID);
     }
 
     @Test
     void placeAnimalCallsGetFarm() {
+        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
+        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughSaldo(PRICE, USER)).thenReturn(true);
+        Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
+        Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(FARM);
         sut.placeAnimal(ANIMAL, PLOT_ID, USER);
         Mockito.verify(mockedFarmDAO, Mockito.times(1)).getFarm(USER);
     }
 
     @Test
     void placeAnimalReturnsAllPlots() {
+        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
         final ArrayList<PlotDTO> PLOTS = new ArrayList<>() {{ add(PLOT); }};
         final AllPlotDTO ALL_PLOTS = new AllPlotDTO(PLOTS);
+        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughSaldo(PRICE, USER)).thenReturn(true);
+        Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
+        Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(FARM);
+        Mockito.when(mockedPlotDAO.getFarmPlots(FARM_ID)).thenReturn(PLOTS);
+
         Assertions.assertEquals(ALL_PLOTS.getPlots().size(), sut.placeAnimal(ANIMAL, PLOT_ID, USER).getPlots().size());
     }
 }
