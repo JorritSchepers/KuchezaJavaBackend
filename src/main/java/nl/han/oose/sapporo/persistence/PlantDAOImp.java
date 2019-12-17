@@ -121,20 +121,4 @@ public class PlantDAOImp implements IPlantDAO{
         }
         return new AllPlantDTO(plants);
     }
-
-    @Override
-    public int getMaximumWater(int id) {
-        try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("select maximumWater from plant where plantID = ?");
-            statement.setInt(1,id);
-            ResultSet resultSet = statement.executeQuery();
-            int maximumWater = 0;
-            while (resultSet.next()) {
-                maximumWater = resultSet.getInt("maximumWater");
-            }
-            return maximumWater;
-        } catch (SQLException e) {
-            throw new PersistenceException();
-        }
-    }
 }

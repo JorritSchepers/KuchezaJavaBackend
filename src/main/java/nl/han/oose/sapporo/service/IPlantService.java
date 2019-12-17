@@ -7,8 +7,6 @@ import nl.han.oose.sapporo.dto.UserDTO;
 public interface IPlantService {
     AllPlantDTO getAllPlants();
 
-    int getMaximumWater(int plantID);
-
     boolean plantFullGrown(PlotDTO plotDTO);
 
     void deletePlant(UserDTO user, int plantIDToDelete, int plantIDToReplaceWith);

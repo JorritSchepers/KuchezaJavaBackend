@@ -17,6 +17,7 @@ class PlotDAOTest extends DAOTest {
     private final int PURCHASE_PLOT_ID = 3;
     private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1,100);
     private AnimalDTO ANIMAL = new AnimalDTO(1, "Cow", 10, 300, 10, 20, 1);
+    private final int ANIMALPLOTID = 3;
 
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
@@ -172,8 +173,8 @@ class PlotDAOTest extends DAOTest {
 
     @Test
     void checkIfAddPlantToPlotAddsPlant() {
-        sut.addPlantToPlot(PLANT, PLOTID);
-        Assertions.assertEquals(getPlantIDFromPlot(PLANT.getID()), getPlantIDFromPlot(PLOTID));
+        sut.addPlantToPlot(plant, PLOTID);
+        Assertions.assertEquals(getPlantIDFromPlot(plant.getID()), getPlantIDFromPlot(PLOTID));
     }
 
     @Test
@@ -232,13 +233,6 @@ class PlotDAOTest extends DAOTest {
     }
 
     @Test
-    void checkIfPlotIsNotFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
-        Assertions.assertDoesNotThrow( () -> {
-            sut.editWaterAvailable(WATER_ADD, PLOTID);
-        });
-    }
-
-    @Test
     void increaseWaterIncreasesWaterWithRightAmount() {
         int extraWater = WATER_ADD;
         int oldWater = getWaterFromPlot(PLOTID);
@@ -253,7 +247,8 @@ class PlotDAOTest extends DAOTest {
         sut.changeStatus(1, "Dead");
         Assertions.assertEquals(expected,getStatus(1,1));
     }
-    
+
+    @Test
     void checkIfAddAnimalToPlotAddsAnimal() {
         sut.addAnimalToPlot(ANIMAL, ANIMALPLOTID);
         Assertions.assertEquals(ANIMAL.getID(), getAnimalIDFromPlot(ANIMALPLOTID));

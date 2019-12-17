@@ -87,7 +87,6 @@ public class PlotResource {
                 .entity(plotService.changeStatus(plotID, status))
                 .build();
     }
-}
 
     @Path("/{id}/animal")
     @Consumes(MediaType.APPLICATION_JSON)

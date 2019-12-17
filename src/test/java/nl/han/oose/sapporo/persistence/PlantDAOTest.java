@@ -22,14 +22,6 @@ class PlantDAOTest extends DAOTest {
     }
 
     @Test
-    void getAllPlantsGetsRightAmountOfPlants() {
-        int AMOUNT_OF_PLANTS = 3;
-        AllPlantDTO allPlants = sut.getAllPlants();
-        ArrayList<PlantDTO> plants = allPlants.getPlants();
-        Assertions.assertEquals(AMOUNT_OF_PLANTS, plants.size());
-    }
-
-    @Test
     void checkIfPlantFullGrownReturnsTrueWhenGrown() {
         Assertions.assertTrue(sut.checkIfPlantFullGrown(PLOT_WITH_GROWN_PLANT));
     }

@@ -116,7 +116,7 @@ public class PlotResourceTest {
         Response excpected = Response.status(Response.Status.OK)
                 .entity(PLOT)
                 .build();
-        Response result = sut.changeStatus(token,10,"Normal");
+        Response result = sut.changeStatus(TOKEN,10,"Normal");
 
         Assert.assertEquals(excpected.toString(),result.toString());
     }

@@ -25,11 +25,6 @@ public class PlantServiceImp implements IPlantService {
     }
 
     @Override
-    public int getMaximumWater(int plantID) {
-        return plantDAO.getMaximumWater(plantID);
-    }
-
-    @Override
     public boolean plantFullGrown(PlotDTO plotDTO) {
         if (!plantDAO.checkIfPlantFullGrown(plotDTO)) {
             throw new PlantNotGrownException();
