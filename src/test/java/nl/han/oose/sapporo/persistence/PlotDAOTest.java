@@ -15,9 +15,9 @@ class PlotDAOTest extends DAOTest {
     private final int FULLPLOTID = 2;
     private final int WATER_ADD = 20;
     private final int PURCHASE_PLOT_ID = 3;
-    private final int ANIMALPLOTID = 3;
-    private PlantDTO PLANT = new PlantDTO(1, "Cabbage", 1, 1, 1, 1);
+    private final PlantDTO PLANT = new PlantDTO(1, "Cabbage", 1, 1, 1, 1,100);
     private AnimalDTO ANIMAL = new AnimalDTO(1, "Cow", 10, 300, 10, 20, 1);
+    private final int ANIMALPLOTID = 3;
 
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
@@ -120,6 +120,23 @@ class PlotDAOTest extends DAOTest {
         return 0;
     }
 
+    private String getStatus(int x, int y){
+        String status = "";
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("select status from plot where x =? and y=?");
+            statement.setInt(1,x);
+            statement.setInt(2,y);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                status = resultSet.getString("status");
+            }
+            return status;
+
+        } catch (SQLException ignored) {
+        }
+        return "";
+    }
+
     private boolean plotIsPurchased(int plotID) {
         try (Connection connection = DriverManager.getConnection(DB_URL)) {
             PreparedStatement statement = connection.prepareStatement("select purchased from plot where plotID = ?");
@@ -140,6 +157,13 @@ class PlotDAOTest extends DAOTest {
     @Test
     void checkIfPlotIsEmptyReturnsTrueWhenEmpty() {
         Assertions.assertTrue(sut.checkIfPlotIsEmpty(1));
+    }
+
+    @Test
+    void checkIfPlotIsNotFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
+        Assertions.assertDoesNotThrow( () -> {
+            sut.editWaterAvailable(WATER_ADD, PLOTID);
+        });
     }
 
     @Test
@@ -216,19 +240,19 @@ class PlotDAOTest extends DAOTest {
     }
 
     @Test
-    void checkIfPlotIsNotFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
-        Assertions.assertDoesNotThrow( () -> {
-            sut.editWaterAvailable(WATER_ADD, PLOTID);
-        });
-    }
-
-    @Test
     void increaseWaterIncreasesWaterWithRightAmount() {
         int extraWater = WATER_ADD;
         int oldWater = getWaterFromPlot(PLOTID);
         sut.editWaterAvailable(extraWater, PLOTID);
         int newWater = getWaterFromPlot(PLOTID);
         Assertions.assertEquals((oldWater + extraWater), newWater);
+    }
+
+    @Test
+    void changeStatusChangesStatusInDatabase() {
+        String expected = "Dead";
+        sut.changeStatus(1, "Dead");
+        Assertions.assertEquals(expected,getStatus(1,1));
     }
 
     @Test

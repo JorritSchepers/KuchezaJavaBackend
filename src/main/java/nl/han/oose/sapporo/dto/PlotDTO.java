@@ -13,6 +13,7 @@ public class PlotDTO {
     private int waterAvailable;
     private float price;
     private int age;
+    private String status = "";
 
     public PlotDTO() { }
 
@@ -34,6 +35,20 @@ public class PlotDTO {
         this.purchased = purchased;
         this.age = age;
         this.waterAvailable = waterAvailable;
+    }
+
+    public PlotDTO(int ID, int x, int y, int animalID, int waterManagerID, int plantID, float price, boolean purchased, int age, int waterAvailable, String status) {
+        this.ID = ID;
+        this.x = x;
+        this.y = y;
+        this.animalID = animalID;
+        this.waterManagerID = waterManagerID;
+        this.plantID = plantID;
+        this.price = price;
+        this.purchased = purchased;
+        this.age = age;
+        this.waterAvailable = waterAvailable;
+        this.status =status;
     }
 
     public PlotDTO(int ID, int x, int y, int animalID, int waterManagerID, int plantID, float price) {
@@ -83,13 +98,15 @@ public class PlotDTO {
         this.age = objectAge;
     }
 
-    public PlotDTO(int plotID, int x, int y, int price, boolean purchased, int objectAge, int waterAvailable) {
+    public PlotDTO(int plotID, int x, int y, int price, boolean purchased, int objectAge, int waterAvailable, String status) {
         this.ID = plotID;
         this.x = x;
         this.y = y;
         this.price = price;
+        this.age = objectAge;
         this.purchased = purchased;
         this.waterAvailable = waterAvailable;
+        this.status = status;
     }
 
     public int getAge() {
@@ -129,6 +146,14 @@ public class PlotDTO {
     }
 
     public int getWaterAvailable() { return waterAvailable; }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,4 +1,5 @@
 drop table plot;
+drop table status;
 drop table animal;
 drop table waterManager;
 drop table plant;

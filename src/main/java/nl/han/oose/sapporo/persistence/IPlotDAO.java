@@ -28,6 +28,8 @@ public interface IPlotDAO {
 
     void updateAge(int plotID, int age);
 
+    void changeStatus(int plotID, String status);
+
     void editWaterAvailable(int amount, int plotID);
 
     void createSilo(FarmDTO farmDTO);

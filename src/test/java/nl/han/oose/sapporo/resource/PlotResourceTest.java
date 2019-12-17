@@ -5,8 +5,10 @@ import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IPlotService;
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 
 public class PlotResourceTest {
@@ -30,6 +32,7 @@ public class PlotResourceTest {
         Mockito.when(plotService.purchasePlot(1, USER)).thenReturn(ALL_PLOTS);
         Mockito.when(plotService.editWater(USER, 1, 10)).thenReturn(PLOT);
         Mockito.when(plotService.placeAnimal(animal, 1, USER)).thenReturn(ALL_PLOTS);
+        Mockito.when(plotService.changeStatus(10,"Normal")).thenReturn(PLOT);
     }
 
     @Test
@@ -109,6 +112,15 @@ public class PlotResourceTest {
     }
 
     @Test
+    public void waterPlantReturnsRightResponse() {
+        Response excpected = Response.status(Response.Status.OK)
+                .entity(PLOT)
+                .build();
+        Response result = sut.changeStatus(TOKEN,10,"Normal");
+
+        Assert.assertEquals(excpected.toString(),result.toString());
+    }
+
     public void placeAnimalCallsAuthenticateByToken() {
         sut.placeAnimalOnPlot(TOKEN, 1, animal);
         Mockito.verify(accountService, Mockito.times(1)).verifyToken(TOKEN);

@@ -21,6 +21,8 @@ public interface IPlotService {
 
     PlotDTO editWater(UserDTO user, int plotID, int amount);
 
+    PlotDTO changeStatus(int plotID, String status);
+    
     void replacePlantsOnAllPlots(int plantIDToDelete, int plantIDToReplaceWith);
 
     AllPlotDTO placeAnimal(AnimalDTO animalDTO, int plotID, UserDTO userDTO);

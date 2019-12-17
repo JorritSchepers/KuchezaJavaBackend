@@ -79,6 +79,15 @@ public class PlotResource {
     }
 
     @POST
+    @Path("/{id}/status/{status}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response changeStatus(@QueryParam("token") String token, @PathParam("id") int plotID, @PathParam("status") String status) {
+        UserDTO user = accountService.verifyToken(token);
+        return Response.status(Response.Status.OK)
+                .entity(plotService.changeStatus(plotID, status))
+                .build();
+    }
+
     @Path("/{id}/animal")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

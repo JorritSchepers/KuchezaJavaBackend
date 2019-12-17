@@ -55,6 +55,10 @@ CREATE TABLE animal(
                        name VARCHAR(45) NOT NULL
 );
 
+CREATE TABLE status(
+    status VARCHAR(30)	NOT NULL	PRIMARY KEY
+);
+
 CREATE TABLE plot (
                       plotID int PRIMARY KEY AUTO_INCREMENT,
                       farmID int not null,
@@ -66,6 +70,7 @@ CREATE TABLE plot (
                       plantID int null,
                       waterAvailable int default 0 not null,
                       purchased bit,
+                      status 			VARCHAR(30) NOT NULL	default 'Normal',
                       age int DEFAULT 0,
                       objectAge int,
 
@@ -78,6 +83,9 @@ CREATE TABLE plot (
                       FOREIGN KEY (waterManagerId)
                           REFERENCES waterManager(waterManagerId)
                           ON UPDATE CASCADE ON DELETE CASCADE,
+                      FOREIGN KEY (status) REFERENCES status(status)
+                          ON UPDATE CASCADE
+                          ON DELETE CASCADE,
                       FOREIGN KEY (plantID)
                           REFERENCES plant(plantID)
                           ON UPDATE CASCADE ON DELETE CASCADE
@@ -128,11 +136,17 @@ VALUES
 (10,5,20,7.5,'Tomato', 200),
 (2.5,50,40,10,'Banana', 300);
 
-INSERT INTO plot (x,y,price,purchased, farmID,age,waterAvailable,objectAge)
+INSERT INTO status (status)
 VALUES
-(1,1,10,1,1,10,0,0),
-(1,2,10,1,1,10,100,0),
-(1,3,10,0,1,2000,0,0);
+('Normal'),
+('Dehydrated'),
+('Dead');
+
+INSERT INTO plot (x,y,price,purchased, farmID,age,waterAvailable,objectAge,status)
+VALUES
+(1,1,10,1,1,10,0,0,'Normal'),
+(1,2,10,1,1,10,100,0,'Normal'),
+(1,3,10,0,1,2000,0,0,'Normal');
 
 INSERT INTO animal (waterUsage,productionTime,maximumWater,profit,purchasePrice,name)
 VALUES

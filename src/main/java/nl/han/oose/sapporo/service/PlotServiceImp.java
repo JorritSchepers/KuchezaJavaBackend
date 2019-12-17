@@ -71,13 +71,21 @@ public class PlotServiceImp implements IPlotService {
 
     @Override
     public PlotDTO harvestPlant(PlotDTO plotDTO, UserDTO user, int plotID) {
-        final int HARVEST_PLANT_ACTION_ID = 2;
-        if (plantService.plantFullGrown(plotDAO.getPlot(plotID)) && plotDAO.plotHasPlant(plotID)) {
-            String affectedPlant = plantDAO.getname(plotDTO.getPlantID());
-            plotDAO.removeObjectsFromPlot(plotID);
-            int profit = plantDAO.getProfit(plotDTO.getPlantID());
-            inventoryService.increaseSaldo(profit, user);
-            actionService.setAction(user,HARVEST_PLANT_ACTION_ID,affectedPlant);
+        if (plotDAO.plotHasPlant(plotID)) {
+            if(!plotDTO.getStatus().equals("Dead")) {
+                int profit = plantDAO.getProfit(plotDTO.getPlantID());
+
+                if(plotDTO.getStatus().equals("Dehydrated")) {
+                    profit /= 2;
+                }
+
+                if(plantService.plantFullGrown(plotDAO.getPlot(plotID))) {
+                    inventoryService.increaseSaldo(profit, user);
+                    plotDAO.removeObjectsFromPlot(plotID);
+                }
+            } else {
+                plotDAO.removeObjectsFromPlot(plotID);
+            }
             return plotDAO.getPlot(plotID);
         }
         return null;
@@ -110,27 +118,23 @@ public class PlotServiceImp implements IPlotService {
         plotDAO.updateAge(plotID,age);
     }
 
+    public PlotDTO changeStatus(int plotID, String status) {
+        plotDAO.changeStatus(plotID,status);
+        return plotDAO.getPlot(plotID);
+    }
+
     @Override
     public PlotDTO editWater(UserDTO user, int plotID, int amount) {
         final int GIVE_WATER_ACTION_ID = 3;
         PlotDTO plotDTO =  plotDAO.getPlot(plotID);
-                System.out.println(0);
         String affectedPlant = plantDAO.getname(plotDTO.getPlantID());
-                System.out.println(1);
+
         if (inventoryService.checkIfPlayerHasEnoughWater(amount, user) && plotDAO.plotHasPlant(plotID)){
-            System.out.println(2);
             PlotDTO plot = plotDAO.getPlot(plotID);
-                    System.out.println(3);
             int amountThatFits = calculateWaterThatFits(plot.getWaterAvailable(),amount,MINIMUM_PLOT_WATER,plantService.getMaximumWater(plot.getPlantID()));
-            if (amountThatFits >0){
-                        System.out.println(31);
-                actionService.setAction(user,GIVE_WATER_ACTION_ID,affectedPlant);
-            }
-                    System.out.println(4);
+
             inventoryService.lowerWater(amountThatFits, user);
-                    System.out.println(5);
             plotDAO.editWaterAvailable(amountThatFits, plotID);
-                    System.out.println(6);
             return plotDAO.getPlot(plotID);
         }
         return null;
@@ -149,8 +153,8 @@ public class PlotServiceImp implements IPlotService {
     }
 
     private int calculateWaterThatFits(int originalAmount, int amountAdded, int min, int max) {
-        if (originalAmount + amountAdded < min) {
-            return -(min + originalAmount);
+        if(originalAmount + amountAdded < min) {
+            return -(min+originalAmount);
         } else if (originalAmount + amountAdded > max) {
             return max - originalAmount;
         } else {

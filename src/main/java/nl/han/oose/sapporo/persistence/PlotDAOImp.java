@@ -97,9 +97,11 @@ public class PlotDAOImp implements IPlotDAO {
                 float price = resultSet.getFloat("price");
                 int waterAvailable = resultSet.getInt("waterAvailable");
                 boolean purchased = resultSet.getBoolean("purchased");
+                String status = resultSet.getString("status");
                 plotDTO = new PlotDTO(iD, x, y, price, purchased, waterAvailable);
                 plotDTO.setAge(resultSet.getInt("objectAge"));
                 plotDTO.setPlantID(resultSet.getInt("plantID"));
+                plotDTO.setStatus(status);
             }
 
             if(plotDTO == null) {
@@ -115,7 +117,7 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public void removeObjectsFromPlot(int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("update plot set animalId = null, waterManagerId = null, plantID = null, objectAge = 0, waterAvailable = 0 where plotID = ?");
+            PreparedStatement statement = connection.prepareStatement("update plot set animalId = null, waterManagerId = null, plantID = null, objectAge = 0, waterAvailable = 0, status='Normal' where plotID = ?");
             statement.setInt(1, plotID);
             statement.execute();
         } catch (SQLException e) {
@@ -173,7 +175,7 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public ArrayList<PlotDTO> getFarmPlots(int farmID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT plotID,x,y,price,animalID,waterManagerID,plantID,purchased,objectAge,waterAvailable FROM plot where farmID = ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT plotID,x,y,price,animalID,waterManagerID,plantID,purchased,objectAge,waterAvailable,status FROM plot where farmID = ?");
             statement.setInt(1, farmID);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<PlotDTO> plots = new ArrayList<>();
@@ -189,7 +191,8 @@ public class PlotDAOImp implements IPlotDAO {
                 int waterAvailable = resultSet.getInt("waterAvailable");
                 boolean purchased = resultSet.getBoolean("purchased");
                 int age = resultSet.getInt("objectAge");
-                PlotDTO plot = new PlotDTO(ID, x, y, animalID, waterManagerID, plantID, price, purchased,age, waterAvailable);
+                String status = resultSet.getString("status");
+                PlotDTO plot = new PlotDTO(ID, x, y, animalID, waterManagerID, plantID, price, purchased,age, waterAvailable, status);
                 plots.add(plot);
             }
             return plots;
@@ -210,6 +213,18 @@ public class PlotDAOImp implements IPlotDAO {
         }
     }
 
+    @Override
+    public void changeStatus(int plotID, String status) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("UPDATE plot SET status = ? WHERE plotID = ?");
+            statement.setString(1,status);
+            statement.setInt(2,plotID);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+    
     public void editWaterAvailable(int amount, int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
