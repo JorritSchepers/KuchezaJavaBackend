@@ -33,7 +33,8 @@ CREATE TABLE plant(
                       growingTime INT NOT NULL,
                       profit INT NOT NULL,
                       purchasePrice INT NOT NULL,
-                      name VARCHAR(45) NOT NULL
+                      name VARCHAR(45) NOT NULL,
+                      maximumWater int NOT NULL
 );
 
 CREATE TABLE waterManager(
@@ -45,11 +46,13 @@ CREATE TABLE waterManager(
 
 
 CREATE TABLE animal(
-                       animalId int PRIMARY KEY AUTO_INCREMENT,
-                       waterUsage int,
-                       profit float,
-                       purchasePrice float not null,
-                       name varchar(45) not null
+                       animalId INT PRIMARY KEY AUTO_INCREMENT,
+                       waterUsage INT NOT NULL,
+                       productionTime INT NOT NULL,
+                       maximumWater INT,
+                       profit INT NOT NULL,
+                       purchasePrice INT NOT NULL,
+                       name VARCHAR(45) NOT NULL
 );
 
 CREATE TABLE status(
@@ -88,6 +91,29 @@ CREATE TABLE plot (
                           ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+create table action (
+                        actionID int PRIMARY KEY AUTO_INCREMENT,
+                        actionText varchar(45) not null
+);
+
+create table actionPerPlayer (
+                                 userID int,
+                                 actionID int,
+                                 dateOfAction DATETIME DEFAULT CURRENT_TIMESTAMP,
+                                 affectedItem varchar(45) null,
+                                 currentWater int not null,
+                                 currentMoney int not null,
+
+                                 PRIMARY KEY (userID, actionID,dateOfAction),
+
+                                 FOREIGN KEY (userID)
+                                     REFERENCES user(userID)
+                                     ON UPDATE CASCADE ON DELETE CASCADE,
+                                 FOREIGN KEY (actionID)
+                                     REFERENCES action(actionID)
+                                     ON UPDATE CASCADE ON DELETE CASCADE
+);
+
 INSERT INTO user (name,password,email,admin)
 VALUES
 ('PatrickSt3r','DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937','Patrick@Ster.com', 0),
@@ -104,11 +130,11 @@ Insert into inventory Values
 (2,1000,2000),
 (3,1000,2000);
 
-INSERT INTO plant (waterUsage,growingTime,profit,purchasePrice,name)
+INSERT INTO plant (waterUsage,growingTime,profit,purchasePrice,name,maximumWater)
 VALUES
-(5,10,20,5,'Cabbage'),
-(10,5,20,7.5,'Tomato'),
-(2.5,50,40,10,'Banana');
+(5,10,20,5,'Cabbage', 100),
+(10,5,20,7.5,'Tomato', 200),
+(2.5,50,40,10,'Banana', 300);
 
 INSERT INTO status (status)
 VALUES
@@ -122,4 +148,19 @@ VALUES
 (1,2,10,1,1,10,100,0,'Normal'),
 (1,3,10,0,1,2000,0,0,'Normal');
 
+INSERT INTO animal (waterUsage,productionTime,maximumWater,profit,purchasePrice,name)
+VALUES
+(10,10,300,20,5,'Cow');
+
 update plot set plantID = 1 where plotID = 2;
+
+INSERT INTO action (actionText)
+VALUES
+('Planted a seed'),
+('Harvested a plant'),
+('Gave a plant water'),
+('Bought a plot'),
+('Lost a plant'),
+('Bought an animal'),
+('Lost an animal'),
+('Sold an item from an animal');

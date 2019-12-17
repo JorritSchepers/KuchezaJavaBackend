@@ -21,4 +21,12 @@ public class InventoryDTO {
                 money == that.money &&
                 water == that.water;
     }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public int getWater() {
+        return water;
+    }
 }

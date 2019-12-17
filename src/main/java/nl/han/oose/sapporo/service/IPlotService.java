@@ -4,6 +4,7 @@ import nl.han.oose.sapporo.dto.AllPlotDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
+import nl.han.oose.sapporo.dto.AnimalDTO;
 
 import java.util.ArrayList;
 
@@ -14,10 +15,15 @@ public interface IPlotService {
 
     ArrayList<PlotDTO> getFarmPlots(int farmID);
 
-    void updageAge(int plotID, int age);
+    void updateAge(int plotID, int age);
 
     AllPlotDTO purchasePlot(int plotID, UserDTO userDTO);
+
     PlotDTO editWater(UserDTO user, int plotID, int amount);
 
     PlotDTO changeStatus(int plotID, String status);
+    
+    void replacePlantsOnAllPlots(int plantIDToDelete, int plantIDToReplaceWith);
+
+    AllPlotDTO placeAnimal(AnimalDTO animalDTO, int plotID, UserDTO userDTO);
 }

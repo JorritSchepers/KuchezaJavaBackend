@@ -1,5 +1,6 @@
 package nl.han.oose.sapporo.resource;
 
+import nl.han.oose.sapporo.dto.AnimalDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
@@ -63,7 +64,7 @@ public class PlotResource {
     @Path("/{id}/updateAge/{age}")
     public Response updateAge(@QueryParam("token") String token, @PathParam("id") int plotID, @PathParam("age") int age) {
         UserDTO user = accountService.verifyToken(token);
-        plotService.updageAge(plotID,age);
+        plotService.updateAge(plotID,age);
         return Response.status(Response.Status.OK).entity("plant").build();
     }
 
@@ -84,6 +85,17 @@ public class PlotResource {
         UserDTO user = accountService.verifyToken(token);
         return Response.status(Response.Status.OK)
                 .entity(plotService.changeStatus(plotID, status))
+                .build();
+    }
+}
+
+    @Path("/{id}/animal")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response placeAnimalOnPlot(@QueryParam("token") String token, @PathParam("id") int plotID, AnimalDTO animalDTO) {
+        UserDTO user = accountService.verifyToken(token);
+        return Response.status(Response.Status.OK)
+                .entity(plotService.placeAnimal(animalDTO, plotID, user))
                 .build();
     }
 }

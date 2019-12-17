@@ -8,13 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/PlotDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/PlotDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/PlotServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/PlotServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/test-DestroyScript.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/test-DestroyScript.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/dto/PlotDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/dto/PlotDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/service/PlotServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/service/PlotServiceImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/service/PlotServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/service/PlotServiceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/test-DestroyScript.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test-DestroyScript.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -149,12 +142,12 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.nl.han.oose.sapporo in KuchezaGame">
+  <component name="RunManager" selected="TomEE Server.TomEE 8.5.41">
     <configuration name="PlotServiceTest.purchasePlotReturnsAllPlots" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="KuchezaGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="nl.han.oose.sapporo.service.*" />
+          <option name="PATTERN" value="nl.han.oose.sapporo.persistence.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -305,6 +298,11 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.PlotServiceTest.waterPlantCallsGetPlot" />
+      <item itemvalue="JUnit.PlotServiceTest.waterPlantCallsPlotHasPlant" />
+      <item itemvalue="JUnit.PlotServiceTest.waterPlantReturnsPlot" />
+      <item itemvalue="JUnit.PlotServiceTest.purchasePlotReturnsAllPlots" />
+      <item itemvalue="JUnit.nl.han.oose.sapporo in KuchezaGame" />
       <item itemvalue="TomEE Server.TomEE 8.5.41" />
       <item itemvalue="JUnit.PlotServiceTest.waterPlantCallsGetPlot" />
       <item itemvalue="JUnit.PlotServiceTest.waterPlantCallsPlotHasPlant" />
@@ -373,6 +371,8 @@
       <workItem from="1576280475806" duration="84000" />
       <workItem from="1576486574006" duration="5468000" />
       <workItem from="1576500467568" duration="2775000" />
+      <workItem from="1576579940592" duration="320000" />
+      <workItem from="1576580530014" duration="419000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1574072988467</created>
@@ -461,8 +461,9 @@
     <SUITE FILE_PATH="coverage/kuchezagame$nl_han_oose_sapporo_in_KuchezaGame.ic" NAME="nl.han.oose.sapporo in KuchezaGame Coverage Results" MODIFIED="1574760252334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.sapporo.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/kuchezagame$nl_han_oose_sapporo_in_kuchezagame.ic" NAME="nl.han.oose.sapporo in kuchezagame Coverage Results" MODIFIED="1575905820855" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>nl.han.oose.sapporo.*</FILTER>
+    <SUITE FILE_PATH="coverage/kuchezagame$All_in_kuchezagame.ic" NAME="All in kuchezagame Coverage Results" MODIFIED="1576585095961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/kuchezagame$PlantServiceTest.ic" NAME="PlantServiceTest Coverage Results" MODIFIED="1576493295788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.sapporo.service.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__3_.ic" NAME="All in KuchezaGame (3) Coverage Results" MODIFIED="1575899664806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__2_.ic" NAME="All in KuchezaGame (2) Coverage Results" MODIFIED="1575904311552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

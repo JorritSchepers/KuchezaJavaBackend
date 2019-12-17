@@ -18,7 +18,6 @@ public class AccountResource {
         this.accountService = accountService;
     }
 
-
     @POST
     @Path("/register")
     @Consumes(MediaType.APPLICATION_JSON)

@@ -12,7 +12,7 @@ import java.sql.*;
 
 class InventoryDAOTest extends DAOTest {
     private InventoryDAOImp sut = new InventoryDAOImp();
-    private UserDTO userDTO = new UserDTO(1, "PatrickSt3r", "DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937", "Patrick@Ster.com");
+    private final UserDTO USER = new UserDTO(1, "PatrickSt3r", "DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937", "Patrick@Ster.com");
 
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
@@ -22,71 +22,71 @@ class InventoryDAOTest extends DAOTest {
     @Test
     void checkSaldoReturnsTrueWhenSaldoIsEnough() {
         int availableAmount = 10;
-        Assertions.assertTrue(sut.checkSaldo(availableAmount, userDTO));
+        Assertions.assertTrue(sut.checkSaldo(availableAmount, USER));
     }
 
     @Test
     void checkSaldoThrowsExceptionWhenSaldoIsNotEnough() {
         int unavailableAmount = 10000;
         Assertions.assertThrows(InsufficientFundsException.class, () -> {
-            sut.checkSaldo(unavailableAmount, userDTO);
+            sut.checkSaldo(unavailableAmount, USER);
         });
     }
 
     @Test
     void lowerSaldoLowersSaldoWithRightAmount() {
         float removedSaldo = 10;
-        float oldSaldo = getSaldoFromUser(userDTO.getID());
-        sut.lowerSaldo(removedSaldo, userDTO);
-        float newSaldo = getSaldoFromUser(userDTO.getID());
+        float oldSaldo = getSaldoFromUser(USER.getID());
+        sut.lowerSaldo(removedSaldo, USER);
+        float newSaldo = getSaldoFromUser(USER.getID());
         Assertions.assertEquals((oldSaldo - removedSaldo), newSaldo);
     }
 
     @Test
     void increaseSaldoIncreasesSaldoWithRightAmount() {
         float extraSaldo = 10;
-        float oldSaldo = getSaldoFromUser(userDTO.getID());
-        sut.increaseSaldo(extraSaldo, userDTO);
-        float newSaldo = getSaldoFromUser(userDTO.getID());
+        float oldSaldo = getSaldoFromUser(USER.getID());
+        sut.increaseSaldo(extraSaldo, USER);
+        float newSaldo = getSaldoFromUser(USER.getID());
         Assertions.assertEquals((oldSaldo + extraSaldo), newSaldo);
     }
 
     @Test
     void checkWaterReturnsTrueWhenWaterIsEnough() {
         int availableAmount = 10;
-        Assertions.assertTrue(sut.checkWater(availableAmount, userDTO));
+        Assertions.assertTrue(sut.checkWater(availableAmount, USER));
     }
 
     @Test
     void checkWaterThrowsExceptionWhenWaterIsNotEnough() {
         int unavailableAmount = 10000;
         Assertions.assertThrows(InsufficientWaterException.class, () -> {
-            sut.checkWater(unavailableAmount, userDTO);
+            sut.checkWater(unavailableAmount, USER);
         });
     }
 
     @Test
     void lowerWaterLowersWaterWithRightAmount() {
         int removedWater = 10;
-        int oldWater = getWaterFromUser(userDTO.getID());
-        sut.lowerWater(removedWater, userDTO);
-        int newWater = getWaterFromUser(userDTO.getID());
+        int oldWater = getWaterFromUser(USER.getID());
+        sut.lowerWater(removedWater, USER);
+        int newWater = getWaterFromUser(USER.getID());
         Assertions.assertEquals((oldWater - removedWater), newWater);
     }
 
     @Test
     void increaseWaterIncreasesWaterWithRightAmount() {
         int extraWater = 10;
-        int oldWater = getWaterFromUser(userDTO.getID());
-        sut.increaseWater(extraWater, userDTO);
-        int newWater = getWaterFromUser(userDTO.getID());
+        int oldWater = getWaterFromUser(USER.getID());
+        sut.increaseWater(extraWater, USER);
+        int newWater = getWaterFromUser(USER.getID());
         Assertions.assertEquals((oldWater + extraWater), newWater);
     }
 
     @Test
     void getInventoryReturnsRightInventory(){
         InventoryDTO expectedInventoryDTO =  new InventoryDTO(1,2000,1000);
-        Assertions.assertEquals(expectedInventoryDTO, sut.getInventory(userDTO));
+        Assertions.assertEquals(expectedInventoryDTO, sut.getInventory(USER));
     }
 
     private int getSaldoFromUser(int userId) {
