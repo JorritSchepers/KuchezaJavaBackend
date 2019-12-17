@@ -138,6 +138,7 @@ VALUES
 (10,10,300,20,5,'Cow');
 
 update plot set plantID = 1 where plotID = 2;
+update plot set animalID = 1 where plotID = 3;
 
 INSERT INTO action (actionText)
 VALUES

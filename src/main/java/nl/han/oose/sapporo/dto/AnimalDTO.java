@@ -29,4 +29,8 @@ public class AnimalDTO {
     public int getID() {
         return ID;
     }
+
+    public String getName() {
+        return name;
+    }
 }
