@@ -15,7 +15,7 @@ class PlotDAOTest extends DAOTest {
     private final int FULLPLOTID = 2;
     private final int WATER_ADD = 20;
     private final int PURCHASE_PLOT_ID = 3;
-    private PlantDTO plant = new PlantDTO(1, "Cabbage", 1, 1, 1, 1,100);
+    private final PlantDTO PLANT = new PlantDTO(1, "Cabbage", 1, 1, 1, 1,100);
     private AnimalDTO ANIMAL = new AnimalDTO(1, "Cow", 10, 300, 10, 20, 1);
     private final int ANIMALPLOTID = 3;
 
@@ -160,6 +160,13 @@ class PlotDAOTest extends DAOTest {
     }
 
     @Test
+    void checkIfPlotIsNotFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
+        Assertions.assertDoesNotThrow( () -> {
+            sut.editWaterAvailable(WATER_ADD, PLOTID);
+        });
+    }
+
+    @Test
     void checkIfPlotIsEmptyThrowsExceptionWhenNotEmpty() {
         Assertions.assertThrows(PlotIsOccupiedException.class, () -> {
             sut.checkIfPlotIsEmpty(2);
@@ -173,8 +180,8 @@ class PlotDAOTest extends DAOTest {
 
     @Test
     void checkIfAddPlantToPlotAddsPlant() {
-        sut.addPlantToPlot(plant, PLOTID);
-        Assertions.assertEquals(getPlantIDFromPlot(plant.getID()), getPlantIDFromPlot(PLOTID));
+        sut.addPlantToPlot(PLANT, PLOTID);
+        Assertions.assertEquals(getPlantIDFromPlot(PLANT.getID()), getPlantIDFromPlot(PLOTID));
     }
 
     @Test

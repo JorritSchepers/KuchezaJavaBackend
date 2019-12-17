@@ -47,7 +47,6 @@ class PlotServiceTest {
 
     @Test
     void placePlantCallsCheckSaldo() {
-        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughSaldo(PRICE, USER)).thenReturn(true);
         sut.placePlant(PLANT, PLOT_ID, USER);
         Mockito.verify(mockedInventoryService, Mockito.times(1)).checkIfPlayerHasEnoughSaldo(PRICE, USER);
     }
@@ -91,7 +90,6 @@ class PlotServiceTest {
     @Test
     void placePlantReturnsPlot() {
         Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
-        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughSaldo(PRICE,USER)).thenReturn(true);
         Mockito.when(mockedPlotDAO.getPlot(PLOT_ID)).thenReturn(PLOT);
         Assertions.assertEquals(PLOT, sut.placePlant(PLANT, PLOT_ID, USER));
     }
@@ -99,7 +97,6 @@ class PlotServiceTest {
     @Test
     void harvestPlantCallsPlantFullGrown() {
         Mockito.when(mockedPlotDAO.getPlot(PLOT_ID)).thenReturn(PLOT);
-        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughSaldo(PRICE,USER)).thenReturn(true);
         sut.harvestPlant(PLOT_WITH_GROWN_PLANT, USER, PLOT_ID);
         Mockito.verify(mockedPlantService, Mockito.times(1)).plantFullGrown(PLOT);
     }
@@ -191,7 +188,6 @@ class PlotServiceTest {
         Mockito.when(mockedPlotDAO.getPlot(PLOT_ID)).thenReturn(PLOT);
         Mockito.when(mockedPlotDAO.plotIsPurchased(PLOT_ID)).thenReturn(false);
         Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(new FarmDTO());
-        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughSaldo(PRICE,USER)).thenReturn(true);
         sut.purchasePlot(PLOT_ID, USER);
         Mockito.verify(mockedPlotDAO, Mockito.times(2)).plotIsPurchased(PLOT_ID);
     }
@@ -294,7 +290,6 @@ class PlotServiceTest {
     @Test
     void placeAnimalCallsLowerSaldo() {
         final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
-        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughSaldo(PRICE, USER)).thenReturn(true);
         Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
         Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(FARM);
         sut.placeAnimal(ANIMAL, PLOT_ID, USER);
@@ -304,7 +299,6 @@ class PlotServiceTest {
     @Test
     void placeAnimalCallsLowerWater() {
         final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
-        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughSaldo(PRICE, USER)).thenReturn(true);
         Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
         Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(FARM);
         final int START_WATER = 25;
@@ -315,7 +309,6 @@ class PlotServiceTest {
     @Test
     void placeAnimalCallsAddAnimalToPlot() {
         final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
-        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughSaldo(PRICE, USER)).thenReturn(true);
         Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
         Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(FARM);
         sut.placeAnimal(ANIMAL, PLOT_ID, USER);
@@ -325,7 +318,6 @@ class PlotServiceTest {
     @Test
     void placeAnimalCallsGetFarm() {
         final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
-        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughSaldo(PRICE, USER)).thenReturn(true);
         Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
         Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(FARM);
         sut.placeAnimal(ANIMAL, PLOT_ID, USER);
@@ -337,7 +329,6 @@ class PlotServiceTest {
         final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
         final ArrayList<PlotDTO> PLOTS = new ArrayList<>() {{ add(PLOT); }};
         final AllPlotDTO ALL_PLOTS = new AllPlotDTO(PLOTS);
-        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughSaldo(PRICE, USER)).thenReturn(true);
         Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
         Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(FARM);
         Mockito.when(mockedPlotDAO.getFarmPlots(FARM_ID)).thenReturn(PLOTS);
