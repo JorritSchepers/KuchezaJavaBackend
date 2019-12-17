@@ -15,12 +15,17 @@ public class PlantResourceTest {
     private PlantResource sut = new PlantResource();
     private IAccountService mockedAccountService = Mockito.mock(IAccountService.class);
     private IPlantService mockedPlantService = Mockito.mock(IPlantService.class);
+    private IAdminService mockedAdminService = Mockito.mock(IAdminService.class);
+    private IPlotService mockedPlotService = Mockito.mock(IPlotService.class);
     private AllPlantDTO ALL_PLANTS = new AllPlantDTO(null);
     private UserDTO USER = new UserDTO();
 
     public PlantResourceTest() {
         sut.setAccountService(mockedAccountService);
         sut.setPlantService(mockedPlantService);
+        sut.setAdminService(mockedAdminService);
+        sut.setPlotService(mockedPlotService);
+
         Mockito.when(mockedAccountService.verifyToken(TOKEN)).thenReturn(USER);
         Mockito.when(mockedPlantService.getAllPlants()).thenReturn(ALL_PLANTS);
     }
@@ -52,6 +57,18 @@ public class PlantResourceTest {
     public void deletePlantCallsDeletePlantInPlantService() {
         sut.deletePlant(TOKEN, 1, 2);
         Mockito.verify(mockedPlantService, Mockito.times(1)).deletePlant(USER, 1, 2);
+    }
+
+    @Test
+    public void deletePlantCallsCheckIfUserIsAdmin() {
+        sut.deletePlant(TOKEN, 1, 2);
+        Mockito.verify(mockedAdminService, Mockito.times(1)).checkIfUserIsAdmin(USER);
+    }
+
+    @Test
+    public void deletePlantCallsReplacePlantsOnAllPlots() {
+        sut.deletePlant(TOKEN, 1, 2);
+        Mockito.verify(mockedPlotService, Mockito.times(1)).replacePlantsOnAllPlots(1, 2);
     }
 
     @Test
