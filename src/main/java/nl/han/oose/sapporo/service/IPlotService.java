@@ -26,4 +26,7 @@ public interface IPlotService {
     void replacePlantsOnAllPlots(int plantIDToDelete, int plantIDToReplaceWith);
 
     AllPlotDTO placeAnimal(AnimalDTO animalDTO, int plotID, UserDTO userDTO);
+
+    AllPlotDTO sellProduct(PlotDTO plotDTO, UserDTO user, int plotID);
+
 }
