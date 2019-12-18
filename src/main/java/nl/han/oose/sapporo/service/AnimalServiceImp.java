@@ -1,6 +1,7 @@
 package nl.han.oose.sapporo.service;
 
 import nl.han.oose.sapporo.dto.AllAnimalDTO;
+import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.IAnimalDAO;
 
 import javax.enterprise.inject.Default;
@@ -18,5 +19,10 @@ public class AnimalServiceImp implements IAnimalService {
     @Override
     public AllAnimalDTO getAllAnimals() {
         return AnimalDAO.getAllAnimals();
+    }
+
+    @Override
+    public void deleteAnimal(int animalIDToDelete) {
+        AnimalDAO.deleteAnimal(animalIDToDelete);
     }
 }

@@ -293,4 +293,16 @@ public class PlotDAOImp implements IPlotDAO {
             throw new PersistenceException();
         }
     }
+
+    @Override
+    public void replaceAnimalsOnAllPlots(int animalIDToDelete, int animalIDToReplaceWith) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("update plot set animalID = ? where animalID = ?");
+            statement.setInt(1, animalIDToReplaceWith);
+            statement.setInt(2, animalIDToDelete);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
 }

@@ -32,6 +32,17 @@ public class AnimalDAOImp implements IAnimalDAO {
         }
     }
 
+    @Override
+    public void deleteAnimal(int animalIDToDelete) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("delete from animal where animalId = ?");
+            statement.setInt(1, animalIDToDelete);
+            statement.execute();
+        } catch (SQLException ignored) {
+            throw new PersistenceException();
+        }
+    }
+
     private AllAnimalDTO makeAllAnimalDTO(ResultSet resultSet) throws SQLException {
         ArrayList<AnimalDTO> animals = new ArrayList<>();
         while (resultSet.next()) {
