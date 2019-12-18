@@ -146,7 +146,7 @@ public class PlotDAOImp implements IPlotDAO {
                 plantID = resultSet.getInt("plantID");
             }
             if (plantID == 0) {
-                throw new PlotHasNotPlantException();
+                throw new PlotHasNoPlantException();
             } else return true;
         } catch (SQLException e) {
             throw new PersistenceException();
@@ -222,7 +222,7 @@ public class PlotDAOImp implements IPlotDAO {
             throw new PersistenceException();
         }
     }
-    
+
     public void editWaterAvailable(int amount, int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
@@ -287,6 +287,26 @@ public class PlotDAOImp implements IPlotDAO {
             statement.setInt(2, START_WATER);
             statement.setInt(3, plotID);
             statement.execute();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public boolean plotHasAnimal(int plotID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select animalID from plot where plotID = ?");
+            statement.setInt(1, plotID);
+            ResultSet resultSet = statement.executeQuery();
+
+            int animalID = 0;
+
+            while (resultSet.next()) {
+                animalID = resultSet.getInt("animalID");
+            }
+            if (animalID == 0) {
+                throw new PlotHasNoAnimalException();
+            } else return true;
         } catch (SQLException e) {
             throw new PersistenceException();
         }

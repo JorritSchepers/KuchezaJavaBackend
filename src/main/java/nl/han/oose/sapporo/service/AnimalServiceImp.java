@@ -1,7 +1,9 @@
 package nl.han.oose.sapporo.service;
 
 import nl.han.oose.sapporo.dto.AllAnimalDTO;
+import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.IAnimalDAO;
+import nl.han.oose.sapporo.persistence.exception.AnimalProductNotCollectableException;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;

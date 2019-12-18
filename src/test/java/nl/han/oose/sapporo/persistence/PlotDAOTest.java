@@ -101,12 +101,11 @@ class PlotDAOTest extends DAOTest {
        return plotAmount;
     }
 
-    private int getAge(int x, int y){
+    private int getAge(int plotID){
         int age = 0;
         try (Connection connection = DriverManager.getConnection(DB_URL)) {
-            PreparedStatement statement = connection.prepareStatement("select objectAge from plot where x =? and y=?");
-            statement.setInt(1,x);
-            statement.setInt(2,y);
+            PreparedStatement statement = connection.prepareStatement("select objectAge from plot where plotID = ?");
+            statement.setInt(1,plotID);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 age = resultSet.getInt("objectAge");
@@ -259,5 +258,17 @@ class PlotDAOTest extends DAOTest {
         final int ANIMAL_PLOT_ID = 3;
         sut.addAnimalToPlot(ANIMAL, ANIMAL_PLOT_ID);
         Assertions.assertEquals(ANIMAL.getId(), getAnimalIDFromPlot(ANIMAL_PLOT_ID));
+    }
+
+    @Test
+    void plotHasAnimalReturnsTrueWhenTrue() {
+        Assertions.assertTrue(sut.plotHasAnimal(ANIMALPLOTID));
+    }
+
+    @Test
+    void plotHasAnimalThrowsExceptionWhenFalse() {
+        Assertions.assertThrows(PlotHasNoAnimalException.class, () -> {
+            sut.plotHasAnimal(PLOTID);
+        });
     }
 }
