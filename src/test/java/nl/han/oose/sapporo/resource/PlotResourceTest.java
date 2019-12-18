@@ -75,7 +75,7 @@ public class PlotResourceTest {
     @Test
     public void updateAgeCallsUpdateAge() {
         sut.updateAge(TOKEN,PLOT_ID,1000);
-        Mockito.verify(plotService, Mockito.times(1)).updageAge(PLOT_ID,1000);
+        Mockito.verify(plotService, Mockito.times(1)).updateAge(PLOT_ID,1000);
     }
 
     @Test
