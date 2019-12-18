@@ -149,7 +149,7 @@ public class PlotDAOImp implements IPlotDAO {
                 plantID = resultSet.getInt("plantID");
             }
             if (plantID == 0) {
-                throw new PlotHasNotPlantException();
+                throw new PlotHasNoPlantException();
             } else return true;
         } catch (SQLException e) {
             throw new PersistenceException();
@@ -307,7 +307,7 @@ public class PlotDAOImp implements IPlotDAO {
                 animalID = resultSet.getInt("animalID");
             }
             if (animalID == 0) {
-                throw new PlotHasNotAnimalException();
+                throw new PlotHasNoAnimalException();
             } else return true;
         } catch (SQLException e) {
             throw new PersistenceException();
