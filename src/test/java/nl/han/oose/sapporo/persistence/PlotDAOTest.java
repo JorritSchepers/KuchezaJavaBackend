@@ -244,7 +244,7 @@ class PlotDAOTest extends DAOTest {
     @Test
     void plotHasAnimalThrowsExceptionWhenFalse() {
         Assertions.assertThrows(PlotHasNotAnimalException.class, () -> {
-            sut.plotHasAnimal(ANIMALPLOTID);
+            sut.plotHasAnimal(PLOTID);
         });
     }
 }
