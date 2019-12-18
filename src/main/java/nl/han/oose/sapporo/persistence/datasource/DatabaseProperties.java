@@ -32,8 +32,4 @@ public class DatabaseProperties {
     String getUrl() {
         return properties.getProperty("db.url");
     }
-
-    public String getDriver() {
-        return properties.getProperty("db.driver");
-    }
 }

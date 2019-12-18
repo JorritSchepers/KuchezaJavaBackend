@@ -27,12 +27,16 @@ public interface IPlotDAO {
     ArrayList<PlotDTO> getFarmPlots(int farmID);
 
     void updateAge(int plotID, int age);
-    
+
+    void changeStatus(int plotID, String status);
+
     void editWaterAvailable(int amount, int plotID);
 
     void createSilo(FarmDTO farmDTO);
 
     int getWater(int plotID);
+
+    void replacePlantsOnAllPlots(int plantIDToDelete, int plantIDToReplaceWith);
 
     void addAnimalToPlot(AnimalDTO animalDTO, int plotID);
 

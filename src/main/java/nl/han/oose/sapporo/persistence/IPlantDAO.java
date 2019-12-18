@@ -10,5 +10,9 @@ public interface IPlantDAO {
 
     int getProfit(int id);
 
+    void deletePlant(int plantIDToDelete);
+
+    int getMaximumWater(int id);
+
     String getname(int plantID);
 }
