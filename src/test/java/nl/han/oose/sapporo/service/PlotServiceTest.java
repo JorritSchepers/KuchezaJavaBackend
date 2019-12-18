@@ -95,17 +95,21 @@ class PlotServiceTest {
     @Test
     void placePlantReturnsPlot() {
         Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
+        Mockito.when(mockedPlotDAO.getPlot(PLOT_ID)).thenReturn(PLOT);
         Assertions.assertEquals(PLOT, sut.placePlant(PLANT, PLOT_ID, USER));
     }
 
     @Test
     void harvestPlantCallsPlantFullGrown() {
+        Mockito.when(mockedPlotDAO.getPlot(PLOT_ID)).thenReturn(PLOT);
+        Mockito.when(mockedPlantService.plantFullGrown(PLOT)).thenReturn(true);
         sut.harvestPlant(PLOT_WITH_GROWN_PLANT, USER, PLOT_ID);
         Mockito.verify(mockedPlantService, Mockito.times(1)).plantFullGrown(PLOT);
     }
 
     @Test
     void harvestPlantCallsRemoveObjectsFromPlot() {
+        Mockito.when(mockedPlotDAO.getPlot(PLOT_ID)).thenReturn(PLOT);
         Mockito.when(mockedPlantService.plantFullGrown(PLOT)).thenReturn(true);
         sut.harvestPlant(PLOT_WITH_GROWN_PLANT, USER, PLOT_ID);
         Mockito.verify(mockedPlotDAO, Mockito.times(1)).removeObjectsFromPlot(PLOT_ID);
@@ -114,7 +118,7 @@ class PlotServiceTest {
     @Test
     void harvestPlantCallsIncreaseSaldo() {
         Mockito.when(mockedPlantService.plantFullGrown(PLOT_WITH_GROWN_PLANT)).thenReturn(true);
-        Mockito.when(mockedPlantDAO.getProfit(PLANT.getID())).thenReturn(20);
+        Mockito.when(mockedPlantDAO.getProfit(PLANT.getId())).thenReturn(20);
         sut.harvestPlant(PLOT_WITH_GROWN_PLANT, USER, PLOT_ID);
         Mockito.verify(mockedInventoryService, Mockito.times(1)).increaseSaldo(PLANT.getProfit(), USER);
     }
@@ -336,7 +340,7 @@ class PlotServiceTest {
 
     @Test
     void sellProductReturnsAllPlots() {
-        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getID());
+        final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getId());
         final ArrayList<PlotDTO> PLOTS = new ArrayList<>() {{ add(PLOT); }};
         final AllPlotDTO ALL_PLOTS = new AllPlotDTO(PLOTS);
         Mockito.when(mockedAnimalService.animalProductIsCollectable(PLOT_WITH_GROWN_PLANT)).thenReturn(true);

@@ -203,7 +203,7 @@ class PlotDAOTest extends DAOTest {
 
     @Test
     void plotHasPlantThrowsExceptionWhenFalse() {
-        Assertions.assertThrows(PlotHasNotPlantException.class, () -> {
+        Assertions.assertThrows(PlotHasNoPlantException.class, () -> {
             sut.plotHasPlant(PLOT_ID);
         });
     }
@@ -262,13 +262,14 @@ class PlotDAOTest extends DAOTest {
 
     @Test
     void plotHasAnimalReturnsTrueWhenTrue() {
-        Assertions.assertTrue(sut.plotHasAnimal(ANIMALPLOTID));
+        int PLOT_WITH_ANIMAL_ID = 3;
+        Assertions.assertTrue(sut.plotHasAnimal(PLOT_WITH_ANIMAL_ID));
     }
 
     @Test
     void plotHasAnimalThrowsExceptionWhenFalse() {
         Assertions.assertThrows(PlotHasNoAnimalException.class, () -> {
-            sut.plotHasAnimal(PLOTID);
+            sut.plotHasAnimal(PLOT_ID);
         });
     }
 }

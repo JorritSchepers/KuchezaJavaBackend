@@ -87,14 +87,14 @@ public class PlotServiceImp implements IPlotService {
         if (plotDAO.plotHasPlant(plotID)) {
             if(!plotDTO.getStatus().equals("Dead")) {
                 int profit = plantDAO.getProfit(plotDTO.getPlantID());
-
                 if(plotDTO.getStatus().equals("Dehydrated")) {
                     profit /= 2;
                 }
-
                 if(plantService.plantFullGrown(plotDAO.getPlot(plotID))) {
+                    final int HARVEST_PLANT_ACTION_ID = 2;
                     inventoryService.increaseSaldo(profit, user);
                     plotDAO.removeObjectsFromPlot(plotID);
+                    actionService.setAction(user, HARVEST_PLANT_ACTION_ID, plantDAO.getname(plotDTO.getPlantID()));
                 }
             } else {
                 plotDAO.removeObjectsFromPlot(plotID);
@@ -159,7 +159,7 @@ public class PlotServiceImp implements IPlotService {
             inventoryService.lowerSaldo(animalDTO.getPurchasePrice(), userDTO);
             inventoryService.lowerWater(START_WATER,userDTO);
             plotDAO.addAnimalToPlot(animalDTO, plotID);
-            String affectedAnimal = animalDAO.getAnimal(animalDTO.getID());
+            String affectedAnimal = animalDAO.getAnimal(animalDTO.getId());
             actionService.setAction(userDTO, BUY_ANIMAL_ACTION_ID, affectedAnimal);
             return getAllPlots(userDTO);
         }

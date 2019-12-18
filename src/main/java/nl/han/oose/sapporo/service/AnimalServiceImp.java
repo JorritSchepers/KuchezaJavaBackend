@@ -21,4 +21,9 @@ public class AnimalServiceImp implements IAnimalService {
     public AllAnimalDTO getAllAnimals() {
         return animalDAO.getAllAnimals();
     }
+
+    @Override
+    public boolean animalProductIsCollectable(PlotDTO plotDTO) {
+        return animalDAO.checkIfProductIsCollectable(plotDTO);
+    }
 }
