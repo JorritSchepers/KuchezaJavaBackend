@@ -11,13 +11,11 @@ import java.sql.*;
 
 class PlotDAOTest extends DAOTest {
     private PlotDAOImp sut = new PlotDAOImp();
-    private final int PLOTID = 1;
-    private final int FULLPLOTID = 2;
+    private final int PLOT_ID = 1;
+    private final int FULL_PLOT_ID = 2;
     private final int WATER_ADD = 20;
-    private final int PURCHASE_PLOT_ID = 3;
     private final PlantDTO PLANT = new PlantDTO(1, "Cabbage", 1, 1, 1, 1,100);
     private AnimalDTO ANIMAL = new AnimalDTO(1, "Cow", 10, 300, 10, 20, 1);
-    private final int ANIMALPLOTID = 3;
 
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
@@ -161,7 +159,7 @@ class PlotDAOTest extends DAOTest {
     @Test
     void checkIfPlotIsNotFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
         Assertions.assertDoesNotThrow( () -> {
-            sut.editWaterAvailable(WATER_ADD, PLOTID);
+            sut.editWaterAvailable(WATER_ADD, PLOT_ID);
         });
     }
 
@@ -179,14 +177,14 @@ class PlotDAOTest extends DAOTest {
 
     @Test
     void checkIfAddPlantToPlotAddsPlant() {
-        sut.addPlantToPlot(PLANT, PLOTID);
-        Assertions.assertEquals(getPlantIDFromPlot(PLANT.getID()), getPlantIDFromPlot(PLOTID));
+        sut.addPlantToPlot(PLANT, PLOT_ID);
+        Assertions.assertEquals(getPlantIDFromPlot(PLANT.getId()), getPlantIDFromPlot(PLOT_ID));
     }
 
     @Test
     void getPlotThrowsNoExceptionWhenPlotDoesExist() {
         Assertions.assertDoesNotThrow(() -> {
-            sut.getPlot(PLOTID);
+            sut.getPlot(PLOT_ID);
         });
     }
 
@@ -200,25 +198,26 @@ class PlotDAOTest extends DAOTest {
 
     @Test
     void plotHasPlantReturnsTrueWhenTrue() {
-        Assertions.assertTrue(sut.plotHasPlant(FULLPLOTID));
+        Assertions.assertTrue(sut.plotHasPlant(FULL_PLOT_ID));
     }
 
     @Test
     void plotHasPlantThrowsExceptionWhenFalse() {
-        Assertions.assertThrows(PlotHasNoPlantException.class, () -> {
-            sut.plotHasPlant(PLOTID);
+        Assertions.assertThrows(PlotHasNotPlantException.class, () -> {
+            sut.plotHasPlant(PLOT_ID);
         });
     }
 
     @Test
     void removeObjectsFromPlotRemovesObject() {
-        Assertions.assertFalse(plotIsEmpty(FULLPLOTID));
-        sut.removeObjectsFromPlot(FULLPLOTID);
-        Assertions.assertTrue(plotIsEmpty(FULLPLOTID));
+        Assertions.assertFalse(plotIsEmpty(FULL_PLOT_ID));
+        sut.removeObjectsFromPlot(FULL_PLOT_ID);
+        Assertions.assertTrue(plotIsEmpty(FULL_PLOT_ID));
     }
 
     @Test
     void checkIfPurchasePlotPurchasedPlot() {
+        final int PURCHASE_PLOT_ID = 3;
         Assertions.assertFalse(plotIsPurchased(PURCHASE_PLOT_ID));
         sut.purchasePlot(PURCHASE_PLOT_ID);
         Assertions.assertTrue(plotIsPurchased(PURCHASE_PLOT_ID));
@@ -241,9 +240,9 @@ class PlotDAOTest extends DAOTest {
     @Test
     void increaseWaterIncreasesWaterWithRightAmount() {
         int extraWater = WATER_ADD;
-        int oldWater = getWaterFromPlot(PLOTID);
-        sut.editWaterAvailable(extraWater, PLOTID);
-        int newWater = getWaterFromPlot(PLOTID);
+        int oldWater = getWaterFromPlot(PLOT_ID);
+        sut.editWaterAvailable(extraWater, PLOT_ID);
+        int newWater = getWaterFromPlot(PLOT_ID);
         Assertions.assertEquals((oldWater + extraWater), newWater);
     }
 
@@ -256,8 +255,9 @@ class PlotDAOTest extends DAOTest {
 
     @Test
     void checkIfAddAnimalToPlotAddsAnimal() {
-        sut.addAnimalToPlot(ANIMAL, ANIMALPLOTID);
-        Assertions.assertEquals(ANIMAL.getID(), getAnimalIDFromPlot(ANIMALPLOTID));
+        final int ANIMAL_PLOT_ID = 3;
+        sut.addAnimalToPlot(ANIMAL, ANIMAL_PLOT_ID);
+        Assertions.assertEquals(ANIMAL.getId(), getAnimalIDFromPlot(ANIMAL_PLOT_ID));
     }
 
     @Test

@@ -3,7 +3,7 @@ package nl.han.oose.sapporo.dto;
 import java.util.Objects;
 
 public class PlotDTO {
-    private int ID;
+    private int id;
     private int x;
     private int y;
     private boolean purchased;
@@ -24,8 +24,8 @@ public class PlotDTO {
         this.purchased = purchased;
     }
 
-    public PlotDTO(int ID, int x, int y, int animalID, int waterManagerID, int plantID, float price, boolean purchased, int age, int waterAvailable) {
-        this.ID = ID;
+    public PlotDTO(int id, int x, int y, int animalID, int waterManagerID, int plantID, float price, boolean purchased, int age, int waterAvailable) {
+        this.id = id;
         this.x = x;
         this.y = y;
         this.animalID = animalID;
@@ -37,8 +37,8 @@ public class PlotDTO {
         this.waterAvailable = waterAvailable;
     }
 
-    public PlotDTO(int ID, int x, int y, int animalID, int waterManagerID, int plantID, float price, boolean purchased, int age, int waterAvailable, String status) {
-        this.ID = ID;
+    public PlotDTO(int id, int x, int y, int animalID, int waterManagerID, int plantID, float price, boolean purchased, int age, int waterAvailable, String status) {
+        this.id = id;
         this.x = x;
         this.y = y;
         this.animalID = animalID;
@@ -51,8 +51,8 @@ public class PlotDTO {
         this.status =status;
     }
 
-    public PlotDTO(int ID, int x, int y, int animalID, int waterManagerID, int plantID, float price) {
-        this.ID = ID;
+    public PlotDTO(int id, int x, int y, int animalID, int waterManagerID, int plantID, float price) {
+        this.id = id;
         this.x = x;
         this.y = y;
         this.animalID = animalID;
@@ -61,8 +61,8 @@ public class PlotDTO {
         this.price = price;
     }
 
-    public PlotDTO(int ID, int x, int y, int animalID, int waterManagerID, int plantID, float price, int age) {
-        this.ID = ID;
+    public PlotDTO(int id, int x, int y, int animalID, int waterManagerID, int plantID, float price, int age) {
+        this.id = id;
         this.x = x;
         this.y = y;
         this.animalID = animalID;
@@ -72,8 +72,8 @@ public class PlotDTO {
         this.age = age;
     }
 
-    public PlotDTO(int ID, int x, int y, float price, boolean purchased, int waterAvailable) {
-        this.ID = ID;
+    public PlotDTO(int id, int x, int y, float price, boolean purchased, int waterAvailable) {
+        this.id = id;
         this.x = x;
         this.y = y;
         this.price = price;
@@ -81,16 +81,16 @@ public class PlotDTO {
         this.waterAvailable = waterAvailable;
     }
 
-    public PlotDTO(int ID, int x, int y, float price, int waterAvailable) {
-        this.ID = ID;
+    public PlotDTO(int id, int x, int y, float price, int waterAvailable) {
+        this.id = id;
         this.x = x;
         this.y = y;
         this.price = price;
         this.waterAvailable = waterAvailable;
     }
 
-    public PlotDTO(int ID, int x, int y, int price, boolean purchased, int objectAge) {
-        this.ID = ID;
+    public PlotDTO(int id, int x, int y, int price, boolean purchased, int objectAge) {
+        this.id = id;
         this.x = x;
         this.y = y;
         this.price = price;
@@ -99,13 +99,25 @@ public class PlotDTO {
     }
 
     public PlotDTO(int plotID, int x, int y, int price, boolean purchased, int objectAge, int waterAvailable, String status) {
-        this.ID = plotID;
+        this.id = plotID;
         this.x = x;
         this.y = y;
         this.price = price;
         this.age = objectAge;
         this.purchased = purchased;
         this.waterAvailable = waterAvailable;
+        this.status = status;
+    }
+
+    public PlotDTO(int id, int x, int y, boolean purchased, int plantID, int waterAvailable, float price, int age, String status) {
+        this.id = id;
+        this.x = x;
+        this.y = y;
+        this.purchased = purchased;
+        this.plantID = plantID;
+        this.waterAvailable = waterAvailable;
+        this.price = price;
+        this.age = age;
         this.status = status;
     }
 
@@ -164,7 +176,7 @@ public class PlotDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PlotDTO plotDTO = (PlotDTO) o;
-        return ID == plotDTO.ID &&
+        return id == plotDTO.id &&
                 x == plotDTO.x &&
                 y == plotDTO.y &&
                 purchased == plotDTO.purchased &&
@@ -178,6 +190,6 @@ public class PlotDTO {
 
     @Override
     public int hashCode() {
-        return Objects.hash(ID, x, y, purchased, animalID, waterManagerID, plantID, waterAvailable, price, age);
+        return Objects.hash(id, x, y, purchased, animalID, waterManagerID, plantID, waterAvailable, price, age);
     }
 }

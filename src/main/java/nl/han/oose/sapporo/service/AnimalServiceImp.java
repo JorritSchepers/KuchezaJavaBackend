@@ -13,20 +13,12 @@ public class AnimalServiceImp implements IAnimalService {
     private IAnimalDAO animalDAO;
 
     @Inject
-    public void setAnimalDAO(IAnimalDAO AnimalDAO) {
-        this.animalDAO = AnimalDAO;
+    public void setAnimalDAO(IAnimalDAO animalDAO) {
+        this.animalDAO = animalDAO;
     }
 
     @Override
     public AllAnimalDTO getAllAnimals() {
         return animalDAO.getAllAnimals();
-    }
-
-    @Override
-    public boolean animalProductIsCollectable(PlotDTO plotDTO) {
-        if (!animalDAO.checkIfProductIsCollectable(plotDTO)) {
-            throw new AnimalProductNotCollectableException();
-        }
-        return true;
     }
 }

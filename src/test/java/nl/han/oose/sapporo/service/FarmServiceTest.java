@@ -32,6 +32,6 @@ public class FarmServiceTest {
     @Test
     void getFarmPlotsCallsGetFarmPlots() {
         sut.getFarm(user);
-        Mockito.verify(plotService, Mockito.times(1)).getFarmPlots(user.getID());
+        Mockito.verify(plotService, Mockito.times(1)).getFarmPlots(user.getId());
     }
 }

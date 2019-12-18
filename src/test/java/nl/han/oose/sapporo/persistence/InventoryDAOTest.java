@@ -36,18 +36,18 @@ class InventoryDAOTest extends DAOTest {
     @Test
     void lowerSaldoLowersSaldoWithRightAmount() {
         float removedSaldo = 10;
-        float oldSaldo = getSaldoFromUser(USER.getID());
+        float oldSaldo = getSaldoFromUser(USER.getId());
         sut.lowerSaldo(removedSaldo, USER);
-        float newSaldo = getSaldoFromUser(USER.getID());
+        float newSaldo = getSaldoFromUser(USER.getId());
         Assertions.assertEquals((oldSaldo - removedSaldo), newSaldo);
     }
 
     @Test
     void increaseSaldoIncreasesSaldoWithRightAmount() {
         float extraSaldo = 10;
-        float oldSaldo = getSaldoFromUser(USER.getID());
+        float oldSaldo = getSaldoFromUser(USER.getId());
         sut.increaseSaldo(extraSaldo, USER);
-        float newSaldo = getSaldoFromUser(USER.getID());
+        float newSaldo = getSaldoFromUser(USER.getId());
         Assertions.assertEquals((oldSaldo + extraSaldo), newSaldo);
     }
 
@@ -68,18 +68,18 @@ class InventoryDAOTest extends DAOTest {
     @Test
     void lowerWaterLowersWaterWithRightAmount() {
         int removedWater = 10;
-        int oldWater = getWaterFromUser(USER.getID());
+        int oldWater = getWaterFromUser(USER.getId());
         sut.lowerWater(removedWater, USER);
-        int newWater = getWaterFromUser(USER.getID());
+        int newWater = getWaterFromUser(USER.getId());
         Assertions.assertEquals((oldWater - removedWater), newWater);
     }
 
     @Test
     void increaseWaterIncreasesWaterWithRightAmount() {
         int extraWater = 10;
-        int oldWater = getWaterFromUser(USER.getID());
+        int oldWater = getWaterFromUser(USER.getId());
         sut.increaseWater(extraWater, USER);
-        int newWater = getWaterFromUser(USER.getID());
+        int newWater = getWaterFromUser(USER.getId());
         Assertions.assertEquals((oldWater + extraWater), newWater);
     }
 

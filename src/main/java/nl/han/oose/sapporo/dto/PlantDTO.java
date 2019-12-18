@@ -1,7 +1,7 @@
 package nl.han.oose.sapporo.dto;
 
 public class PlantDTO {
-    private int ID;
+    private int id;
     private String name;
     private int waterUsage;
     private int growingTime;
@@ -11,8 +11,8 @@ public class PlantDTO {
 
     public PlantDTO() { }
 
-    public PlantDTO(int ID, String name, int waterUsage, int growingTime, float profit, float purchasePrice, int maximumWater) {
-        this.ID = ID;
+    public PlantDTO(int id, String name, int waterUsage, int growingTime, float profit, float purchasePrice, int maximumWater) {
+        this.id = id;
         this.name = name;
         this.waterUsage = waterUsage;
         this.growingTime = growingTime;
@@ -25,8 +25,8 @@ public class PlantDTO {
         return purchasePrice;
     }
 
-    public int getID() {
-        return ID;
+    public int getId() {
+        return id;
     }
 
     public String getName() {
