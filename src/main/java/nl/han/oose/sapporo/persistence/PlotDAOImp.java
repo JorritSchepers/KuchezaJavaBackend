@@ -307,8 +307,10 @@ public class PlotDAOImp implements IPlotDAO {
             if (animalID == 0) {
                 throw new PlotHasNoAnimalException();
             } else return true;
-          }
+          } catch (SQLException e) {
+            throw new PersistenceException();
         }
+    }
 
     @Override
     public void replaceAnimalsOnAllPlots(int animalIDToDelete, int animalIDToReplaceWith) {
