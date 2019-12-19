@@ -338,4 +338,12 @@ class PlotServiceTest {
         sut.changeStatus(PLOT_ID, "Normal");
         Mockito.verify(mockedPlotDAO, Mockito.times(1)).changeStatus(PLOT_ID,"Normal");
     }
+
+    @Test
+    void replaceAnimalsOnAllPlotssCallsReplaceAnimalsOnAllPlots() {
+        final int DELETEID =1;
+        final int REPLACEID =2;
+        sut.replaceAnimalsOnAllPlots(DELETEID,REPLACEID);
+        Mockito.verify(mockedPlotDAO, Mockito.times(1)).replaceAnimalsOnAllPlots(DELETEID,REPLACEID);
+    }
 }

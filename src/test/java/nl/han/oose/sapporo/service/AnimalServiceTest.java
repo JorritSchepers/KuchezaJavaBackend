@@ -27,4 +27,11 @@ class AnimalServiceTest {
     void getAllAnimalsReturnsRightGetAllAnimals() {
         Assertions.assertEquals(allAnimalDTO, sut.getAllAnimals());
     }
+
+    @Test
+    void deleteAnimalCallsDeleteAnimal(){
+        final int DELETEID =1;
+        sut.deleteAnimal(DELETEID);
+        Mockito.verify(animalDAO,Mockito.times(1)).deleteAnimal(DELETEID);
+    }
 }
