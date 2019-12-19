@@ -88,6 +88,7 @@ public class PlotResource {
                 .build();
     }
 
+    @POST
     @Path("/{id}/animal")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
