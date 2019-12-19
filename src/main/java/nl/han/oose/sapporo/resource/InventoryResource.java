@@ -5,10 +5,7 @@ import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IInventoryService;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -31,6 +28,17 @@ public class InventoryResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getInventory(@QueryParam("token") String token) {
         UserDTO user  = accountService.verifyToken(token);
+        return Response.status(Response.Status.OK)
+                .entity(inventoryService.getInventory(user))
+                .build();
+    }
+
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/{water}")
+    public Response increaseWater(@QueryParam("token") String token, @PathParam("water") int water) {
+        UserDTO user  = accountService.verifyToken(token);
+        inventoryService.increaseWater(water, user);
         return Response.status(Response.Status.OK)
                 .entity(inventoryService.getInventory(user))
                 .build();

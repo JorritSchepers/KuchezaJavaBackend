@@ -36,21 +36,23 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public boolean checkIfPlotIsEmpty(int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("select animalID,watermanagerID,plantID from plot where plotID = ?");
+            PreparedStatement statement = connection.prepareStatement("select animalID,watermanagerID,plantID,waterSourceID from plot where plotID = ?");
             statement.setInt(1, plotID);
             ResultSet resultSet = statement.executeQuery();
             int plotTaken = 0;
             int animalID = 0;
             int waterManagerID = 0;
             int plantID = 0;
+            int waterSourceID = 0;
 
             while (resultSet.next()) {
                 animalID = resultSet.getInt("animalID");
                 waterManagerID = resultSet.getInt("watermanagerID");
                 plantID = resultSet.getInt("plantID");
+                waterSourceID = resultSet.getInt("waterSourceID");
             }
 
-            plotTaken += animalID + waterManagerID + plantID;
+            plotTaken += animalID + waterManagerID + plantID + waterSourceID;
 
             if (plotTaken == 0) {
                 return true;
@@ -172,7 +174,7 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public ArrayList<PlotDTO> getFarmPlots(int farmID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT plotID,x,y,price,animalID,waterManagerID,plantID,purchased,objectAge,waterAvailable,status FROM plot where farmID = ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT plotID,x,y,price,animalID,waterManagerID,plantID,waterSourceID,purchased,objectAge,waterAvailable,status FROM plot where farmID = ?");
             statement.setInt(1, farmID);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<PlotDTO> plots = new ArrayList<>();
@@ -185,6 +187,7 @@ public class PlotDAOImp implements IPlotDAO {
                         resultSet.getInt("animalID"),
                         resultSet.getInt("waterManagerID"),
                         resultSet.getInt("plantID"),
+                        resultSet.getInt("waterSourceID"),
                         resultSet.getFloat("price"),
                         resultSet.getBoolean("purchased"),
                         resultSet.getInt("objectAge"),

@@ -1217,6 +1217,7 @@ dateOfAction</ColNames>
     <column id="306" parent="283" name="waterUsage">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="307" parent="283" name="maximumWater">
@@ -1227,12 +1228,13 @@ dateOfAction</ColNames>
     </column>
     <column id="308" parent="283" name="profit">
       <Position>4</Position>
-      <DataType>float|0s</DataType>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="309" parent="283" name="purchasePrice">
       <Position>5</Position>
-      <DataType>float|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1307,341 +1309,334 @@ dateOfAction</ColNames>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="322" parent="285" name="userID">
-      <ColNames>userID</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <key id="323" parent="285" name="PRIMARY">
+    <key id="322" parent="285" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userID</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="324" parent="285" name="userID">
-      <ColNames>userID</ColNames>
-      <UnderlyingIndexName>userID</UnderlyingIndexName>
-    </key>
-    <foreign-key id="325" parent="285" name="inventory_ibfk_1">
+    <foreign-key id="323" parent="285" name="inventory_ibfk_1">
       <ColNames>userID</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>userID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="326" parent="286" name="plantID">
+    <column id="324" parent="286" name="plantID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="327" parent="286" name="waterUsage">
+    <column id="325" parent="286" name="waterUsage">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="328" parent="286" name="maximumWater">
+    <column id="326" parent="286" name="maximumWater">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="329" parent="286" name="growingTime">
+    <column id="327" parent="286" name="growingTime">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="330" parent="286" name="profit">
+    <column id="328" parent="286" name="profit">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="331" parent="286" name="purchasePrice">
+    <column id="329" parent="286" name="purchasePrice">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="332" parent="286" name="name">
+    <column id="330" parent="286" name="name">
       <Position>7</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="333" parent="286" name="PRIMARY">
+    <key id="331" parent="286" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>plantID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="334" parent="287" name="plotID">
+    <column id="332" parent="287" name="plotID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="335" parent="287" name="farmID">
+    <column id="333" parent="287" name="farmID">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="336" parent="287" name="x">
+    <column id="334" parent="287" name="x">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="337" parent="287" name="y">
+    <column id="335" parent="287" name="y">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="338" parent="287" name="price">
+    <column id="336" parent="287" name="price">
       <Position>5</Position>
-      <DataType>float|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="339" parent="287" name="animalID">
+    <column id="337" parent="287" name="animalID">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="340" parent="287" name="waterManagerID">
+    <column id="338" parent="287" name="waterManagerID">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="341" parent="287" name="waterSourceID">
+    <column id="339" parent="287" name="waterSourceID">
       <Position>8</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="342" parent="287" name="plantID">
+    <column id="340" parent="287" name="plantID">
       <Position>9</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="343" parent="287" name="objectAge">
+    <column id="341" parent="287" name="objectAge">
       <Position>10</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="344" parent="287" name="waterAvailable">
+    <column id="342" parent="287" name="waterAvailable">
       <Position>11</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="345" parent="287" name="purchased">
+    <column id="343" parent="287" name="purchased">
       <Position>12</Position>
       <DataType>bit(1)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="346" parent="287" name="status">
+    <column id="344" parent="287" name="status">
       <Position>13</Position>
       <DataType>varchar(30)|0s</DataType>
-      <DefaultExpression>&apos;normal&apos;</DefaultExpression>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;Normal&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="347" parent="287" name="farmID">
+    <index id="345" parent="287" name="farmID">
       <ColNames>farmID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="348" parent="287" name="animalID">
+    <index id="346" parent="287" name="animalID">
       <ColNames>animalID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="349" parent="287" name="waterManagerID">
+    <index id="347" parent="287" name="waterManagerID">
       <ColNames>waterManagerID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="350" parent="287" name="waterSourceID">
+    <index id="348" parent="287" name="waterSourceID">
       <ColNames>waterSourceID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="351" parent="287" name="plantID">
+    <index id="349" parent="287" name="plantID">
       <ColNames>plantID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="352" parent="287" name="status">
+    <index id="350" parent="287" name="status">
       <ColNames>status</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="353" parent="287" name="PRIMARY">
+    <key id="351" parent="287" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>plotID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="354" parent="287" name="plot_ibfk_1">
+    <foreign-key id="352" parent="287" name="plot_ibfk_1">
       <ColNames>farmID</ColNames>
       <RefTableName>farm</RefTableName>
       <RefColNames>farmID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="355" parent="287" name="plot_ibfk_2">
+    <foreign-key id="353" parent="287" name="plot_ibfk_2">
       <ColNames>animalID</ColNames>
       <RefTableName>animal</RefTableName>
       <RefColNames>animalId</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="356" parent="287" name="plot_ibfk_3">
+    <foreign-key id="354" parent="287" name="plot_ibfk_3">
       <ColNames>waterManagerID</ColNames>
       <RefTableName>watermanager</RefTableName>
       <RefColNames>waterManagerId</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="357" parent="287" name="plot_ibfk_4">
+    <foreign-key id="355" parent="287" name="plot_ibfk_4">
       <ColNames>waterSourceID</ColNames>
       <RefTableName>watersource</RefTableName>
       <RefColNames>waterSourceId</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="358" parent="287" name="plot_ibfk_5">
+    <foreign-key id="356" parent="287" name="plot_ibfk_5">
       <ColNames>plantID</ColNames>
       <RefTableName>plant</RefTableName>
       <RefColNames>plantID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="359" parent="287" name="plot_ibfk_6">
+    <foreign-key id="357" parent="287" name="plot_ibfk_6">
       <ColNames>status</ColNames>
       <RefTableName>status</RefTableName>
       <RefColNames>status</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="360" parent="288" name="status">
+    <column id="358" parent="288" name="status">
       <Position>1</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="361" parent="288" name="PRIMARY">
+    <key id="359" parent="288" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>status</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="362" parent="289" name="userID">
+    <column id="360" parent="289" name="userID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="363" parent="289" name="name">
+    <column id="361" parent="289" name="name">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="364" parent="289" name="password">
+    <column id="362" parent="289" name="password">
       <Position>3</Position>
       <DataType>char(70)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="365" parent="289" name="admin">
+    <column id="363" parent="289" name="admin">
       <Position>4</Position>
       <DataType>bit(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="366" parent="289" name="email">
+    <column id="364" parent="289" name="email">
       <Position>5</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="367" parent="289" name="email">
+    <index id="365" parent="289" name="email">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="368" parent="289" name="PRIMARY">
+    <key id="366" parent="289" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userID</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="369" parent="289" name="email">
+    <key id="367" parent="289" name="email">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>email</UnderlyingIndexName>
     </key>
-    <column id="370" parent="290" name="waterManagerId">
+    <column id="368" parent="290" name="waterManagerId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="371" parent="290" name="waterYield">
+    <column id="369" parent="290" name="waterYield">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="372" parent="290" name="purchasePrice">
+    <column id="370" parent="290" name="purchasePrice">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="373" parent="290" name="name">
+    <column id="371" parent="290" name="name">
       <Position>4</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="374" parent="290" name="PRIMARY">
+    <key id="372" parent="290" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>waterManagerId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="375" parent="291" name="waterSourceId">
+    <column id="373" parent="291" name="waterSourceId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="376" parent="291" name="waterYield">
+    <column id="374" parent="291" name="waterYield">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="377" parent="291" name="maximumWater">
+    <column id="375" parent="291" name="maximumWater">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="378" parent="291" name="purchasePrice">
+    <column id="376" parent="291" name="purchasePrice">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="379" parent="291" name="name">
+    <column id="377" parent="291" name="name">
       <Position>5</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="380" parent="291" name="PRIMARY">
+    <key id="378" parent="291" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>waterSourceId</ColNames>
       <Primary>1</Primary>

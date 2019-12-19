@@ -10,6 +10,7 @@ public class PlotDTO {
     private int animalID;
     private int waterManagerID;
     private int plantID;
+    private int waterSourceID;
     private int waterAvailable;
     private float price;
     private int age;
@@ -44,6 +45,21 @@ public class PlotDTO {
         this.animalID = animalID;
         this.waterManagerID = waterManagerID;
         this.plantID = plantID;
+        this.price = price;
+        this.purchased = purchased;
+        this.age = age;
+        this.waterAvailable = waterAvailable;
+        this.status =status;
+    }
+
+    public PlotDTO(int id, int x, int y, int animalID, int waterManagerID, int plantID, int waterSourceID, float price, boolean purchased, int age, int waterAvailable, String status) {
+        this.id = id;
+        this.x = x;
+        this.y = y;
+        this.animalID = animalID;
+        this.waterManagerID = waterManagerID;
+        this.plantID = plantID;
+        this.waterSourceID = waterSourceID;
         this.price = price;
         this.purchased = purchased;
         this.age = age;
