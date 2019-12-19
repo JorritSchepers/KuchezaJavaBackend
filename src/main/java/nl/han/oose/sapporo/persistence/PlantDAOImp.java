@@ -103,6 +103,7 @@ public class PlantDAOImp implements IPlantDAO{
             }
             return name;
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             throw new PersistenceException();
         }
     }

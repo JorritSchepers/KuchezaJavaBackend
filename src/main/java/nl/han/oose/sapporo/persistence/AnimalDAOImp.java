@@ -55,6 +55,7 @@ public class AnimalDAOImp implements IAnimalDAO {
             }
             return (plotDTO.getAge() >= neededProductionTime);
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
           throw new PersistenceException();
       }
   }

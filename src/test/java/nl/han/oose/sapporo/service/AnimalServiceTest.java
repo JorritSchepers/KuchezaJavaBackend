@@ -47,6 +47,7 @@ class AnimalServiceTest {
         });
       }
 
+    @Test
     void deleteAnimalCallsDeleteAnimal(){
         final int DELETEID =1;
         sut.deleteAnimal(DELETEID);

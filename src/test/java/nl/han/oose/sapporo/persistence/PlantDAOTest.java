@@ -57,6 +57,13 @@ class PlantDAOTest extends DAOTest {
         Assertions.assertEquals(200, sut.getMaximumWater(2));
     }
 
+    @Test
+    void getNameReturnsRightName(){
+        final int PLANTID1 = 1;
+        final String PLANNAME1 = "Cabbage";
+        Assertions.assertEquals(sut.getname(PLANTID1),PLANNAME1);
+    }
+
     private int getAmountOfPlants() {
         int totalPlants = 0;
         try (Connection connection = DriverManager.getConnection(DB_URL)) {

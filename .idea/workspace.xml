@@ -7,27 +7,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
-      <change afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/AllActionsDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/ActionDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/ActionDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/ActionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/ActionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/IActionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/IActionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/resource/AdminResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/resource/AdminResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/ActionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/ActionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/IActionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/IActionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/ActionDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/ActionDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/ActionDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/ActionDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/IActionDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/IActionDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/resource/AdminResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/resource/AdminResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/service/ActionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/service/ActionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/service/IActionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/service/IActionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/dto/ActionDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/dto/ActionDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/ActionDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/ActionDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/IActionDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/IActionDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/resource/AdminResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/resource/AdminResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/service/ActionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/service/ActionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/service/IActionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/service/IActionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/AllActionsDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/AllActionsDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/PlotDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/PlotDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/AnimalDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/AnimalDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/PlantDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/PlantDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/PlotDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/PlotDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/ActionDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/ActionDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/AnimalDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/AnimalDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/InventoryDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/InventoryDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/PlantDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/PlantDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/PlotDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/persistence/PlotDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/resource/AdminResourceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/resource/AdminResourceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/resource/exceptionmapper/PlantNotGrownExceptionMapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/resource/exceptionmapper/PlantNotGrownExceptionMapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/AccountServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/AccountServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/ActionServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/ActionServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/AnimalServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/AnimalServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/PlotServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/PlotServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/test-Create-Script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/test-Create-Script.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/AnimalDAOImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/AnimalDAOImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/PlantDAOImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/PlantDAOImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/PlotDAOImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/PlotDAOImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/ActionDaoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/ActionDaoTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/AnimalDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/AnimalDAOTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/InventoryDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/InventoryDAOTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/PlantDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/PlantDAOTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/PlotDAOTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/persistence/PlotDAOTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/resource/AdminResourceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/resource/AdminResourceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/resource/exceptionmapper/PlantNotGrownExceptionMapperTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/resource/exceptionmapper/PlantNotGrownExceptionMapperTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/service/AccountServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/service/AccountServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/service/ActionServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/service/ActionServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/service/AnimalServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/service/AnimalServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/service/PlotServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/service/PlotServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/test-Create-Script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/test-Create-Script.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +49,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="18" />
+    <option name="myElementSize" value="15" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -162,51 +175,79 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TomEE Server.TomEE 8.5.41">
-    <configuration name="All in KuchezaGame (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.nl.han.oose.sapporo in KuchezaGame">
+    <configuration name="ActionDaoTest.getUserActionsGetsRightAmount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="KuchezaGame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in KuchezaGame (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KuchezaGame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in KuchezaGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KuchezaGame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in kuchezagame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="kuchezagame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlotServiceTest.harvestPlantCallsRemoveObjectsFromPlot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="kuchezagame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="nl.han.oose.sapporo.service.*" />
+          <option name="PATTERN" value="nl.han.oose.sapporo.persistence.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.service" />
-      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.service.PlotServiceTest" />
-      <option name="METHOD_NAME" value="harvestPlantCallsRemoveObjectsFromPlot" />
+      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.persistence" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.persistence.ActionDaoTest" />
+      <option name="METHOD_NAME" value="getUserActionsGetsRightAmount" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnimalDAOTest.checkIfProductIsCollectableReturnsFalseWhenShort" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KuchezaGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.sapporo.persistence.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.persistence" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.persistence.AnimalDAOTest" />
+      <option name="METHOD_NAME" value="checkIfProductIsCollectableReturnsFalseWhenShort" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnimalDAOTest.checkIfProductIsCollectableReturnsTrueWhenReadyt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KuchezaGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.sapporo.persistence.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.persistence" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.persistence.AnimalDAOTest" />
+      <option name="METHOD_NAME" value="checkIfProductIsCollectableReturnsTrueWhenReadyt" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="nl.han.oose.sapporo in KuchezaGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KuchezaGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.sapporo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="nl.han.oose.sapporo.persistence in KuchezaGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KuchezaGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.sapporo.persistence.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.persistence" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -287,20 +328,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.All in kuchezagame" />
-      <item itemvalue="JUnit.PlotServiceTest.harvestPlantCallsRemoveObjectsFromPlot" />
-      <item itemvalue="JUnit.All in KuchezaGame" />
-      <item itemvalue="JUnit.All in KuchezaGame (1)" />
-      <item itemvalue="JUnit.All in KuchezaGame (2)" />
       <item itemvalue="TomEE Server.TomEE 8.5.41" />
+      <item itemvalue="JUnit.nl.han.oose.sapporo.persistence in KuchezaGame" />
+      <item itemvalue="JUnit.AnimalDAOTest.checkIfProductIsCollectableReturnsFalseWhenShort" />
+      <item itemvalue="JUnit.AnimalDAOTest.checkIfProductIsCollectableReturnsTrueWhenReadyt" />
+      <item itemvalue="JUnit.nl.han.oose.sapporo in KuchezaGame" />
+      <item itemvalue="JUnit.ActionDaoTest.getUserActionsGetsRightAmount" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in KuchezaGame (2)" />
-        <item itemvalue="JUnit.All in KuchezaGame (1)" />
-        <item itemvalue="JUnit.All in KuchezaGame" />
-        <item itemvalue="JUnit.All in kuchezagame" />
-        <item itemvalue="JUnit.PlotServiceTest.harvestPlantCallsRemoveObjectsFromPlot" />
+        <item itemvalue="JUnit.nl.han.oose.sapporo in KuchezaGame" />
+        <item itemvalue="JUnit.ActionDaoTest.getUserActionsGetsRightAmount" />
+        <item itemvalue="JUnit.nl.han.oose.sapporo.persistence in KuchezaGame" />
+        <item itemvalue="JUnit.AnimalDAOTest.checkIfProductIsCollectableReturnsTrueWhenReadyt" />
+        <item itemvalue="JUnit.AnimalDAOTest.checkIfProductIsCollectableReturnsFalseWhenShort" />
       </list>
     </recent_temporary>
   </component>
@@ -437,14 +478,21 @@
     <option name="LAST_COMMIT_MESSAGE" value="Klaar (met tests)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/kuchezagame$PlotResourceTest.ic" NAME="PlotResourceTest Coverage Results" MODIFIED="1574328539549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>nl.han.oose.sapporo.resource.*</FILTER>
+    <SUITE FILE_PATH="coverage/kuchezagame$nl_han_oose_sapporo_service_in_KuchezaGame.ic" NAME="nl.han.oose.sapporo.service in KuchezaGame Coverage Results" MODIFIED="1576764862619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.sapporo.service.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/kuchezagame$PlantServiceTest.ic" NAME="PlantServiceTest Coverage Results" MODIFIED="1576493295788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.sapporo.service.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/kuchezagame$PlotDAOTest.ic" NAME="PlotDAOTest Coverage Results" MODIFIED="1576766072458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.sapporo.persistence.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__5_.ic" NAME="All in KuchezaGame (5) Coverage Results" MODIFIED="1575900349284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__1_.ic" NAME="All in KuchezaGame (1) Coverage Results" MODIFIED="1575901740031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__3_.ic" NAME="All in KuchezaGame (3) Coverage Results" MODIFIED="1575899664806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/kuchezagame$PlotResourceTest.ic" NAME="PlotResourceTest Coverage Results" MODIFIED="1574328539549" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.sapporo.resource.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__4_.ic" NAME="All in KuchezaGame (4) Coverage Results" MODIFIED="1575899841050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/kuchezagame$PlotServiceTest.ic" NAME="PlotServiceTest Coverage Results" MODIFIED="1575548335718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.sapporo.service.*</FILTER>
@@ -453,10 +501,12 @@
       <FILTER>nl.han.oose.sapporo.persistence.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/kuchezagame$All_in_kuchezagame.ic" NAME="All in kuchezagame Coverage Results" MODIFIED="1576676678486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__3_.ic" NAME="All in KuchezaGame (3) Coverage Results" MODIFIED="1575899664806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame__2_.ic" NAME="All in KuchezaGame (2) Coverage Results" MODIFIED="1576753703254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame.ic" NAME="All in KuchezaGame Coverage Results" MODIFIED="1575902426792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/kuchezagame$nl_han_oose_sapporo_in_KuchezaGame.ic" NAME="nl.han.oose.sapporo in KuchezaGame Coverage Results" MODIFIED="1574760252334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/kuchezagame$All_in_KuchezaGame.ic" NAME="All in KuchezaGame Coverage Results" MODIFIED="1576765081128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/kuchezagame$nl_han_oose_sapporo_persistence_in_KuchezaGame.ic" NAME="nl.han.oose.sapporo.persistence in KuchezaGame Coverage Results" MODIFIED="1576767986090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>nl.han.oose.sapporo.persistence.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/kuchezagame$nl_han_oose_sapporo_in_KuchezaGame.ic" NAME="nl.han.oose.sapporo in KuchezaGame Coverage Results" MODIFIED="1576768683293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>nl.han.oose.sapporo.*</FILTER>
     </SUITE>
   </component>

@@ -357,4 +357,29 @@ class PlotServiceTest {
         sut.replaceAnimalsOnAllPlots(DELETEID,REPLACEID);
         Mockito.verify(mockedPlotDAO, Mockito.times(1)).replaceAnimalsOnAllPlots(DELETEID,REPLACEID);
     }
+
+    @Test
+    void replacePlantsOnAllPlotsCallsReplacePlantsOnAllPlots(){
+        final int DELETEID =1;
+        final int REPLACEID =2;
+        sut.replacePlantsOnAllPlots(DELETEID,REPLACEID);
+        Mockito.verify(mockedPlotDAO, Mockito.times(1)).replacePlantsOnAllPlots(DELETEID,REPLACEID);
+    }
+
+    @Test
+    void changeStatusCallsChangeStatus(){
+        final int PLOTID =1;
+        final String STATUS = "Status";
+        sut.changeStatus(PLOTID,STATUS);
+        Mockito.verify(mockedPlotDAO, Mockito.times(1)).changeStatus(PLOTID,STATUS);
+    }
+
+    @Test
+    void changeStatusCallsGetPlot(){
+        final int PLOTID =1;
+        final String STATUS = "Status";
+        sut.changeStatus(PLOTID,STATUS);
+        Mockito.verify(mockedPlotDAO, Mockito.times(1)).getPlot(PLOTID);
+
+    }
 }
