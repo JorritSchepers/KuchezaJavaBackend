@@ -150,10 +150,11 @@ VALUES
 
 INSERT INTO animal (waterUsage,productionTime,maximumWater,profit,purchasePrice,name)
 VALUES
-(10,10,300,20,5,'Cow');
+(10,10,300,20,5,'Cow'),
+(10,10,300,20,5,'Chicken');
 
 update plot set plantID = 1 where plotID = 2;
-update plot set animalID = 1 where plotID = 3;
+update plot set animalID = 2 where plotID = 3;
 
 INSERT INTO action (actionText)
 VALUES

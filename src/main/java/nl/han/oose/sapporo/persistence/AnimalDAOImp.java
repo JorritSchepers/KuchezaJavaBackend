@@ -34,6 +34,16 @@ public class AnimalDAOImp implements IAnimalDAO {
     }
 
     @Override
+    public void deleteAnimal(int animalIDToDelete) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("delete from animal where animalId = ?");
+            statement.setInt(1, animalIDToDelete);
+            statement.execute();
+        } catch (SQLException ignored) {
+          throw new PersistenceException();
+      }
+  }
+    @Override
     public boolean checkIfProductIsCollectable(PlotDTO plotDTO) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select productionTime from animal where animalId = ?");
@@ -45,9 +55,9 @@ public class AnimalDAOImp implements IAnimalDAO {
             }
             return (plotDTO.getAge() >= neededProductionTime);
         } catch (SQLException e) {
-            throw new PersistenceException();
-        }
-    }
+          throw new PersistenceException();
+      }
+  }
 
     private AllAnimalDTO makeAllAnimalDTO(ResultSet resultSet) throws SQLException {
         ArrayList<AnimalDTO> animals = new ArrayList<>();

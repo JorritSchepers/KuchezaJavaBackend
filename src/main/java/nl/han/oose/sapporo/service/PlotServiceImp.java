@@ -181,6 +181,11 @@ public class PlotServiceImp implements IPlotService {
         return null;
     }
 
+    @Override
+    public void replaceAnimalsOnAllPlots(int animalIDToDelete, int animalIDToReplaceWith) {
+        plotDAO.replaceAnimalsOnAllPlots(animalIDToDelete, animalIDToReplaceWith);
+    }
+
     private int calculateWaterThatFits(int originalAmount, int amountAdded, int min, int max) {
         if(originalAmount + amountAdded < min) {
             return -(min+originalAmount);

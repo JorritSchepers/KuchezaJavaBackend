@@ -349,4 +349,12 @@ class PlotServiceTest {
 
         Assertions.assertEquals(ALL_PLOTS.getPlots().size(), sut.sellProduct(PLOT_WITH_GROWN_PLANT, USER, PLOT_ID).getPlots().size());
     }
+
+    @Test
+    void replaceAnimalsOnAllPlotssCallsReplaceAnimalsOnAllPlots() {
+        final int DELETEID =1;
+        final int REPLACEID =2;
+        sut.replaceAnimalsOnAllPlots(DELETEID,REPLACEID);
+        Mockito.verify(mockedPlotDAO, Mockito.times(1)).replaceAnimalsOnAllPlots(DELETEID,REPLACEID);
+    }
 }

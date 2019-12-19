@@ -45,5 +45,11 @@ class AnimalServiceTest {
         Assertions.assertDoesNotThrow(() -> {
             sut.animalProductIsCollectable(PLOT_WITHOUT_COLLECTABLE_PRODUCT);
         });
+      }
+
+    void deleteAnimalCallsDeleteAnimal(){
+        final int DELETEID =1;
+        sut.deleteAnimal(DELETEID);
+        Mockito.verify(animalDAO,Mockito.times(1)).deleteAnimal(DELETEID);
     }
 }

@@ -8,7 +8,6 @@ import nl.han.oose.sapporo.persistence.exception.PlantNotGrownException;
 
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
-import java.util.ArrayList;
 
 @Default
 public class PlantServiceImp implements IPlantService {

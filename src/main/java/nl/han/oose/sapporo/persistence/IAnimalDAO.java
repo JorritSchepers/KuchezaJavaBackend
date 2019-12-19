@@ -13,4 +13,6 @@ public interface IAnimalDAO {
     int getProductProfit(int id);
 
     String getAnimal(int animalID);
+
+    void deleteAnimal(int animalIDToDelete);
 }

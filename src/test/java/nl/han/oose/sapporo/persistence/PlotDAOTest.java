@@ -6,6 +6,7 @@ import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.sql.*;
 
@@ -271,5 +272,15 @@ class PlotDAOTest extends DAOTest {
         Assertions.assertThrows(PlotHasNoAnimalException.class, () -> {
             sut.plotHasAnimal(PLOT_ID);
         });
+    }
+
+    @Test
+    void replaceAnimalsOnAllPlotsReplacesAnimal(){
+        final int DELETEID =2;
+        final int REPLACEID =1;
+        final int AFFECTEDPLOTID = 3;
+        Assertions.assertEquals(getAnimalIDFromPlot(AFFECTEDPLOTID),DELETEID);
+        sut.replaceAnimalsOnAllPlots(DELETEID,REPLACEID);
+        Assertions.assertEquals(getAnimalIDFromPlot(AFFECTEDPLOTID),REPLACEID);
     }
 }

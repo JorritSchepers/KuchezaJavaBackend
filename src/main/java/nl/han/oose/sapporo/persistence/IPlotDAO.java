@@ -41,4 +41,6 @@ public interface IPlotDAO {
     void addAnimalToPlot(AnimalDTO animalDTO, int plotID);
 
     boolean plotHasAnimal(int plotID);
+
+    void replaceAnimalsOnAllPlots(int animalIDToDelete, int animalIDToReplaceWith);
 }
