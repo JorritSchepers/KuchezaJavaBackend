@@ -92,7 +92,7 @@ public class PlantDAOImp implements IPlantDAO{
     }
 
     @Override
-    public String getname(int plantID) {
+    public String getName(int plantID) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select name from plant where plantID = ?");
             statement.setInt(1,plantID);

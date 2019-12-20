@@ -166,3 +166,19 @@ VALUES
 ('Bought an animal'),
 ('Lost an animal'),
 ('Sold an item from an animal');
+
+INSERT INTO waterManager (waterYield,purchasePrice,name)
+VALUES
+(1,5000,'Silo'),
+(25,1500,'Sprinkler');
+
+INSERT INTO waterManager (waterYield,purchasePrice,name)
+VALUES
+(1,5000,'Silo'),
+(25,1500,'Sprinkler');
+
+INSERT INTO actionPerPlayer (userID,actionID,affectedItem,currentWater,currentMoney)
+VALUES
+(1,1,'Corn',100,100),
+(1,2,'Corn',100,100),
+(1,3,'Corn',100,100);

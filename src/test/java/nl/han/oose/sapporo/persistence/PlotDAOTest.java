@@ -1,6 +1,7 @@
 package nl.han.oose.sapporo.persistence;
 
 import nl.han.oose.sapporo.dto.AnimalDTO;
+import nl.han.oose.sapporo.dto.FarmDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.*;
@@ -65,6 +66,34 @@ class PlotDAOTest extends DAOTest {
         return animalID;
     }
 
+    int getWaterIDFromPlot(int plotId) {
+        int waterID = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("select waterManagerID from plot where plotID = ?");
+            statement.setInt(1, plotId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                waterID = resultSet.getInt("waterManagerID");
+            }
+        } catch (SQLException ignored) {
+        }
+        return waterID;
+    }
+
+    int getAgeFromPlot(int plotId) {
+        int objectAge = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("select objectAge from plot where plotID = ?");
+            statement.setInt(1, plotId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                objectAge = resultSet.getInt("objectAge");
+            }
+        } catch (SQLException ignored) {
+        }
+        return objectAge;
+    }
+
     private boolean plotIsEmpty(int plotId) {
         try (Connection connection = DriverManager.getConnection(DB_URL)) {
             int animalId = 0;
@@ -85,37 +114,6 @@ class PlotDAOTest extends DAOTest {
         } catch (SQLException ignored) {
         }
         return false;
-    }
-
-    private int getAmountofPlots(int x, int y){
-        int plotAmount = 0;
-        try (Connection connection = DriverManager.getConnection(DB_URL)) {
-            PreparedStatement statement = connection.prepareStatement("select count(plotID) as amount from plot where x =? and y=?");
-            statement.setInt(1,x);
-            statement.setInt(2,y);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                plotAmount = resultSet.getInt("amount");
-            }
-        } catch (SQLException ignored) {
-        }
-       return plotAmount;
-    }
-
-    private int getAge(int plotID){
-        int age = 0;
-        try (Connection connection = DriverManager.getConnection(DB_URL)) {
-            PreparedStatement statement = connection.prepareStatement("select objectAge from plot where plotID = ?");
-            statement.setInt(1,plotID);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                age = resultSet.getInt("objectAge");
-            }
-            return age;
-
-        } catch (SQLException ignored) {
-        }
-        return 0;
     }
 
     private String getStatus(int x, int y){
@@ -283,4 +281,42 @@ class PlotDAOTest extends DAOTest {
         sut.replaceAnimalsOnAllPlots(DELETEID,REPLACEID);
         Assertions.assertEquals(getAnimalIDFromPlot(AFFECTEDPLOTID),REPLACEID);
     }
+
+    @Test
+    void replacePlantsOnAllPlotsReplacesPlant(){
+        final int DELETEID =1;
+        final int REPLACEID =2;
+        final int AFFECTEDPLOTID = 2;
+        Assertions.assertEquals(getPlantIDFromPlot(AFFECTEDPLOTID),DELETEID);
+        sut.replacePlantsOnAllPlots(DELETEID,REPLACEID);
+        Assertions.assertEquals(getPlantIDFromPlot(AFFECTEDPLOTID),REPLACEID);
+    }
+
+    @Test
+    void getWaterGetsRightAmountOfWater(){
+        final int PLOTID =2;
+        final int WATER = 100;
+        Assertions.assertEquals(WATER,sut.getWater(PLOTID));
+    }
+
+    @Test
+    void updateAgeUpdatesAge(){
+        final int AFFECTEDPLOT =1;
+        final int OLDAGE = 0;
+        final int AGE = 20;
+        Assertions.assertEquals(getAgeFromPlot(AFFECTEDPLOT),OLDAGE);
+        sut.updateAge(1,AGE);
+        Assertions.assertEquals(getAgeFromPlot(AFFECTEDPLOT),AGE);
+    }
+
+    @Test
+    void createSiloMakesSilo(){
+        final int SILOID = 1;
+        final int PLOTID = 1;
+        FarmDTO farm = new FarmDTO(1,1);
+        Assertions.assertEquals(getWaterIDFromPlot(PLOTID),0);
+        sut.createSilo(farm);
+        Assertions.assertEquals(getWaterIDFromPlot(PLOTID),SILOID);
+    }
+
 }

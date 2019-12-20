@@ -1,6 +1,7 @@
 package nl.han.oose.sapporo.persistence;
 
 import nl.han.oose.sapporo.dto.ActionDTO;
+import nl.han.oose.sapporo.dto.AllActionsDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -50,5 +51,14 @@ class ActionDaoTest extends DAOTest {
         sut.insertAction(ID, ACTION_ID, AFFECTED_ITEM, WATER, MONEY);
         ActionDTO actualAction = getActionWithID_AND_ACTION_ID(ID, ACTION_ID, WATER);
         Assertions.assertEquals(actualAction,expectedAction);
+    }
+
+    @Test
+    void getUserActionsGetsRightAmount(){
+        final int USERID =1;
+        final int RIGHTAMOUNT =3;
+        AllActionsDTO Allactions = sut.getUserActions(USERID);
+        int actualAmount = Allactions.getActions().size();
+        Assertions.assertEquals(RIGHTAMOUNT,actualAmount);
     }
 }

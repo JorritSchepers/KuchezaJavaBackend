@@ -1,7 +1,5 @@
 package nl.han.oose.sapporo.dto;
 
-import java.util.Objects;
-
 public class PlotDTO {
     private int id;
     private int x;
@@ -125,16 +123,8 @@ public class PlotDTO {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public int getPlantID() {
         return plantID;
-    }
-
-    public void setPlantID(int plantID) {
-        this.plantID = plantID;
     }
 
     public int getAnimalID() {
@@ -188,8 +178,4 @@ public class PlotDTO {
                 age == plotDTO.age;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, x, y, purchased, animalID, waterManagerID, plantID, waterAvailable, price, age);
-    }
 }

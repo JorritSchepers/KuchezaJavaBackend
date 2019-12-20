@@ -3,7 +3,6 @@ package nl.han.oose.sapporo.service;
 import nl.han.oose.sapporo.dto.*;
 import nl.han.oose.sapporo.persistence.*;
 import nl.han.oose.sapporo.service.exception.PlotIsAlreadyPurchasedException;
-import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -137,7 +136,7 @@ class PlotServiceTest {
         Mockito.when(mockedPlotDAO.plotHasPlant(PLOT_ID)).thenReturn(true);
         final int HARVEST_PLANT_ACTION_ID = 2;
         final String NAME = "orange";
-        Mockito.when(mockedPlantDAO.getname(1)).thenReturn(NAME);
+        Mockito.when(mockedPlantDAO.getName(1)).thenReturn(NAME);
         sut.harvestPlant(PLOT_WITH_GROWN_PLANT, USER, PLOT_ID);
         Mockito.verify(actionService, Mockito.times(1)).setAction(USER,HARVEST_PLANT_ACTION_ID,NAME);
     }
@@ -356,5 +355,30 @@ class PlotServiceTest {
         final int REPLACEID =2;
         sut.replaceAnimalsOnAllPlots(DELETEID,REPLACEID);
         Mockito.verify(mockedPlotDAO, Mockito.times(1)).replaceAnimalsOnAllPlots(DELETEID,REPLACEID);
+    }
+
+    @Test
+    void replacePlantsOnAllPlotsCallsReplacePlantsOnAllPlots(){
+        final int DELETEID =1;
+        final int REPLACEID =2;
+        sut.replacePlantsOnAllPlots(DELETEID,REPLACEID);
+        Mockito.verify(mockedPlotDAO, Mockito.times(1)).replacePlantsOnAllPlots(DELETEID,REPLACEID);
+    }
+
+    @Test
+    void changeStatusCallsChangeStatus(){
+        final int PLOTID =1;
+        final String STATUS = "Status";
+        sut.changeStatus(PLOTID,STATUS);
+        Mockito.verify(mockedPlotDAO, Mockito.times(1)).changeStatus(PLOTID,STATUS);
+    }
+
+    @Test
+    void changeStatusCallsGetPlot(){
+        final int PLOTID =1;
+        final String STATUS = "Status";
+        sut.changeStatus(PLOTID,STATUS);
+        Mockito.verify(mockedPlotDAO, Mockito.times(1)).getPlot(PLOTID);
+
     }
 }
