@@ -31,14 +31,35 @@ public class BuildingDAOImp implements BuildingDAO {
         }
     }
 
+    @Override
+    public WaterSourceDTO getWaterSource(int waterSourceID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select * from watersource where waterSourceId = ?");
+            statement.setInt(1,waterSourceID);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return new WaterSourceDTO(resultSet.getInt("waterSourceId"),
+                        resultSet.getInt("waterYield"),
+                        resultSet.getInt("maximumWater"),
+                        resultSet.getInt("purchasePrice"),
+                        resultSet.getString("name"));
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
     private AllWaterSourceDTO makeAllWaterSourceDTO(ResultSet resultSet) throws SQLException {
         ArrayList<WaterSourceDTO> waterSources = new ArrayList<>();
         while (resultSet.next()) {
             int id = resultSet.getInt("waterSourceId");
             int waterYield = resultSet.getInt("waterYield");
             int maximumWater = resultSet.getInt("maximumWater");
+            int purchasePrice = resultSet.getInt("purchasePrice");
             String name = resultSet.getString("name");
-            waterSources.add(new WaterSourceDTO(id,waterYield,maximumWater,name));
+            waterSources.add(new WaterSourceDTO(id,waterYield,maximumWater,purchasePrice,name));
         }
         return new AllWaterSourceDTO(waterSources);
     }

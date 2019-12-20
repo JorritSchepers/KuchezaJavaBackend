@@ -199,14 +199,14 @@ class PlotServiceTest {
 
     @Test
     void waterPlantCallsCheckWater(){
-        sut.editWater(USER, PLOT_ID, WATER);
+        sut.editWater(USER, PLOT_ID, WATER, false);
         Mockito.verify(mockedInventoryService, Mockito.times(1)).checkIfPlayerHasEnoughWater(WATER, USER);
     }
 
     @Test
     void waterPlantCallsPlotHasPlant(){
         Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughWater(10, USER)).thenReturn(true);
-        sut.editWater(USER, PLOT_ID, WATER);
+        sut.editWater(USER, PLOT_ID, WATER, false);
         Mockito.verify(mockedPlotDAO, Mockito.times(1)).plotHasPlant(PLOT_ID);
     }
 

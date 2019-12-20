@@ -65,6 +65,33 @@ public class PlotDAOImp implements IPlotDAO {
     }
 
     @Override
+    public boolean checkIfPlotHasWater(int plotID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select plantID,waterSourceID from plot where plotID = ?");
+            statement.setInt(1, plotID);
+            ResultSet resultSet = statement.executeQuery();
+            int plotTaken = 0;
+            int plantID = 0;
+            int waterSourceID = 0;
+
+            while (resultSet.next()) {
+                plantID = resultSet.getInt("plantID");
+                waterSourceID = resultSet.getInt("waterSourceID");
+            }
+
+            plotTaken += plantID + waterSourceID;
+
+            if (plotTaken == 0) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
     public boolean plotIsPurchased(int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select purchased from plot where plotID = ?");
@@ -97,6 +124,7 @@ public class PlotDAOImp implements IPlotDAO {
                         resultSet.getInt("y"),
                         resultSet.getBoolean("purchased"),
                         resultSet.getInt("plantID"),
+                        resultSet.getInt("waterSourceID"),
                         resultSet.getInt("waterAvailable"),
                         resultSet.getFloat("price"),
                         resultSet.getInt("objectAge"),
@@ -149,6 +177,26 @@ public class PlotDAOImp implements IPlotDAO {
             }
             if (plantID == 0) {
                 throw new PlotHasNoPlantException();
+            } else return true;
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public boolean plotHasWaterResource(int plotID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select waterSourceID from plot where plotID = ?");
+            statement.setInt(1, plotID);
+            ResultSet resultSet = statement.executeQuery();
+
+            int waterResourceID = 0;
+
+            while (resultSet.next()) {
+                waterResourceID = resultSet.getInt("waterSourceID");
+            }
+            if (waterResourceID == 0) {
+                throw new PlotHasNoWaterSourceException();
             } else return true;
         } catch (SQLException e) {
             throw new PersistenceException();

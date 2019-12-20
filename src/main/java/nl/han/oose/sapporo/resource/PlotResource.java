@@ -69,12 +69,12 @@ public class PlotResource {
     }
 
     @POST
-    @Path("/{id}/water/{amount}")
+    @Path("/{id}/water/{amount}/{removefrominventory}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response editWaterAmountForPlot(@QueryParam("token") String token, @PathParam("id") int plotID, @PathParam("amount") int amount) {
+    public Response editWaterAmountForPlot(@QueryParam("token") String token, @PathParam("id") int plotID, @PathParam("amount") int amount, @PathParam("removefrominventory") boolean removeFromInventory) {
         UserDTO user = accountService.verifyToken(token);
         return Response.status(Response.Status.OK)
-                .entity(plotService.editWater(user, plotID, amount))
+                .entity(plotService.editWater(user, plotID, amount, removeFromInventory))
                 .build();
     }
 
@@ -88,6 +88,7 @@ public class PlotResource {
                 .build();
     }
 
+    @POST
     @Path("/{id}/animal")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

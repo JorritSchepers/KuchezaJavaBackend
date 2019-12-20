@@ -137,6 +137,19 @@ public class PlotDTO {
         this.status = status;
     }
 
+    public PlotDTO(int id, int x, int y, boolean purchased, int plantID, int waterSourceID, int waterAvailable, float price, int age, String status) {
+        this.id = id;
+        this.x = x;
+        this.y = y;
+        this.purchased = purchased;
+        this.plantID = plantID;
+        this.waterSourceID = waterSourceID;
+        this.waterAvailable = waterAvailable;
+        this.price = price;
+        this.age = age;
+        this.status = status;
+    }
+
     public int getAge() {
         return age;
     }
@@ -185,6 +198,10 @@ public class PlotDTO {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getWaterSourceID() {
+        return waterSourceID;
     }
 
     @Override

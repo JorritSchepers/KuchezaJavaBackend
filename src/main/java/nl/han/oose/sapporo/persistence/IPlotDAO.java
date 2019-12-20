@@ -14,6 +14,8 @@ public interface IPlotDAO {
 
     boolean checkIfPlotIsEmpty(int plotID);
 
+    boolean checkIfPlotHasWater(int plotID);
+
     boolean plotIsPurchased(int plotID);
 
     void removeObjectsFromPlot(int plotID);
@@ -43,4 +45,6 @@ public interface IPlotDAO {
     boolean plotHasAnimal(int plotID);
 
     void replaceAnimalsOnAllPlots(int animalIDToDelete, int animalIDToReplaceWith);
+
+    boolean plotHasWaterResource(int plotID);
 }
