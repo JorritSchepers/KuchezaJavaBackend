@@ -94,7 +94,7 @@ public class PlotServiceImp implements IPlotService {
                     final int HARVEST_PLANT_ACTION_ID = 2;
                     inventoryService.increaseSaldo(profit, user);
                     plotDAO.removeObjectsFromPlot(plotID);
-                    actionService.setAction(user, HARVEST_PLANT_ACTION_ID, plantDAO.getname(plotDTO.getPlantID()));
+                    actionService.setAction(user, HARVEST_PLANT_ACTION_ID, plantDAO.getName(plotDTO.getPlantID()));
                 }
             } else {
                 plotDAO.removeObjectsFromPlot(plotID);
@@ -139,7 +139,7 @@ public class PlotServiceImp implements IPlotService {
     public PlotDTO editWater(UserDTO user, int plotID, int amount) {
         final int GIVE_WATER_ACTION_ID = 3;
         PlotDTO plotDTO =  plotDAO.getPlot(plotID);
-        String affectedPlant = plantDAO.getname(plotDTO.getPlantID());
+        String affectedPlant = plantDAO.getName(plotDTO.getPlantID());
 
         if (inventoryService.checkIfPlayerHasEnoughWater(amount, user) && plotDAO.plotHasPlant(plotID)){
             PlotDTO plot = plotDAO.getPlot(plotID);

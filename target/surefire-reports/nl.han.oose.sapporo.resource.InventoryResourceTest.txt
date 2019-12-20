@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: nl.han.oose.sapporo.resource.InventoryResourceTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.135 s - in nl.han.oose.sapporo.resource.InventoryResourceTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.111 s - in nl.han.oose.sapporo.resource.InventoryResourceTest

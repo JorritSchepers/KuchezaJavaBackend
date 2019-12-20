@@ -39,7 +39,7 @@ public class AnimalDAOImp implements IAnimalDAO {
             PreparedStatement statement = connection.prepareStatement("delete from animal where animalId = ?");
             statement.setInt(1, animalIDToDelete);
             statement.execute();
-        } catch (SQLException ignored) {
+        } catch (SQLException e) {
           throw new PersistenceException();
       }
   }
@@ -55,7 +55,6 @@ public class AnimalDAOImp implements IAnimalDAO {
             }
             return (plotDTO.getAge() >= neededProductionTime);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
           throw new PersistenceException();
       }
   }

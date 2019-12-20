@@ -14,5 +14,5 @@ public interface IPlantDAO {
 
     int getMaximumWater(int id);
 
-    String getname(int plantID);
+    String getName(int plantID);
 }

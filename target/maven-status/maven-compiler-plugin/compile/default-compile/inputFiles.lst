@@ -21,6 +21,7 @@
 /Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/service/IInventoryService.java
 /Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/persistence/IPlantDAO.java
 /Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/persistence/IActionDao.java
+/Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/dto/AllActionsDTO.java
 /Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/persistence/exception/InsufficientFundsException.java
 /Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/service/IAdminService.java
 /Users/SanneJelink/Documents/GitHub/kuchezagame/src/main/java/nl/han/oose/sapporo/resource/PlotResource.java

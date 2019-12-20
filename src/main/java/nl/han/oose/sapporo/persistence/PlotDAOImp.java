@@ -245,7 +245,6 @@ public class PlotDAOImp implements IPlotDAO {
             statement.setInt(2,farmDTO.getFarmID());
             statement.execute();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
             throw new PersistenceException();
         }
     }
