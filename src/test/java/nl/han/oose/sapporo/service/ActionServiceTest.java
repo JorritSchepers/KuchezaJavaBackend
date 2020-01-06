@@ -41,4 +41,10 @@ public class ActionServiceTest {
         sut.setAction(user, ACTION_ID, AFFECTED_NAME);
         Mockito.verify(actionDao, Mockito.times(1)).insertAction(USER_ID, ACTION_ID, AFFECTED_NAME,WATER,MONEY);
     }
+
+    @Test
+    void getUserActionsCallsGetUserActions(){
+        sut.getUserActions(USER_ID );
+        Mockito.verify(actionDao, Mockito.times(1)).getUserActions(USER_ID );
+    }
 }

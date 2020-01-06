@@ -10,6 +10,7 @@ public class ActionDTO {
     private String affectedItem;
     private int currentWater;
     private int currentMoney;
+    private String actionText;
 
     public ActionDTO(int userID, int actionID, Timestamp dateOfAction, String affectedItem, int currentWater, int currentMoney) {
         this.userID = userID;
@@ -18,6 +19,17 @@ public class ActionDTO {
         this.affectedItem = affectedItem;
         this.currentWater = currentWater;
         this.currentMoney = currentMoney;
+        this.actionText = null;
+    }
+
+    public ActionDTO(int userID, int actionID, Timestamp dateOfAction, String affectedItem, int currentWater, int currentMoney, String title) {
+        this.userID = userID;
+        this.actionID = actionID;
+        this.dateOfAction = dateOfAction;
+        this.affectedItem = affectedItem;
+        this.currentWater = currentWater;
+        this.currentMoney = currentMoney;
+        this.actionText = title;
     }
 
     @Override

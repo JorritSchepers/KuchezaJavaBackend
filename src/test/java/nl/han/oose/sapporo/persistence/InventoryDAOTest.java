@@ -89,6 +89,17 @@ class InventoryDAOTest extends DAOTest {
         Assertions.assertEquals(expectedInventoryDTO, sut.getInventory(USER));
     }
 
+    @Test
+    void createInventoryMakesInventoryWithRightAmounts(){
+        final int USERID = 4;
+        final int STARTMONEY = 10000;
+        final int STARTWATER = 20000;
+        UserDTO user = new UserDTO(USERID,"name","password","email");
+        sut.createInventory(user);
+        Assertions.assertEquals(getSaldoFromUser(USERID),STARTMONEY);
+        Assertions.assertEquals(getWaterFromUser(USERID),STARTWATER);
+    }
+
     private int getSaldoFromUser(int userId) {
         int saldo = 0;
         try (Connection connection = DriverManager.getConnection(DB_URL)) {

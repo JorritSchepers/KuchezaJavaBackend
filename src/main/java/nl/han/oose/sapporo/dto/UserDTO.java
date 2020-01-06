@@ -55,10 +55,6 @@ public class UserDTO {
         return id;
     }
 
-    public boolean isAdmin() {
-        return admin;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

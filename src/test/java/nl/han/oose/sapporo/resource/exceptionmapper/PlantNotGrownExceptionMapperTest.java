@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PlantNotGrownExceptionMapperTest {
+class PlantNotGrownExceptionMapperTest {
     private PlantNotGrownExceptionMapper sut = new PlantNotGrownExceptionMapper();
 
     @Test

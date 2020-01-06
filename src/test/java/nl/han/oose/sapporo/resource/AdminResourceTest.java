@@ -2,6 +2,7 @@ package nl.han.oose.sapporo.resource;
 
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.service.IAccountService;
+import nl.han.oose.sapporo.service.IActionService;
 import nl.han.oose.sapporo.service.IAdminService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,11 +15,14 @@ class AdminResourceTest {
     private AdminResource sut;
     private IAccountService mockedAccountService;
     private IAdminService mockedAdminService;
+    private IActionService mockedActionService;
 
     @BeforeEach
     void setUp() {
         sut = new AdminResource();
         mockedAccountService = Mockito.mock(IAccountService.class);
+        mockedActionService = Mockito.mock(IActionService.class);
+        sut.setActionService(mockedActionService);
         sut.setAccountService(mockedAccountService);
         Mockito.when(mockedAccountService.verifyToken(TOKEN)).thenReturn(USER);
         mockedAdminService = Mockito.mock(IAdminService.class);
@@ -54,5 +58,26 @@ class AdminResourceTest {
     void deleteUserCallsGetAllNonAdminUsersInAdminService() {
         sut.getAllNonAdminUsers(TOKEN);
         Mockito.verify(mockedAdminService, Mockito.times(1)).getAllNonAdminUsers(USER);
+    }
+
+    @Test
+    void getUserStatisticsCallsAuthenticate(){
+        final int USERID =1;
+        sut.getUserStatistics(TOKEN, USERID);
+        Mockito.verify(mockedAccountService, Mockito.times(1)).verifyToken(TOKEN);
+    }
+
+    @Test
+    void getUserStatisticsCallsCheckIfUserIsAdmin(){
+        final int USERID =1;
+        sut.getUserStatistics(TOKEN, USERID);
+        Mockito.verify(mockedAdminService, Mockito.times(1)).checkIfUserIsAdmin(USER);
+    }
+
+    @Test
+    void getUserStatisticsCallsGetUserActions(){
+        final int USERID =1;
+        sut.getUserStatistics(TOKEN, USERID);
+        Mockito.verify(mockedActionService, Mockito.times(1)).getUserActions(USERID);
     }
 }

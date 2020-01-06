@@ -22,6 +22,7 @@ nl/han/oose/sapporo/dto/InventoryDTO.class
 nl/han/oose/sapporo/persistence/IAccountDAO.class
 nl/han/oose/sapporo/resource/exceptionmapper/PlotHasNoPlantExceptionMapper.class
 nl/han/oose/sapporo/dto/AllPlotDTO.class
+nl/han/oose/sapporo/dto/AllActionsDTO.class
 nl/han/oose/sapporo/persistence/PlotDAOImp.class
 nl/han/oose/sapporo/dto/AnimalDTO.class
 nl/han/oose/sapporo/persistence/exception/PersistenceException.class

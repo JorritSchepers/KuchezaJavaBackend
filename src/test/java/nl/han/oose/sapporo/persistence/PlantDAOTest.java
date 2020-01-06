@@ -7,7 +7,6 @@ import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import javax.validation.constraints.AssertTrue;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -55,6 +54,13 @@ class PlantDAOTest extends DAOTest {
     @Test
     void getMaximumWaterReturnsCorrectAmount() {
         Assertions.assertEquals(200, sut.getMaximumWater(2));
+    }
+
+    @Test
+    void getNameReturnsRightName(){
+        final int PLANTID1 = 1;
+        final String PLANNAME1 = "Cabbage";
+        Assertions.assertEquals(sut.getName(PLANTID1),PLANNAME1);
     }
 
     private int getAmountOfPlants() {

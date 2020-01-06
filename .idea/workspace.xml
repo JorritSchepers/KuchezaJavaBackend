@@ -17,7 +17,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="18" />
+    <option name="myElementSize" value="75" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -150,48 +150,76 @@
   <component name="RunManager" selected="TomEE Server.TomEE 8.5.41">
     <configuration name="All in KuchezaGame (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="KuchezaGame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in KuchezaGame (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KuchezaGame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in KuchezaGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="KuchezaGame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in kuchezagame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="kuchezagame" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlotServiceTest.harvestPlantCallsRemoveObjectsFromPlot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="kuchezagame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="nl.han.oose.sapporo.service.*" />
+          <option name="PATTERN" value="nl.han.oose.sapporo.persistence.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.service" />
-      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.service.PlotServiceTest" />
-      <option name="METHOD_NAME" value="harvestPlantCallsRemoveObjectsFromPlot" />
+      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.persistence" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.persistence.ActionDaoTest" />
+      <option name="METHOD_NAME" value="getUserActionsGetsRightAmount" />
       <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnimalDAOTest.checkIfProductIsCollectableReturnsFalseWhenShort" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KuchezaGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.sapporo.persistence.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.persistence" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.persistence.AnimalDAOTest" />
+      <option name="METHOD_NAME" value="checkIfProductIsCollectableReturnsFalseWhenShort" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnimalDAOTest.checkIfProductIsCollectableReturnsTrueWhenReadyt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KuchezaGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.sapporo.persistence.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.persistence" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.persistence.AnimalDAOTest" />
+      <option name="METHOD_NAME" value="checkIfProductIsCollectableReturnsTrueWhenReadyt" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="nl.han.oose.sapporo in KuchezaGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KuchezaGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.sapporo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="nl.han.oose.sapporo.persistence in KuchezaGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="KuchezaGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="nl.han.oose.sapporo.persistence.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.persistence" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -281,11 +309,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in KuchezaGame (2)" />
-        <item itemvalue="JUnit.All in KuchezaGame (1)" />
-        <item itemvalue="JUnit.All in KuchezaGame" />
-        <item itemvalue="JUnit.All in kuchezagame" />
-        <item itemvalue="JUnit.PlotServiceTest.harvestPlantCallsRemoveObjectsFromPlot" />
+        <item itemvalue="JUnit.nl.han.oose.sapporo in KuchezaGame" />
+        <item itemvalue="JUnit.ActionDaoTest.getUserActionsGetsRightAmount" />
+        <item itemvalue="JUnit.nl.han.oose.sapporo.persistence in KuchezaGame" />
+        <item itemvalue="JUnit.AnimalDAOTest.checkIfProductIsCollectableReturnsTrueWhenReadyt" />
+        <item itemvalue="JUnit.AnimalDAOTest.checkIfProductIsCollectableReturnsFalseWhenShort" />
       </list>
     </recent_temporary>
   </component>
