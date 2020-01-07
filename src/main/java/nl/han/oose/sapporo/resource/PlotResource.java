@@ -71,10 +71,10 @@ public class PlotResource {
     @POST
     @Path("/{id}/water/{amount}/{removefrominventory}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response editWaterAmountForPlot(@QueryParam("token") String token, @PathParam("id") int plotID, @PathParam("amount") int amount, @PathParam("removefrominventory") boolean removeFromInventory) {
+    public Response editWaterAmountForPlot(@QueryParam("token") String token, @PathParam("id") int plotID, @PathParam("amount") int amount, @PathParam("removefrominventory") boolean ShouldRemoveFromInventory) {
         UserDTO user = accountService.verifyToken(token);
         return Response.status(Response.Status.OK)
-                .entity(plotService.editWater(user, plotID, amount, removeFromInventory))
+                .entity(plotService.editWater(user, plotID, amount, ShouldRemoveFromInventory))
                 .build();
     }
 

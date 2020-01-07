@@ -8,7 +8,13 @@
   <component name="ChangeListManager">
     <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/resource/PlotResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/resource/PlotResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/PlotServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/PlotServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/AllWaterSourceDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/AllWaterSourceDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/WaterSourceDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/dto/WaterSourceDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/App.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +153,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.nl.han.oose.sapporo in KuchezaGame">
+  <component name="RunManager" selected="TomEE Server.TomEE 8.5.41">
     <configuration name="BuildingDAOImpTest.getAllWaterSourcesReturnsAllWaterSourceDTO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="KuchezaGame" />
       <extension name="coverage">
@@ -382,7 +388,7 @@
       <workItem from="1576830154761" duration="8772000" />
       <workItem from="1578298879586" duration="330000" />
       <workItem from="1578314036840" duration="9774000" />
-      <workItem from="1578393671061" duration="1537000" />
+      <workItem from="1578393671061" duration="2682000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1574072988467</created>

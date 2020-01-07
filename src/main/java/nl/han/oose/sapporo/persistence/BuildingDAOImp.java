@@ -25,7 +25,7 @@ public class BuildingDAOImp implements BuildingDAO {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select * from watersource");
             ResultSet resultSet = statement.executeQuery();
-            return makeAllWaterSourceDTO(resultSet);
+            return createAllWaterSourceDTO(resultSet);
         } catch (SQLException e) {
             throw new PersistenceException();
         }
@@ -51,7 +51,7 @@ public class BuildingDAOImp implements BuildingDAO {
         }
     }
 
-    private AllWaterSourceDTO makeAllWaterSourceDTO(ResultSet resultSet) throws SQLException {
+    private AllWaterSourceDTO createAllWaterSourceDTO(ResultSet resultSet) throws SQLException {
         ArrayList<WaterSourceDTO> waterSources = new ArrayList<>();
         while (resultSet.next()) {
             int id = resultSet.getInt("waterSourceId");
