@@ -36,7 +36,7 @@ public class ActionDao implements IActionDao {
     public AllActionsDTO getUserActions(int userID) {
         ArrayList<ActionDTO> actions = new ArrayList<>();
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from actionPerPlayer inner join action on actionPerPlayer.actionID = action.actionID where userID = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from actionPerPlayer inner join action on actionPerPlayer.actionID = action.actionID where userID = ? order by dateOfAction");
             preparedStatement.setInt(1, userID);
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.executeQuery();
