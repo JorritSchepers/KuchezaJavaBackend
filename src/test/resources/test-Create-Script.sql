@@ -38,10 +38,23 @@ CREATE TABLE plant(
 );
 
 CREATE TABLE waterManager(
-                             waterManagerId INT PRIMARY KEY AUTO_INCREMENT,
-                             waterYield INT NOT NULL,
-                             purchasePrice INT NOT NULL,
-                             name VARCHAR(45) NOT NULL
+                             waterManagerId	INT 		NOT NULL	PRIMARY KEY		AUTO_INCREMENT,
+                             waterYield 		INT 		NOT NULL,
+                             purchasePrice 	INT 		NOT NULL,
+                             name 			VARCHAR(45) NOT NULL,
+
+                             CONSTRAINT CHK_waterYieldWaterManager CHECK (waterYield >= 1) /*Deze waarde moeten minimaal 1 zijn, anders levert hij niks op*/
+);
+
+CREATE TABLE waterSource(
+                            waterSourceId 	INT 		NOT NULL	PRIMARY KEY 	AUTO_INCREMENT,
+                            waterYield 		INT 		NOT NULL,
+                            maximumWater 	INT 		NOT NULL,
+                            purchasePrice 	INT 		NOT NULL,
+                            name 			VARCHAR(45)	NOT NULL,
+
+                            CONSTRAINT CHK_maximumWaterWaterSource CHECK (maximumWater > 0), /*Deze waarde moeten groter dan 0 zijn, anders bevat het niets*/
+                            CONSTRAINT CHK_waterYieldWaterSource CHECK (waterYield >= 1) /*Deze waarde moeten minimaal 1 zijn, anders levert hij niks op*/
 );
 
 
@@ -60,19 +73,19 @@ CREATE TABLE status(
 );
 
 CREATE TABLE plot (
-                      plotID int PRIMARY KEY AUTO_INCREMENT,
-                      farmID int not null,
-                      x int not null,
-                      y int not null,
-                      price float not null,
-                      animalId int null,
-                      waterManagerId int null,
-                      plantID int null,
-                      waterAvailable int default 0 not null,
-                      purchased bit,
+                      plotID 			INT 		NOT NULL 	PRIMARY KEY		AUTO_INCREMENT,
+                      farmID 			INT 		NOT NULL,
+                      x 				INT 		NOT NULL,
+                      y 				INT 		NOT NULL,
+                      price 			INT 		NOT NULL,
+                      animalID 		INT			NULL,
+                      waterManagerID 	INT 		NULL,
+                      waterSourceID 	INT 		NULL,
+                      plantID 		INT 		NULL,
+                      objectAge 		INT 		NOT NULL 	default 0,
+                      waterAvailable 	INT 		NOT NULL	default 0,
+                      purchased 		BIT			NOT NULL,
                       status 			VARCHAR(30) NOT NULL	default 'Normal',
-                      age int DEFAULT 0,
-                      objectAge int,
 
                       FOREIGN KEY (farmID)
                           REFERENCES farm(farmID)
@@ -142,11 +155,11 @@ VALUES
 ('Dehydrated'),
 ('Dead');
 
-INSERT INTO plot (x,y,price,purchased, farmID,age,waterAvailable,objectAge,status)
+INSERT INTO plot (x,y,price,purchased, farmID,objectAge,waterAvailable,status)
 VALUES
-(1,1,10,1,1,10,0,0,'Normal'),
-(1,2,10,1,1,10,100,0,'Normal'),
-(1,3,10,0,1,2000,0,0,'Normal');
+(1,1,10,1,1,10,0,'Normal'),
+(1,2,10,1,1,10,100,'Normal'),
+(1,3,10,0,1,2000,0,'Normal');
 
 INSERT INTO animal (waterUsage,productionTime,maximumWater,profit,purchasePrice,name)
 VALUES
@@ -172,10 +185,11 @@ VALUES
 (1,5000,'Silo'),
 (25,1500,'Sprinkler');
 
-INSERT INTO waterManager (waterYield,purchasePrice,name)
+/*Insert waterSource*/
+INSERT INTO waterSource (waterYield,maximumWater,purchasePrice,name)
 VALUES
-(1,5000,'Silo'),
-(25,1500,'Sprinkler');
+(20,4000,750,'Well'),
+(2,50000,500,'canal');
 
 INSERT INTO actionPerPlayer (userID,actionID,affectedItem,currentWater,currentMoney)
 VALUES

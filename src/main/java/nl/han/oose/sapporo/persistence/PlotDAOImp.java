@@ -222,7 +222,7 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public ArrayList<PlotDTO> getFarmPlots(int farmID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT plotID,x,y,price,animalID,waterManagerID,plantID,waterSourceID,purchased,objectAge,waterAvailable,status FROM plot where farmID = ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM plot where farmID = ?");
             statement.setInt(1, farmID);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<PlotDTO> plots = new ArrayList<>();
