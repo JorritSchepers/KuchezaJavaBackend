@@ -27,7 +27,7 @@ public class BuildingResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("sources")
-    public Response getAllAnimals(@QueryParam("token") String token) {
+    public Response getAllWaterSources(@QueryParam("token") String token) {
         accountService.verifyToken(token);
         return Response.status(Response.Status.OK)
                 .entity(buildingService.getAllWaterSources())
