@@ -31,7 +31,7 @@ public class PlotResourceTest {
         Mockito.when(plotService.placePlant(PLANT, PLOT_ID, USER)).thenReturn(PLOT);
         Mockito.when(plotService.harvestPlant(PLOT, USER, PLOT_ID)).thenReturn(PLOT);
         Mockito.when(plotService.purchasePlot(PLOT_ID, USER)).thenReturn(ALL_PLOTS);
-        Mockito.when(plotService.editWater(USER, PLOT_ID, 10)).thenReturn(PLOT);
+        Mockito.when(plotService.editWater(USER, PLOT_ID, 10, false)).thenReturn(PLOT);
         Mockito.when(plotService.placeAnimal(animal, PLOT_ID, USER)).thenReturn(ALL_PLOTS);
         Mockito.when(plotService.sellProduct(PLOT, USER, PLOT_ID)).thenReturn(ALL_PLOTS);
         Mockito.when(plotService.changeStatus(10,"Normal")).thenReturn(PLOT);
@@ -98,19 +98,19 @@ public class PlotResourceTest {
 
     @Test
     public void waterPlantFromPlotCallsAuthenticateByToken() {
-        sut.editWaterAmountForPlot(TOKEN, PLOT_ID, 10);
+        sut.editWaterAmountForPlot(TOKEN, PLOT_ID, 10, false);
         Mockito.verify(accountService, Mockito.times(1)).verifyToken(TOKEN);
     }
 
     @Test
     public void waterPlantFromPlotCallsWaterPlot() {
-        sut.editWaterAmountForPlot(TOKEN, PLOT_ID, 10);
-        Mockito.verify(plotService, Mockito.times(1)).editWater(USER, PLOT_ID,10);
+        sut.editWaterAmountForPlot(TOKEN, PLOT_ID, 10, false);
+        Mockito.verify(plotService, Mockito.times(1)).editWater(USER, PLOT_ID,10, false);
     }
 
     @Test
     public void waterPlantFromPlotReturnsRightPlot() {
-        Assert.assertEquals(PLOT, sut.editWaterAmountForPlot(TOKEN, PLOT_ID,10).getEntity());
+        Assert.assertEquals(PLOT, sut.editWaterAmountForPlot(TOKEN, PLOT_ID,10, false).getEntity());
     }
 
     @Test

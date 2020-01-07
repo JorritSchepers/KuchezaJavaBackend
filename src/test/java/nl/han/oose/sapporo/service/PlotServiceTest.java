@@ -197,16 +197,26 @@ class PlotServiceTest {
     }
 
     @Test
-    void waterPlantCallsCheckWater(){
-        sut.editWater(USER, PLOT_ID, WATER);
-        Mockito.verify(mockedInventoryService, Mockito.times(1)).checkIfPlayerHasEnoughWater(WATER, USER);
+    void editWaterCallsFirstGetFunctions() {
+        Mockito.when(mockedPlotDAO.checkIfPlotHasWater(1)).thenReturn(true);
+
+        sut.editWater(USER, 1, 20, false);
+
+        Mockito.verify(mockedPlotDAO,Mockito.times(2)).getPlot(1);
+        Mockito.verify(mockedPlantDAO,Mockito.times(1)).getName(1);
     }
 
     @Test
-    void waterPlantCallsPlotHasPlant(){
-        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughWater(10, USER)).thenReturn(true);
-        sut.editWater(USER, PLOT_ID, WATER);
-        Mockito.verify(mockedPlotDAO, Mockito.times(1)).plotHasPlant(PLOT_ID);
+    void editWaterCallsWaterFunctions() {
+        Mockito.when(mockedPlotDAO.getPlot(1)).thenReturn(PLOT);
+        Mockito.when(mockedPlotDAO.checkIfPlotHasWater(1)).thenReturn(true);
+        Mockito.when(mockedInventoryService.checkIfPlayerHasEnoughWater(30,USER)).thenReturn(true);
+
+        sut.editWater(USER, 1, 30, true);
+
+        Mockito.verify(mockedInventoryService,Mockito.times(1)).checkIfPlayerHasEnoughWater(30,USER);
+        Mockito.verify(mockedInventoryService,Mockito.times(1)).lowerWater(-30,USER);
+        Mockito.verify(mockedPlotDAO,Mockito.times(1)).editWaterAvailable(-30,1);
     }
 
     @Test

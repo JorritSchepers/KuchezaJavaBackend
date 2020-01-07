@@ -302,7 +302,7 @@ class PlotDAOTest extends DAOTest {
     @Test
     void updateAgeUpdatesAge(){
         final int AFFECTEDPLOT =1;
-        final int OLDAGE = 0;
+        final int OLDAGE = 10;
         final int AGE = 20;
         Assertions.assertEquals(getAgeFromPlot(AFFECTEDPLOT),OLDAGE);
         sut.updateAge(1,AGE);

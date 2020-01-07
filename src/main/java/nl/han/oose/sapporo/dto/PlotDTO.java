@@ -8,6 +8,7 @@ public class PlotDTO {
     private int animalID;
     private int waterManagerID;
     private int plantID;
+    private int waterSourceID;
     private int waterAvailable;
     private float price;
     private int age;
@@ -42,6 +43,21 @@ public class PlotDTO {
         this.animalID = animalID;
         this.waterManagerID = waterManagerID;
         this.plantID = plantID;
+        this.price = price;
+        this.purchased = purchased;
+        this.age = age;
+        this.waterAvailable = waterAvailable;
+        this.status =status;
+    }
+
+    public PlotDTO(int id, int x, int y, int animalID, int waterManagerID, int plantID, int waterSourceID, float price, boolean purchased, int age, int waterAvailable, String status) {
+        this.id = id;
+        this.x = x;
+        this.y = y;
+        this.animalID = animalID;
+        this.waterManagerID = waterManagerID;
+        this.plantID = plantID;
+        this.waterSourceID = waterSourceID;
         this.price = price;
         this.purchased = purchased;
         this.age = age;
@@ -119,6 +135,19 @@ public class PlotDTO {
         this.status = status;
     }
 
+    public PlotDTO(int id, int x, int y, boolean purchased, int plantID, int waterSourceID, int waterAvailable, float price, int age, String status) {
+        this.id = id;
+        this.x = x;
+        this.y = y;
+        this.purchased = purchased;
+        this.plantID = plantID;
+        this.waterSourceID = waterSourceID;
+        this.waterAvailable = waterAvailable;
+        this.price = price;
+        this.age = age;
+        this.status = status;
+    }
+
     public int getAge() {
         return age;
     }
@@ -159,6 +188,10 @@ public class PlotDTO {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getWaterSourceID() {
+        return waterSourceID;
     }
 
     @Override

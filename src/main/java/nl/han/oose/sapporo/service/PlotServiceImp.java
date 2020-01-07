@@ -6,10 +6,7 @@ import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.dto.AllPlotDTO;
 import nl.han.oose.sapporo.dto.AnimalDTO;
 import nl.han.oose.sapporo.dto.FarmDTO;
-import nl.han.oose.sapporo.persistence.IAnimalDAO;
-import nl.han.oose.sapporo.persistence.IFarmDAO;
-import nl.han.oose.sapporo.persistence.IPlantDAO;
-import nl.han.oose.sapporo.persistence.IPlotDAO;
+import nl.han.oose.sapporo.persistence.*;
 import nl.han.oose.sapporo.service.exception.PlotIsAlreadyPurchasedException;
 
 import javax.enterprise.inject.Default;
@@ -22,12 +19,18 @@ public class PlotServiceImp implements IPlotService {
     private IPlantDAO plantDAO;
     private IAnimalDAO animalDAO;
     private IFarmDAO farmDAO;
+    private BuildingDAO buildingDAO;
     private IInventoryService inventoryService;
     private IPlantService plantService;
     private IAnimalService animalService;
     private IActionService actionService;
     private static final int START_WATER = 25;
     private static final int MINIMUM_PLOT_WATER = 0;
+
+    @Inject
+    public void setBuildingDAO(BuildingDAO buildingDAO) {
+        this.buildingDAO = buildingDAO;
+    }
 
     @Inject
     public void setPlantDAO(IPlantDAO plantDAO) {
@@ -136,16 +139,20 @@ public class PlotServiceImp implements IPlotService {
     }
 
     @Override
-    public PlotDTO editWater(UserDTO user, int plotID, int amount) {
+    public PlotDTO editWater(UserDTO user, int plotID, int amount, boolean ShouldRemoveFromInventory) {
         final int GIVE_WATER_ACTION_ID = 3;
-        PlotDTO plotDTO =  plotDAO.getPlot(plotID);
-        String affectedPlant = plantDAO.getName(plotDTO.getPlantID());
+        PlotDTO plot =  plotDAO.getPlot(plotID);
+        String affectedPlant = plantDAO.getName(plot.getPlantID());
 
-        if (inventoryService.checkIfPlayerHasEnoughWater(amount, user) && plotDAO.plotHasPlant(plotID)){
-            PlotDTO plot = plotDAO.getPlot(plotID);
-            int amountThatFits = calculateWaterThatFits(plot.getWaterAvailable(),amount,MINIMUM_PLOT_WATER,plantService.getMaximumWater(plot.getPlantID()));
+        if (plotDAO.checkIfPlotHasWater(plotID)){
+            int amountThatFits = calculateWaterThatFits(plot.getWaterAvailable(),amount,MINIMUM_PLOT_WATER,getMaximumWater(plot));
 
-            inventoryService.lowerWater(amountThatFits, user);
+            if(ShouldRemoveFromInventory) {
+                if(inventoryService.checkIfPlayerHasEnoughWater(amount, user)) {
+                    inventoryService.lowerWater(amountThatFits, user);
+                }
+            }
+
             plotDAO.editWaterAvailable(amountThatFits, plotID);
             return plotDAO.getPlot(plotID);
         }
@@ -204,5 +211,14 @@ public class PlotServiceImp implements IPlotService {
     private AllPlotDTO getAllPlots(UserDTO userDTO) {
         FarmDTO farmDTO = farmDAO.getFarm(userDTO);
         return new AllPlotDTO(getFarmPlots(farmDTO.getFarmID()));
+    }
+
+    private int getMaximumWater(PlotDTO plotDTO) {
+        if(plotDTO.getWaterSourceID() != 0) {
+            return buildingDAO.getWaterSource(plotDTO.getWaterSourceID()).getMaximumWater();
+        } else if (plotDTO.getPlantID() != 0) {
+            return plantService.getMaximumWater(plotDTO.getPlantID());
+        }
+        return 0;
     }
 }

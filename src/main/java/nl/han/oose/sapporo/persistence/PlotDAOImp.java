@@ -36,26 +36,55 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public boolean checkIfPlotIsEmpty(int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("select animalID,watermanagerID,plantID from plot where plotID = ?");
+            PreparedStatement statement = connection.prepareStatement("select animalID,watermanagerID,plantID,waterSourceID from plot where plotID = ?");
             statement.setInt(1, plotID);
             ResultSet resultSet = statement.executeQuery();
             int plotTaken = 0;
             int animalID = 0;
             int waterManagerID = 0;
             int plantID = 0;
+            int waterSourceID = 0;
 
             while (resultSet.next()) {
                 animalID = resultSet.getInt("animalID");
                 waterManagerID = resultSet.getInt("watermanagerID");
                 plantID = resultSet.getInt("plantID");
+                waterSourceID = resultSet.getInt("waterSourceID");
             }
 
-            plotTaken += animalID + waterManagerID + plantID;
+            plotTaken += animalID + waterManagerID + plantID + waterSourceID;
 
             if (plotTaken == 0) {
                 return true;
             } else {
                 throw new PlotIsOccupiedException();
+            }
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
+    public boolean checkIfPlotHasWater(int plotID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select plantID,waterSourceID from plot where plotID = ?");
+            statement.setInt(1, plotID);
+            ResultSet resultSet = statement.executeQuery();
+            int plotTaken = 0;
+            int plantID = 0;
+            int waterSourceID = 0;
+
+            while (resultSet.next()) {
+                plantID = resultSet.getInt("plantID");
+                waterSourceID = resultSet.getInt("waterSourceID");
+            }
+
+            plotTaken += plantID + waterSourceID;
+
+            if (plotTaken == 0) {
+                return false;
+            } else {
+                return true;
             }
         } catch (SQLException e) {
             throw new PersistenceException();
@@ -95,6 +124,7 @@ public class PlotDAOImp implements IPlotDAO {
                         resultSet.getInt("y"),
                         resultSet.getBoolean("purchased"),
                         resultSet.getInt("plantID"),
+                        resultSet.getInt("waterSourceID"),
                         resultSet.getInt("waterAvailable"),
                         resultSet.getFloat("price"),
                         resultSet.getInt("objectAge"),
@@ -153,6 +183,26 @@ public class PlotDAOImp implements IPlotDAO {
         }
     }
 
+    @Override
+    public boolean plotHasWaterResource(int plotID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select waterSourceID from plot where plotID = ?");
+            statement.setInt(1, plotID);
+            ResultSet resultSet = statement.executeQuery();
+
+            int waterResourceID = 0;
+
+            while (resultSet.next()) {
+                waterResourceID = resultSet.getInt("waterSourceID");
+            }
+            if (waterResourceID == 0) {
+                throw new PlotHasNoWaterSourceException();
+            } else return true;
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
     public void insertPlots(FarmDTO farmDTO) {
         try (Connection connection = connectionFactory.getConnection()) {
             for(PlotDTO plot: farmDTO.getPlots()) {
@@ -172,7 +222,7 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public ArrayList<PlotDTO> getFarmPlots(int farmID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT plotID,x,y,price,animalID,waterManagerID,plantID,purchased,objectAge,waterAvailable,status FROM plot where farmID = ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM plot where farmID = ?");
             statement.setInt(1, farmID);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<PlotDTO> plots = new ArrayList<>();
@@ -185,6 +235,7 @@ public class PlotDAOImp implements IPlotDAO {
                         resultSet.getInt("animalID"),
                         resultSet.getInt("waterManagerID"),
                         resultSet.getInt("plantID"),
+                        resultSet.getInt("waterSourceID"),
                         resultSet.getFloat("price"),
                         resultSet.getBoolean("purchased"),
                         resultSet.getInt("objectAge"),
