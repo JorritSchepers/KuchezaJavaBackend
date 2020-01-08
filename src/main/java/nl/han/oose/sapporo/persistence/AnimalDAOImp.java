@@ -105,4 +105,21 @@ public class AnimalDAOImp implements IAnimalDAO {
             throw new PersistenceException();
         }
     }
+
+    @Override
+    public int getMaximumWater(int animalID) {
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("select maximumWater from animal where animalId = ?");
+            statement.setInt(1,animalID);
+            ResultSet resultSet = statement.executeQuery();
+            int maximumWater = 0;
+            while (resultSet.next()) {
+                maximumWater = resultSet.getInt("maximumWater");
+            }
+            System.out.println(maximumWater);
+            return maximumWater;
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
 }

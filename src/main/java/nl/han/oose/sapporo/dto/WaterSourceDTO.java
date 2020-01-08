@@ -17,44 +17,8 @@ public class WaterSourceDTO {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getWaterYield() {
-        return waterYield;
-    }
-
-    public void setWaterYield(int waterYield) {
-        this.waterYield = waterYield;
-    }
-
-    public int getPurchasePrice() {
-        return purchasePrice;
-    }
-
-    public void setPurchasePrice(int purchasePrice) {
-        this.purchasePrice = purchasePrice;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getMaximumWater() {
         return maximumWater;
-    }
-
-    public void setMaximumWater(int maximumWater) {
-        this.maximumWater = maximumWater;
     }
 
     @Override

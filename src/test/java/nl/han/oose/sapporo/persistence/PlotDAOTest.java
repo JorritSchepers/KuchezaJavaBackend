@@ -3,6 +3,7 @@ package nl.han.oose.sapporo.persistence;
 import nl.han.oose.sapporo.dto.AnimalDTO;
 import nl.han.oose.sapporo.dto.FarmDTO;
 import nl.han.oose.sapporo.dto.PlantDTO;
+import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.*;
 import org.junit.jupiter.api.Assertions;
@@ -10,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 class PlotDAOTest extends DAOTest {
     private PlotDAOImp sut = new PlotDAOImp();
@@ -92,6 +95,19 @@ class PlotDAOTest extends DAOTest {
         } catch (SQLException ignored) {
         }
         return objectAge;
+    }
+
+    int getAmountOfPlots() {
+        int amount = 0;
+        try (Connection connection = DriverManager.getConnection(DB_URL)) {
+            PreparedStatement statement = connection.prepareStatement("select * from plot");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                amount += 1;
+            }
+        } catch (SQLException ignored) {
+        }
+        return amount;
     }
 
     private boolean plotIsEmpty(int plotId) {
@@ -319,4 +335,44 @@ class PlotDAOTest extends DAOTest {
         Assertions.assertEquals(getWaterIDFromPlot(PLOTID),SILOID);
     }
 
+    @Test
+    public void insertPlotsPutsPlotsInDatabase(){
+        FarmDTO farm = new FarmDTO(1,1);
+        farm.setPlots(new ArrayList<PlotDTO>(
+                List.of(new PlotDTO(1,1,1,0,0), new PlotDTO(2,1,2,0,0))
+        ));
+        sut.insertPlots(farm);
+
+        final int expected = 5;
+        int result = getAmountOfPlots();
+        Assertions.assertEquals(expected,result);
+    }
+
+    @Test
+    public void hasWaterResourceReturnsTrue() {
+        final boolean expected = true;
+        boolean result = sut.plotHasWaterResource(3);
+        Assertions.assertEquals(expected,result);
+    }
+
+    @Test
+    public void hasWaterResourceThrowsException() {
+        Assertions.assertThrows(PlotHasNoWaterSourceException.class, () -> {
+            sut.plotHasWaterResource(0);
+        });
+    }
+
+    @Test
+    public void checkIfPlotHasWaterReturnsTrue() {
+        final boolean expected = true;
+        boolean result = sut.checkIfPlotHasWater(3);
+        Assertions.assertEquals(expected,result);
+    }
+
+    @Test
+    public void checkIfPlotHasWaterReturnsFalse() {
+        final boolean expected = false;
+        boolean result = sut.checkIfPlotHasWater(1);
+        Assertions.assertEquals(expected,result);
+    }
 }

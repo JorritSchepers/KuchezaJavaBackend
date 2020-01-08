@@ -1,20 +1,25 @@
 package nl.han.oose.sapporo.persistence;
 
 import nl.han.oose.sapporo.dto.FarmDTO;
+import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.dto.UserDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
+import nl.han.oose.sapporo.persistence.exception.PersistenceException;
 import nl.han.oose.sapporo.persistence.exception.UserAlreadyHasFarmException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.sql.*;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class farmDAOImpTest extends DAOTest {
+    private ConnectionFactoryImp connectionFactory;
     private FarmDAOImp sut = new FarmDAOImp();
+    private PlotDAOImp mockedPlotDAO = Mockito.mock(PlotDAOImp.class);
     private final UserDTO USER_WITH_FARM = new UserDTO(1, "PatrickSt3r", "DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937", "Patrick@Ster.com");
     private final UserDTO USER_WITHOUT_FARM = new UserDTO(2, "Sapporo", "DC00C903852BB19EB250AEBA05E534A6D211629D77D055033806B783BAE09937", "Patrick@Ster.com");
     private final FarmDTO FARM = new FarmDTO(2,2);
@@ -22,6 +27,7 @@ class farmDAOImpTest extends DAOTest {
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
         sut.setConnectionFactory(connectionFactoryImp);
+        this.connectionFactory = connectionFactoryImp;
     }
 
     @Test
@@ -53,6 +59,14 @@ class farmDAOImpTest extends DAOTest {
         Assertions.assertEquals(oldAmount+1,newAmount);
     }
 
+    @Test
+    public void getAllPlotsFromFarmReturnRightAmount() {
+        try {
+            Assertions.assertEquals(3,sut.getAllPlotsFromFarm(connectionFactory.getConnection(),new FarmDTO(1,1)).size());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     private farmDAOImpTest(){
         IPlotDAO plotDAO = Mockito.mock(IPlotDAO.class);

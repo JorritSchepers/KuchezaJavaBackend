@@ -9,10 +9,6 @@ public class TokenDTO {
         this.token = token;
     }
 
-    public UserDTO getUser() {
-        return user;
-    }
-
     public String getToken() {
         return token;
     }

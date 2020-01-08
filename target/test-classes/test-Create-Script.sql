@@ -155,11 +155,11 @@ VALUES
 ('Dehydrated'),
 ('Dead');
 
-INSERT INTO plot (x,y,price,purchased, farmID,objectAge,waterAvailable,status)
+INSERT INTO plot (x,y,price,purchased, farmID,objectAge,waterAvailable,status, waterSourceID)
 VALUES
-(1,1,10,1,1,10,0,'Normal'),
-(1,2,10,1,1,10,100,'Normal'),
-(1,3,10,0,1,2000,0,'Normal');
+(1,1,10,1,1,10,0,'Normal', 0),
+(1,2,10,1,1,10,100,'Normal', 0),
+(1,3,10,0,1,2000,0,'Normal', 1);
 
 INSERT INTO animal (waterUsage,productionTime,maximumWater,profit,purchasePrice,name)
 VALUES

@@ -18,12 +18,6 @@ public class UserDTO {
         this.id = id;
     }
 
-    public UserDTO(String name, String password, String email) {
-        this.name = name;
-        this.password = password;
-        this.email = email;
-    }
-
     public UserDTO(int id, String name, String password, String email, boolean admin) {
         this.id = id;
         this.name = name;
