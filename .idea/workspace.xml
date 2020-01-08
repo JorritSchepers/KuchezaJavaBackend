@@ -8,20 +8,10 @@
   <component name="ChangeListManager">
     <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/FarmDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/FarmDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/IPlotDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/IPlotDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/PlotDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/PlotDAOImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/resource/exceptionmapper/PersistenceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/resource/exceptionmapper/PersistenceMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/FarmDAOImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/FarmDAOImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/IPlotDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/IPlotDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/PlotDAOImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/persistence/PlotDAOImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/resource/exceptionmapper/PersistenceMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/KuchezaGame-0.1/WEB-INF/classes/nl/han/oose/sapporo/resource/exceptionmapper/PersistenceMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/FarmDAOIMP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/FarmDAOIMP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/IPlotDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/IPlotDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/PlotDAOImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/persistence/PlotDAOImp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/resource/exceptionmapper/PersistenceMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/resource/exceptionmapper/PersistenceMapper.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

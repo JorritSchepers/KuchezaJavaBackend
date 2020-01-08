@@ -305,7 +305,8 @@ public class PlotDAOImp implements IPlotDAO {
         final int WELL_ID = 1;
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
-                    ("update plot set waterSourceID = ? where farmID = ? order by plotID LIMIT 1, 1");
+                    ("UPDATE plot SET waterSourceID = ? WHERE plotID IN (SELECT plotID FROM (select * from plot where farmID = ? order by plotID limit 1,1)l);\n" +
+                            " ");
             statement.setInt(1,WELL_ID);
             statement.setInt(2,farmDTO.getFarmID());
             statement.execute();
