@@ -116,7 +116,6 @@ public class AnimalDAOImp implements IAnimalDAO {
             while (resultSet.next()) {
                 maximumWater = resultSet.getInt("maximumWater");
             }
-            System.out.println(maximumWater);
             return maximumWater;
         } catch (SQLException e) {
             throw new PersistenceException();
