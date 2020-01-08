@@ -15,4 +15,6 @@ public interface IAnimalDAO {
     String getAnimal(int animalID);
 
     void deleteAnimal(int animalIDToDelete);
+
+    int getMaximumWater(int animalID);
 }

@@ -218,6 +218,8 @@ public class PlotServiceImp implements IPlotService {
             return buildingDAO.getWaterSource(plotDTO.getWaterSourceID()).getMaximumWater();
         } else if (plotDTO.getPlantID() != 0) {
             return plantService.getMaximumWater(plotDTO.getPlantID());
+        } else if (plotDTO.getAnimalID() != 0) {
+            return animalDAO.getMaximumWater(plotDTO.getAnimalID());
         }
         return 0;
     }

@@ -74,4 +74,12 @@ class AnimalDAOTest extends DAOTest {
 
         Assertions.assertTrue(sut.checkIfProductIsCollectable(oldplot));
     }
+
+    @Test
+    public void getMaximumWaterReturnsMaximumWater() {
+        final int expected = 300;
+        final int ANIMALID = 1;
+        int result = sut.getMaximumWater(1);
+        Assertions.assertEquals(expected,result);
+    }
 }

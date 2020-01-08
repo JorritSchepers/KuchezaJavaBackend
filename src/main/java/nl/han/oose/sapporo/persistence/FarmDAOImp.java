@@ -95,7 +95,7 @@ public class FarmDAOImp implements IFarmDAO {
         }
     }
 
-    private List<PlotDTO> getAllPlotsFromFarm(Connection connection, FarmDTO farmDTO) {
+    public List<PlotDTO> getAllPlotsFromFarm(Connection connection, FarmDTO farmDTO) {
         List<PlotDTO> plotDTOS = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM plot WHERE farmID = ?");

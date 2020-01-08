@@ -67,19 +67,21 @@ public class PlotDAOImp implements IPlotDAO {
     @Override
     public boolean checkIfPlotHasWater(int plotID) {
         try (Connection connection = connectionFactory.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("select plantID,waterSourceID from plot where plotID = ?");
+            PreparedStatement statement = connection.prepareStatement("select plantID,waterSourceID,animalID from plot where plotID = ?");
             statement.setInt(1, plotID);
             ResultSet resultSet = statement.executeQuery();
             int plotTaken = 0;
             int plantID = 0;
             int waterSourceID = 0;
+            int animalID = 0;
 
             while (resultSet.next()) {
                 plantID = resultSet.getInt("plantID");
                 waterSourceID = resultSet.getInt("waterSourceID");
+                animalID = resultSet.getInt("animalID");
             }
 
-            plotTaken += plantID + waterSourceID;
+            plotTaken += plantID + waterSourceID + animalID;
 
             if (plotTaken == 0) {
                 return false;
@@ -125,6 +127,7 @@ public class PlotDAOImp implements IPlotDAO {
                         resultSet.getBoolean("purchased"),
                         resultSet.getInt("plantID"),
                         resultSet.getInt("waterSourceID"),
+                        resultSet.getInt("animalID"),
                         resultSet.getInt("waterAvailable"),
                         resultSet.getFloat("price"),
                         resultSet.getInt("objectAge"),
