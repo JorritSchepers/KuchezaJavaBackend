@@ -109,4 +109,13 @@ public class PlotResource {
                 .entity(plotService.sellProduct(plotDTO, user, plotID))
                 .build();
     }
+
+    @POST
+    @Path("/{id}/clear")
+    public Response clearPlot(@QueryParam("token") String token, @PathParam("id") int plotID) {
+        UserDTO user = accountService.verifyToken(token);
+        plotService.clearPlot(plotID);
+        return Response.status(Response.Status.OK)
+                .build();
+    }
 }
