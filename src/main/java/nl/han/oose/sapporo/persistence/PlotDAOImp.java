@@ -301,6 +301,20 @@ public class PlotDAOImp implements IPlotDAO {
     }
 
     @Override
+    public void createWell(FarmDTO farmDTO) {
+        final int WELL_ID = 1;
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement
+                    ("update plot set waterSourceID = ? where farmID = ? order by plotID LIMIT 1, 1");
+            statement.setInt(1,WELL_ID);
+            statement.setInt(2,farmDTO.getFarmID());
+            statement.execute();
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+    }
+
+    @Override
     public int getWater(int plotID) {
         int water = 0;
         try (Connection connection = connectionFactory.getConnection()) {
