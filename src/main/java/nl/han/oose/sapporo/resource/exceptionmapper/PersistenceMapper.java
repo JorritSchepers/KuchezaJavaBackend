@@ -8,7 +8,6 @@ import javax.ws.rs.ext.Provider;
 
 @Provider
 public class PersistenceMapper implements ExceptionMapper<PersistenceException> {
-
     @Override
     public Response toResponse(PersistenceException e) {
         return Response.status(400)

@@ -47,4 +47,6 @@ public interface IPlotDAO {
     void replaceAnimalsOnAllPlots(int animalIDToDelete, int animalIDToReplaceWith);
 
     boolean plotHasWaterResource(int plotID);
+
+    void createWell(FarmDTO farmDTO);
 }
