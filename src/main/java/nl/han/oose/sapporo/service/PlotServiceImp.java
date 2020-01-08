@@ -108,6 +108,11 @@ public class PlotServiceImp implements IPlotService {
     }
 
     @Override
+    public void clearPlot(int plotID) {
+        plotDAO.removeObjectsFromPlot(plotID);
+    }
+
+    @Override
     public AllPlotDTO purchasePlot(int plotID, UserDTO userDTO) {
         final int PURCHASE_PLOT_ACTION_ID = 4;
         PlotDTO plotDTO = plotDAO.getPlot(plotID);

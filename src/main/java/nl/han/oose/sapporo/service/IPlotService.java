@@ -17,6 +17,8 @@ public interface IPlotService {
 
     void updateAge(int plotID, int age);
 
+    void clearPlot(int plotID);
+
     AllPlotDTO purchasePlot(int plotID, UserDTO userDTO);
 
     PlotDTO changeStatus(int plotID, String status);

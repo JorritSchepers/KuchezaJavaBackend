@@ -157,4 +157,10 @@ public class PlotResourceTest {
         sut.sellAnimalProduct(TOKEN, PLOT_ID, PLOT);
         Assert.assertEquals(ALL_PLOTS, sut.sellAnimalProduct(TOKEN, PLOT_ID, PLOT).getEntity());
     }
+
+    @Test
+    public void clearPlotCallsClearPlot() {
+        sut.clearPlot(TOKEN,PLOT_ID);
+        Mockito.verify(plotService,Mockito.times(1)).clearPlot(PLOT_ID);
+    }
 }

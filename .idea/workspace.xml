@@ -7,7 +7,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd09afa5-b039-49a9-8d2f-bc502953231d" name="Default Changelist" comment="Werkt deze push?">
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/AnimalDAOImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/persistence/AnimalDAOImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/resource/PlotResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/resource/PlotResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/IPlotService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/IPlotService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/PlotServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/han/oose/sapporo/service/PlotServiceImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/PlotServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nl/han/oose/sapporo/service/PlotServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/service/IPlotService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/service/IPlotService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/service/PlotServiceImp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/nl/han/oose/sapporo/service/PlotServiceImp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/service/PlotServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/nl/han/oose/sapporo/service/PlotServiceTest.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -147,33 +154,33 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.nl.han.oose.sapporo in KuchezaGame">
-    <configuration name="PlotDAOTest.checkIfPlotHasWaterReturnsFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlotResourceTest.clearPlotCallsClearPlot" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="KuchezaGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="nl.han.oose.sapporo.persistence.*" />
+          <option name="PATTERN" value="nl.han.oose.sapporo.resource.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.persistence" />
-      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.persistence.PlotDAOTest" />
-      <option name="METHOD_NAME" value="checkIfPlotHasWaterReturnsFalse" />
+      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.resource" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.resource.PlotResourceTest" />
+      <option name="METHOD_NAME" value="clearPlotCallsClearPlot" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlotDAOTest.checkIfPlotHasWaterReturnsTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlotServiceTest.clearPlotCallsRemoveObjects" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="KuchezaGame" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="nl.han.oose.sapporo.persistence.*" />
+          <option name="PATTERN" value="nl.han.oose.sapporo.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.persistence" />
-      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.persistence.PlotDAOTest" />
-      <option name="METHOD_NAME" value="checkIfPlotHasWaterReturnsTrue" />
+      <option name="PACKAGE_NAME" value="nl.han.oose.sapporo.service" />
+      <option name="MAIN_CLASS_NAME" value="nl.han.oose.sapporo.service.PlotServiceTest" />
+      <option name="METHOD_NAME" value="clearPlotCallsRemoveObjects" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -302,19 +309,19 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.nl.han.oose.sapporo in KuchezaGame" />
-      <item itemvalue="JUnit.PlotDAOTest.checkIfPlotHasWaterReturnsTrue" />
-      <item itemvalue="JUnit.PlotDAOTest.checkIfPlotHasWaterReturnsFalse" />
       <item itemvalue="JUnit.farmDAOImpTest.createFarmReturnsRightAmountOfPlots" />
       <item itemvalue="JUnit.farmDAOImpTest.getAllPlotsFromFarmReturnRightAmount" />
       <item itemvalue="TomEE Server.TomEE 8.5.41" />
+      <item itemvalue="JUnit.PlotServiceTest.clearPlotCallsRemoveObjects" />
+      <item itemvalue="JUnit.PlotResourceTest.clearPlotCallsClearPlot" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.nl.han.oose.sapporo in KuchezaGame" />
+        <item itemvalue="JUnit.PlotResourceTest.clearPlotCallsClearPlot" />
+        <item itemvalue="JUnit.PlotServiceTest.clearPlotCallsRemoveObjects" />
         <item itemvalue="JUnit.farmDAOImpTest.getAllPlotsFromFarmReturnRightAmount" />
         <item itemvalue="JUnit.farmDAOImpTest.createFarmReturnsRightAmountOfPlots" />
-        <item itemvalue="JUnit.PlotDAOTest.checkIfPlotHasWaterReturnsFalse" />
-        <item itemvalue="JUnit.PlotDAOTest.checkIfPlotHasWaterReturnsTrue" />
       </list>
     </recent_temporary>
   </component>
