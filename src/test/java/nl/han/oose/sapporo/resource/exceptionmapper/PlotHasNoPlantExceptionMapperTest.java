@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 import static org.junit.Assert.assertEquals;
 
-public class PlotHasNoPlantExceptionMapperTest {
+class PlotHasNoPlantExceptionMapperTest {
     private PlotHasNoPlantExceptionMapper sut = new PlotHasNoPlantExceptionMapper();
 
     @Test

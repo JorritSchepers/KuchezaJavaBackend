@@ -39,8 +39,8 @@ class PlantDAOTest extends DAOTest {
     }
 
     @Test
-    void getProfitGetsRightProfit(){
-        Assertions.assertEquals(20,sut.getProfit(1));
+    void getProfitGetsRightProfit() {
+        Assertions.assertEquals(20, sut.getProfit(1));
     }
 
     @Test
@@ -48,7 +48,7 @@ class PlantDAOTest extends DAOTest {
         int oldAmount = getAmountOfPlants();
         sut.deletePlant(1);
         int newAmount = getAmountOfPlants();
-        Assertions.assertEquals(oldAmount-1, newAmount);
+        Assertions.assertEquals(oldAmount - 1, newAmount);
     }
 
     @Test
@@ -57,10 +57,10 @@ class PlantDAOTest extends DAOTest {
     }
 
     @Test
-    void getNameReturnsRightName(){
+    void getNameReturnsRightName() {
         final int PLANTID1 = 1;
         final String PLANNAME1 = "Cabbage";
-        Assertions.assertEquals(sut.getName(PLANTID1),PLANNAME1);
+        Assertions.assertEquals(sut.getName(PLANTID1), PLANNAME1);
     }
 
     private int getAmountOfPlants() {

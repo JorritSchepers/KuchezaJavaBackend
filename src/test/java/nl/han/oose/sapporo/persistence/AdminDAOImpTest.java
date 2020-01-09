@@ -40,7 +40,7 @@ class AdminDAOImpTest extends DAOTest {
         int oldAmount = getAmountOfUsers();
         sut.deleteUser(USER_ID);
         int newAmount = getAmountOfUsers();
-        assertEquals(oldAmount-1, newAmount);
+        assertEquals(oldAmount - 1, newAmount);
     }
 
     @Test

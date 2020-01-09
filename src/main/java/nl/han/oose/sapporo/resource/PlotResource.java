@@ -64,7 +64,7 @@ public class PlotResource {
     @Path("/{id}/updateAge/{age}")
     public Response updateAge(@QueryParam("token") String token, @PathParam("id") int plotID, @PathParam("age") int age) {
         UserDTO user = accountService.verifyToken(token);
-        plotService.updateAge(plotID,age);
+        plotService.updateAge(plotID, age);
         return Response.status(Response.Status.OK).entity("plant").build();
     }
 
@@ -114,7 +114,7 @@ public class PlotResource {
     @Path("/{id}/clear")
     public Response clearPlot(@QueryParam("token") String token, @PathParam("id") int plotID) {
         UserDTO user = accountService.verifyToken(token);
-        plotService.clearPlot(plotID);
+        plotService.clearPlot(user, plotID);
         return Response.status(Response.Status.OK)
                 .build();
     }

@@ -1,10 +1,6 @@
 package nl.han.oose.sapporo.service;
 
-import nl.han.oose.sapporo.dto.AllPlotDTO;
-import nl.han.oose.sapporo.dto.PlantDTO;
-import nl.han.oose.sapporo.dto.PlotDTO;
-import nl.han.oose.sapporo.dto.UserDTO;
-import nl.han.oose.sapporo.dto.AnimalDTO;
+import nl.han.oose.sapporo.dto.*;
 
 import java.util.ArrayList;
 
@@ -17,7 +13,7 @@ public interface IPlotService {
 
     void updateAge(int plotID, int age);
 
-    void clearPlot(int plotID);
+    void clearPlot(UserDTO user, int plotID);
 
     AllPlotDTO purchasePlot(int plotID, UserDTO userDTO);
 

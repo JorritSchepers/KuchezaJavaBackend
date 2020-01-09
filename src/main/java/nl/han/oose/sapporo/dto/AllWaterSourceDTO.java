@@ -1,7 +1,6 @@
 package nl.han.oose.sapporo.dto;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class AllWaterSourceDTO {
     private ArrayList<WaterSourceDTO> waterSources;

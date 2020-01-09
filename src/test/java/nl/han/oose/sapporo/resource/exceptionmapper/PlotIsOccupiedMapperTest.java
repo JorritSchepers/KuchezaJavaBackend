@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PlotIsOccupiedMapperTest {
+class PlotIsOccupiedMapperTest {
     private PlotIsOccupiedMapper sut = new PlotIsOccupiedMapper();
 
     @Test

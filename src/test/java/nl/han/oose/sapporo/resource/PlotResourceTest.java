@@ -5,7 +5,6 @@ import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IPlotService;
 import org.junit.Assert;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import javax.ws.rs.core.Response;
@@ -20,7 +19,9 @@ public class PlotResourceTest {
     private PlantDTO PLANT = new PlantDTO();
     private UserDTO USER = new UserDTO();
     private PlotDTO PLOT = new PlotDTO(1, 1, 1, 1, 0, 0, 0);
-    private ArrayList<PlotDTO> plots = new ArrayList<>() {{ add(PLOT); }};
+    private ArrayList<PlotDTO> plots = new ArrayList<>() {{
+        add(PLOT);
+    }};
     private AllPlotDTO ALL_PLOTS = new AllPlotDTO(plots);
     private AnimalDTO animal = new AnimalDTO();
 
@@ -34,7 +35,7 @@ public class PlotResourceTest {
         Mockito.when(plotService.editWater(USER, PLOT_ID, 10, false)).thenReturn(PLOT);
         Mockito.when(plotService.placeAnimal(animal, PLOT_ID, USER)).thenReturn(ALL_PLOTS);
         Mockito.when(plotService.sellProduct(PLOT, USER, PLOT_ID)).thenReturn(ALL_PLOTS);
-        Mockito.when(plotService.changeStatus(10,"Normal")).thenReturn(PLOT);
+        Mockito.when(plotService.changeStatus(10, "Normal")).thenReturn(PLOT);
     }
 
     @Test
@@ -74,8 +75,8 @@ public class PlotResourceTest {
 
     @Test
     public void updateAgeCallsUpdateAge() {
-        sut.updateAge(TOKEN,PLOT_ID,1000);
-        Mockito.verify(plotService, Mockito.times(1)).updateAge(PLOT_ID,1000);
+        sut.updateAge(TOKEN, PLOT_ID, 1000);
+        Mockito.verify(plotService, Mockito.times(1)).updateAge(PLOT_ID, 1000);
     }
 
     @Test
@@ -105,12 +106,12 @@ public class PlotResourceTest {
     @Test
     public void waterPlantFromPlotCallsWaterPlot() {
         sut.editWaterAmountForPlot(TOKEN, PLOT_ID, 10, false);
-        Mockito.verify(plotService, Mockito.times(1)).editWater(USER, PLOT_ID,10, false);
+        Mockito.verify(plotService, Mockito.times(1)).editWater(USER, PLOT_ID, 10, false);
     }
 
     @Test
     public void waterPlantFromPlotReturnsRightPlot() {
-        Assert.assertEquals(PLOT, sut.editWaterAmountForPlot(TOKEN, PLOT_ID,10, false).getEntity());
+        Assert.assertEquals(PLOT, sut.editWaterAmountForPlot(TOKEN, PLOT_ID, 10, false).getEntity());
     }
 
     @Test
@@ -118,9 +119,9 @@ public class PlotResourceTest {
         Response excpected = Response.status(Response.Status.OK)
                 .entity(PLOT)
                 .build();
-        Response result = sut.changeStatus(TOKEN,10,"Normal");
+        Response result = sut.changeStatus(TOKEN, 10, "Normal");
 
-        Assert.assertEquals(excpected.toString(),result.toString());
+        Assert.assertEquals(excpected.toString(), result.toString());
     }
 
     public void placeAnimalCallsAuthenticateByToken() {
@@ -160,7 +161,7 @@ public class PlotResourceTest {
 
     @Test
     public void clearPlotCallsClearPlot() {
-        sut.clearPlot(TOKEN,PLOT_ID);
-        Mockito.verify(plotService,Mockito.times(1)).clearPlot(PLOT_ID);
+        sut.clearPlot(TOKEN, PLOT_ID);
+        Mockito.verify(plotService, Mockito.times(1)).clearPlot(USER, PLOT_ID);
     }
 }

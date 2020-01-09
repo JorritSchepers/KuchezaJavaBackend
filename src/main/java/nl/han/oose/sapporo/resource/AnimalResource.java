@@ -1,7 +1,10 @@
 package nl.han.oose.sapporo.resource;
 
 import nl.han.oose.sapporo.dto.UserDTO;
-import nl.han.oose.sapporo.service.*;
+import nl.han.oose.sapporo.service.IAccountService;
+import nl.han.oose.sapporo.service.IAdminService;
+import nl.han.oose.sapporo.service.IAnimalService;
+import nl.han.oose.sapporo.service.IPlotService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;

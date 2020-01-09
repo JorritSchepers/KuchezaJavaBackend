@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 import static org.junit.Assert.assertEquals;
 
-public class InvalidLoginInformationExceptionMapperTest {
+class InvalidLoginInformationExceptionMapperTest {
     private InvalidLoginInformationExceptionMapper sut = new InvalidLoginInformationExceptionMapper();
 
     @Test

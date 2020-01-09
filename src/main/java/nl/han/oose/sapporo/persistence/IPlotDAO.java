@@ -49,4 +49,6 @@ public interface IPlotDAO {
     boolean plotHasWaterResource(int plotID);
 
     void createWell(FarmDTO farmDTO);
+
+    String getAnimalFromPlot(int plotID);
 }

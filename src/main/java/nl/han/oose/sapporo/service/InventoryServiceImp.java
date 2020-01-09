@@ -30,13 +30,19 @@ public class InventoryServiceImp implements IInventoryService {
     }
 
     @Override
-    public boolean checkIfPlayerHasEnoughWater(int amount, UserDTO userDTO) { return inventoryDAO.checkWater(amount, userDTO); }
+    public boolean checkIfPlayerHasEnoughWater(int amount, UserDTO userDTO) {
+        return inventoryDAO.checkWater(amount, userDTO);
+    }
 
     @Override
-    public void lowerWater(int amount, UserDTO userDTO) { inventoryDAO.lowerWater(amount, userDTO); }
+    public void lowerWater(int amount, UserDTO userDTO) {
+        inventoryDAO.lowerWater(amount, userDTO);
+    }
 
     @Override
-    public void increaseWater(int amount, UserDTO userDTO) { inventoryDAO.increaseWater(amount, userDTO); }
+    public void increaseWater(int amount, UserDTO userDTO) {
+        inventoryDAO.increaseWater(amount, userDTO);
+    }
 
     @Override
     public void createInventory(UserDTO user) {

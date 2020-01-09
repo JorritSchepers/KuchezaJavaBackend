@@ -9,7 +9,6 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class PlantNotGrownExceptionMapper implements ExceptionMapper<PlantNotGrownException> {
 
-    //TODO status 400?
     @Override
     public Response toResponse(PlantNotGrownException e) {
         return Response.status(400)

@@ -10,7 +10,8 @@ public class FarmDTO {
     private static int HEIGHT = 7;
     private List<PlotDTO> plots;
 
-    public FarmDTO() { }
+    public FarmDTO() {
+    }
 
     public FarmDTO(int farmID, int ownerID) {
         this.farmID = farmID;

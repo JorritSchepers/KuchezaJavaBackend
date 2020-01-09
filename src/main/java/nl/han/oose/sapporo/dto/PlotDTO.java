@@ -14,7 +14,8 @@ public class PlotDTO {
     private int age;
     private String status = "";
 
-    public PlotDTO() { }
+    public PlotDTO() {
+    }
 
     public PlotDTO(int x, int y, float price, boolean purchased) {
         this.x = x;
@@ -47,7 +48,7 @@ public class PlotDTO {
         this.purchased = purchased;
         this.age = age;
         this.waterAvailable = waterAvailable;
-        this.status =status;
+        this.status = status;
     }
 
     public PlotDTO(int id, int x, int y, int animalID, int waterManagerID, int plantID, int waterSourceID, float price, boolean purchased, int age, int waterAvailable, String status) {
@@ -62,7 +63,7 @@ public class PlotDTO {
         this.purchased = purchased;
         this.age = age;
         this.waterAvailable = waterAvailable;
-        this.status =status;
+        this.status = status;
     }
 
     public PlotDTO(int id, int x, int y, int animalID, int waterManagerID, int plantID, float price) {
@@ -181,7 +182,9 @@ public class PlotDTO {
         this.purchased = purchased;
     }
 
-    public int getWaterAvailable() { return waterAvailable; }
+    public int getWaterAvailable() {
+        return waterAvailable;
+    }
 
     public String getStatus() {
         return status;

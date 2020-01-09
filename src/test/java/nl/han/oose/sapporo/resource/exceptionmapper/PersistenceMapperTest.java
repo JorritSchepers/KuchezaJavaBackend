@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PersistenceMapperTest {
+class PersistenceMapperTest {
     private PersistenceMapper sut = new PersistenceMapper();
 
     @Test

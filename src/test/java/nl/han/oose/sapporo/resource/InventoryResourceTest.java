@@ -12,6 +12,7 @@ class InventoryResourceTest {
     private IInventoryService inventoryService;
     private final String TOKEN = "123456789";
     private UserDTO user = new UserDTO();
+    private int water = 20;
 
     private InventoryResourceTest() {
         accountService = Mockito.mock(IAccountService.class);
@@ -31,5 +32,25 @@ class InventoryResourceTest {
     void getInventoryCallsGetInventory() {
         sut.getInventory(TOKEN);
         Mockito.verify(inventoryService, Mockito.times(1)).getInventory(user);
+    }
+
+    @Test
+    void increaseWaterCallsVerifyToken() {
+        sut.increaseWater(TOKEN, water);
+        Mockito.verify(accountService, Mockito.times(1)).verifyToken(TOKEN);
+    }
+
+    @Test
+    void increaseWaterCallsIncreaseWater() {
+        sut.increaseWater(TOKEN, water);
+        Mockito.verify(inventoryService, Mockito.times(1)).increaseWater(water, user);
+
+    }
+
+    @Test
+    void increaseWaterCallsGetInventory() {
+        sut.increaseWater(TOKEN, water);
+        Mockito.verify(inventoryService, Mockito.times(1)).getInventory(user);
+
     }
 }

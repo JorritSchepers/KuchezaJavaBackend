@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 import static org.junit.Assert.assertEquals;
 
-public class UserAlreadyHasFarmExceptionMapperTest {
+class UserAlreadyHasFarmExceptionMapperTest {
     private UserAlreadyHasFarmExceptionMapper sut = new UserAlreadyHasFarmExceptionMapper();
 
     @Test

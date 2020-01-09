@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AnimalProductNotCollectableExceptionMapperTest {
+class AnimalProductNotCollectableExceptionMapperTest {
     private AnimalProductNotCollectableExceptionMapper sut = new AnimalProductNotCollectableExceptionMapper();
 
     @Test

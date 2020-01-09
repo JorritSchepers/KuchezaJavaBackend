@@ -9,7 +9,8 @@ public class UserDTO {
     private String email;
     private boolean admin;
 
-    public UserDTO() { }
+    public UserDTO() {
+    }
 
     public UserDTO(int id, String name, String password, String email) {
         this.name = name;

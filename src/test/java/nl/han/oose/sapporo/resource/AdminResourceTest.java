@@ -61,22 +61,22 @@ class AdminResourceTest {
     }
 
     @Test
-    void getUserStatisticsCallsAuthenticate(){
-        final int USERID =1;
+    void getUserStatisticsCallsAuthenticate() {
+        final int USERID = 1;
         sut.getUserStatistics(TOKEN, USERID);
         Mockito.verify(mockedAccountService, Mockito.times(1)).verifyToken(TOKEN);
     }
 
     @Test
-    void getUserStatisticsCallsCheckIfUserIsAdmin(){
-        final int USERID =1;
+    void getUserStatisticsCallsCheckIfUserIsAdmin() {
+        final int USERID = 1;
         sut.getUserStatistics(TOKEN, USERID);
         Mockito.verify(mockedAdminService, Mockito.times(1)).checkIfUserIsAdmin(USER);
     }
 
     @Test
-    void getUserStatisticsCallsGetUserActions(){
-        final int USERID =1;
+    void getUserStatisticsCallsGetUserActions() {
+        final int USERID = 1;
         sut.getUserStatistics(TOKEN, USERID);
         Mockito.verify(mockedActionService, Mockito.times(1)).getUserActions(USERID);
     }

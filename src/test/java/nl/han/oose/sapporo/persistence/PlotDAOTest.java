@@ -8,7 +8,6 @@ import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ class PlotDAOTest extends DAOTest {
     private final int PLOT_ID = 1;
     private final int FULL_PLOT_ID = 2;
     private final int WATER_ADD = 20;
-    private final PlantDTO PLANT = new PlantDTO(1, "Cabbage", 1, 1, 1, 1,100);
+    private final PlantDTO PLANT = new PlantDTO(1, "Cabbage", 1, 1, 1, 1, 100);
     private AnimalDTO ANIMAL = new AnimalDTO(1, "Cow", 10, 300, 10, 20, 1);
 
     @Override
@@ -132,12 +131,12 @@ class PlotDAOTest extends DAOTest {
         return false;
     }
 
-    private String getStatus(int x, int y){
+    private String getStatus(int x, int y) {
         String status = "";
         try (Connection connection = DriverManager.getConnection(DB_URL)) {
             PreparedStatement statement = connection.prepareStatement("select status from plot where x =? and y=?");
-            statement.setInt(1,x);
-            statement.setInt(2,y);
+            statement.setInt(1, x);
+            statement.setInt(2, y);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 status = resultSet.getString("status");
@@ -173,7 +172,7 @@ class PlotDAOTest extends DAOTest {
 
     @Test
     void checkIfPlotIsNotFilledToTheMaxThrowsExceptionPlotHadMaximumWater() {
-        Assertions.assertDoesNotThrow( () -> {
+        Assertions.assertDoesNotThrow(() -> {
             sut.editWaterAvailable(WATER_ADD, PLOT_ID);
         });
     }
@@ -239,10 +238,10 @@ class PlotDAOTest extends DAOTest {
     }
 
     @Test
-    void getFarmPlotsGetsRightAmountOfPlots(){
+    void getFarmPlotsGetsRightAmountOfPlots() {
         int AMOUNT_OF_PLOTS = 3;
         int FARM_ID = 1;
-        Assertions.assertEquals(sut.getFarmPlots(FARM_ID).size(),AMOUNT_OF_PLOTS);
+        Assertions.assertEquals(sut.getFarmPlots(FARM_ID).size(), AMOUNT_OF_PLOTS);
     }
 
     @Test
@@ -265,7 +264,7 @@ class PlotDAOTest extends DAOTest {
     void changeStatusChangesStatusInDatabase() {
         String expected = "Dead";
         sut.changeStatus(1, "Dead");
-        Assertions.assertEquals(expected,getStatus(1,1));
+        Assertions.assertEquals(expected, getStatus(1, 1));
     }
 
     @Test
@@ -289,90 +288,90 @@ class PlotDAOTest extends DAOTest {
     }
 
     @Test
-    void replaceAnimalsOnAllPlotsReplacesAnimal(){
-        final int DELETEID =2;
-        final int REPLACEID =1;
+    void replaceAnimalsOnAllPlotsReplacesAnimal() {
+        final int DELETEID = 2;
+        final int REPLACEID = 1;
         final int AFFECTEDPLOTID = 3;
-        Assertions.assertEquals(getAnimalIDFromPlot(AFFECTEDPLOTID),DELETEID);
-        sut.replaceAnimalsOnAllPlots(DELETEID,REPLACEID);
-        Assertions.assertEquals(getAnimalIDFromPlot(AFFECTEDPLOTID),REPLACEID);
+        Assertions.assertEquals(getAnimalIDFromPlot(AFFECTEDPLOTID), DELETEID);
+        sut.replaceAnimalsOnAllPlots(DELETEID, REPLACEID);
+        Assertions.assertEquals(getAnimalIDFromPlot(AFFECTEDPLOTID), REPLACEID);
     }
 
     @Test
-    void replacePlantsOnAllPlotsReplacesPlant(){
-        final int DELETEID =1;
-        final int REPLACEID =2;
+    void replacePlantsOnAllPlotsReplacesPlant() {
+        final int DELETEID = 1;
+        final int REPLACEID = 2;
         final int AFFECTEDPLOTID = 2;
-        Assertions.assertEquals(getPlantIDFromPlot(AFFECTEDPLOTID),DELETEID);
-        sut.replacePlantsOnAllPlots(DELETEID,REPLACEID);
-        Assertions.assertEquals(getPlantIDFromPlot(AFFECTEDPLOTID),REPLACEID);
+        Assertions.assertEquals(getPlantIDFromPlot(AFFECTEDPLOTID), DELETEID);
+        sut.replacePlantsOnAllPlots(DELETEID, REPLACEID);
+        Assertions.assertEquals(getPlantIDFromPlot(AFFECTEDPLOTID), REPLACEID);
     }
 
     @Test
-    void getWaterGetsRightAmountOfWater(){
-        final int PLOTID =2;
+    void getWaterGetsRightAmountOfWater() {
+        final int PLOTID = 2;
         final int WATER = 100;
-        Assertions.assertEquals(WATER,sut.getWater(PLOTID));
+        Assertions.assertEquals(WATER, sut.getWater(PLOTID));
     }
 
     @Test
-    void updateAgeUpdatesAge(){
-        final int AFFECTEDPLOT =1;
+    void updateAgeUpdatesAge() {
+        final int AFFECTEDPLOT = 1;
         final int OLDAGE = 10;
         final int AGE = 20;
-        Assertions.assertEquals(getAgeFromPlot(AFFECTEDPLOT),OLDAGE);
-        sut.updateAge(1,AGE);
-        Assertions.assertEquals(getAgeFromPlot(AFFECTEDPLOT),AGE);
+        Assertions.assertEquals(getAgeFromPlot(AFFECTEDPLOT), OLDAGE);
+        sut.updateAge(1, AGE);
+        Assertions.assertEquals(getAgeFromPlot(AFFECTEDPLOT), AGE);
     }
 
     @Test
-    void createSiloMakesSilo(){
+    void createSiloMakesSilo() {
         final int SILOID = 1;
         final int PLOTID = 1;
-        FarmDTO farm = new FarmDTO(1,1);
-        Assertions.assertEquals(getWaterIDFromPlot(PLOTID),0);
+        FarmDTO farm = new FarmDTO(1, 1);
+        Assertions.assertEquals(getWaterIDFromPlot(PLOTID), 0);
         sut.createSilo(farm);
-        Assertions.assertEquals(getWaterIDFromPlot(PLOTID),SILOID);
+        Assertions.assertEquals(getWaterIDFromPlot(PLOTID), SILOID);
     }
 
     @Test
-    public void insertPlotsPutsPlotsInDatabase(){
-        FarmDTO farm = new FarmDTO(1,1);
+    void insertPlotsPutsPlotsInDatabase() {
+        FarmDTO farm = new FarmDTO(1, 1);
         farm.setPlots(new ArrayList<PlotDTO>(
-                List.of(new PlotDTO(1,1,1,0,0), new PlotDTO(2,1,2,0,0))
+                List.of(new PlotDTO(1, 1, 1, 0, 0), new PlotDTO(2, 1, 2, 0, 0))
         ));
         sut.insertPlots(farm);
 
         final int expected = 5;
         int result = getAmountOfPlots();
-        Assertions.assertEquals(expected,result);
+        Assertions.assertEquals(expected, result);
     }
 
     @Test
-    public void hasWaterResourceReturnsTrue() {
+    void hasWaterResourceReturnsTrue() {
         final boolean expected = true;
         boolean result = sut.plotHasWaterResource(3);
-        Assertions.assertEquals(expected,result);
+        Assertions.assertEquals(expected, result);
     }
 
     @Test
-    public void hasWaterResourceThrowsException() {
+    void hasWaterResourceThrowsException() {
         Assertions.assertThrows(PlotHasNoWaterSourceException.class, () -> {
             sut.plotHasWaterResource(0);
         });
     }
 
     @Test
-    public void checkIfPlotHasWaterReturnsTrue() {
+    void checkIfPlotHasWaterReturnsTrue() {
         final boolean expected = true;
         boolean result = sut.checkIfPlotHasWater(3);
-        Assertions.assertEquals(expected,result);
+        Assertions.assertEquals(expected, result);
     }
 
     @Test
-    public void checkIfPlotHasWaterReturnsFalse() {
+    void checkIfPlotHasWaterReturnsFalse() {
         final boolean expected = false;
         boolean result = sut.checkIfPlotHasWater(1);
-        Assertions.assertEquals(expected,result);
+        Assertions.assertEquals(expected, result);
     }
 }

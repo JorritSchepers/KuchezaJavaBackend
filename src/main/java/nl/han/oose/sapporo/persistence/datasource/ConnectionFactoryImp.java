@@ -1,6 +1,7 @@
 package nl.han.oose.sapporo.persistence.datasource;
 
 import nl.han.oose.sapporo.persistence.exception.PersistenceException;
+
 import javax.enterprise.inject.Default;
 import java.sql.Connection;
 import java.sql.DriverManager;
