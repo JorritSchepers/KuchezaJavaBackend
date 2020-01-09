@@ -35,21 +35,21 @@ class InventoryResourceTest {
     }
 
     @Test
-    void increaseWaterCallsVerifyToken(){
-        sut.increaseWater(TOKEN,water);
+    void increaseWaterCallsVerifyToken() {
+        sut.increaseWater(TOKEN, water);
         Mockito.verify(accountService, Mockito.times(1)).verifyToken(TOKEN);
     }
 
     @Test
-    void increaseWaterCallsIncreaseWater(){
-        sut.increaseWater(TOKEN,water);
-        Mockito.verify(inventoryService, Mockito.times(1)).increaseWater(water,user);
+    void increaseWaterCallsIncreaseWater() {
+        sut.increaseWater(TOKEN, water);
+        Mockito.verify(inventoryService, Mockito.times(1)).increaseWater(water, user);
 
     }
 
     @Test
-    void increaseWaterCallsGetInventory(){
-        sut.increaseWater(TOKEN,water);
+    void increaseWaterCallsGetInventory() {
+        sut.increaseWater(TOKEN, water);
         Mockito.verify(inventoryService, Mockito.times(1)).getInventory(user);
 
     }

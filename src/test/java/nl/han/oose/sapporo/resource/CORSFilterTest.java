@@ -24,17 +24,17 @@ class CORSFilterTest {
         containerRequestContext = mock(ContainerRequestContext.class);
         containerResponseContext = mock(ContainerResponseContext.class);
 
-        when(containerResponseContext.getHeaders()).thenReturn(new MultivaluedHashMap<String ,Object>());
+        when(containerResponseContext.getHeaders()).thenReturn(new MultivaluedHashMap<String, Object>());
     }
 
     @Test
     void filter() {
         try {
-            sut.filter(containerRequestContext,containerResponseContext);
+            sut.filter(containerRequestContext, containerResponseContext);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        verify(containerResponseContext,times(5)).getHeaders();
+        verify(containerResponseContext, times(5)).getHeaders();
     }
 }

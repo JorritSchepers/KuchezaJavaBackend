@@ -8,7 +8,7 @@ import org.mockito.Mockito;
 
 import java.util.ArrayList;
 
-public class FarmServiceTest {
+class FarmServiceTest {
     private FarmServiceImp sut = new FarmServiceImp();
     private IFarmDAO farmDAO;
     private IPlotService plotService;

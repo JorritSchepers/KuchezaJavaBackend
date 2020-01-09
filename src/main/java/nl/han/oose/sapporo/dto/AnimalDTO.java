@@ -9,7 +9,8 @@ public class AnimalDTO {
     private float profit;
     private float purchasePrice;
 
-    public AnimalDTO() { }
+    public AnimalDTO() {
+    }
 
     public AnimalDTO(int id, String name, int waterUsage, int maximumWater, int productionTime, float profit, float purchasePrice) {
         this.id = id;

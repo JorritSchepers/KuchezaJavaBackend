@@ -47,34 +47,34 @@ public class AnimalResourceTest {
     }
 
     @Test
-    public void deleteAnimalCallsVerifyToken(){
+    public void deleteAnimalCallsVerifyToken() {
         final int IDDELETE = 1;
-        final int IDREPLACE =2;
-        sut.deleteAnimal(token,IDDELETE,IDREPLACE);
+        final int IDREPLACE = 2;
+        sut.deleteAnimal(token, IDDELETE, IDREPLACE);
         Mockito.verify(accountService, Mockito.times(1)).verifyToken(token);
     }
 
     @Test
-    public void deleteAnimalcheckIfUserIsAdmin(){
+    public void deleteAnimalcheckIfUserIsAdmin() {
         final int IDDELETE = 1;
-        final int IDREPLACE =2;
-        sut.deleteAnimal(token,IDDELETE,IDREPLACE);
+        final int IDREPLACE = 2;
+        sut.deleteAnimal(token, IDDELETE, IDREPLACE);
         Mockito.verify(adminService, Mockito.times(1)).checkIfUserIsAdmin(user);
     }
 
     @Test
-    public void deleteAnimalCallreplaceAnimalsOnAllPlots(){
+    public void deleteAnimalCallreplaceAnimalsOnAllPlots() {
         final int IDDELETE = 1;
-        final int IDREPLACE =2;
-        sut.deleteAnimal(token,IDDELETE,IDREPLACE);
-        Mockito.verify(plotService, Mockito.times(1)).replaceAnimalsOnAllPlots(IDDELETE,IDREPLACE);
+        final int IDREPLACE = 2;
+        sut.deleteAnimal(token, IDDELETE, IDREPLACE);
+        Mockito.verify(plotService, Mockito.times(1)).replaceAnimalsOnAllPlots(IDDELETE, IDREPLACE);
     }
 
     @Test
-    public void deleteAnimalCallsdeleteAnimal(){
+    public void deleteAnimalCallsdeleteAnimal() {
         final int IDDELETE = 1;
-        final int IDREPLACE =2;
-        sut.deleteAnimal(token,IDDELETE,IDREPLACE);
+        final int IDREPLACE = 2;
+        sut.deleteAnimal(token, IDDELETE, IDREPLACE);
         Mockito.verify(animalService, Mockito.times(1)).deleteAnimal(IDDELETE);
     }
 }

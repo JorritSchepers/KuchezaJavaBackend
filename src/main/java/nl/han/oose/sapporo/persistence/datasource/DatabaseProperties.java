@@ -12,14 +12,13 @@ public class DatabaseProperties {
         readProperties();
     }
 
-    private Properties readProperties() {
+    private void readProperties() {
         properties = new Properties();
         try {
             properties.load(getClass().getResourceAsStream("/database.properties"));
         } catch (IOException ex) {
             throw new UnableToReadDatabasePropertiesException();
         }
-        return properties;
     }
 
     public String getUser() {

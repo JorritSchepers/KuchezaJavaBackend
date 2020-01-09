@@ -51,7 +51,7 @@ public class PlantResource {
     @Path("/{plantIDToDelete}/{plantIDToReplaceWith}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deletePlant(@QueryParam("token") String token, @PathParam("plantIDToDelete") int plantIDToDelete, @PathParam("plantIDToReplaceWith") int plantIDToReplaceWith) {
-        UserDTO user  = accountService.verifyToken(token);
+        UserDTO user = accountService.verifyToken(token);
         adminService.checkIfUserIsAdmin(user);
         plotService.replacePlantsOnAllPlots(plantIDToDelete, plantIDToReplaceWith);
         plantService.deletePlant(user, plantIDToDelete, plantIDToReplaceWith);

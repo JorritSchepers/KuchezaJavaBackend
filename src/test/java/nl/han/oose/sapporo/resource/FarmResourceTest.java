@@ -19,7 +19,6 @@ class FarmResourceTest {
     private FarmResource sut;
     private IFarmService farmService;
     private IAccountService accountService;
-    private FarmDTO farmDTO;
     private UserDTO userDTO;
     private TokenDTO tokenDTO;
 
@@ -29,7 +28,7 @@ class FarmResourceTest {
         farmService = mock(FarmServiceImp.class);
         accountService = mock(AccountServiceImp.class);
 
-        farmDTO = new FarmDTO();
+        FarmDTO farmDTO = new FarmDTO();
         userDTO = new UserDTO();
         tokenDTO = new TokenDTO(userDTO, "1234");
 

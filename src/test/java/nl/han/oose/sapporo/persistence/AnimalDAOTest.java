@@ -6,9 +6,7 @@ import nl.han.oose.sapporo.dto.PlotDTO;
 import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
-import javax.print.attribute.standard.MediaSize;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -21,7 +19,7 @@ class AnimalDAOTest extends DAOTest {
     }
 
 
-    private Boolean DoesAnimalExist(int id){
+    private Boolean DoesAnimalExist(int id) {
         try (Connection connection = DriverManager.getConnection(DB_URL)) {
             PreparedStatement statement = connection.prepareStatement("select * from animal where animalId = ?");
             statement.setInt(1, id);
@@ -41,7 +39,7 @@ class AnimalDAOTest extends DAOTest {
     }
 
     @Test
-    void deleteAnimalDeletesAnimal(){
+    void deleteAnimalDeletesAnimal() {
         final int DELETEID = 1;
         Assertions.assertTrue(DoesAnimalExist(DELETEID));
         sut.deleteAnimal(DELETEID);
@@ -49,37 +47,37 @@ class AnimalDAOTest extends DAOTest {
     }
 
     @Test
-    void getAnimalReturnsName(){
+    void getAnimalReturnsName() {
         final int ANIMALID = 1;
         final String NAME = "Cow";
         Assertions.assertEquals(sut.getAnimal(ANIMALID), NAME);
     }
 
     @Test
-    void getProductProfitGetsRightProfit(){
+    void getProductProfitGetsRightProfit() {
         final int ANIMALID = 1;
         final int PROFIT = 20;
         Assertions.assertEquals(sut.getProductProfit(ANIMALID), PROFIT);
     }
 
     @Test
-    void checkIfProductIsCollectableReturnsFalseWhenShort(){
-        PlotDTO youngplot = new PlotDTO(3,1,1,1,1,1,1,1);
+    void checkIfProductIsCollectableReturnsFalseWhenShort() {
+        PlotDTO youngplot = new PlotDTO(3, 1, 1, 1, 1, 1, 1, 1);
         Assertions.assertFalse(sut.checkIfProductIsCollectable(youngplot));
     }
 
     @Test
-    void checkIfProductIsCollectableReturnsTrueWhenReadyt(){
-        PlotDTO oldplot = new PlotDTO(3,1,1,1,1,1,1,100);
+    void checkIfProductIsCollectableReturnsTrueWhenReadyt() {
+        PlotDTO oldplot = new PlotDTO(3, 1, 1, 1, 1, 1, 1, 100);
 
         Assertions.assertTrue(sut.checkIfProductIsCollectable(oldplot));
     }
 
     @Test
-    public void getMaximumWaterReturnsMaximumWater() {
+    void getMaximumWaterReturnsMaximumWater() {
         final int expected = 300;
         final int ANIMALID = 1;
         int result = sut.getMaximumWater(1);
-        Assertions.assertEquals(expected,result);
+        Assertions.assertEquals(expected, result);
     }
 }

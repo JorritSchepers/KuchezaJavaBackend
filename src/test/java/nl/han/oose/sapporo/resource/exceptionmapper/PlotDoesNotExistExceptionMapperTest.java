@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PlotDoesNotExistExceptionMapperTest {
+class PlotDoesNotExistExceptionMapperTest {
     private PlotDoesNotExistExceptionMapper sut = new PlotDoesNotExistExceptionMapper();
 
     @Test

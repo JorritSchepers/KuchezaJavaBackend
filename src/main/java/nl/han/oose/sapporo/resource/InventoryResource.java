@@ -27,7 +27,7 @@ public class InventoryResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getInventory(@QueryParam("token") String token) {
-        UserDTO user  = accountService.verifyToken(token);
+        UserDTO user = accountService.verifyToken(token);
         return Response.status(Response.Status.OK)
                 .entity(inventoryService.getInventory(user))
                 .build();
@@ -37,7 +37,7 @@ public class InventoryResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{water}")
     public Response increaseWater(@QueryParam("token") String token, @PathParam("water") int water) {
-        UserDTO user  = accountService.verifyToken(token);
+        UserDTO user = accountService.verifyToken(token);
         inventoryService.increaseWater(water, user);
         return Response.status(Response.Status.OK)
                 .entity(inventoryService.getInventory(user))

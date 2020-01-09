@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class InsufficientWaterMapperTest {
+class InsufficientWaterMapperTest {
     private InsufficientWaterMapper sut = new InsufficientWaterMapper();
 
     @Test

@@ -8,7 +8,10 @@ import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 import nl.han.oose.sapporo.persistence.exception.*;
 
 import javax.inject.Inject;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PlotDAOImp implements IPlotDAO {
@@ -83,11 +86,7 @@ public class PlotDAOImp implements IPlotDAO {
 
             plotTaken += plantID + waterSourceID + animalID;
 
-            if (plotTaken == 0) {
-                return false;
-            } else {
-                return true;
-            }
+            return plotTaken != 0;
         } catch (SQLException e) {
             throw new PersistenceException();
         }
@@ -120,21 +119,10 @@ public class PlotDAOImp implements IPlotDAO {
             PlotDTO plotDTO = null;
 
             while (resultSet.next()) {
-                plotDTO = new PlotDTO(
-                        resultSet.getInt("plotID"),
-                        resultSet.getInt("x"),
-                        resultSet.getInt("y"),
-                        resultSet.getBoolean("purchased"),
-                        resultSet.getInt("plantID"),
-                        resultSet.getInt("waterSourceID"),
-                        resultSet.getInt("animalID"),
-                        resultSet.getInt("waterAvailable"),
-                        resultSet.getFloat("price"),
-                        resultSet.getInt("objectAge"),
-                        resultSet.getString("status")
-                );
+                plotDTO = createNewPlot(resultSet);
             }
-            if(plotDTO == null) {
+
+            if (plotDTO == null) {
                 throw new PlotDoesNotExistException();
             } else {
                 return plotDTO;
@@ -143,6 +131,24 @@ public class PlotDAOImp implements IPlotDAO {
             throw new PersistenceException();
         }
     }
+
+    private PlotDTO createNewPlot(ResultSet resultSet) throws SQLException {
+        return new PlotDTO(
+                resultSet.getInt("plotID"),
+                resultSet.getInt("x"),
+                resultSet.getInt("y"),
+                resultSet.getInt("animalID"),
+                resultSet.getInt("waterManagerID"),
+                resultSet.getInt("plantID"),
+                resultSet.getInt("waterSourceID"),
+                resultSet.getFloat("price"),
+                resultSet.getBoolean("purchased"),
+                resultSet.getInt("objectAge"),
+                resultSet.getInt("waterAvailable"),
+                resultSet.getString("status")
+        );
+    }
+
 
     @Override
     public void removeObjectsFromPlot(int plotID) {
@@ -208,13 +214,13 @@ public class PlotDAOImp implements IPlotDAO {
 
     public void insertPlots(FarmDTO farmDTO) {
         try (Connection connection = connectionFactory.getConnection()) {
-            for(PlotDTO plot: farmDTO.getPlots()) {
+            for (PlotDTO plot : farmDTO.getPlots()) {
                 PreparedStatement statement = connection.prepareStatement("INSERT INTO plot (x,y,price,purchased,farmID) VALUES(?,?,?,?,?);");
-                statement.setInt(1,plot.getX());
-                statement.setInt(2,plot.getY());
-                statement.setFloat(3,plot.getPrice());
-                statement.setBoolean(4,plot.isPurchased());
-                statement.setInt(5,farmDTO.getFarmID());
+                statement.setInt(1, plot.getX());
+                statement.setInt(2, plot.getY());
+                statement.setFloat(3, plot.getPrice());
+                statement.setBoolean(4, plot.isPurchased());
+                statement.setInt(5, farmDTO.getFarmID());
                 statement.execute();
             }
         } catch (SQLException e) {
@@ -231,20 +237,7 @@ public class PlotDAOImp implements IPlotDAO {
             ArrayList<PlotDTO> plots = new ArrayList<>();
 
             while (resultSet.next()) {
-                PlotDTO plot = new PlotDTO(
-                        resultSet.getInt("plotID"),
-                        resultSet.getInt("x"),
-                        resultSet.getInt("y"),
-                        resultSet.getInt("animalID"),
-                        resultSet.getInt("waterManagerID"),
-                        resultSet.getInt("plantID"),
-                        resultSet.getInt("waterSourceID"),
-                        resultSet.getFloat("price"),
-                        resultSet.getBoolean("purchased"),
-                        resultSet.getInt("objectAge"),
-                        resultSet.getInt("waterAvailable"),
-                        resultSet.getString("status")
-                );
+                PlotDTO plot = createNewPlot(resultSet);
                 plots.add(plot);
             }
             return plots;
@@ -257,8 +250,8 @@ public class PlotDAOImp implements IPlotDAO {
     public void updateAge(int plotID, int age) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("UPDATE plot SET objectAge = ? WHERE plotID = ?");
-            statement.setInt(1,age);
-            statement.setInt(2,plotID);
+            statement.setInt(1, age);
+            statement.setInt(2, plotID);
             statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();
@@ -269,8 +262,8 @@ public class PlotDAOImp implements IPlotDAO {
     public void changeStatus(int plotID, String status) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("UPDATE plot SET status = ? WHERE plotID = ?");
-            statement.setString(1,status);
-            statement.setInt(2,plotID);
+            statement.setString(1, status);
+            statement.setInt(2, plotID);
             statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();
@@ -281,8 +274,8 @@ public class PlotDAOImp implements IPlotDAO {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
                     ("update plot set waterAvailable = waterAvailable+? where plotID = ?");
-            statement.setInt(1,amount);
-            statement.setInt(2,plotID);
+            statement.setInt(1, amount);
+            statement.setInt(2, plotID);
             statement.execute();
         } catch (SQLException e) {
             throw new WaterOutOfBoundsException();
@@ -291,12 +284,12 @@ public class PlotDAOImp implements IPlotDAO {
 
     @Override
     public void createSilo(FarmDTO farmDTO) {
-        final int SILO_ID =1;
+        final int SILO_ID = 1;
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
                     ("update plot set waterManagerID = ? where farmID = ? order by plotID LIMIT 1 ");
-            statement.setInt(1,SILO_ID);
-            statement.setInt(2,farmDTO.getFarmID());
+            statement.setInt(1, SILO_ID);
+            statement.setInt(2, farmDTO.getFarmID());
             statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();
@@ -310,8 +303,8 @@ public class PlotDAOImp implements IPlotDAO {
             PreparedStatement statement = connection.prepareStatement
                     ("UPDATE plot SET waterSourceID = ? WHERE plotID IN (SELECT plotID FROM (select * from plot where farmID = ? order by plotID limit 1,1)l);\n" +
                             " ");
-            statement.setInt(1,WELL_ID);
-            statement.setInt(2,farmDTO.getFarmID());
+            statement.setInt(1, WELL_ID);
+            statement.setInt(2, farmDTO.getFarmID());
             statement.execute();
         } catch (SQLException e) {
             throw new PersistenceException();
@@ -324,7 +317,7 @@ public class PlotDAOImp implements IPlotDAO {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement
                     ("select name from plot inner join animal on animal.animalID = plot.animalID where plot.plotID = ?");
-            statement.setInt(1,plotID);
+            statement.setInt(1, plotID);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 name = resultSet.getString("name");
@@ -393,7 +386,7 @@ public class PlotDAOImp implements IPlotDAO {
             if (animalID == 0) {
                 throw new PlotHasNoAnimalException();
             } else return true;
-          } catch (SQLException e) {
+        } catch (SQLException e) {
             throw new PersistenceException();
         }
     }

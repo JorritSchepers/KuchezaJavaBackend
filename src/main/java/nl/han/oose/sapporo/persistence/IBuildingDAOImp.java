@@ -35,7 +35,7 @@ public class IBuildingDAOImp implements IBuildingDAO {
     public WaterSourceDTO getWaterSource(int waterSourceID) {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("select * from watersource where waterSourceId = ?");
-            statement.setInt(1,waterSourceID);
+            statement.setInt(1, waterSourceID);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 return new WaterSourceDTO(resultSet.getInt("waterSourceId"),
@@ -59,7 +59,7 @@ public class IBuildingDAOImp implements IBuildingDAO {
             int maximumWater = resultSet.getInt("maximumWater");
             int purchasePrice = resultSet.getInt("purchasePrice");
             String name = resultSet.getString("name");
-            waterSources.add(new WaterSourceDTO(id,waterYield,maximumWater,purchasePrice,name));
+            waterSources.add(new WaterSourceDTO(id, waterYield, maximumWater, purchasePrice, name));
         }
         return new AllWaterSourceDTO(waterSources);
     }

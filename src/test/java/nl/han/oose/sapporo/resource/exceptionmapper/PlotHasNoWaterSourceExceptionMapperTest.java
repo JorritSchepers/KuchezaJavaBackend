@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 import static org.junit.Assert.assertEquals;
 
-public class PlotHasNoWaterSourceExceptionMapperTest {
+class PlotHasNoWaterSourceExceptionMapperTest {
     private PlotHasNoWaterSourceExceptionMapper sut = new PlotHasNoWaterSourceExceptionMapper();
 
     @Test

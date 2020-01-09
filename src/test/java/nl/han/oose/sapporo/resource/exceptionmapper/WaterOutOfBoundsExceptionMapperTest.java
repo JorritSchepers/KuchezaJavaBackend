@@ -7,7 +7,7 @@ import javax.ws.rs.core.Response;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class WaterOutOfBoundsExceptionMapperTest {
+class WaterOutOfBoundsExceptionMapperTest {
     private WaterOutOfBoundsExceptionMapper sut = new WaterOutOfBoundsExceptionMapper();
 
     @Test

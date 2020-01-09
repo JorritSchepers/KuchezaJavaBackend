@@ -8,12 +8,12 @@ class BuildingServiceTest {
     private BuildingServiceImp sut = new BuildingServiceImp();
     private IBuildingDAO buildingDAO = Mockito.mock(IBuildingDAO.class);
 
-    BuildingServiceTest(){
+    BuildingServiceTest() {
         sut.setBuildingDAO(buildingDAO);
     }
 
     @Test
-    void getAllWaterSourcesCallsGetAllWaterSources(){
+    void getAllWaterSourcesCallsGetAllWaterSources() {
         sut.getAllWaterSources();
         Mockito.verify(buildingDAO, Mockito.times(1)).getAllWaterSources();
     }

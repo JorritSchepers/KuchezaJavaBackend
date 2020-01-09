@@ -8,12 +8,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class AdminServiceImpTest {
-    private final UserDTO ADMIN_USER = new UserDTO(1, "admin", "admin","admin@admin.nl", true);
-    private final UserDTO NON_ADMIN_USER = new UserDTO(2, "player", "password","player@player.nl", false);
-    private final int USER_ID = 1;
+    private final UserDTO ADMIN_USER = new UserDTO(1, "admin", "admin", "admin@admin.nl", true);
+    private final UserDTO NON_ADMIN_USER = new UserDTO(2, "player", "password", "player@player.nl", false);
     private final AllUsersDTO ALL_USERS = new AllUsersDTO();
 
     private AdminServiceImp sut;
@@ -58,6 +58,7 @@ class AdminServiceImpTest {
 
     @Test
     void deleteUserCallsDeleteUserInAdminDAO() {
+        int USER_ID = 1;
         sut.deleteUser(ADMIN_USER, USER_ID);
         Mockito.verify(mockedAdminDAO, Mockito.times(1)).deleteUser(USER_ID);
     }

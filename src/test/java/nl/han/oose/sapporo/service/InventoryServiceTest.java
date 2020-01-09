@@ -37,7 +37,7 @@ class InventoryServiceTest {
     }
 
     @Test
-    void getInventoryCallsGetInventory(){
+    void getInventoryCallsGetInventory() {
         sut.getInventory(user);
         Mockito.verify(inventoryDAO, Mockito.times(1)).getInventory(user);
     }

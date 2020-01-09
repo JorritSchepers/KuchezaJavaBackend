@@ -21,6 +21,7 @@ class AccountDAOTest extends DAOTest {
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {
         sut.setConnectionFactory(connectionFactoryImp);
     }
+
     private int getAmountOfUsers() {
         int amountOfUsers = 0;
         try (Connection connection = DriverManager.getConnection(DB_URL)) {

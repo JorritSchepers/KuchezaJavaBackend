@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 import javax.ws.rs.core.Response;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PlotIsAlreadyPurchasedExceptionMapperTest {
+class PlotIsAlreadyPurchasedExceptionMapperTest {
     private PlotIsAlreadyPurchasedExceptionMapper sut = new PlotIsAlreadyPurchasedExceptionMapper();
 
     @Test
-    public void PlotIsAlreadyPurchasedExceptionMapperReturnsBadRequestCode() {
+    void PlotIsAlreadyPurchasedExceptionMapperReturnsBadRequestCode() {
         Response response = sut.toResponse(new PlotIsAlreadyPurchasedException());
         assertEquals(Response.Status.BAD_REQUEST.getStatusCode(), response.getStatus());
     }

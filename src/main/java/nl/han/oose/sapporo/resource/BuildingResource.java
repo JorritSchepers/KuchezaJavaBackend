@@ -1,10 +1,13 @@
 package nl.han.oose.sapporo.resource;
 
-import nl.han.oose.sapporo.service.IBuildingService;
 import nl.han.oose.sapporo.service.IAccountService;
+import nl.han.oose.sapporo.service.IBuildingService;
 
 import javax.inject.Inject;
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
