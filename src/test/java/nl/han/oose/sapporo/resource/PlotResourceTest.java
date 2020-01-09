@@ -5,7 +5,6 @@ import nl.han.oose.sapporo.service.IAccountService;
 import nl.han.oose.sapporo.service.IPlotService;
 import org.junit.Assert;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import javax.ws.rs.core.Response;
@@ -161,6 +160,6 @@ public class PlotResourceTest {
     @Test
     public void clearPlotCallsClearPlot() {
         sut.clearPlot(TOKEN,PLOT_ID);
-        Mockito.verify(plotService,Mockito.times(1)).clearPlot(PLOT_ID);
+        Mockito.verify(plotService,Mockito.times(1)).clearPlot(USER, PLOT_ID);
     }
 }

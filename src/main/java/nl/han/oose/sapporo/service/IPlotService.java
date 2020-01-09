@@ -17,7 +17,7 @@ public interface IPlotService {
 
     void updateAge(int plotID, int age);
 
-    void clearPlot(int plotID);
+    void clearPlot(UserDTO user, int plotID);
 
     AllPlotDTO purchasePlot(int plotID, UserDTO userDTO);
 

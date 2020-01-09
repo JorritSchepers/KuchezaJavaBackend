@@ -114,7 +114,7 @@ public class PlotResource {
     @Path("/{id}/clear")
     public Response clearPlot(@QueryParam("token") String token, @PathParam("id") int plotID) {
         UserDTO user = accountService.verifyToken(token);
-        plotService.clearPlot(plotID);
+        plotService.clearPlot(user, plotID);
         return Response.status(Response.Status.OK)
                 .build();
     }

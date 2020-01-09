@@ -394,7 +394,7 @@ class PlotServiceTest {
 
     @Test
     public void clearPlotCallsRemoveObjects() {
-        sut.clearPlot(PLOT_ID);
+        sut.clearPlot(USER, PLOT_ID);
         Mockito.verify(mockedPlotDAO,Mockito.times(1)).removeObjectsFromPlot(PLOT_ID);
     }
 }

@@ -93,14 +93,19 @@ public class PlotServiceImp implements IPlotService {
                 if(plotDTO.getStatus().equals("Dehydrated")) {
                     profit /= 2;
                 }
+
                 if(plantService.plantFullGrown(plotDAO.getPlot(plotID))) {
                     final int HARVEST_PLANT_ACTION_ID = 2;
-                    inventoryService.increaseSaldo(profit, user);
-                    plotDAO.removeObjectsFromPlot(plotID);
                     actionService.setAction(user, HARVEST_PLANT_ACTION_ID, plantDAO.getName(plotDTO.getPlantID()));
                 }
+
+                inventoryService.increaseSaldo(profit, user);
+                plotDAO.removeObjectsFromPlot(plotID);
+
             } else {
                 plotDAO.removeObjectsFromPlot(plotID);
+                final int LOST_PLANT_ACTION_ID = 5;
+                actionService.setAction(user, LOST_PLANT_ACTION_ID, plantDAO.getName(plotDTO.getPlantID()));
             }
             return plotDAO.getPlot(plotID);
         }
@@ -108,8 +113,17 @@ public class PlotServiceImp implements IPlotService {
     }
 
     @Override
-    public void clearPlot(int plotID) {
+    public void clearPlot(UserDTO user, int plotID) {
+        if (plotDAO.plotHasAnimal(plotID)){
+            logLostAnimalAction(user,plotID);
+        }
         plotDAO.removeObjectsFromPlot(plotID);
+    }
+
+    private void logLostAnimalAction(UserDTO user, int plotID) {
+        final int LOST_ANIMAL_ACTION_ID = 7;
+        String name = plotDAO.getAnimalFromPlot(plotID);
+        actionService.setAction(user, LOST_ANIMAL_ACTION_ID, name);
     }
 
     @Override
@@ -146,8 +160,14 @@ public class PlotServiceImp implements IPlotService {
     @Override
     public PlotDTO editWater(UserDTO user, int plotID, int amount, boolean ShouldRemoveFromInventory) {
         final int GIVE_WATER_ACTION_ID = 3;
+        String affecteditem;
         PlotDTO plot =  plotDAO.getPlot(plotID);
-        String affectedPlant = plantDAO.getName(plot.getPlantID());
+        if (plot.getPlantID() > 0){
+            affecteditem = plantDAO.getName(plot.getPlantID());
+        } else {
+            affecteditem = animalDAO.getAnimal(plot.getAnimalID());
+        }
+
 
         if (plotDAO.checkIfPlotHasWater(plotID)){
             int amountThatFits = calculateWaterThatFits(plot.getWaterAvailable(),amount,MINIMUM_PLOT_WATER,getMaximumWater(plot));
@@ -155,6 +175,7 @@ public class PlotServiceImp implements IPlotService {
             if(ShouldRemoveFromInventory) {
                 if(inventoryService.checkIfPlayerHasEnoughWater(amount, user)) {
                     inventoryService.lowerWater(amountThatFits, user);
+                    actionService.setAction(user,GIVE_WATER_ACTION_ID,affecteditem);
                 }
             }
 

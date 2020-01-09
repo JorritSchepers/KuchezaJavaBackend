@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: nl.han.oose.sapporo.persistence.farmDAOImpTest
--------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.127 s - in nl.han.oose.sapporo.persistence.farmDAOImpTest

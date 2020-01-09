@@ -319,6 +319,23 @@ public class PlotDAOImp implements IPlotDAO {
     }
 
     @Override
+    public String getAnimalFromPlot(int plotID) {
+        String name = null;
+        try (Connection connection = connectionFactory.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement
+                    ("select name from plot inner join animal on animal.animalID = plot.animalID where plot.plotID = ?");
+            statement.setInt(1,plotID);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                name = resultSet.getString("name");
+            }
+        } catch (SQLException e) {
+            throw new PersistenceException();
+        }
+        return name;
+    }
+
+    @Override
     public int getWater(int plotID) {
         int water = 0;
         try (Connection connection = connectionFactory.getConnection()) {
