@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class BuildingDAOImp implements BuildingDAO {
+public class IBuildingDAOImp implements IBuildingDAO {
     private ConnectionFactoryImp connectionFactory;
 
     @Inject

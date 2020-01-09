@@ -9,15 +9,13 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class BuildingDAOImpTest extends DAOTest {
+class IBuildingDAOImpTest extends DAOTest {
     private ArrayList<WaterSourceDTO> WATERSOURCES = new ArrayList<WaterSourceDTO>(
             List.of(new WaterSourceDTO(1,20,4000,750,"Well"),
                     new WaterSourceDTO(2,2,50000,500,"canal"))
     );
     private AllWaterSourceDTO ALLWATERSOURCEDTO = new AllWaterSourceDTO(WATERSOURCES);
-    private BuildingDAOImp sut = new BuildingDAOImp();
+    private IBuildingDAOImp sut = new IBuildingDAOImp();
 
     @Override
     void setFactory(ConnectionFactoryImp connectionFactoryImp) {

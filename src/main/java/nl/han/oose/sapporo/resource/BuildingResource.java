@@ -1,7 +1,6 @@
 package nl.han.oose.sapporo.resource;
 
-import nl.han.oose.sapporo.dto.UserDTO;
-import nl.han.oose.sapporo.service.BuildingService;
+import nl.han.oose.sapporo.service.IBuildingService;
 import nl.han.oose.sapporo.service.IAccountService;
 
 import javax.inject.Inject;
@@ -12,11 +11,11 @@ import javax.ws.rs.core.Response;
 @Path("/building")
 public class BuildingResource {
     private IAccountService accountService;
-    private BuildingService buildingService;
+    private IBuildingService IBuildingService;
 
     @Inject
-    public void setBuildingService(BuildingService buildingService) {
-        this.buildingService = buildingService;
+    public void setIBuildingService(IBuildingService IBuildingService) {
+        this.IBuildingService = IBuildingService;
     }
 
     @Inject
@@ -30,7 +29,7 @@ public class BuildingResource {
     public Response getAllWaterSources(@QueryParam("token") String token) {
         accountService.verifyToken(token);
         return Response.status(Response.Status.OK)
-                .entity(buildingService.getAllWaterSources())
+                .entity(IBuildingService.getAllWaterSources())
                 .build();
     }
 }

@@ -6,7 +6,7 @@ import nl.han.oose.sapporo.persistence.datasource.ConnectionFactoryImp;
 
 import javax.inject.Inject;
 
-public interface BuildingDAO {
+public interface IBuildingDAO {
     AllWaterSourceDTO getAllWaterSources();
 
     WaterSourceDTO getWaterSource(int waterSourceID);

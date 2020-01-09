@@ -19,7 +19,7 @@ public class PlotServiceImp implements IPlotService {
     private IPlantDAO plantDAO;
     private IAnimalDAO animalDAO;
     private IFarmDAO farmDAO;
-    private BuildingDAO buildingDAO;
+    private IBuildingDAO IBuildingDAO;
     private IInventoryService inventoryService;
     private IPlantService plantService;
     private IAnimalService animalService;
@@ -28,8 +28,8 @@ public class PlotServiceImp implements IPlotService {
     private static final int MINIMUM_PLOT_WATER = 0;
 
     @Inject
-    public void setBuildingDAO(BuildingDAO buildingDAO) {
-        this.buildingDAO = buildingDAO;
+    public void setBuildingDAO(IBuildingDAO IBuildingDAO) {
+        this.IBuildingDAO = IBuildingDAO;
     }
 
     @Inject
@@ -241,7 +241,7 @@ public class PlotServiceImp implements IPlotService {
 
     private int getMaximumWater(PlotDTO plotDTO) {
         if(plotDTO.getWaterSourceID() != 0) {
-            return buildingDAO.getWaterSource(plotDTO.getWaterSourceID()).getMaximumWater();
+            return IBuildingDAO.getWaterSource(plotDTO.getWaterSourceID()).getMaximumWater();
         } else if (plotDTO.getPlantID() != 0) {
             return plantService.getMaximumWater(plotDTO.getPlantID());
         } else if (plotDTO.getAnimalID() != 0) {
