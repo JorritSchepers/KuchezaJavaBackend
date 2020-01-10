@@ -27,7 +27,7 @@ public class PlotDAOImp implements IPlotDAO {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("update plot set plantID = ?, waterAvailable = ? where plotID = ? ");
             statement.setInt(1, plantDTO.getId());
-            statement.setDouble(2, plantDTO.getMaximumWater()/4);
+            statement.setInt(2, plantDTO.getMaximumWater()/4);
             statement.setInt(3, plotID);
             statement.execute();
         } catch (SQLException e) {
@@ -362,7 +362,7 @@ public class PlotDAOImp implements IPlotDAO {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("update plot set animalID = ?, waterAvailable = ? where plotID = ? ");
             statement.setInt(1, animalDTO.getId());
-            statement.setDouble(2, animalDTO.getMaximumWater()/4);
+            statement.setInt(2, animalDTO.getMaximumWater()/4);
             statement.setInt(3, plotID);
             statement.execute();
         } catch (SQLException e) {
