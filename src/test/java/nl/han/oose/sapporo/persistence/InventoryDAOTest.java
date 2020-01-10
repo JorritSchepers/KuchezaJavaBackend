@@ -92,8 +92,8 @@ class InventoryDAOTest extends DAOTest {
     @Test
     void createInventoryMakesInventoryWithRightAmounts() {
         final int USERID = 4;
-        final int STARTMONEY = 10000;
-        final int STARTWATER = 20000;
+        final int STARTMONEY = 470000;
+        final int STARTWATER = 200000;
         UserDTO user = new UserDTO(USERID, "name", "password", "email");
         sut.createInventory(user);
         Assertions.assertEquals(getSaldoFromUser(USERID), STARTMONEY);

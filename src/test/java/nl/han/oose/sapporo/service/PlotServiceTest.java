@@ -263,7 +263,7 @@ class PlotServiceTest {
         final FarmDTO FARM = new FarmDTO(FARM_ID, USER.getId());
         Mockito.when(mockedPlotDAO.checkIfPlotIsEmpty(PLOT_ID)).thenReturn(true);
         Mockito.when(mockedFarmDAO.getFarm(USER)).thenReturn(FARM);
-        final int START_WATER = 25;
+        final int START_WATER = 75;
         sut.placeAnimal(ANIMAL, PLOT_ID, USER);
         Mockito.verify(mockedInventoryService, Mockito.times(1)).lowerWater(START_WATER, USER);
     }
