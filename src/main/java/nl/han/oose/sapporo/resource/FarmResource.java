@@ -35,14 +35,4 @@ public class FarmResource {
                 .entity(farmService.getFarm(user))
                 .build();
     }
-
-    @GET
-    @Path("/new")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response createNewFarm(@QueryParam("token") String token) {
-        UserDTO user = accountService.verifyToken(token);
-        return Response.status(Response.Status.CREATED)
-                .entity(farmService.createFarm(user))
-                .build();
-    }
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FarmServiceImp implements IFarmService {
-    private static final float PLOT_PRICE = 10000;
+    private static final float PLOT_PRICE = 50000;
     private IFarmDAO farmDAO;
     private IPlotService plotService;
 
@@ -41,7 +41,7 @@ public class FarmServiceImp implements IFarmService {
                 PlotDTO plotDTO = new PlotDTO(x, y, PLOT_PRICE, false);
                 plots.add(plotDTO);
 
-                if (x < farmDTO.getWIDTH() / 2 && y < farmDTO.getHEIGHT() / 2) {
+                if (x <= farmDTO.getWIDTH() / 3 && y <= farmDTO.getHEIGHT() / 4) {
                     plotDTO.setPurchased(true);
                 }
             }

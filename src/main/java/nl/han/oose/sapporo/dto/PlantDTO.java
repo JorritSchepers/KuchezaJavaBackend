@@ -37,4 +37,6 @@ public class PlantDTO {
     public float getProfit() {
         return profit;
     }
+
+    public int getMaximumWater() { return maximumWater;}
 }

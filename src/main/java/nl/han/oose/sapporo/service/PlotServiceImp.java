@@ -19,7 +19,6 @@ public class PlotServiceImp implements IPlotService {
     private IPlantService plantService;
     private IAnimalService animalService;
     private IActionService actionService;
-    private static final int START_WATER = 25;
     private static final int MINIMUM_PLOT_WATER = 0;
 
     @Inject
@@ -72,7 +71,7 @@ public class PlotServiceImp implements IPlotService {
         final int PLANT_SEED_ACTION_ID = 1;
         if (inventoryService.checkIfPlayerHasEnoughSaldo(plantDTO.getPurchasePrice(), userDTO) && plotDAO.checkIfPlotIsEmpty(plotID)) {
             inventoryService.lowerSaldo(plantDTO.getPurchasePrice(), userDTO);
-            inventoryService.lowerWater(START_WATER, userDTO);
+            inventoryService.lowerWater(plantDTO.getMaximumWater()/4, userDTO);
             plotDAO.addPlantToPlot(plantDTO, plotID);
             actionService.setAction(userDTO, PLANT_SEED_ACTION_ID, plantDTO.getName());
             return plotDAO.getPlot(plotID);
@@ -185,7 +184,7 @@ public class PlotServiceImp implements IPlotService {
         final int BUY_ANIMAL_ACTION_ID = 6;
         if (inventoryService.checkIfPlayerHasEnoughSaldo(animalDTO.getPurchasePrice(), userDTO) && plotDAO.checkIfPlotIsEmpty(plotID)) {
             inventoryService.lowerSaldo(animalDTO.getPurchasePrice(), userDTO);
-            inventoryService.lowerWater(START_WATER, userDTO);
+            inventoryService.lowerWater(animalDTO.getMaximumWater()/4, userDTO);
             plotDAO.addAnimalToPlot(animalDTO, plotID);
             String affectedAnimal = animalDAO.getAnimal(animalDTO.getId());
             actionService.setAction(userDTO, BUY_ANIMAL_ACTION_ID, affectedAnimal);

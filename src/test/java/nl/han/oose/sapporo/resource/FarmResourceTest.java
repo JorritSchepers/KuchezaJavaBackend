@@ -41,16 +41,6 @@ class FarmResourceTest {
     }
 
     @Test
-    void createFarmReturnsCorrectResponse() {
-        Response expected = Response.status(201)
-                .entity(farmService.createFarm(userDTO))
-                .build();
-        Response result = sut.createNewFarm(tokenDTO.getToken());
-
-        assertEquals(expected.toString(), result.toString());
-    }
-
-    @Test
     void getFarmCallsVerifyToken() {
         sut.getFarm(tokenDTO.getToken());
         verify(accountService, times(1)).verifyToken(tokenDTO.getToken());

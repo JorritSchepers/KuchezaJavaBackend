@@ -15,7 +15,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PlotDAOImp implements IPlotDAO {
-    private static final int START_WATER = 25;
     private ConnectionFactoryImp connectionFactory;
 
     @Inject
@@ -28,7 +27,7 @@ public class PlotDAOImp implements IPlotDAO {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("update plot set plantID = ?, waterAvailable = ? where plotID = ? ");
             statement.setInt(1, plantDTO.getId());
-            statement.setInt(2, START_WATER);
+            statement.setDouble(2, plantDTO.getMaximumWater()/4);
             statement.setInt(3, plotID);
             statement.execute();
         } catch (SQLException e) {
@@ -363,7 +362,7 @@ public class PlotDAOImp implements IPlotDAO {
         try (Connection connection = connectionFactory.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("update plot set animalID = ?, waterAvailable = ? where plotID = ? ");
             statement.setInt(1, animalDTO.getId());
-            statement.setInt(2, START_WATER);
+            statement.setDouble(2, animalDTO.getMaximumWater()/4);
             statement.setInt(3, plotID);
             statement.execute();
         } catch (SQLException e) {

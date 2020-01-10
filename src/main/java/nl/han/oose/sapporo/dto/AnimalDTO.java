@@ -30,4 +30,5 @@ public class AnimalDTO {
         return id;
     }
 
+    public int getMaximumWater() { return maximumWater;}
 }
