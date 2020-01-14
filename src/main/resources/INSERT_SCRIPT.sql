@@ -27,7 +27,7 @@ VALUES
 /*Insert user, wachtwoorden zijn 'wachtwoord'*/
 INSERT INTO user (userID, name,password,email, admin)
 VALUES
-(1, 'Admin','da5698be17b9b46962335799779fbeca8ce5d491c0d26243bafef9ea1837a9d8','info@kucheza.nl', 1);
+(1, 'Admin','9a2bca3b828e24f91baa5dd22a49919c14d60efa1375cbdf28ac7b6ff585c2b8','info@kucheza.nl', 1);
 
 /*Insert plants*/
 INSERT INTO Animal (waterUsage,maximumWater,productionTime,profit,purchasePrice,name)
